@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.ScreenColoredNewRecipeController">
+   <children>
+      <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="New Recipe" textFill="#000000a4">
+               <font>
+                  <Font size="100.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
+      <HBox layoutX="702.0" layoutY="203.0" prefHeight="46.0" prefWidth="594.0">
+         <children>
+            <Label text="Name:    ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="475.0" promptText="Name">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox layoutX="632.0" layoutY="261.0" prefHeight="170.0" prefWidth="668.0">
+         <children>
+            <Label text="Description:    ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descriptionText" prefHeight="170.0" prefWidth="474.0" promptText="Description...">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextArea>
+         </children>
+      </HBox>
+      <HBox layoutX="632.0" layoutY="448.0" prefHeight="183.0" prefWidth="668.0">
+         <children>
+            <Label text="Ingredients:    ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="ingredientsScrollPlane" maxHeight="-Infinity" prefHeight="178.0" prefWidth="474.0">
+              <content>
+                <AnchorPane fx:id="IngredientsInnerSizePlane" minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="458.0">
+                     <children>
+                        <HBox fx:id="IngredientDiv_0" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
+                           <children>
+                              <ComboBox fx:id="ComboBoxIngredient_0" prefHeight="50.0" prefWidth="237.0" promptText="Ingredient">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </ComboBox>
+                              <TextField fx:id="QuantityBoxTextIngredient_0" prefHeight="46.0" prefWidth="78.0" promptText="Quant (g)">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Label text="g">
+                                 <font>
+                                    <Font size="30.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Button fx:id="deleteIngredientButton_0" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="addIngredientButton_0" mnemonicParsing="false" onAction="#addIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <HBox layoutX="706.0" layoutY="638.0" prefHeight="183.0" prefWidth="593.0">
+         <children>
+            <Label text="Steps:    ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ScrollPane fx:id="stepsScrollPlane" maxHeight="-Infinity" prefHeight="178.0" prefWidth="479.0">
+               <content>
+                  <AnchorPane fx:id="stepsInnerSizePlane" minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="458.0">
+                     <children>
+                        <HBox fx:id="stepsDiv_0" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
+                           <children>
+                              <VBox prefHeight="43.0" prefWidth="50.0">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <children>
+                                    <Button fx:id="upArrowStep_0" mnemonicParsing="false" onAction="#upArrowStepClicked" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: #80cee1;" text="ʌ">
+                                       <VBox.margin>
+                                          <Insets bottom="4.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Button>
+                                    <Button fx:id="downArrowStep_0" mnemonicParsing="false" onAction="#downArrowStepClicked" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: #80cee1;" text="v">
+                                       <font>
+                                          <Font size="10.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </VBox>
+                              <TextField fx:id="stepText_0" prefHeight="50.0" prefWidth="288.0" promptText="Step...">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                              </TextField>
+                              <Button fx:id="deleteStepButton_0" mnemonicParsing="false" onAction="#deleteStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+                                 <HBox.margin>
+                                    <Insets right="5.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="addStepButton_0" mnemonicParsing="false" onAction="#addStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <Button layoutX="1184.0" layoutY="892.0" mnemonicParsing="false" onAction="#createRecipeClicked" style="-fx-background-color: #a5eea0;" text="Create recipe">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+      <Button layoutX="754.0" layoutY="892.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Discard recipe">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

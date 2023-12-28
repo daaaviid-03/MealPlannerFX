@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="org.example.mealplannerfx.ScreenColoredNewRecipeController"
+            prefHeight="50.0" prefWidth="455.0">
+    <HBox fx:id="IngredientDiv_0" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
+        <children>
+            <ComboBox fx:id="ComboBoxIngredient_0" prefHeight="50.0" prefWidth="237.0" promptText="Ingredient">
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+            </ComboBox>
+            <TextField fx:id="QuantityBoxTextIngredient_0" prefHeight="46.0" prefWidth="78.0" promptText="Quant (g)">
+                <font>
+                    <Font size="19.0" />
+                </font>
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+            </TextField>
+            <Label text="g">
+                <font>
+                    <Font size="30.0" />
+                </font>
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+            </Label>
+            <Button fx:id="deleteIngredientButton_0" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+                <font>
+                    <Font size="22.0" />
+                </font>
+            </Button>
+            <Button fx:id="addIngredientButton_0" mnemonicParsing="false" onAction="#addIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+                <font>
+                    <Font size="22.0" />
+                </font>
+            </Button>
+        </children>
+        <padding>
+            <Insets bottom="5.0" />
+        </padding>
+    </HBox>
+
+</AnchorPane>
