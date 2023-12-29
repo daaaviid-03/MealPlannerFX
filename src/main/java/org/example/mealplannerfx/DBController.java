@@ -1,7 +1,5 @@
 package org.example.mealplannerfx;
 
-import javafx.collections.ObservableList;
-
 import java.util.List;
 
 public abstract class DBController {
@@ -28,5 +26,6 @@ public abstract class DBController {
         return dBControllerInstance;
     }
 
-    public abstract List<String> getListOfIngredientsNames();
+    public abstract List<String> getListOfIngredientsNamesSorted();
+    public abstract Ingredient getIngredientByName(String name);
 }

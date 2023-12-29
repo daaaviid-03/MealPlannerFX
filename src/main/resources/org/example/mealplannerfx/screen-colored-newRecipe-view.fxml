@@ -44,7 +44,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="475.0" promptText="Name">
+            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="475.0" promptText="Nameless recipe">
                <font>
                   <Font size="20.0" />
                </font>
@@ -92,71 +92,47 @@
             </Label>
             <ScrollPane fx:id="stepsScrollPlane" maxHeight="-Infinity" prefHeight="178.0" prefWidth="479.0">
                <content>
-                  <AnchorPane fx:id="stepsInnerSizePlane" minHeight="0.0" minWidth="0.0" prefHeight="170.0" prefWidth="458.0">
+                  <AnchorPane fx:id="stepsInnerSizePlane" minHeight="0.0" minWidth="0.0">
                      <children>
-                        <HBox fx:id="stepsDiv_0" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
-                           <children>
-                              <VBox prefHeight="43.0" prefWidth="50.0">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <children>
-                                    <Button fx:id="upArrowStep_0" mnemonicParsing="false" onAction="#upArrowStepClicked" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: #80cee1;" text="ʌ">
-                                       <VBox.margin>
-                                          <Insets bottom="4.0" />
-                                       </VBox.margin>
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Button>
-                                    <Button fx:id="downArrowStep_0" mnemonicParsing="false" onAction="#downArrowStepClicked" prefHeight="22.0" prefWidth="50.0" style="-fx-background-color: #80cee1;" text="v">
-                                       <font>
-                                          <Font size="10.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </VBox>
-                              <TextField fx:id="stepText_0" prefHeight="50.0" prefWidth="288.0" promptText="Step...">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Button fx:id="deleteStepButton_0" mnemonicParsing="false" onAction="#deleteStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
-                                 <HBox.margin>
-                                    <Insets right="5.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="addStepButton_0" mnemonicParsing="false" onAction="#addStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                           <padding>
-                              <Insets bottom="5.0" />
-                           </padding>
-                        </HBox>
+                        <VBox fx:id="stepsVBox">
+                        </VBox>
                      </children>
                   </AnchorPane>
                </content>
             </ScrollPane>
          </children>
       </HBox>
-      <Button layoutX="1184.0" layoutY="892.0" mnemonicParsing="false" onAction="#createRecipeClicked" style="-fx-background-color: #a5eea0;" text="Create recipe">
+      <Button layoutX="1207.0" layoutY="925.0" mnemonicParsing="false" onAction="#createRecipeClicked" style="-fx-background-color: #a5eea0;" text="Create recipe">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button layoutX="754.0" layoutY="892.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Discard recipe">
+      <Button layoutX="682.0" layoutY="925.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Discard recipe">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
+      <HBox alignment="CENTER_LEFT" layoutX="663.0" layoutY="830.0" prefHeight="46.0" prefWidth="636.0">
+         <children>
+            <Label text="Duration:    ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <TextField fx:id="durationText" prefHeight="43.0" prefWidth="110.0" promptText="20">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <Label text="(min)">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

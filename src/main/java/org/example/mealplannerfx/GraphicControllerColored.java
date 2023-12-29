@@ -73,7 +73,6 @@ public class GraphicControllerColored extends Application implements GraphicCont
         FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource("screen-colored-login-view.fxml"));
         namespace = fxmlLoader.getNamespace();
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
-        System.out.println("Mostrar screen");
         stage.setTitle("MealPlanner");
         stage.setScene(scene);
         stage.show();

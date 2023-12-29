@@ -1,12 +1,5 @@
 package org.example.mealplannerfx;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableListValue;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.SortedList;
-
 import java.io.*;
 import java.util.*;
 
@@ -14,7 +7,7 @@ public class DBFileController extends DBController{
 
     private Map<String, User> users;
     private List<Recipe> recipes;
-    private List<Ingredient> ingredients;
+    private Map<String, Ingredient> ingredients;
     private List<String> listNamesOfIngredientsSorted;
     private final String usersFileNameDB = "fileData/usersFileData/usersInfo_DB.usersInfo";
     private final String recipesFileNameDB = "fileData/usersFileData/recipesInfo_DB.recipesInfo";
@@ -129,16 +122,22 @@ public class DBFileController extends DBController{
         this.saveIngredientsInDB();
     }
     @Override
-    public List<String> getListOfIngredientsNames(){
+    public List<String> getListOfIngredientsNamesSorted(){
         if (listNamesOfIngredientsSorted == null){
             List<String> listNames = new ArrayList<String>();
-            for(Ingredient ingr: ingredients){
-                listNames.add(ingr.getName());
-            }
+            listNames.addAll(ingredients.keySet());
             Collections.sort(listNames);
             listNamesOfIngredientsSorted = listNames;
         }
         return listNamesOfIngredientsSorted;
+    }
+    @Override
+    public Ingredient getIngredientByName(String name) {
+        if(ingredients.containsKey(name)){
+            return ingredients.get(name);
+        } else {
+            return null;
+        }
     }
 
     private void saveUsersInDB(){
@@ -204,7 +203,7 @@ public class DBFileController extends DBController{
         try {
             // Guardar el objeto en el archivo binario
             ObjectOutputStream stateFileObj = new ObjectOutputStream(new FileOutputStream(thisFile));
-            for (Ingredient ingred : this.ingredients) {
+            for (Ingredient ingred : ingredients.values()) {
                 stateFileObj.writeObject(ingred);
             }
             stateFileObj.close();
@@ -214,13 +213,13 @@ public class DBFileController extends DBController{
         }
     }
     private void loadIngredientsFromDB(){
-        this.ingredients = new ArrayList<Ingredient>();
+        ingredients = new HashMap<String, Ingredient>();
         try {
             // Guardar el objeto en el archivo binario
             ObjectInputStream stateFileObj = new ObjectInputStream(new FileInputStream(ingredientsFileNameDB));
             Ingredient ingred;
             while((ingred = (Ingredient)stateFileObj.readObject()) != null){
-                this.ingredients.add(ingred);
+                this.ingredients.put(ingred.getName(), ingred);
             }
             stateFileObj.close();
         } catch (Exception e) {

@@ -62,7 +62,12 @@ public class DBJDBCController extends DBController{
     }
 
     @Override
-    public ObservableList getListOfIngredientsNames() {
+    public ObservableList getListOfIngredientsNamesSorted() {
+        return null;
+    }
+
+    @Override
+    public Ingredient getIngredientByName(String name) {
         return null;
     }
 

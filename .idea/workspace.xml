@@ -4,13 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Project Load">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredZZNewIngredientMaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Project Load2">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredElementInListMaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredZZNewStepMaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/screen-colored-zz-newStep-mask.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/usersFileData/ingredientsInfo_DB.ingredientsInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/usersFileData/ingredientsInfo_DB.ingredientsInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/usersFileData/recipesInfo_DB.recipesInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/usersFileData/recipesInfo_DB.recipesInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBFileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBFileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBJDBCController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/DBJDBCController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/GraphicControllerColored.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredNewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredNewRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredZZNewIngredientMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/ScreenColoredZZNewIngredientMaskController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/screen-colored-newRecipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/screen-colored-newRecipe-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/screen-colored-zz-newIngredient-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/screen-colored-zz-newIngredient-mask.fxml" afterDir="false" />
     </list>
@@ -99,11 +105,20 @@
       <option name="project" value="LOCAL" />
       <updated>1703779310709</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Project Load2">
+      <option name="closed" value="true" />
+      <created>1703866976631</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703866976631</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Project Load" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project Load" />
+    <MESSAGE value="Project Load2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Project Load2" />
   </component>
 </project>
