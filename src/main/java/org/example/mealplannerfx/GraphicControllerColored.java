@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,6 +49,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
     public void endView(){
 
     }
+
+
     public void startScreenColored(String screenName){
         FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
         namespace = fxmlLoader.getNamespace();
@@ -54,9 +58,15 @@ public class GraphicControllerColored extends Application implements GraphicCont
             Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
             this.thisStage.setScene(scene);
         } catch (Exception e){
-            System.err.println("Error loading " + screenName + " screen due to: " + e.getMessage());
+            System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e);
         }
     }
+    public void updateNamespace(FXMLLoader fxmlLoader){
+        System.out.println(namespace);
+        namespace.putAll(fxmlLoader.getNamespace());
+        System.out.println(namespace);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         this.thisStage = stage;

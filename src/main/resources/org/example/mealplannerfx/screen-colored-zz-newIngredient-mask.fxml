@@ -10,16 +10,16 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.mealplannerfx.ScreenColoredNewRecipeController"
+            fx:controller="org.example.mealplannerfx.ScreenColoredZZNewIngredientMaskController"
             prefHeight="50.0" prefWidth="455.0">
-    <HBox fx:id="IngredientDiv_0" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
+    <HBox fx:id="IngredientDiv" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
         <children>
-            <ComboBox fx:id="ComboBoxIngredient_0" prefHeight="50.0" prefWidth="237.0" promptText="Ingredient">
+            <ComboBox fx:id="ComboBoxIngredient" prefHeight="50.0" prefWidth="237.0" promptText="Ingredient">
                 <HBox.margin>
                     <Insets right="5.0" />
                 </HBox.margin>
             </ComboBox>
-            <TextField fx:id="QuantityBoxTextIngredient_0" prefHeight="46.0" prefWidth="78.0" promptText="Quant (g)">
+            <TextField fx:id="QuantityBoxTextIngredient" prefHeight="46.0" prefWidth="78.0" promptText="Quant (g)">
                 <font>
                     <Font size="19.0" />
                 </font>
@@ -35,7 +35,7 @@
                     <Insets right="5.0" />
                 </HBox.margin>
             </Label>
-            <Button fx:id="deleteIngredientButton_0" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+            <Button fx:id="deleteIngredientButton" mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
                 <HBox.margin>
                     <Insets right="5.0" />
                 </HBox.margin>
@@ -43,7 +43,7 @@
                     <Font size="22.0" />
                 </font>
             </Button>
-            <Button fx:id="addIngredientButton_0" mnemonicParsing="false" onAction="#addIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+            <Button fx:id="addIngredientButton" mnemonicParsing="false" onAction="#addIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
                 <font>
                     <Font size="22.0" />
                 </font>

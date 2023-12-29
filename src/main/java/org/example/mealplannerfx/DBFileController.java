@@ -23,6 +23,7 @@ public class DBFileController extends DBController{
         super.setDBControllerInstance(this);
         this.loadDataFromDB();
     }
+
     @Override
     public int checkUserInDB(String nick, String pass){
         if(this.users.containsKey(nick)){
