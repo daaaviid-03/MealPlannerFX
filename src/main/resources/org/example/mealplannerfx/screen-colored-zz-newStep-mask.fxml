@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="50.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.ScreenColoredZZNewStepMaskController">
-    <HBox fx:id="stepsDiv" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="455.0">
+<AnchorPane prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.ScreenColoredZZNewStepMaskController">
+    <HBox fx:id="stepsDiv" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
         <children>
          <Label fx:id="idNumberText" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="20.0" text="0.">
             <HBox.margin>
@@ -37,7 +37,7 @@
                     </Button>
                 </children>
             </VBox>
-            <TextField fx:id="stepText" prefHeight="50.0" prefWidth="288.0" promptText="Step...">
+            <TextField fx:id="stepText" prefHeight="47.0" prefWidth="434.0" promptText="Step...">
                 <font>
                     <Font size="19.0" />
                 </font>

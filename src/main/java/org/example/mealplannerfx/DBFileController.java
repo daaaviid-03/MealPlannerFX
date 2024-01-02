@@ -12,9 +12,32 @@ public class DBFileController extends DBController{
     private final String usersFileNameDB = "fileData/usersFileData/usersInfo_DB.usersInfo";
     private final String recipesFileNameDB = "fileData/usersFileData/recipesInfo_DB.recipesInfo";
     private final String ingredientsFileNameDB = "fileData/usersFileData/ingredientsInfo_DB.ingredientsInfo";
+    private final String ingredientsFileNameDBOriginalDB = "fileData/usersFileData/ingredientsOriginalDB.txt";
     public DBFileController(){
         super.setDBControllerInstance(this);
         this.loadDataFromDB();
+        //loadIngredientsFromOriginalDB();
+    }
+
+    private void loadIngredientsFromOriginalDB(){
+        ingredients = new HashMap<String, Ingredient>();
+        try {
+            // Guardar el objeto en el archivo binario
+            BufferedReader in = new BufferedReader(new FileReader(ingredientsFileNameDBOriginalDB));
+            String line;
+            Map<String, Float> portions = new HashMap<>();
+            while((line = in.readLine()) != null){
+                String[] s = line.split("\t");
+                for (int i = 6; i < s.length; i += 2) {
+                    portions.put(s[i], Float.valueOf(s[i + 1]));
+                }
+                this.ingredients.put(s[0], new Ingredient(s[0], Float.parseFloat(s[1]), Float.parseFloat(s[2]), Float.parseFloat(s[3]), Float.parseFloat(s[4]), s[5], portions));
+            }
+            in.close();
+        } catch (Exception e) {
+            // Si no encuentra el archivo
+        }
+        saveIngredientsInDB();
     }
 
     @Override
@@ -78,16 +101,16 @@ public class DBFileController extends DBController{
         }
     }
     @Override
-    public List<DayData> getUserCalendarInfo(String nick, int fromDate, int toDate){
+    public List<DayData> getUserCalendarInfo(String nick, long fromDate, long toDate){
         return null;
         //-----------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------
         //-----------------------------------------------------------------------------------------------
     }
     @Override
-    public QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity){
+    public QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity, List<String> ingredientsPortionsNames){
         try {
-            Recipe recipe = new Recipe(name, description, owner, steps, duration, ingredients, ingredientsQuantity);
+            Recipe recipe = new Recipe(name, description, owner, steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
             this.recipes.add(recipe);
             this.saveRecipesInDB();
         } catch (Exception e){
@@ -138,6 +161,24 @@ public class DBFileController extends DBController{
         } else {
             return null;
         }
+    }
+
+    @Override
+    public List<String> getIngredientPortionsNames(String name) {
+        return new ArrayList<>(getIngredientByName(name).getFoodPortionsNamesList());
+    }
+
+    @Override
+    public List<String> getListOfIngredientsNamesSortedBy(String toSortBy, int quantity) {
+        toSortBy = toSortBy.toLowerCase();
+        List<String> ingredientsSortedBy = new ArrayList<>();
+        getListOfIngredientsNamesSorted();
+        for (String ingred : listNamesOfIngredientsSorted){
+            if (ingred.toLowerCase().contains(toSortBy)){
+                ingredientsSortedBy.add(ingred);
+            }
+        }
+        return ingredientsSortedBy.subList(0, quantity);
     }
 
     private void saveUsersInDB(){

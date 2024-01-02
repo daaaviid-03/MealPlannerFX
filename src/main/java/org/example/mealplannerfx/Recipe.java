@@ -11,8 +11,9 @@ public class Recipe implements Serializable {
     private int duration;
     private List<Ingredient> ingredients;
     private List<Integer> ingredientsQuantity;
+    private List<String> ingredientsPortionsNames;
 
-    public Recipe(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity) {
+    public Recipe(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity, List<String> ingredientsPortionsNames) {
         this.name = name;
         this.description = description;
         this.owner = owner;
@@ -20,6 +21,7 @@ public class Recipe implements Serializable {
         this.duration = duration;
         this.ingredients = ingredients;
         this.ingredientsQuantity = ingredientsQuantity;
+        this.ingredientsPortionsNames = ingredientsPortionsNames;
     }
     public String getName() {
         return name;
@@ -75,5 +77,13 @@ public class Recipe implements Serializable {
 
     public void setIngredientsQuantity(List<Integer> ingredientsQuantity) {
         this.ingredientsQuantity = ingredientsQuantity;
+    }
+
+    public List<String> getIngredientsPortionsNames() {
+        return ingredientsPortionsNames;
+    }
+
+    public void setIngredientsPortionsNames(List<String> ingredientsPortionsNames) {
+        this.ingredientsPortionsNames = ingredientsPortionsNames;
     }
 }

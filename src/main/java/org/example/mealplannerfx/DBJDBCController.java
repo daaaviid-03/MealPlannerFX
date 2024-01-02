@@ -4,6 +4,7 @@ import javafx.collections.ObservableList;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class DBJDBCController extends DBController{
 
@@ -37,11 +38,11 @@ public class DBJDBCController extends DBController{
         return QueryReply.ErrorInExecution;
     }
     @Override
-    public List<DayData> getUserCalendarInfo(String nick, int fromDate, int toDate){
+    public List<DayData> getUserCalendarInfo(String nick, long fromDate, long toDate){
         return null;
     }
     @Override
-    public QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity){
+    public QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity, List<String> ingredientsPortionsNames){
         return QueryReply.ErrorInExecution;
     }
     @Override
@@ -68,6 +69,16 @@ public class DBJDBCController extends DBController{
 
     @Override
     public Ingredient getIngredientByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List<String> getIngredientPortionsNames(String name) {
+        return null;
+    }
+
+    @Override
+    public List<String> getListOfIngredientsNamesSortedBy(String string, int quantity) {
         return null;
     }
 

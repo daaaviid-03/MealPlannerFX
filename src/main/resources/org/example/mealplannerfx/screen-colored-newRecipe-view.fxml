@@ -37,44 +37,44 @@
             <Font size="45.0" />
          </font>
       </Button>
-      <HBox layoutX="702.0" layoutY="203.0" prefHeight="46.0" prefWidth="594.0">
+      <HBox layoutX="702.0" layoutY="203.0" prefHeight="46.0">
          <children>
             <Label text="Name:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="475.0" promptText="Nameless recipe">
+            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="600.0" promptText="(Nameless recipe)">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
          </children>
       </HBox>
-      <HBox layoutX="632.0" layoutY="261.0" prefHeight="170.0" prefWidth="668.0">
+      <HBox layoutX="632.0" layoutY="261.0" prefHeight="170.0">
          <children>
             <Label text="Description:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionText" prefHeight="170.0" prefWidth="474.0" promptText="Description...">
+            <TextArea fx:id="descriptionText" prefHeight="170.0" prefWidth="600.0" promptText="Description...">
                <font>
                   <Font size="20.0" />
                </font>
             </TextArea>
          </children>
       </HBox>
-      <HBox layoutX="632.0" layoutY="448.0" prefHeight="183.0" prefWidth="668.0">
+      <HBox layoutX="632.0" layoutY="448.0" prefHeight="183.0">
          <children>
             <Label text="Ingredients:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="ingredientsScrollPlane" maxHeight="-Infinity" prefHeight="178.0" prefWidth="474.0">
+            <ScrollPane maxHeight="-Infinity" prefHeight="178.0" prefWidth="600.0">
               <content>
-                <AnchorPane fx:id="IngredientsInnerSizePlane" minHeight="0.0" minWidth="0.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
                         <VBox fx:id="ingredientsVBox" />
                      </children>
@@ -83,16 +83,16 @@
             </ScrollPane>
          </children>
       </HBox>
-      <HBox layoutX="706.0" layoutY="638.0" prefHeight="183.0" prefWidth="593.0">
+      <HBox layoutX="706.0" layoutY="638.0" prefHeight="183.0">
          <children>
             <Label text="Steps:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <ScrollPane fx:id="stepsScrollPlane" maxHeight="-Infinity" prefHeight="178.0" prefWidth="479.0">
+            <ScrollPane maxHeight="-Infinity" prefHeight="178.0" prefWidth="600.0">
                <content>
-                  <AnchorPane fx:id="stepsInnerSizePlane" minHeight="0.0" minWidth="0.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
                         <VBox fx:id="stepsVBox">
                         </VBox>
@@ -119,7 +119,7 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="durationText" prefHeight="43.0" prefWidth="110.0" promptText="20">
+            <TextField fx:id="durationText" prefHeight="43.0" prefWidth="110.0" promptText="(20)">
                <font>
                   <Font size="20.0" />
                </font>

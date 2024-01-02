@@ -48,15 +48,15 @@ public class ScreenColoredNewRecipeController implements Initializable {
             // Load fxml
             FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(sourceFile));
             // Add element to list in the fxml
-            elementsInVBox.getChildren().add(position, fxmlLoader.load());
+            elementsInVBox.getChildren().add(position + 1, fxmlLoader.load());
             // Set super controller of element to this controller
             ScreenColoredElementInListMaskController sceilmc = fxmlLoader.getController();
             sceilmc.setControllerSup(this);
-            sceilmc.setThisPosition(position);
+            sceilmc.setThisPosition(position + 1);
             // Add to list of elements
-            elementsInList.add(position, sceilmc);
+            elementsInList.add(position + 1, sceilmc);
             // Correct all the indexes of the following ones
-            for (int i = position + 1; i < elementsInList.size(); i++) {
+            for (int i = position + 2; i < elementsInList.size(); i++) {
                 elementsInList.get(i).setThisPositionPlusOne();
             }
         } catch (Exception e) {
@@ -88,6 +88,9 @@ public class ScreenColoredNewRecipeController implements Initializable {
                 ScreenColoredElementInListMaskController elementUp = elementsInList.get(pos - 1);
                 elementsInList.remove(pos - 1);
                 elementsInList.add(pos, elementUp);
+                // Change indexes
+                elementsInList.get(pos - 1).setThisPositionMinusOne();
+                elementsInList.get(pos).setThisPositionPlusOne();
                 // Change item from list in the fxml
                 Node nodeUp = elementsInVBox.getChildren().get(pos - 1);
                 elementsInVBox.getChildren().remove(pos - 1);
@@ -105,6 +108,9 @@ public class ScreenColoredNewRecipeController implements Initializable {
                 ScreenColoredElementInListMaskController elementUp = elementsInList.get(pos);
                 elementsInList.remove(pos);
                 elementsInList.add(pos + 1, elementUp);
+                // Change indexes
+                elementsInList.get(pos).setThisPositionMinusOne();
+                elementsInList.get(pos + 1).setThisPositionPlusOne();
                 // Change item from list in the fxml
                 Node nodeUp = elementsInVBox.getChildren().get(pos);
                 elementsInVBox.getChildren().remove(pos);
@@ -152,10 +158,11 @@ public class ScreenColoredNewRecipeController implements Initializable {
         String desc = correctDesc();
         List<Ingredient> ingredients = new ArrayList<Ingredient>();
         List<Integer> ingredientsQuantity = new ArrayList<Integer>();
-        correctIngredients(ingredients, ingredientsQuantity);
+        List<String> ingredientsPortionsNames = new ArrayList<String>();
+        correctIngredients(ingredients, ingredientsQuantity, ingredientsPortionsNames);
         List<String> steps = correctSteps();
         int duration = correctDuration();
-        dBController.createNewRecipeDB(name, desc, graphicCC.getThisUser(), steps, duration, ingredients, ingredientsQuantity);
+        dBController.createNewRecipeDB(name, desc, graphicCC.getThisUser(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
         graphicCC.startScreenColored("mainMenu");
     }
 
@@ -169,7 +176,7 @@ public class ScreenColoredNewRecipeController implements Initializable {
     private String correctDesc(){
         return descriptionText.getText();
     }
-    private void correctIngredients(List<Ingredient> ingredients, List<Integer> ingredientsQuantities) {
+    private void correctIngredients(List<Ingredient> ingredients, List<Integer> ingredientsQuantities, List<String> ingredientsPortionsNames) {
         for (ScreenColoredElementInListMaskController elemController : ingredientsList) {
             ScreenColoredZZNewIngredientMaskController mCont = (ScreenColoredZZNewIngredientMaskController) elemController;
             String ingredName = mCont.getIngredientName();
@@ -179,6 +186,11 @@ public class ScreenColoredNewRecipeController implements Initializable {
                     ingredientsQuantities.add(mCont.getQuantityText());
                 } catch (Exception e){
                     ingredientsQuantities.add(15);
+                }
+                try {
+                    ingredientsPortionsNames.add(mCont.getPortionName());
+                } catch (Exception e){
+                    ingredientsPortionsNames.add("g");
                 }
             }
         }

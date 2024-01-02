@@ -1,20 +1,18 @@
 package org.example.mealplannerfx;
 
 import java.util.List;
+import java.util.Set;
 
 public abstract class DBController {
     private static DBController dBControllerInstance;
-
     public abstract int checkUserInDB(String nick, String pass);
-
     public abstract boolean checkUserInDB(String nick);
-
     public abstract QueryReply createsUserInDB(String nick, String pass, float height, float weight, String email, long birth, Boolean isAdmin);
     public abstract User getUserInfo(String nick);
     public abstract List<User> getListOfAllUsers();
     public abstract QueryReply deleteUserFromDB(String nick);
-    public abstract List<DayData> getUserCalendarInfo(String nick, int fromDate, int toDate);
-    public abstract QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity);
+    public abstract List<DayData> getUserCalendarInfo(String nick, long fromDate, long toDate);
+    public abstract QueryReply createNewRecipeDB(String name, String description, User owner, List<String> steps, int duration, List<Ingredient> ingredients, List<Integer> ingredientsQuantity, List<String> ingredientsPortionsNames);
     public abstract List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, int duration, Boolean exactNotGrater, Boolean exactNotLower, List<Ingredient> ingredients, Boolean exactThoseIngredients);
     public abstract QueryReply deleteRecipeFromDB(Recipe recipe);
     public abstract void loadDataFromDB();
@@ -25,7 +23,8 @@ public abstract class DBController {
     public static DBController getDBControllerInstance(){
         return dBControllerInstance;
     }
-
     public abstract List<String> getListOfIngredientsNamesSorted();
     public abstract Ingredient getIngredientByName(String name);
+    public abstract List<String> getIngredientPortionsNames(String name);
+    public abstract List<String> getListOfIngredientsNamesSortedBy(String toSortBy, int quantity);
 }
