@@ -72,6 +72,9 @@ public class Ingredient implements Serializable {
     }
 
     public float getFoodPortionInGrams(String portionName) {
+        if (portionName.equals("g")){
+            return 1;
+        }
         return foodPortions.get(portionName);
     }
 

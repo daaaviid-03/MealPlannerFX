@@ -26,25 +26,14 @@ public class ScreenColoredLoginController {
     private void onLoginButtonClicked(){
         String nick = nicknameText.getText();
         String pass = passwordText.getText();
-        int querySol = dBController.checkUserInDB(nick, pass);
-        User thisUser;
-        switch (querySol){
-            case 0:
-                wrongNicknameText.setVisible(true);
-                break;
-            case 1:
-                wrongNicknameText.setVisible(false);
-                wrongPasswordText.setVisible(true);
-                break;
-            case 2:
-                thisUser = dBController.getUserInfo(nick);
-                graphicCC.setThisUser(thisUser);
-                graphicCC.startScreenColored("mainMenu");
-                break;
-            case 3:
-                thisUser = dBController.getUserInfo(nick);
-                graphicCC.setThisUser(thisUser);
-                graphicCC.startScreenColored("mainMenuAdmin");
+        try {
+            dBController.checkUserInDB(nick, pass);
+            graphicCC.setThisUser(dBController.getUserInfo(nick));
+            graphicCC.startScreenColored("mainMenu");
+        } catch (WrongArgumentException wrongArgument) {
+            System.out.println(wrongArgument.getWrongArgumentDescription());
+        } catch (Exception e){
+            System.err.println(e.getMessage());
         }
     }
     @FXML

@@ -43,8 +43,8 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         super.getControllerSup().addIngredient(super.getThisPosition() + 1);
     }
 
-    public int getQuantityText(){
-        return Integer.parseInt(QuantityBoxTextIngredient.getText());
+    public float getQuantityText(){
+        return Float.parseFloat(QuantityBoxTextIngredient.getText());
     }
 
     public String getIngredientName(){

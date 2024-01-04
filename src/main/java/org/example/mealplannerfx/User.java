@@ -11,15 +11,13 @@ public class User implements Serializable {
     private long birth;
     private float height, weight;
     private Map<Long, DayData> daysData = new HashMap<Long, DayData>();
-    private boolean isAdmin;
 
-    public User(String nickname, float height, float weight, long birth, String email, boolean isAdmin, String password) {
+    public User(String nickname, float height, float weight, long birth, String email, String password) {
         this.nickname = nickname;
         this.birth = birth;
         this.height = height;
         this.weight = weight;
         this.email = email;
-        this.isAdmin = isAdmin;
         this.password = password;
     }
 
@@ -55,19 +53,45 @@ public class User implements Serializable {
         this.daysData.put(dayData.getDayNumber(), dayData);
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
-    }
-
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     public String getPassword() {
         return password;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public Map<Long, DayData> getDaysData() {
+        return daysData;
+    }
+
+    public void setDaysData(Map<Long, DayData> daysData) {
+        this.daysData = daysData;
+    }
+
+    public List<DayData> getDaysData(long fromDate, long toDate) {
+        List<DayData> thisDaysData = new ArrayList<>();
+        for(DayData dayData : daysData.values()){
+            if (dayData.getDayNumber() >= fromDate && dayData.getDayNumber() < toDate){
+                thisDaysData.add(dayData);
+            }
+        }
+        return thisDaysData;
     }
 }

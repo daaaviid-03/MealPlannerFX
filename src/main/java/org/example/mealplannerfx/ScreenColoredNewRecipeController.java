@@ -154,63 +154,21 @@ public class ScreenColoredNewRecipeController implements Initializable {
     }
 
     public void createRecipeClicked(ActionEvent actionEvent) {
-        String name = correctName();
-        String desc = correctDesc();
-        List<Ingredient> ingredients = new ArrayList<Ingredient>();
-        List<Integer> ingredientsQuantity = new ArrayList<Integer>();
-        List<String> ingredientsPortionsNames = new ArrayList<String>();
-        correctIngredients(ingredients, ingredientsQuantity, ingredientsPortionsNames);
-        List<String> steps = correctSteps();
-        int duration = correctDuration();
-        dBController.createNewRecipeDB(name, desc, graphicCC.getThisUser(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-        graphicCC.startScreenColored("mainMenu");
-    }
-
-    private String correctName(){
-        if(nameText.getText().isEmpty()){
-            return "Nameless recipe";
-        } else {
-            return nameText.getText();
-        }
-    }
-    private String correctDesc(){
-        return descriptionText.getText();
-    }
-    private void correctIngredients(List<Ingredient> ingredients, List<Integer> ingredientsQuantities, List<String> ingredientsPortionsNames) {
-        for (ScreenColoredElementInListMaskController elemController : ingredientsList) {
-            ScreenColoredZZNewIngredientMaskController mCont = (ScreenColoredZZNewIngredientMaskController) elemController;
-            String ingredName = mCont.getIngredientName();
-            if(!ingredName.isEmpty()){
-                ingredients.add(dBController.getIngredientByName(ingredName));
-                try {
-                    ingredientsQuantities.add(mCont.getQuantityText());
-                } catch (Exception e){
-                    ingredientsQuantities.add(15);
-                }
-                try {
-                    ingredientsPortionsNames.add(mCont.getPortionName());
-                } catch (Exception e){
-                    ingredientsPortionsNames.add("g");
-                }
-            }
-        }
-    }
-    private List<String> correctSteps() {
-        List<String> steps = new ArrayList<String>();
-        for (ScreenColoredElementInListMaskController elemController : stepsList) {
-            ScreenColoredZZNewStepMaskController mCont = (ScreenColoredZZNewStepMaskController) elemController;
-            String stepInfo = mCont.getStepString();
-            if(!stepInfo.isEmpty()){
-                steps.add(stepInfo);
-            }
-        }
-        return steps;
-    }
-    private int correctDuration() {
-        try{
-            return Integer.getInteger(durationText.getText());
-        }catch (Exception e){
-            return 20;
+        try {
+            String name = dBController.correctRecipeNameString(nameText.getText());
+            String desc = dBController.correctRecipeDescriptionString(descriptionText.getText());
+            List<Ingredient> ingredients = new ArrayList<Ingredient>();
+            List<Float> ingredientsQuantity = new ArrayList<Float>();
+            List<String> ingredientsPortionsNames = new ArrayList<String>();
+            dBController.correctIngredients(ingredientsList, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            List<String> steps = dBController.correctSteps(stepsList);
+            int duration = dBController.correctDuration(durationText.getText());
+            dBController.createNewRecipeDB(name, desc, graphicCC.getThisUser(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            graphicCC.startScreenColored("mainMenu");
+        } catch (WrongArgumentException wrongArgument) {
+            System.out.println(wrongArgument.getWrongArgumentDescription());
+        } catch (Exception e){
+            System.err.println(e.getMessage());
         }
     }
 }
