@@ -11,17 +11,11 @@ public class ScreenColoredLoginController {
     private DBController dBController = DBController.getDBControllerInstance();
     private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
-    private Label wrongNicknameText;
-    @FXML
-    private Button LoginButton;
-    @FXML
-    private Label wrongPasswordText;
+    private Label errorText;
     @FXML
     private TextField nicknameText;
     @FXML
     private PasswordField passwordText;
-    @FXML
-    private Label loginText;
     @FXML
     private void onLoginButtonClicked(){
         String nick = nicknameText.getText();
@@ -31,9 +25,9 @@ public class ScreenColoredLoginController {
             graphicCC.setThisUser(dBController.getUserInfo(nick));
             graphicCC.startScreenColored("mainMenu");
         } catch (WrongArgumentException wrongArgument) {
-            System.out.println(wrongArgument.getWrongArgumentDescription());
+            errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            errorText.setText(e.getMessage());
         }
     }
     @FXML

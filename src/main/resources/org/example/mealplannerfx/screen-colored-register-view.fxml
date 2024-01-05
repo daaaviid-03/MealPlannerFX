@@ -42,11 +42,6 @@
                   </TextField>
                </children>
             </FlowPane>
-            <Label fx:id="wrongNicknameText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" prefWidth="574.0" text="This nickname already exists, choose other." textAlignment="CENTER" textFill="#ff0000c6" visible="false">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="36.0" prefWidth="1880.0">
                <children>
                   <Label text="Email:                   ">
@@ -61,11 +56,6 @@
                   </TextField>
                </children>
             </FlowPane>
-            <Label fx:id="wrongEmailText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" prefWidth="574.0" text="This email it's incorrect." textAlignment="CENTER" textFill="#ff0000c6" visible="false">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="33.0" prefWidth="1880.0">
                <children>
                   <Label text="Birth:                     ">
@@ -76,11 +66,6 @@
                   <DatePicker fx:id="birthDate" prefHeight="75.0" prefWidth="413.0" promptText="dd/mm/yyyy" />
                </children>
             </FlowPane>
-            <Label fx:id="wrongBirthDateText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" prefWidth="574.0" text="This date it's incorrect." textAlignment="CENTER" textFill="#ff0000c6" visible="false">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="39.0" prefWidth="1880.0">
                <children>
                   <Label text="Height:     ">
@@ -147,7 +132,7 @@
                   </PasswordField>
                </children>
             </FlowPane>
-            <Label fx:id="wrongRepitedPasswordText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" prefWidth="574.0" text="The password doesn't match." textAlignment="CENTER" textFill="#ff0000c6" visible="false">
+            <Label fx:id="errorText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" textAlignment="CENTER" textFill="#ff0000c6">
                <font>
                   <Font size="15.0" />
                </font>

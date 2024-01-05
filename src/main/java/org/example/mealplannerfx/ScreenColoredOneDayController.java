@@ -5,31 +5,108 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
+import javafx.scene.text.Font;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ScreenColoredOneDayController implements Initializable {
+public class ScreenColoredOneDayController extends ScreenColoredDefaultModel implements Initializable {
 
-    private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-    private DBController dBController = DBController.getDBControllerInstance();
     @FXML
-    private Button avatarButton;
+    private AnchorPane recipeViewerPlane;
     @FXML
-    private Label nicknameText;
+    private Button lunch_button;
+    @FXML
+    private Button breakfast_button;
+    @FXML
+    private Button dinner_button;
+    @FXML
+    private Label dayText;
+    private long dayNumber;
+    private DayData thisDayData;
 
+    private final static String NO_RECIPE_STYLE = "-fx-background-color: #dbdcdb; -fx-background-radius: 40px;" +
+            " -fx-border-radius: 40px; -fx-border-color: #a9a9a9; -fx-border-width: 6px; -fx-border-style: dashed;" +
+            " -fx-text-fill: #a9a9a9; -fx-font-size: 65;";
+    private final static String YES_RECIPE_STYLE = "-fx-background-color: #98c0f6; -fx-background-radius: 40px;" +
+            " -fx-border-radius: 40px; -fx-border-color: #74a7e4; -fx-border-width: 6px; -fx-border-style: solid;" +
+            " -fx-text-fill: #336ca5; -fx-font-size: 30;";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String nickname = graphicCC.getThisUser().getNickname();
-        nicknameText.setText(nickname);
-        avatarButton.setText(String.valueOf(nickname.toUpperCase().charAt(0)));
+        initializeDefaultModel(false);
+        dayNumber = getGraphicCC().getDayToExplore();
+        setDayDataFromCalendar();
+    }
+    private void setDayDataFromCalendar() {
+        // Set date
+        getGraphicCC().setDayToExplore(dayNumber);
+        LocalDate date = LocalDate.ofEpochDay(dayNumber);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
+        dayText.setText(date.format(formatter));
+        // Set day data info
+        thisDayData = getDBController().getDayDataFromUser(getGraphicCC().getThisUser().getNickname(), dayNumber);
+        setButtonToInfo(breakfast_button, thisDayData.getBreakfast());
+        setButtonToInfo(lunch_button, thisDayData.getLunch());
+        setButtonToInfo(dinner_button, thisDayData.getDinner());
+    }
+    private void setButtonToInfo(Button button, Recipe recipe){
+        if (recipe != null){
+            button.setStyle(YES_RECIPE_STYLE);
+            button.setText(recipe.getName());
+        } else {
+            button.setStyle(NO_RECIPE_STYLE);
+            button.setText("+  Recipe");
+        }
+    }
+    public void previousDayButtonClicked(ActionEvent actionEvent) {
+        dayNumber--;
+        setDayDataFromCalendar();
     }
 
-    public void userInfoButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenColored("userInfo");
+    public void nextDayButtonClicked(ActionEvent actionEvent) {
+        dayNumber++;
+        setDayDataFromCalendar();
     }
 
-    public void returnButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenColored("mainMenu");
+    public void recipeEditButton(ActionEvent actionEvent) {
+        Recipe thisRecipe = getRecipeByActionEvent(actionEvent);
+        if (thisRecipe == null){
+            getGraphicCC().startScreenColored("searchNewFood", "oneDay");
+        }
+
+    }
+
+    public void deleteRecipe(ActionEvent actionEvent) {
+    }
+
+    public long getDayNumber() {
+        return dayNumber;
+    }
+
+    public void setDayNumber(long dayNumber) {
+        this.dayNumber = dayNumber;
+    }
+    private Recipe getRecipeByActionEvent(ActionEvent actionEvent){
+        return switch (((Button)actionEvent.getSource()).getId().split("_")[0]){
+            case "breakfast" -> thisDayData.getBreakfast();
+            case "lunch" -> thisDayData.getLunch();
+            case "dinner" -> thisDayData.getDinner();
+            default -> null;
+        };
+    }
+
+    public void recipeViewButton(ActionEvent actionEvent) {
+        Recipe thisRecipe = getRecipeByActionEvent(actionEvent);
+        if (thisRecipe == null){
+            recipeEditButton(actionEvent);
+            return;
+        }
+        visualizeRecipeInPlane(recipeViewerPlane);
     }
 }

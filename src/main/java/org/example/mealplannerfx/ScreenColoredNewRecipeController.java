@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredNewRecipeController implements Initializable {
+public class ScreenColoredNewRecipeController extends ScreenColoredDefaultModel implements Initializable {
 
     @FXML
     private TextField durationText;
@@ -26,19 +26,12 @@ public class ScreenColoredNewRecipeController implements Initializable {
     @FXML
     private VBox stepsVBox;
     @FXML
-    private Button avatarButton;
-    @FXML
-    private Label nicknameText;
-    private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-    private DBController dBController = DBController.getDBControllerInstance();
+    private Label errorText;
     private List<ScreenColoredElementInListMaskController> ingredientsList = new ArrayList<ScreenColoredElementInListMaskController>();
     private List<ScreenColoredElementInListMaskController> stepsList = new ArrayList<ScreenColoredElementInListMaskController>();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String nickname = graphicCC.getThisUser().getNickname();
-        nicknameText.setText(nickname);
-        avatarButton.setText(String.valueOf(nickname.toUpperCase().charAt(0)));
+        initializeDefaultModel(true);
         addIngredient(0);
         addStep(0);
     }
@@ -48,19 +41,19 @@ public class ScreenColoredNewRecipeController implements Initializable {
             // Load fxml
             FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(sourceFile));
             // Add element to list in the fxml
-            elementsInVBox.getChildren().add(position + 1, fxmlLoader.load());
+            elementsInVBox.getChildren().add(position, fxmlLoader.load());
             // Set super controller of element to this controller
             ScreenColoredElementInListMaskController sceilmc = fxmlLoader.getController();
             sceilmc.setControllerSup(this);
-            sceilmc.setThisPosition(position + 1);
+            sceilmc.setThisPosition(position);
             // Add to list of elements
-            elementsInList.add(position + 1, sceilmc);
+            elementsInList.add(position, sceilmc);
             // Correct all the indexes of the following ones
-            for (int i = position + 2; i < elementsInList.size(); i++) {
+            for (int i = position + 1; i < elementsInList.size(); i++) {
                 elementsInList.get(i).setThisPositionPlusOne();
             }
         } catch (Exception e) {
-            throw new RuntimeException(e.getCause());
+            throw new RuntimeException(e);
         }
     }
 
@@ -121,20 +114,14 @@ public class ScreenColoredNewRecipeController implements Initializable {
         }
     }
 
-    public void userInfoButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenColored("userInfo");
-    }
 
-    public void returnButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenColored("mainMenu");
-    }
 
     public void deleteIngredient(int pos) {
         deleteElementInListMask(pos, ingredientsList, ingredientsVBox);
     }
 
     public void addIngredient(int pos) {
-        this.createNewElementInListMask(0, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml");
+        this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml");
     }
 
     public void deleteStep(int pos) {
@@ -142,7 +129,7 @@ public class ScreenColoredNewRecipeController implements Initializable {
     }
 
     public void addStep(int pos) {
-        this.createNewElementInListMask(0, stepsList, stepsVBox, "screen-colored-zz-newStep-mask.fxml");
+        this.createNewElementInListMask(pos, stepsList, stepsVBox, "screen-colored-zz-newStep-mask.fxml");
     }
 
     public void upArrowStepClicked(int pos) {
@@ -155,20 +142,20 @@ public class ScreenColoredNewRecipeController implements Initializable {
 
     public void createRecipeClicked(ActionEvent actionEvent) {
         try {
-            String name = dBController.correctRecipeNameString(nameText.getText());
-            String desc = dBController.correctRecipeDescriptionString(descriptionText.getText());
+            String name = getDBController().correctRecipeNameString(nameText.getText());
+            String desc = getDBController().correctRecipeDescriptionString(descriptionText.getText());
             List<Ingredient> ingredients = new ArrayList<Ingredient>();
             List<Float> ingredientsQuantity = new ArrayList<Float>();
             List<String> ingredientsPortionsNames = new ArrayList<String>();
-            dBController.correctIngredients(ingredientsList, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-            List<String> steps = dBController.correctSteps(stepsList);
-            int duration = dBController.correctDuration(durationText.getText());
-            dBController.createNewRecipeDB(name, desc, graphicCC.getThisUser(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-            graphicCC.startScreenColored("mainMenu");
+            getDBController().correctIngredients(ingredientsList, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            List<String> steps = getDBController().correctSteps(stepsList);
+            int duration = getDBController().correctDuration(durationText.getText());
+            getDBController().createNewRecipeDB(name, desc, getGraphicCC().getThisUser(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            getGraphicCC().startScreenColored("mainMenu");
         } catch (WrongArgumentException wrongArgument) {
-            System.out.println(wrongArgument.getWrongArgumentDescription());
+            errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            errorText.setText(e.getMessage());
         }
     }
 }

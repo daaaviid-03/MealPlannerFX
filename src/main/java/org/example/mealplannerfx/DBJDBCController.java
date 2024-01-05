@@ -20,7 +20,7 @@ public class DBJDBCController extends DBBoundaries {
         connectionMySQL.startConnection();
         loadDataFromDB();
         loadRealtionsFromDB();
-        //super.loadIngredientsFromOriginalDB();
+        //super.loadIngredientsFromOriginalDB(true);
     }
 
     private void loadRealtionsFromDB() {

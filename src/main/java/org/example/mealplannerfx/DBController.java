@@ -2,24 +2,24 @@ package org.example.mealplannerfx;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.sql.SQLException;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 
 public abstract class DBController {
+    private final static String INGREDIENTS_ORIGINAL_DB_TXT = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
     private Map<String, User> users = new HashMap<>();
     private Map<Long, Recipe> recipes = new HashMap<>();
     private Map<String, Ingredient> ingredients = new HashMap<>();
     private List<String> listNamesOfIngredientsSorted;
-    private static DBController dBControllerInstance;
-    private final String ingredientsFileNameDBOriginalDB = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
+    private static DBController dBControllerInstance = null;
     private long nextRecipeId = 0;
     public DBController(){
         setDBControllerInstance(this);
     }
-    public void setDBControllerInstance(DBController dbController){
-        dBControllerInstance = dbController;
+    private void setDBControllerInstance(DBController dbController){
+        if (dBControllerInstance == null) {
+            dBControllerInstance = dbController;
+        }
     }
     public static DBController getDBControllerInstance(){
         return dBControllerInstance;
@@ -42,12 +42,15 @@ public abstract class DBController {
             }
         }
     }
-    public void loadIngredientsFromOriginalDB(){
+    public void loadIngredientsFromOriginalDB(boolean erraseActualDB){
+        if (erraseActualDB){
+            ingredients = new HashMap<>();
+        }
         try {
-            BufferedReader in = new BufferedReader(new FileReader(ingredientsFileNameDBOriginalDB));
+            BufferedReader in = new BufferedReader(new FileReader(INGREDIENTS_ORIGINAL_DB_TXT));
             String line;
-            Map<String, Float> portions = new HashMap<>();
             while((line = in.readLine()) != null){
+                Map<String, Float> portions = new HashMap<>();
                 String[] s = line.split("\t");
                 for (int i = 6; i < s.length; i += 2) {
                     portions.put(s[i], Float.valueOf(s[i + 1]));
@@ -69,7 +72,7 @@ public abstract class DBController {
             throw new WrongArgumentException("Nickname doesn't exists");
         }
     }
-    public boolean checkUserInDB(String nick) throws WrongArgumentException{
+    public boolean checkUserInDB(String nick){
         return this.users.containsKey(nick);
     }
     public void createsUserInDB(String nick, String pass, float height, float weight, String email, long birth) throws Exception{
@@ -138,7 +141,7 @@ public abstract class DBController {
             }
         }
         if (correctRecipes.isEmpty()){
-            throw new WrongArgumentException("No recipe matches with that the description.");
+            throw new WrongArgumentException("No recipe matches with that filters.");
         }
         return correctRecipes;
     }
@@ -153,10 +156,23 @@ public abstract class DBController {
         }
     }
 
+    public DayData getDayDataFromUser(String nick, long dayNumber){
+        try{
+            User thisUser = getUserInfo(nick);
+            DayData thisDayData = thisUser.searchForDayData(dayNumber);
+            if (thisDayData == null) {
+                thisDayData = new DayData(dayNumber, null, null, null);
+                thisUser.addDayData(thisDayData);
+            }
+            return thisDayData;
+        } catch (Exception e){
+            return null;
+        }
+    }
+
     public List<String> getListOfIngredientsNamesSorted(){
         if (listNamesOfIngredientsSorted == null){
-            List<String> listNames = new ArrayList<String>();
-            listNames.addAll(ingredients.keySet());
+            List<String> listNames = new ArrayList<String>(ingredients.keySet());
             Collections.sort(listNames);
             listNamesOfIngredientsSorted = listNames;
         }
@@ -166,26 +182,31 @@ public abstract class DBController {
         if(ingredients.containsKey(name)){
             return ingredients.get(name);
         } else {
-            throw new Exception("No such ingredient");
+            throw new Exception("No such ingredient.");
         }
     }
     public List<String> getIngredientPortionsNames(String name) throws Exception {
-        return new ArrayList<>(getIngredientByName(name).getFoodPortionsNamesList());
+        List<String> portionsList = new ArrayList<>(getIngredientByName(name).getFoodPortionsNamesList());
+        portionsList.add("g");
+        return portionsList;
     }
-    public List<String> getListOfIngredientsNamesSortedBy(String toSortBy, int quantity) {
+    public List<String> getListOfIngredientsNamesSortedBy(String toSortBy) {
+        getListOfIngredientsNamesSorted();
+        if (toSortBy.isEmpty()){
+            return listNamesOfIngredientsSorted;
+        }
         toSortBy = toSortBy.toLowerCase();
         List<String> ingredientsSortedBy = new ArrayList<>();
-        getListOfIngredientsNamesSorted();
         for (String ingred : listNamesOfIngredientsSorted){
             if (ingred.toLowerCase().contains(toSortBy)){
                 ingredientsSortedBy.add(ingred);
             }
         }
-        return ingredientsSortedBy.subList(0, quantity);
+        return ingredientsSortedBy;
     }
 
     public List<User> getUsersValues() {
-        return (List<User>) users.values();
+        return new ArrayList<User>(users.values());
     }
 
     public void addUser(User user){
@@ -193,7 +214,7 @@ public abstract class DBController {
     }
 
     public List<Recipe> getRecipesValues() {
-        return (List<Recipe>) recipes.values();
+        return new ArrayList<Recipe>(recipes.values());
     }
 
     public Recipe getRecipe(long id){
@@ -206,7 +227,7 @@ public abstract class DBController {
     }
 
     public List<Ingredient> getIngredientsValues() {
-        return (List<Ingredient>) ingredients.values();
+        return new ArrayList<Ingredient>(ingredients.values());
     }
 
     public void addIngredient(Ingredient ingredient){

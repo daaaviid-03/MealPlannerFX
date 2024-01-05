@@ -2,6 +2,8 @@ package org.example.mealplannerfx;
 
 
 import javafx.application.Application;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +22,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private User thisUser;
     private long dayToExplore;
     private Map<String, Object> namespace;
+    private FXMLLoader thisFxmlLoader;
 
     public GraphicControllerColored(){
         setGraphicControllerColoredInstance(this);
@@ -50,16 +53,24 @@ public class GraphicControllerColored extends Application implements GraphicCont
 
     }
 
-
     public void startScreenColored(String screenName){
-        FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
-        namespace = fxmlLoader.getNamespace();
+        thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
+        namespace = thisFxmlLoader.getNamespace();
         try {
-            Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+            Scene scene = new Scene(thisFxmlLoader.load(), 1920, 1080);
+
             this.thisStage.setScene(scene);
         } catch (Exception e){
-            System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e);
+            System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
         }
+    }
+    public void startScreenColored(String screenName, String previousScreen){
+        startScreenColored(screenName);
+        try {
+            if (previousScreen != null){
+                ((ScreenColoredDefaultModel) (thisFxmlLoader.getController())).setPreviousScreen(previousScreen);
+            }
+        } catch (Exception ignore){}
     }
     public void updateNamespace(FXMLLoader fxmlLoader){
         System.out.println(namespace);
@@ -75,6 +86,24 @@ public class GraphicControllerColored extends Application implements GraphicCont
         Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
         stage.setTitle("MealPlanner");
         stage.setScene(scene);
+
+        // Make it responsive
+        stage.widthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) {
+                double ratio = newWidth.doubleValue() / oldWidth.doubleValue();
+                stage.setWidth(stage.getWidth() * ratio);
+            }
+        });
+        stage.heightProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight) {
+                double ratio = newHeight.doubleValue() / oldHeight.doubleValue();
+                stage.setHeight(stage.getHeight() * ratio);
+            }
+        });
+
+        // Show stage
         stage.show();
     }
     public static GraphicControllerColored getGCCInstance(){

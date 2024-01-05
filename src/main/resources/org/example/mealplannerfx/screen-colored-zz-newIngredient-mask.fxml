@@ -21,16 +21,16 @@
                <Insets right="5.0" />
            </HBox.margin>
         </Label>
-      <VBox>
+      <VBox prefWidth="218.0">
          <children>
             <TextField fx:id="ingredientText" prefHeight="46.0" prefWidth="222.0" promptText="(Ingredient)" />
-            <ListView fx:id="ingredientListText" prefHeight="0.0" prefWidth="230.0" />
+            <ListView fx:id="ingredientListText" fixedCellSize="25.0" prefHeight="0.0" prefWidth="230.0" />
          </children>
          <HBox.margin>
             <Insets right="5.0" />
          </HBox.margin>
       </VBox>
-        <TextField fx:id="QuantityBoxTextIngredient" prefHeight="46.0" prefWidth="78.0" promptText="15">
+        <TextField fx:id="quantityBoxTextIngredient" prefHeight="46.0" prefWidth="69.0" promptText="15">
             <font>
                 <Font size="19.0" />
             </font>

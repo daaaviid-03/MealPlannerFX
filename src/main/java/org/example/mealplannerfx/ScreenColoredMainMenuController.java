@@ -7,9 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.temporal.TemporalField;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -24,6 +21,8 @@ public class ScreenColoredMainMenuController implements Initializable {
     private Label nicknameText;
     @FXML
     private Button avatarButton;
+    private long epochFirstDayMonth;
+    private int initialDayOfWeek;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String nickname = graphicCC.getThisUser().getNickname();
@@ -32,16 +31,9 @@ public class ScreenColoredMainMenuController implements Initializable {
         toShowCalendar = Calendar.getInstance();
         setCalendarButtons();
     }
-    private void setCalendarButtons() {
-        monthText.setText(toShowCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.forLanguageTag("en")));
-        Integer todayDay = null;
-        if (toShowCalendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)){
-            todayDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
-        }
-        int lenOfMonth = toShowCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        toShowCalendar.set(Calendar.DAY_OF_MONTH, 1);
-        long epochFirstDayMonth = toShowCalendar.getTime().toInstant().getEpochSecond() / 86400;
-        int actualDay = switch (toShowCalendar.get(Calendar.DAY_OF_WEEK)) {
+
+    private int getActualDayOfWeek(int dayOfWeekToConvert){
+        return switch (dayOfWeekToConvert) {
             case 1 -> -5;
             case 2 -> 1;
             case 3 -> 0;
@@ -51,6 +43,19 @@ public class ScreenColoredMainMenuController implements Initializable {
             case 7 -> -4;
             default -> 1;
         };
+    }
+
+    private void setCalendarButtons() {
+        monthText.setText(toShowCalendar.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.forLanguageTag("en")));
+        Integer todayDay = null;
+        if (toShowCalendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)){
+            todayDay = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        }
+        int lenOfMonth = toShowCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        toShowCalendar.set(Calendar.DAY_OF_MONTH, 1);
+        epochFirstDayMonth = toShowCalendar.getTime().toInstant().getEpochSecond() / 86400;
+        int actualDay = getActualDayOfWeek(toShowCalendar.get(Calendar.DAY_OF_WEEK));
+        initialDayOfWeek = actualDay;
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 7; j++) {
                 Button thisButton = (Button)graphicCC.searchForObjInScene("DayButton_" + i + "_" + j);
@@ -76,7 +81,7 @@ public class ScreenColoredMainMenuController implements Initializable {
 
     private void setDayDataOfCalendar(int i, int j, int actualDay, long epochFirstDayMonth){
 
-        DayData dayData = graphicCC.getThisUser().searchForDayData(epochFirstDayMonth);
+        DayData dayData = graphicCC.getThisUser().searchForDayData(epochFirstDayMonth + actualDay - 1);
         Button breakfast = (Button)graphicCC.searchForObjInScene("DayButton_Breakfast_" + i + "_" + j);
         Button launch = (Button)graphicCC.searchForObjInScene("DayButton_Launch_" + i + "_" + j);
         Button dinner = (Button)graphicCC.searchForObjInScene("DayButton_Dinner_" + i + "_" + j);
@@ -110,10 +115,11 @@ public class ScreenColoredMainMenuController implements Initializable {
 
     public void calendarDayButtonClicked(ActionEvent actionEvent) {
         String[] valores = ((Button)actionEvent.getSource()).getId().split("_");
-        int posX = Integer.getInteger(valores[1]);
-        int posY = Integer.getInteger(valores[2]);
-
-
+        int posY = Integer.parseInt(valores[1]);
+        int posX = Integer.parseInt(valores[2]);
+        long dayNumber = epochFirstDayMonth + posX + posY * 7L + initialDayOfWeek - 1;
+        graphicCC.setDayToExplore(dayNumber);
+        graphicCC.startScreenColored("oneDay", "mainMenu");
     }
 
     public void userInfoButtonClicked(ActionEvent actionEvent) {
@@ -129,6 +135,6 @@ public class ScreenColoredMainMenuController implements Initializable {
     }
 
     public void addNewRecipeButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenColored("newRecipe");
+        graphicCC.startScreenColored("newRecipe", "mainMenu");
     }
 }

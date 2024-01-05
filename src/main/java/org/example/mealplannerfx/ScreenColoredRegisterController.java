@@ -10,17 +10,7 @@ public class ScreenColoredRegisterController {
     private DBController dBController = DBController.getDBControllerInstance();
     private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
-    private Label wrongEmailText;
-    @FXML
-    private Label wrongBirthDateText;
-    @FXML
-    private Label wrongHeightText;
-    @FXML
-    private Label wrongWeightText;
-    @FXML
-    private Label wrongRepitedPasswordText;
-    @FXML
-    private Label wrongNicknameText;
+    private Label errorText;
     @FXML
     private PasswordField repeatPasswordText;
     @FXML
@@ -55,9 +45,9 @@ public class ScreenColoredRegisterController {
             graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
         } catch (WrongArgumentException wrongArgument) {
-            System.out.println(wrongArgument.getWrongArgumentDescription());
+            errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            errorText.setText(e.getMessage());
         }
     }
 }

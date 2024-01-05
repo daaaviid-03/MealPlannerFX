@@ -10,7 +10,7 @@ public class DBFileController extends DBBoundaries {
     public DBFileController(){
         super();
         loadDataFromDB();
-        //super.loadIngredientsFromOriginalDB();
+        super.loadIngredientsFromOriginalDB(true);
     }
     @Override
     public void saveUsersInDB(){

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.ScreenColoredSearchNewFoodController">
    <children>
       <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="New Recipe" textFill="#000000a4">
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Recipe Searcher" textFill="#000000a4">
                <font>
                   <Font size="100.0" />
                </font>
@@ -33,5 +37,89 @@
             <Font size="45.0" />
          </font>
       </Button>
+      <Label layoutX="150.0" layoutY="241.0" text="Name:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="220.0" layoutY="234.0" prefHeight="30.0" prefWidth="447.0" promptText="(Name of the recipe)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <CheckBox allowIndeterminate="true" layoutX="683.0" layoutY="240.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="214.0" text="Exact name">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <Label layoutX="126.0" layoutY="299.0" text="Duration:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="220.0" layoutY="292.0" prefHeight="15.0" prefWidth="82.0" promptText="(min)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </TextField>
+      <Label layoutX="317.0" layoutY="298.0" text="(min)">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <CheckBox allowIndeterminate="true" layoutX="392.0" layoutY="288.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="331.0" text="Greater-equal (X &gt;= duration)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
+      <CheckBox allowIndeterminate="true" layoutX="392.0" layoutY="317.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="312.0" text="Lower-equal (X &lt;= duration)">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </CheckBox>
+      <HBox layoutX="101.0" layoutY="352.0" prefHeight="194.0" prefWidth="722.0">
+         <children>
+            <Label prefHeight="30.0" prefWidth="118.0" text="Ingredients:  ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <ScrollPane maxHeight="-Infinity" prefHeight="192.0" prefWidth="600.0">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0">
+                     <children>
+                        <VBox fx:id="ingredientsVBox" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </ScrollPane>
+         </children>
+      </HBox>
+      <CheckBox allowIndeterminate="true" layoutX="220.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All ingredients in common">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox allowIndeterminate="true" layoutX="548.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All restrictions in common">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
+      <ListView fixedCellSize="100.0" layoutX="96.0" layoutY="597.0" prefHeight="430.0" prefWidth="732.0" />
+      <Button layoutX="1269.0" layoutY="930.0" mnemonicParsing="false" onAction="#createRecipeClicked" prefHeight="98.0" prefWidth="578.0" style="-fx-background-color: #a5eea0;" text="Continue whith selection">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Button>
+      <Button layoutX="1025.0" layoutY="930.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Cancel">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Button>
+      <ScrollPane layoutX="1037.0" layoutY="226.0" prefHeight="650.0" prefWidth="800.0">
+        <content>
+          <AnchorPane fx:id="recipeViewerPlane" minHeight="0.0" minWidth="0.0" />
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
