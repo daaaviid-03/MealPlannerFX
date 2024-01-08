@@ -4,9 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,8 +16,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public abstract class ScreenColoredDefaultModel implements Initializable {
-    private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-    private DBController dBController = DBController.getDBControllerInstance();
+    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
+    private final DBController dBController = DBController.getDBControllerInstance();
     @FXML
     private Button avatarButton;
     @FXML
@@ -36,6 +38,9 @@ public abstract class ScreenColoredDefaultModel implements Initializable {
         if(confirmExit && !showConfirmationScreen("")){
             return;
         }
+        returnScreen();
+    }
+    public void returnScreen() {
         graphicCC.startScreenColored(previousScreen);
     }
     private boolean showConfirmationScreen(String stringToConfirm){

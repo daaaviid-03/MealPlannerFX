@@ -37,47 +37,47 @@
             <Font size="45.0" />
          </font>
       </Button>
-      <Label layoutX="150.0" layoutY="241.0" text="Name:">
+      <Label layoutX="148.0" layoutY="211.0" text="Name:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="220.0" layoutY="234.0" prefHeight="30.0" prefWidth="447.0" promptText="(Name of the recipe)">
+      <TextField fx:id="nameToSearch" layoutX="218.0" layoutY="204.0" prefHeight="30.0" prefWidth="447.0" promptText="(Name of the recipe)">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <CheckBox allowIndeterminate="true" layoutX="683.0" layoutY="240.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="214.0" text="Exact name">
+      <CheckBox fx:id="exactNameCheckBox" layoutX="681.0" layoutY="210.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="214.0" text="Exact name">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <Label layoutX="126.0" layoutY="299.0" text="Duration:">
+      <Label layoutX="125.0" layoutY="264.0" text="Duration:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="220.0" layoutY="292.0" prefHeight="15.0" prefWidth="82.0" promptText="(min)">
+      <TextField fx:id="durationToSearch" layoutX="219.0" layoutY="257.0" prefHeight="15.0" prefWidth="82.0" promptText="(min)">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Label layoutX="317.0" layoutY="298.0" text="(min)">
+      <Label layoutX="316.0" layoutY="263.0" text="(min)">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <CheckBox allowIndeterminate="true" layoutX="392.0" layoutY="288.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="331.0" text="Greater-equal (X &gt;= duration)">
+      <CheckBox fx:id="greaterEqualCheckBox" layoutX="391.0" layoutY="253.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="331.0" text="Greater-equal (X &gt;= duration)">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <CheckBox allowIndeterminate="true" layoutX="392.0" layoutY="317.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="312.0" text="Lower-equal (X &lt;= duration)">
+      <CheckBox fx:id="lowerEqualCheckBox" layoutX="391.0" layoutY="282.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="312.0" text="Lower-equal (X &lt;= duration)">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <HBox layoutX="101.0" layoutY="352.0" prefHeight="194.0" prefWidth="722.0">
+      <HBox layoutX="100.0" layoutY="309.0" prefHeight="194.0" prefWidth="722.0">
          <children>
             <Label prefHeight="30.0" prefWidth="118.0" text="Ingredients:  ">
                <font>
@@ -95,18 +95,18 @@
             </ScrollPane>
          </children>
       </HBox>
-      <CheckBox allowIndeterminate="true" layoutX="220.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All ingredients in common">
+      <CheckBox fx:id="allIngredInComoCheckBox" layoutX="96.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All ingredients in common">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox allowIndeterminate="true" layoutX="548.0" layoutY="552.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All restrictions in common">
+      <CheckBox fx:id="allRestrictionInCommonCheckBox" layoutX="386.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All restrictions in common">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <ListView fixedCellSize="100.0" layoutX="96.0" layoutY="597.0" prefHeight="430.0" prefWidth="732.0" />
-      <Button layoutX="1269.0" layoutY="930.0" mnemonicParsing="false" onAction="#createRecipeClicked" prefHeight="98.0" prefWidth="578.0" style="-fx-background-color: #a5eea0;" text="Continue whith selection">
+      <ListView fx:id="listOfFoundedRecipes" fixedCellSize="25.0" layoutX="277.0" layoutY="705.0" prefHeight="215.0" prefWidth="361.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
+      <Button layoutX="1269.0" layoutY="930.0" mnemonicParsing="false" onAction="#continueWithSelection" prefHeight="98.0" prefWidth="578.0" style="-fx-background-color: #a5eea0;" text="Continue whith selection">
          <font>
             <Font size="46.0" />
          </font>
@@ -121,5 +121,20 @@
           <AnchorPane fx:id="recipeViewerPlane" minHeight="0.0" minWidth="0.0" />
         </content>
       </ScrollPane>
+      <Button layoutX="826.0" layoutY="597.0" mnemonicParsing="false" onAction="#searchRecipes" style="-fx-background-color: #98c0f6;" text="🔍">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Button>
+      <Label fx:id="errorText" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="219.0" layoutY="557.0" prefHeight="22.0" textAlignment="CENTER" textFill="#ff0000c6">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="onlyMinesCheckBox" layoutX="671.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text="Mines">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </CheckBox>
    </children>
 </AnchorPane>

@@ -113,4 +113,8 @@ public class Recipe implements Serializable {
     public String getStepInPos(int pos) {
         return steps.get(pos);
     }
+    @Override
+    public String toString(){
+        return name;
+    }
 }

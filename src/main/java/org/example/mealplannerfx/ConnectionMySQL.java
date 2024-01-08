@@ -3,7 +3,7 @@ package org.example.mealplannerfx;
 import java.sql.*;
 
 public class ConnectionMySQL {
-    private String url = "jdbc:mysql://localhost:3306/db_name"; // --------------
+    private String url = "jdbc:mysql://[servidor]:[puerto]/[base_de_datos]"; // --------------
     private String user = "root"; // --------------
     private String pas = "password"; // --------------
     private Connection connection;
@@ -19,7 +19,8 @@ public class ConnectionMySQL {
                 // Create statement obj
                 statement = connection.createStatement();
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (Exception e) {
+            System.out.println("Hasta aqui");
             throw new RuntimeException(e);
         }
     }

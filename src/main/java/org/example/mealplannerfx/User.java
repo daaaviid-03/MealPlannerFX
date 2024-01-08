@@ -46,7 +46,12 @@ public class User implements Serializable {
     }
 
     public DayData searchForDayData(Long dayDataName) {
-        return daysData.get(dayDataName);
+        try {
+            System.out.println("Dia: " + dayDataName + daysData.get(dayDataName));
+            return daysData.get(dayDataName);
+        } catch (Exception e){
+            return null;
+        }
     }
 
     public void addDayData(DayData dayData) {

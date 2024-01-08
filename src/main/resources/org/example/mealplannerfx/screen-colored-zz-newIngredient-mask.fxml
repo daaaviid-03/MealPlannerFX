@@ -38,7 +38,7 @@
                 <Insets right="5.0" />
             </HBox.margin>
         </TextField>
-        <ComboBox fx:id="unitComboBox" prefHeight="46.0" prefWidth="150.0" promptText="unit (g)">
+        <ComboBox fx:id="unitComboBox" prefHeight="46.0" prefWidth="150.0" promptText="unit">
            <HBox.margin>
                <Insets right="5.0" />
            </HBox.margin>

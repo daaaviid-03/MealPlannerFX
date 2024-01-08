@@ -66,7 +66,7 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         ingredientListText.setMinHeight(size);
         ingredientListText.setPrefHeight(size);
         ingredientListText.setMaxHeight(size);
-        boolean b = ingredientListText.getItems().setAll(FXCollections.observableArrayList(foundedElements));
+        ingredientListText.getItems().setAll(FXCollections.observableArrayList(foundedElements));
 
     }
 
@@ -80,11 +80,11 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
     }
 
     public void deleteIngredient(ActionEvent actionEvent) {
-        super.getControllerSup().deleteIngredient(super.getThisPosition());
+        getControllerSup().deleteIngredient(getThisPosition(), getThisVBox());
     }
 
     public void addIngredient(ActionEvent actionEvent) {
-        super.getControllerSup().addIngredient(super.getThisPosition() + 1);
+        getControllerSup().addIngredient(getThisPosition() + 1, getThisVBox());
     }
 
     public float getQuantityText(){
@@ -95,17 +95,6 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         return ingredientText.getText().toString();
     }
 
-//    public void ingredientChangedBox(ActionEvent actionEvent) {
-//        String text = ComboBoxIngredient.getValue().toString();
-//        System.out.println("Texto cambiado a: " + text);
-//        if(dBController.getIngredientByName(text) != null){
-//            System.out.println("Ingrediente seleccionado");
-//            unitComboBox.setItems(FXCollections.observableArrayList(dBController.getIngredientPortionsNames(text)));
-//        } else {
-//
-//        }
-//    }
-
     public String getPortionName() {
         String text = unitComboBox.getValue().toString();
         if (text.equals(unitComboBox.getPromptText())){
@@ -113,5 +102,12 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         } else {
             return text;
         }
+    }
+
+    public void deletePortions(){
+        unitComboBox.setPrefWidth(0d);
+        unitComboBox.setVisible(false);
+        quantityBoxTextIngredient.setPrefWidth(0d);
+        quantityBoxTextIngredient.setVisible(false);
     }
 }

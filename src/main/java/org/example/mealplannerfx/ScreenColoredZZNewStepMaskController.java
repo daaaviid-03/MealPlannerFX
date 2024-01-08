@@ -18,19 +18,19 @@ public class ScreenColoredZZNewStepMaskController extends ScreenColoredElementIn
     }
 
     public void upArrowStepClicked(ActionEvent actionEvent) {
-        super.getControllerSup().upArrowStepClicked(super.getThisPosition());
+        getControllerSup().upArrowStepClicked(getThisPosition(), getThisVBox());
     }
 
     public void downArrowStepClicked(ActionEvent actionEvent) {
-        super.getControllerSup().downArrowStepClicked(super.getThisPosition());
+        getControllerSup().downArrowStepClicked(getThisPosition(), getThisVBox());
     }
 
     public void deleteStep(ActionEvent actionEvent) {
-        super.getControllerSup().deleteStep(super.getThisPosition());
+        getControllerSup().deleteStep(getThisPosition(), getThisVBox());
     }
 
     public void addStep(ActionEvent actionEvent) {
-        super.getControllerSup().addStep(super.getThisPosition() + 1);
+        getControllerSup().addStep(getThisPosition() + 1, getThisVBox());
     }
 
     public String getStepString(){

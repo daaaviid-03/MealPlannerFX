@@ -41,8 +41,21 @@ public class ScreenColoredOneDayController extends ScreenColoredDefaultModel imp
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel(false);
         dayNumber = getGraphicCC().getDayToExplore();
+        setRecipeSelected();
         setDayDataFromCalendar();
     }
+
+    private void setRecipeSelected(){
+        Recipe recipe = getGraphicCC().getLastRecipeSelected();
+        if (recipe != null){
+            setDayDataFromCalendar();
+            getGraphicCC().setLastRecipeSelected(null);
+            thisDayData.setMealByName(getGraphicCC().getMealNameOfLastSelected(), recipe);
+            getGraphicCC().setMealNameOfLastSelected(null);
+        }
+    }
+
+
     private void setDayDataFromCalendar() {
         // Set date
         getGraphicCC().setDayToExplore(dayNumber);
@@ -75,14 +88,16 @@ public class ScreenColoredOneDayController extends ScreenColoredDefaultModel imp
     }
 
     public void recipeEditButton(ActionEvent actionEvent) {
-        Recipe thisRecipe = getRecipeByActionEvent(actionEvent);
+        Recipe thisRecipe = thisDayData.getMealByName(getNameOfMealFromActionEvent(actionEvent));
         if (thisRecipe == null){
+            getGraphicCC().setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
             getGraphicCC().startScreenColored("searchNewFood", "oneDay");
         }
-
     }
 
     public void deleteRecipe(ActionEvent actionEvent) {
+        thisDayData.setMealByName(getNameOfMealFromActionEvent(actionEvent), null);
+        setDayDataFromCalendar();
     }
 
     public long getDayNumber() {
@@ -92,17 +107,12 @@ public class ScreenColoredOneDayController extends ScreenColoredDefaultModel imp
     public void setDayNumber(long dayNumber) {
         this.dayNumber = dayNumber;
     }
-    private Recipe getRecipeByActionEvent(ActionEvent actionEvent){
-        return switch (((Button)actionEvent.getSource()).getId().split("_")[0]){
-            case "breakfast" -> thisDayData.getBreakfast();
-            case "lunch" -> thisDayData.getLunch();
-            case "dinner" -> thisDayData.getDinner();
-            default -> null;
-        };
+    private String getNameOfMealFromActionEvent(ActionEvent actionEvent){
+        return ((Button)actionEvent.getSource()).getId().split("_")[0];
     }
 
     public void recipeViewButton(ActionEvent actionEvent) {
-        Recipe thisRecipe = getRecipeByActionEvent(actionEvent);
+        Recipe thisRecipe = thisDayData.getMealByName(getNameOfMealFromActionEvent(actionEvent));
         if (thisRecipe == null){
             recipeEditButton(actionEvent);
             return;

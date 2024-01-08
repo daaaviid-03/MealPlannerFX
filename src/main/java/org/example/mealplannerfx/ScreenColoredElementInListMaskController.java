@@ -3,6 +3,7 @@ package org.example.mealplannerfx;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -10,10 +11,11 @@ import java.util.ResourceBundle;
 public abstract class ScreenColoredElementInListMaskController implements Initializable {
     @FXML
     private Label idNumberText;
-    private ScreenColoredNewRecipeController controllerSup;
+    private ScreenColoredDefaultModelWithElements controllerSup;
     private int thisPosition;
+    private VBox thisVBox;
 
-    public void setControllerSup(ScreenColoredNewRecipeController controllerSup) {
+    public void setControllerSup(ScreenColoredDefaultModelWithElements controllerSup) {
         this.controllerSup = controllerSup;
     }
     public void setThisPosition(int thisPosition) {
@@ -32,7 +34,7 @@ public abstract class ScreenColoredElementInListMaskController implements Initia
         idNumberText.setText((this.thisPosition + 1) + ".");
     }
 
-    public ScreenColoredNewRecipeController getControllerSup() {
+    public ScreenColoredDefaultModelWithElements getControllerSup() {
         return controllerSup;
     }
 
@@ -40,5 +42,11 @@ public abstract class ScreenColoredElementInListMaskController implements Initia
         return thisPosition;
     }
 
+    public void setThisVBox(VBox thisVBox) {
+        this.thisVBox = thisVBox;
+    }
 
+    public VBox getThisVBox() {
+        return thisVBox;
+    }
 }

@@ -24,10 +24,10 @@ public class DBJDBCController extends DBBoundaries {
     }
 
     private void loadRealtionsFromDB() {
-        loadDayData();
         loadIngredientInRecipe();
     }
-    private void loadDayData() {
+    @Override
+    public void loadDayDataFromDB() {
         for (User user : super.getUsersValues()){
             try {
                 String query = "SELECT * FROM DayData WHERE (userNickname = '" + user.getNickname() + "');";
@@ -50,7 +50,7 @@ public class DBJDBCController extends DBBoundaries {
                     if (!resultDayData.wasNull()){
                         dinnerRecipe = super.getRecipe(dinnerRecipeId);
                     }
-                    user.addDayData(new DayData(dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe));
+                    user.addDayData(new DayData(user.getNickname(), dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe));
                 }
                 connectionMySQL.endQuery(resultDayData);
             } catch (Exception e){
@@ -97,11 +97,6 @@ public class DBJDBCController extends DBBoundaries {
                 noResultQuery("INSERT INTO User (nickname, pass, email, heightVal, weightVal, birth) VALUES ('" +
                         user.getNickname() + "', '" + user.getPassword() + "', '" + user.getEmail() + "', " +
                         user.getHeight() + ", " + user.getWeight() + ", " + user.getBirth() + ");");
-                for (DayData dayData : user.getDaysData().values()){
-                    noResultQuery("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
-                            user.getNickname() + "', " + dayData.getDayNumber() + ", " + dayData.getBreakfast().getId() + ", " +
-                            dayData.getLunch().getId() + ", " + dayData.getDinner().getId() + ");");
-                }
             }
         } catch (Exception e){
             System.err.println(e.getMessage());
@@ -141,6 +136,21 @@ public class DBJDBCController extends DBBoundaries {
                     noResultQuery("INSERT INTO FoodPortions (ingredientName, portionName, quantity) VALUES ('" +
                             ingredient.getName() + "', '" + portionName + "', " +
                             ingredient.getFoodPortionInGrams(portionName) + ");");
+                }
+            }
+        } catch (Exception e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public void saveDayDataInDB() {
+        try {
+            for (User user : super.getUsersValues()){
+                for (DayData dayData : user.getDaysData().values()){
+                    noResultQuery("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
+                            user.getNickname() + "', " + dayData.getDayNumber() + ", " + dayData.getBreakfast().getId() + ", " +
+                            dayData.getLunch().getId() + ", " + dayData.getDinner().getId() + ");");
                 }
             }
         } catch (Exception e){

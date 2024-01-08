@@ -107,13 +107,17 @@ public abstract class DBController {
             throw e;
         }
     }
-    public List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration, Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration, List<Ingredient> ingredients, Boolean allOfThoseIngredients, Boolean allFieldsInCommon) throws WrongArgumentException{
+    public List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration,
+                                           Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
+                                           List<Ingredient> ingredients, Boolean allOfThoseIngredients,
+                                           Boolean allFieldsInCommon, User thisUser, Boolean onlyFromUser) throws WrongArgumentException{
         List<Recipe> correctRecipes = new ArrayList<>();
         for (Recipe recipe : recipes.values()){
             // Declare boolean for each field
             boolean isCandidateForName = true;
             boolean isCandidateForDuration = true;
             boolean isCandidateForIngredients = allFieldsInCommon;
+            boolean isCandidateForUser = true;
             // Obtain this recipe info
             String thisName = recipe.getName();
             int thisDuration = recipe.getDuration();
@@ -134,9 +138,12 @@ public abstract class DBController {
             } else {
                 isCandidateForIngredients = true;
             }
+            if(onlyFromUser){
+                isCandidateForUser = recipe.getOwner() == thisUser;
+            }
             // Last filter of fields
-            if((allFieldsInCommon && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
-                    (!allFieldsInCommon && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))){
+            if(isCandidateForUser && ((allFieldsInCommon && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
+                    (!allFieldsInCommon && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients)))){
                 correctRecipes.add(recipe);
             }
         }
@@ -161,7 +168,7 @@ public abstract class DBController {
             User thisUser = getUserInfo(nick);
             DayData thisDayData = thisUser.searchForDayData(dayNumber);
             if (thisDayData == null) {
-                thisDayData = new DayData(dayNumber, null, null, null);
+                thisDayData = new DayData(nick, dayNumber, null, null, null);
                 thisUser.addDayData(thisDayData);
             }
             return thisDayData;
@@ -254,6 +261,9 @@ public abstract class DBController {
     public abstract String correctPasswordRegisterString(String password, String passwordRepited) throws WrongArgumentException;
     public abstract String correctRecipeDescriptionString(String desc) throws WrongArgumentException;
     public abstract void correctIngredients(List<ScreenColoredElementInListMaskController> ingredientsList, List<Ingredient> ingredients, List<Float> ingredientsQuantities, List<String> ingredientsPortionsNames) throws WrongArgumentException;
+
+    public abstract void correctIngredients(List<ScreenColoredElementInListMaskController> ingredientsList, List<Ingredient> ingredients) throws WrongArgumentException;
+
     public abstract List<String> correctSteps(List<ScreenColoredElementInListMaskController> stepsList) throws WrongArgumentException;
     public abstract int correctDuration(String durationStr) throws WrongArgumentException;
 
@@ -262,17 +272,21 @@ public abstract class DBController {
         loadUsersFromDB();
         loadRecipesFromDB();
         loadIngredientsFromDB();
+        loadDayDataFromDB();
     }
     public void saveDataToDB(){
         saveUsersInDB();
         saveRecipesInDB();
         saveIngredientsInDB();
+        saveDayDataInDB();
     }
     public abstract void saveUsersInDB();
     public abstract void saveRecipesInDB();
     public abstract void saveIngredientsInDB();
+    public abstract void saveDayDataInDB();
     public abstract void loadUsersFromDB();
     public abstract void loadRecipesFromDB();
     public abstract void loadIngredientsFromDB();
+    public abstract void loadDayDataFromDB();
 
 }

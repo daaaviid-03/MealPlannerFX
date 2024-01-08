@@ -5,8 +5,13 @@ import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,7 +20,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GraphicControllerColored extends Application implements GraphicController{
-    private DBController dBController = DBController.getDBControllerInstance();
     private final HashMap<String, String> screensFXML;
     private Stage thisStage;
     private static GraphicControllerColored graphicControllerColoredInstance;
@@ -23,19 +27,22 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private long dayToExplore;
     private Map<String, Object> namespace;
     private FXMLLoader thisFxmlLoader;
+    private Recipe lastRecipeSelected;
+    private String mealNameOfLastSelected;
+    private Recipe dayToShow;
 
     public GraphicControllerColored(){
         setGraphicControllerColoredInstance(this);
         this.screensFXML = new HashMap<String, String>();
-        this.screensFXML.put("login", "screen-colored-login-view.fxml");
-        this.screensFXML.put("register", "screen-colored-register-view.fxml");
-        this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
-        this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml");
-        this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml");
-        this.screensFXML.put("searchNewFood", "screen-colored-searchNewFood-view.fxml");
-        this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml");
-        this.screensFXML.put("stats", "screen-colored-stats-view.fxml");
-        this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml");
+        this.screensFXML.put("login", "screen-colored-login-view.fxml"); // User
+        this.screensFXML.put("register", "screen-colored-register-view.fxml"); // User
+        this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml"); // dayToExplore
+        this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml"); // lastRecipeSelected
+        this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml"); //
+        this.screensFXML.put("searchNewFood", "screen-colored-searchNewFood-view.fxml"); // lastRecipeSelected
+        this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml"); //
+        this.screensFXML.put("stats", "screen-colored-stats-view.fxml"); //
+        this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml"); //
     }
     private void setGraphicControllerColoredInstance(GraphicControllerColored gcc){
         graphicControllerColoredInstance = gcc;
@@ -57,8 +64,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
         thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
-            Scene scene = new Scene(thisFxmlLoader.load(), 1920, 1080);
-
+            Parent parent = thisFxmlLoader.load();
+            Scene scene = new Scene(parent, 1920, 1080);
             this.thisStage.setScene(scene);
         } catch (Exception e){
             System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
@@ -83,25 +90,30 @@ public class GraphicControllerColored extends Application implements GraphicCont
         this.thisStage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource("screen-colored-login-view.fxml"));
         namespace = fxmlLoader.getNamespace();
-        Scene scene = new Scene(fxmlLoader.load(), 1920, 1080);
+        Parent parent = fxmlLoader.load();
+        Scene scene = new Scene(parent, 1920, 1080);
         stage.setTitle("MealPlanner");
         stage.setScene(scene);
 
         // Make it responsive
-        stage.widthProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) {
-                double ratio = newWidth.doubleValue() / oldWidth.doubleValue();
-                stage.setWidth(stage.getWidth() * ratio);
-            }
-        });
-        stage.heightProperty().addListener(new ChangeListener<Number>() {
-            @Override
-            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight) {
-                double ratio = newHeight.doubleValue() / oldHeight.doubleValue();
-                stage.setHeight(stage.getHeight() * ratio);
-            }
-        });
+//        stage.widthProperty().addListener(new ChangeListener<Number>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Number> observableValue, Number oldWidth, Number newWidth) {
+//                double ratio = newWidth.doubleValue() / thisStage.getWidth();
+//                System.out.println(newWidth.floatValue());
+//                group.setMinWidth(newWidth.doubleValue());
+//                //group.getTransforms().add(new Scale(newWidth.floatValue() / 1920, 1080));
+//                //stage.setWidth(stage.getWidth() * ratio);
+//            }
+//        });
+//        stage.heightProperty().addListener(new ChangeListener<Number>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Number> observableValue, Number oldHeight, Number newHeight) {
+//                double ratio = newHeight.doubleValue() / thisStage.getHeight();
+//                group.setMaxHeight(ratio);
+//                //stage.setHeight(stage.getHeight() * ratio);
+//            }
+//        });
 
         // Show stage
         stage.show();
@@ -127,5 +139,29 @@ public class GraphicControllerColored extends Application implements GraphicCont
     }
     public Object searchForObjInScene(String name){
         return namespace.get(name);
+    }
+
+    public Recipe getLastRecipeSelected() {
+        return lastRecipeSelected;
+    }
+
+    public void setLastRecipeSelected(Recipe lastRecipeSelected) {
+        this.lastRecipeSelected = lastRecipeSelected;
+    }
+
+    public void setDayToShow(Recipe dayToShow) {
+        this.dayToShow = dayToShow;
+    }
+
+    public Recipe getDayToShow() {
+        return dayToShow;
+    }
+
+    public String getMealNameOfLastSelected() {
+        return mealNameOfLastSelected;
+    }
+
+    public void setMealNameOfLastSelected(String mealNameOfLastSelected) {
+        this.mealNameOfLastSelected = mealNameOfLastSelected;
     }
 }

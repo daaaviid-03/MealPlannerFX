@@ -143,6 +143,22 @@ public abstract class DBBoundaries extends DBController{
     }
 
     @Override
+    public void correctIngredients(List<ScreenColoredElementInListMaskController> ingredientsList, List<Ingredient> ingredients) throws WrongArgumentException{
+        for (ScreenColoredElementInListMaskController elemController : ingredientsList) {
+            ScreenColoredZZNewIngredientMaskController mCont = (ScreenColoredZZNewIngredientMaskController) elemController;
+            String ingredName = mCont.getIngredientName();
+            if(!ingredName.isEmpty()){
+                String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
+                try {
+                    ingredients.add(super.getIngredientByName(ingredName));
+                } catch (Exception e) {
+                    throw new WrongArgumentException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
+                }
+            }
+        }
+    }
+
+    @Override
     public List<String> correctSteps(List<ScreenColoredElementInListMaskController> stepsList) throws WrongArgumentException{
         List<String> steps = new ArrayList<>();
         for (ScreenColoredElementInListMaskController elemController : stepsList) {
@@ -159,9 +175,11 @@ public abstract class DBBoundaries extends DBController{
     @Override
     public int correctDuration(String durationStr) throws WrongArgumentException{
         try{
-            return Integer.getInteger(durationStr);
+            return Integer.parseInt(durationStr);
         }catch (Exception e){
             throw new WrongArgumentException("Duration should be a valid integer number.");
         }
     }
+
+
 }
