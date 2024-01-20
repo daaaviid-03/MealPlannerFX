@@ -29,7 +29,7 @@ public abstract class DAOIngredient {
      */
     public Ingredient getIngredient(String name){
         List<Ingredient> ingredient = getAllIngredientsAsRegex("^" + name + "$");
-        if (ingredient.size() == 1){
+        if (!ingredient.isEmpty()){
             return ingredient.getFirst();
         } else {
             return null;

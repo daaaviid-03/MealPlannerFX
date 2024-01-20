@@ -24,7 +24,7 @@ public abstract class DAORecipe {
      * @param id the id of the recipe
      * @return the recipe object of the specific id, if it doesn't exist, returns null
      */
-    public abstract Recipe getRecipe(Float id);
+    public abstract Recipe getRecipe(long id);
 
     /**
      * Obtain all the recipes that matches the restrictions
@@ -55,6 +55,19 @@ public abstract class DAORecipe {
      * @param newRecipe whether is a new recipe or have to override an existing one
      */
     public abstract void saveRecipe(Recipe recipe, boolean newRecipe);
+
+    /**
+     * Deletes the recipe from the DB
+     * @param recipe the recipe object to delete
+     */
+    public abstract void deleteRecipe(Recipe recipe);
+
+    /**
+     * Obtains the long for the next id for recipes that can be assigned, it also sums one to the actual value
+     * and saves the new value in the DB
+     * @return the long value of the next id available
+     */
+    public abstract long getNextRecipeId();
 
     /**
      * Load all the recipes from the original DB (txt) into de binary file

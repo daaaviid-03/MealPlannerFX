@@ -34,6 +34,29 @@ public abstract class DAODayData {
      */
     public abstract void saveDayData(DayData dayData, boolean newDayData);
 
+    /**
+     * Deletes all day data from an specific user
+     * @param nick the nickname of the user
+     */
+    public abstract void deleteAllDayDataFromUser(String nick);
+
+    /**
+     * Returns the day data for that day, but if oit doesn't exist, it creates the dayData for that day from that user
+     * @param nick the name of the user
+     * @param dayNumber the day number of the dayData
+     */
+    public DayData getOrCreateDayDataFromUserIn(String nick, long dayNumber) {
+        try {
+            // If it exists, return the dayData
+            return getDayDataFromUserBetween(nick, dayNumber, dayNumber).getFirst();
+        } catch (Exception e){
+            // If it doesn't exist, create and return the dayData
+            DayData thisDayData = new DayData(nick, dayNumber);
+            saveDayData(thisDayData, true);
+            return thisDayData;
+        }
+    }
+
     public static DAODayData getDaoDayDataInstance() {
         return daoDayDataInstance;
     }

@@ -50,6 +50,12 @@ public abstract class DAOUser {
     public abstract void saveUser(User user, boolean newUser);
 
     /**
+     * Deletes the user from the DB
+     * @param nick the nick of the user to delete
+     */
+    public abstract void deleteUser(String nick);
+
+    /**
      * Load all the users from the original DB (txt) into de binary file
      */
 //    public void loadUsersFromOriginalDB(){
