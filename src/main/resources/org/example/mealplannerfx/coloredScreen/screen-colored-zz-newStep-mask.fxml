@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredZZNewStepMaskController">
+    <HBox fx:id="stepsDiv" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
+        <children>
+         <Label fx:id="idNumberText" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="20.0" text="0.">
+            <HBox.margin>
+               <Insets right="5.0" />
+            </HBox.margin>
+         </Label>
+            <VBox prefHeight="43.0" prefWidth="25.0">
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+                <children>
+                    <Button fx:id="upArrowStep" mnemonicParsing="false" onAction="#upArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-background-color: #80cee1;" text="ʌ">
+                        <VBox.margin>
+                            <Insets bottom="4.0" />
+                        </VBox.margin>
+                        <font>
+                            <Font size="10.0" />
+                        </font>
+                    </Button>
+                    <Button fx:id="downArrowStep" mnemonicParsing="false" onAction="#downArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-background-color: #80cee1;" text="v">
+                        <font>
+                            <Font size="10.0" />
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
+            <TextField fx:id="stepText" prefHeight="47.0" prefWidth="434.0" promptText="Step...">
+                <font>
+                    <Font size="19.0" />
+                </font>
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+            </TextField>
+            <Button fx:id="deleteStepButton" mnemonicParsing="false" onAction="#deleteStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+                <HBox.margin>
+                    <Insets right="5.0" />
+                </HBox.margin>
+                <font>
+                    <Font size="22.0" />
+                </font>
+            </Button>
+            <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#addStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+                <font>
+                    <Font size="22.0" />
+                </font>
+            </Button>
+        </children>
+        <padding>
+            <Insets bottom="5.0" />
+        </padding>
+    </HBox>
+
+</AnchorPane>

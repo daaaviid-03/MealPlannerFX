@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredStatsController">
+   <children>
+      <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Stats" textFill="#000000a4">
+               <font>
+                  <Font size="100.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
+      <VBox alignment="CENTER" layoutX="603.0" layoutY="490.0" scaleX="1.8" scaleY="1.8" scaleZ="1.8">
+         <children>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Number of total meals:">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="numOfMeals" editable="false" prefHeight="66.0" prefWidth="300.0" promptText="333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Calories in total:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="calTot" editable="false" prefHeight="66.0" prefWidth="300.0" promptText="333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Carbohydrates in total:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="carbTot" editable="false" prefHeight="66.0" prefWidth="300.0" promptText="333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Proteins in total:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="protTot" editable="false" prefHeight="66.0" prefWidth="300.0" promptText="333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT">
+               <children>
+                  <Label text="Fats in total:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="fatTot" editable="false" prefHeight="66.0" prefWidth="300.0" promptText="333">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER" layoutX="431.0" layoutY="209.0">
+         <children>
+            <Label text="The stats from:">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <HBox.margin>
+                  <Insets right="100.0" />
+               </HBox.margin>
+            </Label>
+            <DatePicker fx:id="fromDate" scaleX="2.0" scaleY="2.0" scaleZ="2.0">
+               <HBox.margin>
+                  <Insets right="100.0" />
+               </HBox.margin>
+            </DatePicker>
+            <Label text=", to: ">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="toDate" scaleX="2.0" scaleY="2.0" scaleZ="2.0">
+               <HBox.margin>
+                  <Insets left="100.0" right="100.0" />
+               </HBox.margin>
+            </DatePicker>
+         </children>
+      </HBox>
+      <Label fx:id="errorText" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="644.0" layoutY="267.0" prefHeight="22.0" textAlignment="CENTER" textFill="#ff0000c6">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
