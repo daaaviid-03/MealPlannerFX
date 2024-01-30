@@ -1,9 +1,7 @@
 package org.example.mealplannerfx.coloredScreen;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import org.example.mealplannerfx.control.WrongArgumentException;
@@ -11,7 +9,6 @@ import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Ingredient;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.*;
 
 public class ScreenColoredStatsController extends ScreenColoredDefaultModelWithDayDataStats implements Initializable {
@@ -61,14 +58,14 @@ public class ScreenColoredStatsController extends ScreenColoredDefaultModelWithD
     }
     private int getNumberOfMealsInDates() throws Exception {
         int count = 0;
-        for (DayData dayData : getDBController().getDaysData(getFromDateLong(), getToDateLong())){
-            if (dayData.getBreakfast() != null){
+        for (DayData dayData : getDBController().getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
+            if (dayData.getBreakfastId() != null){
                 count++;
             }
-            if (dayData.getLunch() != null){
+            if (dayData.getLunchId() != null){
                 count++;
             }
-            if (dayData.getDinner() != null){
+            if (dayData.getDinnerId() != null){
                 count++;
             }
         }

@@ -24,7 +24,6 @@ public class ScreenColoredLoginController {
         try {
             dBController.checkUserInDB(nick, pass);
             User thisUser = dBController.getUserInfo(nick);
-            dBController.setThisUser(thisUser);
             graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
         } catch (WrongArgumentException wrongArgument) {

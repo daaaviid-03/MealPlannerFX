@@ -28,7 +28,6 @@ public class ScreenColoredMainMenuController extends ScreenColoredDefaultModel i
     private int getActualDayOfWeek(int dayOfWeekToConvert){
         return switch (dayOfWeekToConvert) {
             case 1 -> -5;
-            case 2 -> 1;
             case 3 -> 0;
             case 4 -> -1;
             case 5 -> -2;
@@ -70,38 +69,31 @@ public class ScreenColoredMainMenuController extends ScreenColoredDefaultModel i
                 actualDay++;
             }
         }
-        System.out.println("============================================================================");
     }
 
     private void setDayDataOfCalendar(int i, int j, int actualDay, long epochFirstDayMonth){
-
-        DayData dayData = getDBController().getSpecificDayData(epochFirstDayMonth + actualDay - 1);
-        if (dayData != null) {
-            System.out.println(dayData.getBreakfast());
-            System.out.println(dayData.getLunch());
-            System.out.println(dayData.getDinner());
-        }
-
+        DayData dayData = getDBController().getSpecificDayData(getGraphicCC().getThisUser().getNickname(),
+                epochFirstDayMonth + actualDay - 1);
         Button breakfast = (Button)getGraphicCC().searchForObjInScene("DayButton_Breakfast_" + i + "_" + j);
         Button launch = (Button)getGraphicCC().searchForObjInScene("DayButton_Launch_" + i + "_" + j);
         Button dinner = (Button)getGraphicCC().searchForObjInScene("DayButton_Dinner_" + i + "_" + j);
-        if (dayData == null || dayData.getBreakfast() == null) {
+        if (dayData == null || dayData.getBreakfastId() == null) {
             breakfast.setVisible(false);
         } else {
             breakfast.setVisible(true);
-            breakfast.setText(dayData.getBreakfast().getName());
+            breakfast.setText(getDBController().getRecipe(dayData.getBreakfastId()).getName());
         }
-        if (dayData == null || dayData.getLunch() == null) {
+        if (dayData == null || dayData.getLunchId() == null) {
             launch.setVisible(false);
         } else {
             launch.setVisible(true);
-            launch.setText(dayData.getLunch().getName());
+            launch.setText(getDBController().getRecipe(dayData.getLunchId()).getName());
         }
-        if (dayData == null || dayData.getDinner() == null) {
+        if (dayData == null || dayData.getDinnerId() == null) {
             dinner.setVisible(false);
         } else {
             dinner.setVisible(true);
-            dinner.setText(dayData.getDinner().getName());
+            dinner.setText(getDBController().getRecipe(dayData.getDinnerId()).getName());
         }
     }
 

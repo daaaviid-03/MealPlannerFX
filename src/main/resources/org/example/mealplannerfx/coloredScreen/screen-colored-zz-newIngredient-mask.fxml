@@ -30,6 +30,14 @@
             <Insets right="5.0" />
          </HBox.margin>
       </VBox>
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#searchIngredientsButtonClicked" prefHeight="42.0" prefWidth="38.0" style="-fx-background-color: #98c0f6;" text="🔍">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+      </Button>
         <TextField fx:id="quantityBoxTextIngredient" prefHeight="46.0" prefWidth="69.0" promptText="15">
             <font>
                 <Font size="19.0" />
@@ -38,7 +46,7 @@
                 <Insets right="5.0" />
             </HBox.margin>
         </TextField>
-        <ComboBox fx:id="unitComboBox" prefHeight="46.0" prefWidth="150.0" promptText="unit">
+        <ComboBox fx:id="unitComboBox" prefHeight="46.0" prefWidth="130.0" promptText="unit">
            <HBox.margin>
                <Insets right="5.0" />
            </HBox.margin>

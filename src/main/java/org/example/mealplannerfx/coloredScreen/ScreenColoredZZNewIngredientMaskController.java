@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import org.example.mealplannerfx.control.DBController;
+import org.example.mealplannerfx.entity.Ingredient;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
     @FXML
     private TextField ingredientText;
     @FXML
-    private ListView ingredientListText;
+    private ListView<Ingredient> ingredientListText;
     @FXML
-    private ComboBox unitComboBox;
+    private ComboBox<String> unitComboBox;
     @FXML
     private TextField quantityBoxTextIngredient;
     private final DBController dBController = DBController.getDBControllerInstance();
@@ -29,19 +30,22 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hideListOfElements();
         ingredientText.textProperty().addListener((observable, oldValue, newValue) -> {
-            showFilteredElements(newValue);
+            //showFilteredElements(newValue);
         });
 
         ingredientText.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue){
                 hideListOfElements();
-            } else {
-                showFilteredElements(ingredientText.getText());
-            }
+            } //else {
+                //showFilteredElements(ingredientText.getText());
+            //}
         });
 
         ingredientListText.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValueObj, newValueObj) -> {
-            selectedElement(newValueObj.toString());
+            if (newValueObj != null){
+                selectedElement(newValueObj.toString());
+                hideListOfElements();
+            }
         });
     }
 
@@ -52,10 +56,9 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         ingredientListText.setMaxHeight(0);
     }
 
-    private void showFilteredElements(String newValue) {
-        List<String> foundedElements = dBController.getListOfIngredientsNamesSortedBy(newValue);
-        // If an elements has been selected do not show the list
-        boolean toShowElements = !(foundedElements.size() == 1 && foundedElements.getFirst().equals(ingredientText.getText()));
+    public void showFilteredElements(String newValue) {
+        List<Ingredient> foundedElements = dBController.getListOfAllIngredientsByName(newValue, null);
+        boolean toShowElements = !(foundedElements.size() == 1 && foundedElements.getFirst().getName().equals(ingredientText.getText()));
         ingredientListText.setVisible(toShowElements);
         if (!ingredientListText.isVisible()){
             foundedElements = new ArrayList<>();
@@ -66,7 +69,6 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         ingredientListText.setPrefHeight(size);
         ingredientListText.setMaxHeight(size);
         ingredientListText.getItems().setAll(FXCollections.observableArrayList(foundedElements));
-
     }
 
     private void selectedElement(String newValue){
@@ -108,5 +110,9 @@ public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredEle
         unitComboBox.setVisible(false);
         quantityBoxTextIngredient.setPrefWidth(0d);
         quantityBoxTextIngredient.setVisible(false);
+    }
+
+    public void searchIngredientsButtonClicked(ActionEvent actionEvent) {
+        showFilteredElements(ingredientText.getText());
     }
 }

@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.WrongArgumentException;
 import org.example.mealplannerfx.dao.DBDataBoundary;
+import org.example.mealplannerfx.entity.User;
 
 public class ScreenColoredRegisterController {
     private DBController dBController = DBController.getDBControllerInstance();
@@ -42,8 +43,8 @@ public class ScreenColoredRegisterController {
             float correctWeight = DBDataBoundary.correctWeightFloat(weightText.getText());
             String correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
 
-            dBController.createsAndSetsUserInDB(nick,correctRepPass,correctHeight, correctWeight, email, birth);
-            graphicCC.setThisUser(dBController.getThisUser());
+            User thisUser = dBController.createUser(nick,correctRepPass,correctHeight, correctWeight, email, birth);
+            graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
         } catch (WrongArgumentException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());

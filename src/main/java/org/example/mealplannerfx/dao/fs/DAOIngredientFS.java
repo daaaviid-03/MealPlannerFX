@@ -1,6 +1,7 @@
 package org.example.mealplannerfx.dao.fs;
 
 import org.example.mealplannerfx.dao.DAOIngredient;
+import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Ingredient;
 
 import java.io.*;
@@ -8,42 +9,23 @@ import java.util.*;
 
 public class DAOIngredientFS extends DAOIngredient {
     private final static String INGREDIENTS_FILE_NAME_DB = "fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo";
-    @Override
-    public List<Ingredient> getAllIngredientsAsRegex(String regex) {
-        List<Ingredient> allIngredients = new ArrayList<>();
-        try {
-            FileInputStream thisFile = new FileInputStream(INGREDIENTS_FILE_NAME_DB);
-            ObjectInputStream fileStream = new ObjectInputStream(thisFile);
-            Ingredient ingred;
-            while((ingred = (Ingredient)fileStream.readObject()) != null){
-                if(ingred.getName().matches(regex)){
-                    allIngredients.add(ingred);
-                }
-            }
-            fileStream.close();
-        } catch (Exception e) {
-            loadIngredientsFromOriginalDB();
+    private final FileRW<Ingredient> fileRW = new FileRW<>(INGREDIENTS_FILE_NAME_DB);
+    private final static Comparator<Ingredient> INGREDIENT_COMPARATOR = new Comparator<Ingredient>() {
+        @Override
+        public int compare(Ingredient ingredient1, Ingredient ingredient2) {
+            return ingredient1.getName().compareTo(ingredient2.getName());
         }
-        return allIngredients;
+    };
+    @Override
+    public List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements) {
+        List<Ingredient> ingredients = fileRW.getAllObjectsAs(ingredient ->
+                (ingredient.getName().matches(regex)), numberOfElements);
+        ingredients.sort(INGREDIENT_COMPARATOR);
+        return ingredients;
     }
     @Override
-    public void saveIngredient(Ingredient ingredient, boolean newIngredient){
-        try {
-            FileOutputStream thisFile = new FileOutputStream(INGREDIENTS_FILE_NAME_DB, newIngredient);
-            ObjectOutputStream fileStream = new ObjectOutputStream(new BufferedOutputStream(thisFile));
-            if(!newIngredient){
-                List<Ingredient> allIngredients = getAllIngredientsAsRegex("^(?!" + ingredient.getName() + "$).*");
-                // Save the objects in the binary file
-                for (Ingredient ingredient1 : allIngredients){
-                    fileStream.writeObject(ingredient1);
-                }
-            } else {
-                // Save the object in the binary file
-                fileStream.writeObject(ingredient);
-            }
-            fileStream.close();
-        } catch (Exception e) {
-            System.err.println("Ingredient's DB file not found.");
-        }
+    public void saveIngredient(Ingredient ingredientToSave, boolean newIngredient){
+        fileRW.appendObjectsWithout(ingredientToSave, ingredient ->
+                (ingredient.getName().equals(ingredientToSave.getName())));
     }
 }

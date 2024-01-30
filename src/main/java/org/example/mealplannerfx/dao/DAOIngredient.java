@@ -28,7 +28,7 @@ public abstract class DAOIngredient {
      * @return the ingredient object of the especific name, if it doesn't exist, returns null
      */
     public Ingredient getIngredient(String name){
-        List<Ingredient> ingredient = getAllIngredientsAsRegex("^" + name + "$");
+        List<Ingredient> ingredient = getAllIngredientsAsRegex("^" + name + "$", 1);
         if (!ingredient.isEmpty()){
             return ingredient.getFirst();
         } else {
@@ -41,7 +41,7 @@ public abstract class DAOIngredient {
      * @param regex the regex string to match with the name of the ingredient
      * @return all ingredients that matches the regex string
      */
-    public abstract List<Ingredient> getAllIngredientsAsRegex(String regex);
+    public abstract List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements);
 
     /**
      * Saves the ingredient in the binary file

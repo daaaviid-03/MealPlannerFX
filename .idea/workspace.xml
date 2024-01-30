@@ -7,13 +7,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Project Load6">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBControllerDAOManager.java" afterDir="false" />
+    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="LAST TIME IT WORKS">
+      <change afterPath="$PROJECT_DIR$/fileData/fileDataBase/recipesMaxId_DB.recipesMaxId" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipeMaxId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAODayDataDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeMaxIdDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOUserDB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAODayDataFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAORecipeFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAORecipeMaxIdFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAOUserFS.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/mealplannerfx/control/DBControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/recipesInfo_DB.recipesInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/recipesInfo_DB.recipesInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/usersInfo_DB.usersInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/usersInfo_DB.usersInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/GraphicControllerColored.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredDefaultModelWithDayDataStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredDefaultModelWithDayDataStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredOneDayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredOneDayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredSearchNewFoodController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredSearchNewFoodController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredStatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredStatsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredZZNewIngredientMaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/ScreenColoredZZNewIngredientMaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBControllerDAOManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAODayData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAODayData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOPortions.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionMySQL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionMySQL.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DBJDBCController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAOIngredientFS.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DAOIngredientFS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/DBFileController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/DayData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/DayData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredScreen/screen-colored-zz-newIngredient-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredScreen/screen-colored-zz-newIngredient-mask.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +62,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -52,24 +90,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GraphicControllerColored.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MealPlannerApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/settingsScreen&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.statistic.project.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GraphicControllerColored.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.MealPlannerApp.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "JUnit.DBControllerTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/settingsScreen",
+    "project.structure.last.edited": "Global Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.42413792",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "reference.settings.project.statistic.project.settings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\settingsScreen" />
@@ -82,15 +123,22 @@
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredScreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\originalDataToDB" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="org.example.mealplannerfx.control" />
+      <recent name="org.example.mealplannerfx.dao.fs" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.mealplannerfx.dao.db" />
+      <recent name="org.example.mealplannerfx.dao.fs" />
+      <recent name="org.example.mealplannerfx.dao" />
       <recent name="org.example.mealplannerfx.control" />
       <recent name="org.example.mealplannerfx.settingsScreen" />
-      <recent name="org.example.mealplannerfx.coloredScreen" />
-      <recent name="org.example.mealplannerfx.dao" />
-      <recent name="org.example.mealplannerfx" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.DBControllerTest">
     <configuration name="MealPlannerApp" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.mealplannerfx.control.MealPlannerApp" />
       <module name="MealPlannerFX" />
@@ -98,6 +146,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DBControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MealPlannerFX" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.mealplannerfx.control.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example.mealplannerfx.control" />
+      <option name="MAIN_CLASS_NAME" value="org.example.mealplannerfx.control.DBControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.DBControllerTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -189,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1705758771237</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="LAST TIME IT WORKS">
+      <option name="closed" value="true" />
+      <created>1705771995849</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1705771995849</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -221,6 +297,7 @@
     <MESSAGE value="Project Load4" />
     <MESSAGE value="Project Load5" />
     <MESSAGE value="Project Load6" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project Load6" />
+    <MESSAGE value="LAST TIME IT WORKS" />
+    <option name="LAST_COMMIT_MESSAGE" value="LAST TIME IT WORKS" />
   </component>
 </project>

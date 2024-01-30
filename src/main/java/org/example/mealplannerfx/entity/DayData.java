@@ -31,11 +31,11 @@ public class DayData implements Serializable {
     public void setDayNumber(long dayNumber) {
         this.dayNumber = dayNumber;
     }
-    public Recipe getMealByName(String mealName){
+    public Long getMealByName(String mealName){
         return switch (mealName){
-            case "breakfast" -> getBreakfast();
-            case "lunch" -> getLunch();
-            case "dinner" -> getDinner();
+            case "breakfast" -> getBreakfastId();
+            case "lunch" -> getLunchId();
+            case "dinner" -> getDinnerId();
             default -> null;
         };
     }
@@ -47,32 +47,12 @@ public class DayData implements Serializable {
         }
     }
 
-    private Recipe getRecipeFromId(Long id){
-        DBController dbController = DBController.getDBControllerInstance();
-        if (id == null || !dbController.hasRecipe(id)){
-            return null;
-        }
-        return dbController.getRecipe(id);
-    }
-
-    public Recipe getBreakfast() {
-        return getRecipeFromId(breakfast);
-    }
-
     public void setBreakfast(Recipe breakfast) {
         this.breakfast = breakfast.getId();
     }
 
-    public Recipe getLunch() {
-        return getRecipeFromId(lunch);
-    }
-
     public void setLunch(Recipe lunch) {
         this.lunch = lunch.getId();
-    }
-
-    public Recipe getDinner() {
-        return getRecipeFromId(dinner);
     }
 
     public void setDinner(Recipe dinner) {
@@ -85,5 +65,15 @@ public class DayData implements Serializable {
 
     public void setUserNickname(String userNickname) {
         this.userNickname = userNickname;
+    }
+
+    public Long getBreakfastId() {
+        return breakfast;
+    }
+    public Long getLunchId() {
+        return lunch;
+    }
+    public Long getDinnerId() {
+        return dinner;
     }
 }

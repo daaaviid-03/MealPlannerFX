@@ -1,9 +1,11 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.WrongArgumentException;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DAORecipe {
@@ -24,7 +26,7 @@ public abstract class DAORecipe {
      * @param id the id of the recipe
      * @return the recipe object of the specific id, if it doesn't exist, returns null
      */
-    public abstract Recipe getRecipe(long id);
+    public abstract Recipe getRecipe(Long id);
 
     /**
      * Obtain all the recipes that matches the restrictions
@@ -41,13 +43,28 @@ public abstract class DAORecipe {
     public abstract List<Recipe> getAllRecipesAs(String regexName, Integer duration,
                                                  Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                                  List<Ingredient> ingredients, Boolean allOfThoseIngredients,
-                                                 Boolean allFieldsInCommon, User thisUser);
+                                                 Boolean allFieldsInCommon, User thisUser, Integer numberOfElements) throws WrongArgumentException;
+
+    /**
+     * Obtain all the recipes in the file
+     * @return a list of all recipes
+     */
+    public List<Recipe> getAllRecipes(){
+        try {
+            return getAllRecipesAs(".*", null, null, null, null,
+                    null, null, null, null);
+        } catch (WrongArgumentException wrongArgumentException){
+            return new ArrayList<>();
+        }
+
+    }
 
     /**
      * Deletes all recipes that has a specific user as owner
-     * @param nick the nickname of the user to delete the recipes
+     * @param nick the nickname of the user to delete the recipes, if NULL then deletes the recipe with id
+     * @param recipeId the id of the recipe to delete, if NULL then deletes all recipes from user
      */
-    public abstract void deleteAllRecipesFromUser(String nick);
+    public abstract void deleteAllRecipesFrom(String nick, Long recipeId);
 
     /**
      * Saves the recipe in the binary file
@@ -58,16 +75,18 @@ public abstract class DAORecipe {
 
     /**
      * Deletes the recipe from the DB
-     * @param recipe the recipe object to delete
+     * @param recipeId the recipe object to delete
      */
-    public abstract void deleteRecipe(Recipe recipe);
+    public abstract void deleteRecipe(Long recipeId);
 
     /**
      * Obtains the long for the next id for recipes that can be assigned, it also sums one to the actual value
      * and saves the new value in the DB
      * @return the long value of the next id available
      */
-    public abstract long getNextRecipeId();
+    public long getNextRecipeId() {
+        return DAORecipeMaxId.getDaoRecipeMaxIdInstance().getNextAndAddRecipeMaxId();
+    }
 
     /**
      * Load all the recipes from the original DB (txt) into de binary file

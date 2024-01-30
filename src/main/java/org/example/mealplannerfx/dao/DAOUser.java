@@ -50,6 +50,16 @@ public abstract class DAOUser {
     public abstract void saveUser(User user, boolean newUser);
 
     /**
+     * Deletes the user from the DB and their dependencies
+     * @param nick the nick of the user to delete
+     */
+    public void deleteCompleteUser(String nick){
+        DAORecipe.getDaoRecipeInstance().deleteAllRecipesFrom(nick, null);
+        DAODayData.getDaoDayDataInstance().deleteDayDataFromUser(nick, null);
+        deleteUser(nick);
+    }
+
+    /**
      * Deletes the user from the DB
      * @param nick the nick of the user to delete
      */

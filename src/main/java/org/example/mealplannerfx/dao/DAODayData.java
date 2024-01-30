@@ -37,8 +37,9 @@ public abstract class DAODayData {
     /**
      * Deletes all day data from an specific user
      * @param nick the nickname of the user
+     * @param dayDataNumber the day number to delete, if NULL then deletes all
      */
-    public abstract void deleteAllDayDataFromUser(String nick);
+    public abstract void deleteDayDataFromUser(String nick, Long dayDataNumber);
 
     /**
      * Returns the day data for that day, but if oit doesn't exist, it creates the dayData for that day from that user

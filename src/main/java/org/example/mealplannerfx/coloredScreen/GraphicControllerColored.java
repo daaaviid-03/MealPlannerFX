@@ -82,7 +82,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     }
     @Override
     public void stop(){
-        DBController.getDBControllerInstance().saveDataToDB();
+
     }
     @Override
     public void startView(){

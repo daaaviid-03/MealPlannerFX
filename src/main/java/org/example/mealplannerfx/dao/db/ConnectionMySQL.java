@@ -9,9 +9,6 @@ public class ConnectionMySQL {
     private Connection connection;
     private Statement statement;
     private static ConnectionMySQL connectionMySQLInstance;
-    public ConnectionMySQL(){
-        connectionMySQLInstance = this;
-    }
 
     public void startConnection(){
         try{
@@ -60,6 +57,10 @@ public class ConnectionMySQL {
     }
 
     public static ConnectionMySQL getConnectionMySQLInstance() {
+        if (connectionMySQLInstance == null){
+            connectionMySQLInstance = new ConnectionMySQL();
+            connectionMySQLInstance.startConnection();
+        }
         return connectionMySQLInstance;
     }
 }

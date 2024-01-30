@@ -1,16 +1,12 @@
 package org.example.mealplannerfx.coloredScreen;
 
-import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import org.example.mealplannerfx.control.WrongArgumentException;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Recipe;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -43,10 +39,10 @@ public abstract class ScreenColoredDefaultModelWithDayDataStats extends ScreenCo
         // It's the map of all ingredients in between that days that ar used in recipes, and a map of portions
         // of each ingredient.
         Map<String, Map<String, Float>> portionsOfIngredients = new HashMap<>();
-        for (DayData dayData : getDBController().getDaysData(fromDateLong, toDateLong)){
-            getIngredientsPorionsFromRecipe(dayData.getBreakfast(), portionsOfIngredients);
-            getIngredientsPorionsFromRecipe(dayData.getLunch(), portionsOfIngredients);
-            getIngredientsPorionsFromRecipe(dayData.getDinner(), portionsOfIngredients);
+        for (DayData dayData : getDBController().getDaysData(getGraphicCC().getThisUser().getNickname(), fromDateLong, toDateLong)){
+            getIngredientsPorionsFromRecipe(getDBController().getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
+            getIngredientsPorionsFromRecipe(getDBController().getRecipe(dayData.getLunchId()), portionsOfIngredients);
+            getIngredientsPorionsFromRecipe(getDBController().getRecipe(dayData.getDinnerId()), portionsOfIngredients);
         }
         return portionsOfIngredients;
     }

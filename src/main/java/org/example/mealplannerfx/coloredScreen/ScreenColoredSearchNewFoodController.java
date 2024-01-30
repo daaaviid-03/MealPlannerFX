@@ -11,6 +11,7 @@ import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.entity.User;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -76,17 +77,20 @@ public class ScreenColoredSearchNewFoodController extends ScreenColoredDefaultMo
 
     public void searchRecipes() {
         try {
-            String name = nameToSearch.toString();
+            String name = nameToSearch.getText();
             int duration = 0;
             if (!durationToSearch.getText().isEmpty()){
                 duration = DBDataBoundary.correctDuration(durationToSearch.getText());
             }
             List<Ingredient> ingredients = new ArrayList<>();
             DBDataBoundary.correctIngredients(getIngredientsList(), ingredients);
+            User thisUser = null;
+            if (onlyMinesCheckBox.isSelected()){
+                thisUser = getGraphicCC().getThisUser();
+            }
             List<Recipe> recipes = getDBController().getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,
-                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(),
-                    getGraphicCC().getThisUser(), onlyMinesCheckBox.isSelected());
+                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser, 10);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));
             errorText.setText("");
         } catch (WrongArgumentException e) {

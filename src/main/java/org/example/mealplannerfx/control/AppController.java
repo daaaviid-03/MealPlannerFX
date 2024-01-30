@@ -1,18 +1,29 @@
 package org.example.mealplannerfx.control;
 
 import org.example.mealplannerfx.bwScreen.GraphicControllerBW;
-import org.example.mealplannerfx.dao.db.DBJDBCController;
-import org.example.mealplannerfx.dao.fs.DBFileController;
+import org.example.mealplannerfx.dao.*;
+import org.example.mealplannerfx.dao.db.*;
+import org.example.mealplannerfx.dao.fs.*;
 import org.example.mealplannerfx.coloredScreen.GraphicControllerColored;
+import org.example.mealplannerfx.entity.DayData;
 
 public class AppController{
     private static AppController appControllerInstance;
-    private DBController dbController;
-    private GraphicController graphicController;
     private String actualDBMS;
     private String actualViewMS;
     private String nextDBMS;
     private String nextViewMS;
+
+    private DAODayData daoDayData;
+    private DAOIngredient daoIngredient;
+    private DAORecipe daoRecipe;
+    private DAORecipeMaxId daoRecipeMaxId;
+    private DAOUser daoUser;
+
+    private DBController dbController;
+
+    private GraphicController graphicController;
+
     public AppController(){
         appControllerInstance = this;
         GetGlobalSettings.loadGlobalSettings();
@@ -23,12 +34,21 @@ public class AppController{
     public void getDB(){
         switch (actualDBMS){
             case "DBMS (SQL)":
-                dbController = new DBJDBCController();
+                daoDayData = new DAODayDataDB();
+                daoIngredient = new DAOIngredientDB();
+                daoRecipe = new DAORecipeDB();
+                daoRecipeMaxId = new DAORecipeMaxIdDB();
+                daoUser = new DAOUserDB();
                 break;
             case "File System":
-                dbController = new DBFileController();
+                daoDayData = new DAODayDataFS();
+                daoIngredient = new DAOIngredientFS();
+                daoRecipe = new DAORecipeFS();
+                daoRecipeMaxId = new DAORecipeMaxIdFS();
+                daoUser = new DAOUserFS();
                 break;
         }
+        dbController = new DBController();
     }
     public void startView(){
         switch (actualViewMS){
@@ -70,5 +90,13 @@ public class AppController{
 
     public String getActualViewMS() {
         return actualViewMS;
+    }
+
+    public String getNextDBMS() {
+        return nextDBMS;
+    }
+
+    public String getNextViewMS() {
+        return nextViewMS;
     }
 }

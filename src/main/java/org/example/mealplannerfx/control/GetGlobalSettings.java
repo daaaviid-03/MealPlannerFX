@@ -10,8 +10,8 @@ public class GetGlobalSettings {
     private static final String DEFAULT_VIEW_SYSTEM = "Colored Screens";
     public static void saveGlobalSettings(){
         try {
-            String dBMS = AppController.getAppControllerInstance().getActualDBMS();
-            String viewMS = AppController.getAppControllerInstance().getActualViewMS();
+            String dBMS = AppController.getAppControllerInstance().getNextDBMS();
+            String viewMS = AppController.getAppControllerInstance().getNextViewMS();
             FileOutputStream thisFile = new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME);
             // Save the settings in a binary file
             ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(thisFile));
