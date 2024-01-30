@@ -144,7 +144,7 @@
             <Font size="33.0" />
          </font>
       </Button>
-      <VBox alignment="CENTER" layoutX="1425.0" layoutY="504.0" prefHeight="413.0" prefWidth="450.0" style="-fx-background-color: #ffeff2; -fx-border-width: 5px; -fx-border-color: #000000;">
+      <VBox alignment="CENTER" layoutX="1432.0" layoutY="504.0" prefHeight="510.0" prefWidth="450.0" style="-fx-background-color: #ffeff2; -fx-border-width: 5px; -fx-border-color: #000000;">
          <children>
             <Label text="GLOBAL SETTINGS:" underline="true">
                <font>
@@ -188,6 +188,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
+            <Button mnemonicParsing="false" onAction="#appODBIngredients" text="Append Original DB of Ingredients to the actual DBMS">
+               <VBox.margin>
+                  <Insets bottom="20.0" top="30.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#appODBUsers" text="Append Original DB of Users to the actual DBMS" />
             <Button mnemonicParsing="false" onAction="#deleteAccountButtonClicked" prefHeight="33.0" prefWidth="194.0" style="-fx-background-color: #e83b31;" text="Delete account" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />

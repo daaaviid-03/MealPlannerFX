@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import org.example.mealplannerfx.control.DBController;
 
-public abstract class ScreenColoredDefaultModel implements Initializable {
+public abstract class ScreenColoredDef implements Initializable {
     private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     private final DBController dBController = DBController.getDBControllerInstance();
     @FXML

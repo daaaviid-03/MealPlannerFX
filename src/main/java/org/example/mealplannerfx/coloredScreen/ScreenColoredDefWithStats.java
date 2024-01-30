@@ -3,14 +3,14 @@ package org.example.mealplannerfx.coloredScreen;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.DatePicker;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Recipe;
 
 import java.time.LocalDate;
 import java.util.*;
 
-public abstract class ScreenColoredDefaultModelWithDayDataStats extends ScreenColoredDefaultModel implements Initializable {
+public abstract class ScreenColoredDefWithStats extends ScreenColoredDef implements Initializable {
     @FXML
     private DatePicker fromDate;
     @FXML
@@ -34,7 +34,7 @@ public abstract class ScreenColoredDefaultModelWithDayDataStats extends ScreenCo
         long fromDateLong = fromDate.getValue().toEpochDay();
         long toDateLong = toDate.getValue().toEpochDay();
         if (fromDateLong > toDateLong){
-            throw new WrongArgumentException("The first date can't be after the second date.");
+            throw new WrongArgException("The first date can't be after the second date.");
         }
         // It's the map of all ingredients in between that days that ar used in recipes, and a map of portions
         // of each ingredient.

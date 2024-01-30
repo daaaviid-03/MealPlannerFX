@@ -6,7 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.entity.User;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 
 public class ScreenColoredLoginController {
     private DBController dBController = DBController.getDBControllerInstance();
@@ -26,7 +26,7 @@ public class ScreenColoredLoginController {
             User thisUser = dBController.getUserInfo(nick);
             graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
-        } catch (WrongArgumentException wrongArgument) {
+        } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());

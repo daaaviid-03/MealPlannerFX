@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.User;
 
 import java.net.URL;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredSearchNewFoodController extends ScreenColoredDefaultModelWithElements implements Initializable {
+public class ScreenColoredSearchController extends ScreenColoredDefWithElements implements Initializable {
     @FXML
     private CheckBox onlyMinesCheckBox;
     @FXML
@@ -93,7 +93,7 @@ public class ScreenColoredSearchNewFoodController extends ScreenColoredDefaultMo
                     allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser, 10);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));
             errorText.setText("");
-        } catch (WrongArgumentException e) {
+        } catch (WrongArgException e) {
             errorText.setText(e.getWrongArgumentDescription());
         }
     }

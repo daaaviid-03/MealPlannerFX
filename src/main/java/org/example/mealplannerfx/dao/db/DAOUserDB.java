@@ -1,46 +1,42 @@
 package org.example.mealplannerfx.dao.db;
 
-import org.example.mealplannerfx.dao.DAOIngredient;
 import org.example.mealplannerfx.dao.DAOUser;
-import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.User;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DAOUserDB extends DAOUser {
     /**
      * The connection to the server of the db
      */
-    private final ConnectionMySQL connectionMySQL = ConnectionMySQL.getConnectionMySQLInstance();
+    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
-    public List<User> getAllUsersAsRegex(String regex) {
-        List<User> users = new ArrayList<>();
+    public User getUser(String nick) {
         try {
-            String query = "SELECT * FROM UserT WHERE nickname RLIKE '" + regex + "';";
-            ResultSet resultSet = connectionMySQL.newQuery(query);
-            while (resultSet.next()){
-                String nick = resultSet.getString("nickname");
+            String query = "SELECT * FROM UserT WHERE nickname = '" + nick + "';";
+            ResultSet resultSet = connectionManager.newQuery(query);
+            if (resultSet.next()){
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("pass");
                 long birth = resultSet.getLong("birth");
                 float height = resultSet.getFloat("heightVal");
                 float weight = resultSet.getFloat("weightVal");
-                users.add(new User(nick, height, weight, birth, email, password));
+                connectionManager.endQuery(resultSet);
+                return new User(nick, height, weight, birth, email, password);
+            } else {
+                return null;
             }
-            connectionMySQL.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
-        return users;
     }
 
     @Override
-    public void saveUser(User user, boolean newUser) {
-        connectionMySQL.newQueryNoResult("INSERT INTO UserT (nickname, pass, email, heightVal, weightVal, birth) VALUES ('" +
+    public void saveUser(User user) {
+        connectionManager.newQueryNoResult("INSERT INTO UserT (nickname, pass, email, heightVal, weightVal, birth) VALUES ('" +
                 user.getNickname() + "', '" + user.getPassword() + "', '" + user.getEmail() + "', " +
                 user.getHeight() + ", " + user.getWeight() + ", " + user.getBirth() + ") ON DUPLICATE KEY UPDATE pass = '" +
                 user.getPassword() + "', email = '" + user.getEmail() + "', heightVal = " + user.getHeight() +
@@ -48,7 +44,14 @@ public class DAOUserDB extends DAOUser {
     }
 
     @Override
+    public void saveUsers(List<User> usersToSave) {
+        for (User user : usersToSave){
+            saveUser(user);
+        }
+    }
+
+    @Override
     public void deleteUser(String nick) {
-        connectionMySQL.newQueryNoResult("DELETE FROM UserT WHERE (nickname = '" + nick + "');");
+        connectionManager.newQueryNoResult("DELETE FROM UserT WHERE (nickname = '" + nick + "');");
     }
 }

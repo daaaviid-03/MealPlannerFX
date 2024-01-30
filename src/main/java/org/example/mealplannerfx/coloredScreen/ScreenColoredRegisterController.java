@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.example.mealplannerfx.control.DBController;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
@@ -46,7 +46,7 @@ public class ScreenColoredRegisterController {
             User thisUser = dBController.createUser(nick,correctRepPass,correctHeight, correctWeight, email, birth);
             graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
-        } catch (WrongArgumentException wrongArgument) {
+        } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());

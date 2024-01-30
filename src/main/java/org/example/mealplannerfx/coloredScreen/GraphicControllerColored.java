@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.GraphicController;
@@ -51,7 +50,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
         this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml"); // dayToExplore
         this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml"); // lastRecipeSelected
         this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml"); //
-        this.screensFXML.put("searchNewFood", "screen-colored-searchNewFood-view.fxml"); // lastRecipeSelected
+        this.screensFXML.put("searchNewFood", "screen-colored-search-view.fxml"); // lastRecipeSelected
         this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml"); //
         this.screensFXML.put("stats", "screen-colored-stats-view.fxml"); //
         this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml"); //
@@ -106,7 +105,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     public void startScreenColored(String screenName, String previousScreen){
         startScreenColored(screenName);
         if (previousScreen != null){
-            ((ScreenColoredDefaultModel)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
+            ((ScreenColoredDef)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
         }
     }
     public static GraphicControllerColored getGCCInstance(){

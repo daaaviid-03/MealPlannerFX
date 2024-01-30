@@ -6,7 +6,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import org.example.mealplannerfx.dao.DAODayData;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Recipe;
 
@@ -16,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ScreenColoredOneDayController extends ScreenColoredDefaultModel implements Initializable {
+public class ScreenColoredOneDayController extends ScreenColoredDef implements Initializable {
 
     @FXML
     private AnchorPane recipeViewerPlane;
@@ -51,7 +50,7 @@ public class ScreenColoredOneDayController extends ScreenColoredDefaultModel imp
             thisDayData.setMealByName(getGraphicCC().getMealNameOfLastSelected(), recipe);
             getGraphicCC().setLastRecipeSelected(null);
             getGraphicCC().setMealNameOfLastSelected(null);
-            getDBController().saveDayData(thisDayData, false);
+            getDBController().saveDayData(thisDayData);
         }
         setDayDataFromCalendar();
     }

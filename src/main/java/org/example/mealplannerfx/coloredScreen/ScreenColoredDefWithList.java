@@ -5,14 +5,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
-public abstract class ScreenColoredElementInListMaskController implements Initializable {
+public abstract class ScreenColoredDefWithList implements Initializable {
     @FXML
     private Label idNumberText;
-    private ScreenColoredDefaultModelWithElements controllerSup;
+    private ScreenColoredDefWithElements controllerSup;
     private int thisPosition;
     private VBox thisVBox;
 
-    public void setControllerSup(ScreenColoredDefaultModelWithElements controllerSup) {
+    public void setControllerSup(ScreenColoredDefWithElements controllerSup) {
         this.controllerSup = controllerSup;
     }
     public void setThisPosition(int thisPosition) {
@@ -31,7 +31,7 @@ public abstract class ScreenColoredElementInListMaskController implements Initia
         idNumberText.setText((this.thisPosition + 1) + ".");
     }
 
-    public ScreenColoredDefaultModelWithElements getControllerSup() {
+    public ScreenColoredDefWithElements getControllerSup() {
         return controllerSup;
     }
 

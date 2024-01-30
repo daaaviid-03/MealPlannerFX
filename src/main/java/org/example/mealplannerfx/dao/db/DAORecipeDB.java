@@ -1,9 +1,8 @@
 package org.example.mealplannerfx.dao.db;
 
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DAOIngredient;
 import org.example.mealplannerfx.dao.DAORecipe;
-import org.example.mealplannerfx.dao.DAORecipeMaxId;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
@@ -11,15 +10,13 @@ import org.example.mealplannerfx.entity.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DAORecipeDB extends DAORecipe {
     /**
      * The connection to the server of the db
      */
-    private final ConnectionMySQL connectionMySQL = ConnectionMySQL.getConnectionMySQLInstance();
+    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public Recipe getRecipe(Long id) {
@@ -29,11 +26,11 @@ public class DAORecipeDB extends DAORecipe {
         Recipe thisRecipe = null;
         try {
             String query = "SELECT * FROM Recipe WHERE recipeId = " + id + ";";
-            ResultSet resultSet = connectionMySQL.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query);
             if (resultSet.next()){
                 thisRecipe = getRecipeFromResultSet(resultSet);
             }
-            connectionMySQL.endQuery(resultSet);
+            connectionManager.endQuery(resultSet);
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
@@ -44,7 +41,7 @@ public class DAORecipeDB extends DAORecipe {
     public List<Recipe> getAllRecipesAs(String regexName, Integer duration, Boolean toBeGraterEqualDuration,
                                         Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
                                         Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser,
-                                        Integer numberOfElements) throws WrongArgumentException {
+                                        Integer numberOfElements) throws WrongArgException {
         String query = "SELECT recipeName FROM Recipe WHERE ((";
         if (thisUser != null){
             query += "ownerNickname = '" + thisUser.getNickname() + "') AND (";
@@ -85,16 +82,16 @@ public class DAORecipeDB extends DAORecipe {
         query += ")) ORDER BY recipeName;";
         List<Recipe> recipes = new ArrayList<>();
         try {
-            ResultSet resultSet = connectionMySQL.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query);
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 recipes.add(getRecipeFromResultSet(resultSet));
             }
-            connectionMySQL.endQuery(resultSet);
+            connectionManager.endQuery(resultSet);
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
         if (recipes.isEmpty()){
-            throw new WrongArgumentException("No recipe matches with that filters.");
+            throw new WrongArgException("No recipe matches with that filters.");
         }
         return recipes;
     }
@@ -104,7 +101,7 @@ public class DAORecipeDB extends DAORecipe {
         if (recipeId != null){
             deleteRecipe(recipeId);
         } else {
-            connectionMySQL.newQueryNoResult("DELETE FROM Recipe WHERE (ownerNickname = " + nick + ");");
+            connectionManager.newQueryNoResult("DELETE FROM Recipe WHERE (ownerNickname = " + nick + ");");
         }
     }
 
@@ -122,7 +119,7 @@ public class DAORecipeDB extends DAORecipe {
     private void loadIngredientsInRecipe(Recipe recipe) {
         try {
             String query = "SELECT * FROM IngredientInRecipe WHERE (recipeId = " + recipe.getId() + ");";
-            ResultSet resultIngredientInRecipe = connectionMySQL.newQuery(query);
+            ResultSet resultIngredientInRecipe = connectionManager.newQuery(query);
             List<Ingredient> ingredientList = new ArrayList<>();
             List<Float> ingredientsQuantityList = new ArrayList<>();
             List<String> ingredientsPortionsNamesList = new ArrayList<>();
@@ -134,7 +131,7 @@ public class DAORecipeDB extends DAORecipe {
                 ingredientsQuantityList.add(quantity);
                 ingredientsPortionsNamesList.add(portionName);
             }
-            connectionMySQL.endQuery(resultIngredientInRecipe);
+            connectionManager.endQuery(resultIngredientInRecipe);
             recipe.setIngredients(ingredientList);
             recipe.setIngredientsQuantity(ingredientsQuantityList);
             recipe.setIngredientsPortionsNames(ingredientsPortionsNamesList);
@@ -147,12 +144,12 @@ public class DAORecipeDB extends DAORecipe {
         List<String> stepsList = new ArrayList<>();
         try {
             String query = "SELECT stepDescription FROM StepsInRecipe WHERE (recipeId = " + recipeId + ") ORDER BY stepPosition ASC;";
-            ResultSet resultSteps = connectionMySQL.newQuery(query);
+            ResultSet resultSteps = connectionManager.newQuery(query);
             while (resultSteps.next()){
                 String step = resultSteps.getString("stepDescription");
                 stepsList.add(step);
             }
-            connectionMySQL.endQuery(resultSteps);
+            connectionManager.endQuery(resultSteps);
             return stepsList;
         } catch (Exception e){
             System.err.println(e.getMessage());
@@ -161,20 +158,20 @@ public class DAORecipeDB extends DAORecipe {
     }
 
     @Override
-    public void saveRecipe(Recipe recipe, boolean newRecipe) {
-        connectionMySQL.newQueryNoResult("INSERT INTO Recipe (recipeId, recipeName, descr, ownerNickname, duration) VALUES (" +
+    public void saveRecipe(Recipe recipe) {
+        connectionManager.newQueryNoResult("INSERT INTO Recipe (recipeId, recipeName, descr, ownerNickname, duration) VALUES (" +
                 recipe.getId() + ", '" + recipe.getName() + "', '" + recipe.getDescription() + "', '" +
                 recipe.getOwner() + "', " + recipe.getDuration() + ") ON DUPLICATE KEY UPDATE recipeName = '" +
                 recipe.getName() + "', descr = '" + recipe.getDescription() + "', duration = " + recipe.getDuration() + ";");
         for (int i = 0; i < recipe.getIngredients().size(); i++) {
-            connectionMySQL.newQueryNoResult("INSERT INTO IngredientInRecipe (recipeId, ingredientName, portionName, quantity) VALUES (" +
+            connectionManager.newQueryNoResult("INSERT INTO IngredientInRecipe (recipeId, ingredientName, portionName, quantity) VALUES (" +
                     recipe.getId() + ", '" + recipe.getIngredientInPos(i) + "', '" + recipe.getIngredientPortionNameInPos(i) + "', " +
                     recipe.getIngredientQuantityInPos(i) + ") ON DUPLICATE KEY UPDATE ingredientName = '" +
                     recipe.getIngredientInPos(i) + "', portionName = '" + recipe.getIngredientPortionNameInPos(i) +
                     "', quantity = " + recipe.getIngredientQuantityInPos(i) + ";");
         }
         for (int i = 0; i < recipe.getSteps().size(); i++) {
-            connectionMySQL.newQueryNoResult("INSERT INTO StepsInRecipe (recipeId, stepPosition, stepDescription) VALUES (" +
+            connectionManager.newQueryNoResult("INSERT INTO StepsInRecipe (recipeId, stepPosition, stepDescription) VALUES (" +
                     recipe.getId() + ", " + i + ", '" + recipe.getStepInPos(i) + "') ON DUPLICATE KEY UPDATE stepDescription = '" +
                     recipe.getStepInPos(i) + "';");
         }
@@ -182,6 +179,6 @@ public class DAORecipeDB extends DAORecipe {
 
     @Override
     public void deleteRecipe(Long recipeId) {
-        connectionMySQL.newQueryNoResult("DELETE FROM Recipe WHERE (recipeId = " + recipeId + ");");
+        connectionManager.newQueryNoResult("DELETE FROM Recipe WHERE (recipeId = " + recipeId + ");");
     }
 }

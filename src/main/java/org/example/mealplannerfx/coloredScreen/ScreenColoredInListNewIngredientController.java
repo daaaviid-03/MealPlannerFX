@@ -15,7 +15,7 @@ import java.util.EmptyStackException;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredZZNewIngredientMaskController extends ScreenColoredElementInListMaskController{
+public class ScreenColoredInListNewIngredientController extends ScreenColoredDefWithList {
     private static final int MAX_INGREDIENTS_IN_VIEW = 4;
     @FXML
     private TextField ingredientText;

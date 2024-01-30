@@ -4,10 +4,7 @@ import org.example.mealplannerfx.entity.Ingredient;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class DAOIngredient {
     private final static String INGREDIENTS_ORIGINAL_DB_TXT = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
@@ -46,15 +43,21 @@ public abstract class DAOIngredient {
     /**
      * Saves the ingredient in the binary file
      * @param ingredient the ingredient to save
-     * @param newIngredient whether is a new ingredient or have to override an existing one
      */
-    public abstract void saveIngredient(Ingredient ingredient, boolean newIngredient);
+    public abstract void saveIngredient(Ingredient ingredient);
+
+    /**
+     * Saves the list of ingredients in the binary file
+     * @param ingredientsToSave the list of ingredients to save
+     */
+    public abstract void saveIngredients(List<Ingredient> ingredientsToSave);
 
     /**
      * Load all the ingredients from the original DB (txt) into de binary file
      */
     public void loadIngredientsFromOriginalDB(){
         try {
+            List<Ingredient> ingredients = new ArrayList<>();
             BufferedReader in = new BufferedReader(new FileReader(INGREDIENTS_ORIGINAL_DB_TXT));
             String line;
             while((line = in.readLine()) != null){
@@ -64,11 +67,12 @@ public abstract class DAOIngredient {
                     portions.put(s[i], Float.valueOf(s[i + 1]));
                 }
                 Ingredient thisIngredient = new Ingredient(s[0], Float.parseFloat(s[1]), Float.parseFloat(s[2]), Float.parseFloat(s[3]), Float.parseFloat(s[4]), s[5], portions);
-                saveIngredient(thisIngredient, true);
+                ingredients.add(thisIngredient);
             }
             in.close();
+            saveIngredients(ingredients);
         } catch (Exception e) {
-            System.err.println("Original Ingredient's DB file not found.");
+            System.err.println("Can't load original Ingredient's DB file due to: " + e.getMessage());
         }
     }
 

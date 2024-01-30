@@ -3,18 +3,14 @@ package org.example.mealplannerfx.coloredScreen;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import org.example.mealplannerfx.control.WrongArgumentException;
-import org.example.mealplannerfx.entity.DayData;
-import org.example.mealplannerfx.entity.Recipe;
+import org.example.mealplannerfx.control.WrongArgException;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.*;
 
-public class ScreenColoredShoppingListController extends ScreenColoredDefaultModelWithDayDataStats implements Initializable {
+public class ScreenColoredShoppingListController extends ScreenColoredDefWithStats implements Initializable {
     @FXML
     private ListView<String> listOfIngredients;
     @FXML
@@ -39,7 +35,7 @@ public class ScreenColoredShoppingListController extends ScreenColoredDefaultMod
             }
             listOfIngredients.getItems().setAll(FXCollections.observableArrayList(shoppingList));
             errorText.setText("");
-        } catch (WrongArgumentException e){
+        } catch (WrongArgException e){
             errorText.setText(e.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());

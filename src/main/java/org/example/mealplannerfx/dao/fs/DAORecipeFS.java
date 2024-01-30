@@ -1,13 +1,11 @@
 package org.example.mealplannerfx.dao.fs;
 
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DAORecipe;
-import org.example.mealplannerfx.dao.DAORecipeMaxId;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 
-import java.io.*;
 import java.util.*;
 
 public class DAORecipeFS extends DAORecipe {
@@ -32,7 +30,7 @@ public class DAORecipeFS extends DAORecipe {
     public List<Recipe> getAllRecipesAs(String regexName, Integer duration, Boolean toBeGraterEqualDuration,
                                         Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
                                         Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser,
-                                        Integer numberOfElements) throws WrongArgumentException {
+                                        Integer numberOfElements) throws WrongArgException {
 
         List<Recipe> correctRecipes = fileRW.getAllObjectsAs(recipe -> {
             boolean isCandidateForIngredients = allFieldsInCommon;
@@ -67,7 +65,7 @@ public class DAORecipeFS extends DAORecipe {
         }, numberOfElements);
 
         if (correctRecipes.isEmpty()){
-            throw new WrongArgumentException("No recipe matches with that filters.");
+            throw new WrongArgException("No recipe matches with that filters.");
         }
         correctRecipes.sort(RECIPE_COMPARATOR);
         return correctRecipes;
@@ -79,7 +77,7 @@ public class DAORecipeFS extends DAORecipe {
     }
 
     @Override
-    public void saveRecipe(Recipe recipe, boolean newRecipe) {
+    public void saveRecipe(Recipe recipe) {
         fileRW.appendObjects(recipe);
     }
 

@@ -1,10 +1,8 @@
 package org.example.mealplannerfx.control;
 
 import org.example.mealplannerfx.dao.*;
-import org.example.mealplannerfx.dao.db.*;
 import org.example.mealplannerfx.dao.fs.*;
 import org.example.mealplannerfx.entity.User;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -43,50 +41,50 @@ class DBControllerTest {
         // Test check by nickname and password to success
         try {
             dbController.checkUserInDB("testUser1", "password1");
-        } catch (WrongArgumentException wrongArgumentException){
+        } catch (WrongArgException wrongArgException){
             fail();
         }
         try {
             dbController.checkUserInDB("testUser2", "password2");
-        } catch (WrongArgumentException wrongArgumentException){
+        } catch (WrongArgException wrongArgException){
             fail();
         }
         try {
             dbController.checkUserInDB("testUser3", "password3");
-        } catch (WrongArgumentException wrongArgumentException){
+        } catch (WrongArgException wrongArgException){
             fail();
         }
         // Test check by nickname and password to fail by password
         try {
             dbController.checkUserInDB("testUser1", "passwordWrong");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Incorrect password", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         try {
             dbController.checkUserInDB("testUser2", "passwordWrong");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Incorrect password", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         try {
             dbController.checkUserInDB("testUser3", "passwordWrong");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Incorrect password", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         // Test check by nickname and password to fail by nickname
         try {
             dbController.checkUserInDB("testUserN", "password1");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Nickname doesn't exists", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
         try {
             dbController.checkUserInDB("davbfdsb", "password2");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Nickname doesn't exists", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
         try {
             dbController.checkUserInDB("ASDFSDFSD", "BVdfBADFBD");
-        } catch (WrongArgumentException wrongArgumentException){
-            assertEquals("Nickname doesn't exists", wrongArgumentException.getWrongArgumentDescription());
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
     }
 

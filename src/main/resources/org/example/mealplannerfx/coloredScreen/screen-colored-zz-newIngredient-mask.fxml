@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredZZNewIngredientMaskController">
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredInListNewIngredientController">
     <HBox alignment="TOP_CENTER" maxHeight="-Infinity" prefWidth="600.0">
         <padding>
             <Insets bottom="5.0" />

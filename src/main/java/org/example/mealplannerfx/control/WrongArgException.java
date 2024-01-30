@@ -1,11 +1,11 @@
 package org.example.mealplannerfx.control;
 
-public class WrongArgumentException extends Exception{
+public class WrongArgException extends Exception{
     private String wrongArgumentDescription = "";
-    public WrongArgumentException(){
+    public WrongArgException(){
         setWrongArgumentDescription("Wrong argument");
     }
-    public WrongArgumentException(String argumentDescription){
+    public WrongArgException(String argumentDescription){
         setWrongArgumentDescription(argumentDescription);
     }
     public String getWrongArgumentDescription() {

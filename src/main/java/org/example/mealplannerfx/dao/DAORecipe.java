@@ -1,6 +1,6 @@
 package org.example.mealplannerfx.dao;
 
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DAORecipe {
-    private final static String RECIPE_ORIGINAL_DB_TXT = "fileData/originalDataToDB/recipesOriginalDB.txt";
     /**
      * The object that contains the instance of the singleton class
      */
@@ -43,7 +42,7 @@ public abstract class DAORecipe {
     public abstract List<Recipe> getAllRecipesAs(String regexName, Integer duration,
                                                  Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                                  List<Ingredient> ingredients, Boolean allOfThoseIngredients,
-                                                 Boolean allFieldsInCommon, User thisUser, Integer numberOfElements) throws WrongArgumentException;
+                                                 Boolean allFieldsInCommon, User thisUser, Integer numberOfElements) throws WrongArgException;
 
     /**
      * Obtain all the recipes in the file
@@ -53,7 +52,7 @@ public abstract class DAORecipe {
         try {
             return getAllRecipesAs(".*", null, null, null, null,
                     null, null, null, null);
-        } catch (WrongArgumentException wrongArgumentException){
+        } catch (WrongArgException wrongArgException){
             return new ArrayList<>();
         }
 
@@ -69,9 +68,8 @@ public abstract class DAORecipe {
     /**
      * Saves the recipe in the binary file
      * @param recipe the recipe to save
-     * @param newRecipe whether is a new recipe or have to override an existing one
      */
-    public abstract void saveRecipe(Recipe recipe, boolean newRecipe);
+    public abstract void saveRecipe(Recipe recipe);
 
     /**
      * Deletes the recipe from the DB
@@ -87,24 +85,6 @@ public abstract class DAORecipe {
     public long getNextRecipeId() {
         return DAORecipeMaxId.getDaoRecipeMaxIdInstance().getNextAndAddRecipeMaxId();
     }
-
-    /**
-     * Load all the recipes from the original DB (txt) into de binary file
-     */
-//    public void loadRecipesFromOriginalDB(){
-//        try {
-//            BufferedReader in = new BufferedReader(new FileReader(RECIPE_ORIGINAL_DB_TXT));
-//            String line;
-//            while((line = in.readLine()) != null){
-//                String[] s = line.split("\t");
-//                Recipe thisRecipe = new Recipe(s[0], Float.parseFloat(s[1]), Float.parseFloat(s[2]), Float.parseFloat(s[3]), Float.parseFloat(s[4]), s[5], portions);
-//                saveRecipe(thisRecipe, true);
-//            }
-//            in.close();
-//        } catch (Exception e) {
-//            System.err.println("Original Recipe's DB file not found.");
-//        }
-//    }
 
     public static DAORecipe getDaoRecipeInstance() {
         return daoRecipeInstance;

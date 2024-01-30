@@ -4,14 +4,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Ingredient;
 
 import java.net.URL;
 import java.util.*;
 
-public class ScreenColoredStatsController extends ScreenColoredDefaultModelWithDayDataStats implements Initializable {
+public class ScreenColoredStatsController extends ScreenColoredDefWithStats implements Initializable {
     @FXML
     private TextField numOfMeals;
     @FXML
@@ -50,7 +50,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefaultModelWithD
             protTot.setText(String.valueOf(protTotVal));
             fatTot.setText(String.valueOf(fatTotVal));
             errorText.setText("");
-        } catch (WrongArgumentException e){
+        } catch (WrongArgException e){
             errorText.setText(e.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());

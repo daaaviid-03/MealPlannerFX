@@ -4,7 +4,6 @@ import org.example.mealplannerfx.dao.DAOIngredient;
 import org.example.mealplannerfx.entity.Ingredient;
 
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,14 +13,14 @@ public class DAOIngredientDB extends DAOIngredient {
     /**
      * The connection to the server of the db
      */
-    private final ConnectionMySQL connectionMySQL = ConnectionMySQL.getConnectionMySQLInstance();
+    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements) {
         List<Ingredient> ingredients = new ArrayList<>();
         try {
             String query = "SELECT * FROM Ingredient WHERE ingredientName RLIKE '" + regex + "' ORDER BY ingredientName;";
-            ResultSet resultSet = connectionMySQL.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query);
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 String name = resultSet.getString("ingredientName");
                 float calories = resultSet.getFloat("calories");
@@ -33,7 +32,7 @@ public class DAOIngredientDB extends DAOIngredient {
                 Ingredient ingredient = new Ingredient(name,calories,carbohydrates,proteins,fats,category,portions);
                 ingredients.add(ingredient);
             }
-            connectionMySQL.endQuery(resultSet);
+            connectionManager.endQuery(resultSet);
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
@@ -41,9 +40,9 @@ public class DAOIngredientDB extends DAOIngredient {
     }
 
     @Override
-    public void saveIngredient(Ingredient ingredient, boolean newIngredient) {
+    public void saveIngredient(Ingredient ingredient) {
         // Save the tuple into the table
-        connectionMySQL.newQueryNoResult("INSERT INTO Ingredient (ingredientName, calories, carb, prot, fats, " +
+        connectionManager.newQueryNoResult("INSERT INTO Ingredient (ingredientName, calories, carb, prot, fats, " +
                 "category) VALUES ('" + ingredient.getName() + "', " + ingredient.getCalories() + ", " +
                 ingredient.getCarbohydrates() + ", " + ingredient.getProteins() + ", " + ingredient.getFats() +
                 ", '" + ingredient.getCategory() + "') ON DUPLICATE KEY UPDATE calories = " +
@@ -53,9 +52,16 @@ public class DAOIngredientDB extends DAOIngredient {
         // Save all the food portions into the table
         for (String portionName : ingredient.getFoodPortionsNamesList()){
             float portionInGrams = ingredient.getFoodPortionInGrams(portionName);
-            connectionMySQL.newQueryNoResult("INSERT INTO FoodPortions (ingredientName, portionName, quantity) " +
+            connectionManager.newQueryNoResult("INSERT INTO FoodPortions (ingredientName, portionName, quantity) " +
                     "VALUES ('" + ingredient.getName() + "', '" + portionName + "', " + portionInGrams +
                     ") ON DUPLICATE KEY UPDATE quantity = " + portionInGrams + ";");
+        }
+    }
+
+    @Override
+    public void saveIngredients(List<Ingredient> ingredientsToSave) {
+        for (Ingredient ingredient : ingredientsToSave){
+            saveIngredient(ingredient);
         }
     }
 
@@ -63,13 +69,13 @@ public class DAOIngredientDB extends DAOIngredient {
         Map<String, Float> portions = new HashMap<>();
         try {
             String query = "SELECT * FROM FoodPortions WHERE (ingredientName = '" + name + "');";
-            ResultSet resultSet = connectionMySQL.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query);
             while (resultSet.next()){
                 String portionName = resultSet.getString("portionName");
                 float quantity = resultSet.getFloat("quantity");
                 portions.put(portionName, quantity);
             }
-            connectionMySQL.endQuery(resultSet);
+            connectionManager.endQuery(resultSet);
         } catch (Exception e){
             System.err.println(e.getMessage());
         }

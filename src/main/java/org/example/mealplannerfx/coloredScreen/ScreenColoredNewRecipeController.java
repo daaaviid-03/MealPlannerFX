@@ -7,14 +7,14 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredNewRecipeController extends ScreenColoredDefaultModelWithElements implements Initializable {
+public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElements implements Initializable {
 
     @FXML
     private TextField durationText;
@@ -47,7 +47,7 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefaultModelW
             int duration = DBDataBoundary.correctDuration(durationText.getText());
             getDBController().createNewRecipeDB(name, desc, getGraphicCC().getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
             getGraphicCC().startScreenColored("mainMenu");
-        } catch (WrongArgumentException wrongArgument) {
+        } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredZZViewRecipeController implements Initializable {
+public class ScreenColoredViewRecipeController implements Initializable {
     @FXML
     private Label recipeName;
     @FXML

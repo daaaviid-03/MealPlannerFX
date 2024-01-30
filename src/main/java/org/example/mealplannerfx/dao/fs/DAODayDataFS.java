@@ -17,7 +17,7 @@ public class DAODayDataFS extends DAODayData {
     }
 
     @Override
-    public void saveDayData(DayData dayDataToSave, boolean newDayData) {
+    public void saveDayData(DayData dayDataToSave) {
         fileRW.appendObjectsWithout(dayDataToSave, dayData -> (dayData.getUserNickname().equals(dayDataToSave.getUserNickname()) &&
                     dayData.getDayNumber() == dayDataToSave.getDayNumber()));
     }

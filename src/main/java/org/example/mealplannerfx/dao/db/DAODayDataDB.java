@@ -8,13 +8,12 @@ import org.example.mealplannerfx.entity.Recipe;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DAODayDataDB extends DAODayData {
     /**
      * The connection to the server of the db
      */
-    private final ConnectionMySQL connectionMySQL = ConnectionMySQL.getConnectionMySQLInstance();
+    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public List<DayData> getDayDataFromUserBetween(String nick, long fromDate, long toDate) {
@@ -22,7 +21,7 @@ public class DAODayDataDB extends DAODayData {
         try {
             String query = "SELECT * FROM DayData WHERE (userNickname = '" + nick + "' AND " +
                     fromDate + " <= dayNumber <= " + toDate + ");";
-            ResultSet resultSet = connectionMySQL.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query);
             while (resultSet.next()){
                 long dayNumber = resultSet.getLong("dayNumber");
                 Long breakfastRecipeId = resultSet.getLong("breakfastRecipe");
@@ -42,7 +41,7 @@ public class DAODayDataDB extends DAODayData {
                 }
                 dayData.add(new DayData(nick, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe));
             }
-            connectionMySQL.endQuery(resultSet);
+            connectionManager.endQuery(resultSet);
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
@@ -50,8 +49,8 @@ public class DAODayDataDB extends DAODayData {
     }
 
     @Override
-    public void saveDayData(DayData dayData, boolean newDayData) {
-        connectionMySQL.newQueryNoResult("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
+    public void saveDayData(DayData dayData) {
+        connectionManager.newQueryNoResult("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
                 dayData.getUserNickname() + "', " + dayData.getDayNumber() + ", " + dayData.getBreakfastId() + ", " +
                 dayData.getLunchId() + ", " + dayData.getDinnerId() + ") ON DUPLICATE KEY UPDATE " +
                 "breakfastRecipe = " + dayData.getBreakfastId()+ ", lunchRecipe = " + dayData.getLunchId() +
@@ -64,6 +63,6 @@ public class DAODayDataDB extends DAODayData {
         if (dayDataNumber != null){
             query += " AND dayNumber = " + dayDataNumber;
         }
-        connectionMySQL.newQueryNoResult(query + ");");
+        connectionManager.newQueryNoResult(query + ");");
     }
 }

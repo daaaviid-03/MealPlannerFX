@@ -14,16 +14,6 @@ public class AppController{
     private String nextDBMS;
     private String nextViewMS;
 
-    private DAODayData daoDayData;
-    private DAOIngredient daoIngredient;
-    private DAORecipe daoRecipe;
-    private DAORecipeMaxId daoRecipeMaxId;
-    private DAOUser daoUser;
-
-    private DBController dbController;
-
-    private GraphicController graphicController;
-
     public AppController(){
         appControllerInstance = this;
         GetGlobalSettings.loadGlobalSettings();
@@ -34,32 +24,33 @@ public class AppController{
     public void getDB(){
         switch (actualDBMS){
             case "DBMS (SQL)":
-                daoDayData = new DAODayDataDB();
-                daoIngredient = new DAOIngredientDB();
-                daoRecipe = new DAORecipeDB();
-                daoRecipeMaxId = new DAORecipeMaxIdDB();
-                daoUser = new DAOUserDB();
+                DAODayData daoDayDataDB = new DAODayDataDB();
+                DAOIngredient daoIngredientDB = new DAOIngredientDB();
+                DAORecipe daoRecipeDB = new DAORecipeDB();
+                DAORecipeMaxId daoRecipeMaxIdDB = new DAORecipeMaxIdDB();
+                DAOUser daoUserDB = new DAOUserDB();
                 break;
             case "File System":
-                daoDayData = new DAODayDataFS();
-                daoIngredient = new DAOIngredientFS();
-                daoRecipe = new DAORecipeFS();
-                daoRecipeMaxId = new DAORecipeMaxIdFS();
-                daoUser = new DAOUserFS();
+                DAODayData daoDayDataFS = new DAODayDataFS();
+                DAOIngredient daoIngredientFS = new DAOIngredientFS();
+                DAORecipe daoRecipeFS = new DAORecipeFS();
+                DAORecipeMaxId daoRecipeMaxIdFS = new DAORecipeMaxIdFS();
+                DAOUser daoUserFS = new DAOUserFS();
                 break;
         }
-        dbController = new DBController();
+        DBController dbController = new DBController();
     }
     public void startView(){
-        switch (actualViewMS){
+        switch (actualViewMS) {
             case "Colored Screens":
-                graphicController = new GraphicControllerColored();
+                GraphicController graphicControllerColored = new GraphicControllerColored();
+                graphicControllerColored.startView();
                 break;
             case "B/W Screens":
-                graphicController = new GraphicControllerBW();
+                GraphicController graphicControllerBW = new GraphicControllerBW();
+                graphicControllerBW.startView();
                 break;
         }
-        graphicController.startView();
     }
 
     public static AppController getAppControllerInstance() {
@@ -80,7 +71,7 @@ public class AppController{
     }
 
     public void setNextViewMS(String viewMS) {
-        this.nextDBMS = viewMS;
+        this.nextViewMS = viewMS;
         GetGlobalSettings.saveGlobalSettings();
     }
 

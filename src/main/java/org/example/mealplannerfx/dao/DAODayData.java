@@ -12,7 +12,7 @@ public abstract class DAODayData {
     private static DAODayData daoDayDataInstance;
 
     /**
-     * Constructor in witch is assigned the instance of the singelton class
+     * Constructor in witch is assigned the instance of the singleton class
      */
     public DAODayData(){
         setDaoDayDataInstance(this);
@@ -30,9 +30,8 @@ public abstract class DAODayData {
     /**
      * Saves the dayData in the binary file
      * @param dayData the dayData to save
-     * @param newDayData whether is a new dayData or have to override an existing one
      */
-    public abstract void saveDayData(DayData dayData, boolean newDayData);
+    public abstract void saveDayData(DayData dayData);
 
     /**
      * Deletes all day data from an specific user
@@ -53,7 +52,7 @@ public abstract class DAODayData {
         } catch (Exception e){
             // If it doesn't exist, create and return the dayData
             DayData thisDayData = new DayData(nick, dayNumber);
-            saveDayData(thisDayData, true);
+            saveDayData(thisDayData);
             return thisDayData;
         }
     }

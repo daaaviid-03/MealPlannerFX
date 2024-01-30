@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class ScreenColoredZZNewStepMaskController extends ScreenColoredElementInListMaskController {
+public class ScreenColoredInListNewStepController extends ScreenColoredDefWithList {
     @FXML
     private TextField stepText;
     @Override

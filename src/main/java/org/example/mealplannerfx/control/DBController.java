@@ -39,14 +39,14 @@ public class DBController {
         return daoRecipe.getNextRecipeId();
     }
 
-    public void checkUserInDB(String nick, String pass) throws WrongArgumentException{
+    public void checkUserInDB(String nick, String pass) throws WrongArgException {
         User user = getUserInfo(nick);
         if(user != null){
             if(!user.getPassword().equals(pass)){
-                throw new WrongArgumentException("Incorrect password");
+                throw new WrongArgException("Incorrect password");
             }
         } else{
-            throw new WrongArgumentException("Nickname doesn't exists");
+            throw new WrongArgException("Nickname doesn't exists");
         }
     }
     public boolean checkUserInDB(String nick){
@@ -66,7 +66,7 @@ public class DBController {
                                   List<String> ingredientsPortionsNames){
         Recipe recipe = new Recipe(getNextRecipeId(), name, description, owner, steps, duration, ingredients,
                 ingredientsQuantity, ingredientsPortionsNames);
-        daoRecipe.saveRecipe(recipe, true);
+        daoRecipe.saveRecipe(recipe);
     }
     private String getRegexFromQuery(String query){
         String regexName = "";
@@ -81,11 +81,11 @@ public class DBController {
     public List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration,
                                            Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                            List<Ingredient> ingredients, Boolean allOfThoseIngredients,
-                                           Boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgumentException{
+                                           Boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
         List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(getRegexFromQuery(name), duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
                 allOfThoseIngredients, allFieldsInCommon, thisUser, numberOfElements);
         if (correctRecipes.isEmpty()){
-            throw new WrongArgumentException("No recipe matches with that filters.");
+            throw new WrongArgException("No recipe matches with that filters.");
         }
         return correctRecipes;
     }
@@ -115,7 +115,7 @@ public class DBController {
 
     public User createUser(String nick, String pas, float height, float weight, String email, long birth) {
         User newUser = new User(nick, height, weight, birth, email, pas);
-        daoUser.saveUser(newUser, true);
+        daoUser.saveUser(newUser);
         return newUser;
     }
 
@@ -126,11 +126,11 @@ public class DBController {
         user.setWeight(correctWeight);
         user.setEmail(email);
         user.setBirth(birth);
-        daoUser.saveUser(user, false);
+        daoUser.saveUser(user);
         return user;
     }
 
-    public void saveDayData(DayData thisDayData, boolean newDayData) {
-        daoDayData.saveDayData(thisDayData, newDayData);
+    public void saveDayData(DayData thisDayData) {
+        daoDayData.saveDayData(thisDayData);
     }
 }

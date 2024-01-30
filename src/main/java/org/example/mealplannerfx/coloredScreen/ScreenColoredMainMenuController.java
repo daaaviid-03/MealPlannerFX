@@ -12,7 +12,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class ScreenColoredMainMenuController extends ScreenColoredDefaultModel implements Initializable {
+public class ScreenColoredMainMenuController extends ScreenColoredDef implements Initializable {
     private Calendar toShowCalendar;
     @FXML
     private Label monthText;

@@ -1,10 +1,8 @@
 package org.example.mealplannerfx.dao.fs;
 
 import org.example.mealplannerfx.dao.DAOIngredient;
-import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Ingredient;
 
-import java.io.*;
 import java.util.*;
 
 public class DAOIngredientFS extends DAOIngredient {
@@ -24,8 +22,15 @@ public class DAOIngredientFS extends DAOIngredient {
         return ingredients;
     }
     @Override
-    public void saveIngredient(Ingredient ingredientToSave, boolean newIngredient){
+    public void saveIngredient(Ingredient ingredientToSave){
         fileRW.appendObjectsWithout(ingredientToSave, ingredient ->
                 (ingredient.getName().equals(ingredientToSave.getName())));
+    }
+
+    @Override
+    public void saveIngredients(List<Ingredient> ingredientsToSave){
+        fileRW.appendObjectsWithout(ingredientsToSave, ingredient ->
+                (ingredientsToSave.stream().anyMatch(ingredient1 ->
+                        (ingredient.getName().equals(ingredient1.getName())))));
     }
 }

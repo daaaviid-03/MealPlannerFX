@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredZZNewStepMaskController">
+<AnchorPane prefHeight="50.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredScreen.ScreenColoredInListNewStepController">
     <HBox fx:id="stepsDiv" alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="50.0" prefWidth="600.0">
         <children>
          <Label fx:id="idNumberText" alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="20.0" text="0.">

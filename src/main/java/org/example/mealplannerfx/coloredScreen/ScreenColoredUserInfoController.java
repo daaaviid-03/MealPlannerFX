@@ -7,7 +7,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.mealplannerfx.control.AppController;
 import org.example.mealplannerfx.control.GetGlobalSettings;
-import org.example.mealplannerfx.control.WrongArgumentException;
+import org.example.mealplannerfx.control.WrongArgException;
+import org.example.mealplannerfx.dao.DAOIngredient;
+import org.example.mealplannerfx.dao.DAOUser;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
@@ -15,7 +17,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.time.LocalDate;
 
-public class ScreenColoredUserInfoController extends ScreenColoredDefaultModel implements Initializable {
+public class ScreenColoredUserInfoController extends ScreenColoredDef implements Initializable {
     @FXML
     private ComboBox<String> dBMSComboBox;
     @FXML
@@ -69,17 +71,17 @@ public class ScreenColoredUserInfoController extends ScreenColoredDefaultModel i
                 if (passwordText.getText().isEmpty() && repeatPasswordText.getText().isEmpty()){
                     correctRepPass = thisUser.getPassword();
                 } else {
-                    throw new WrongArgumentException("You should write the old password to change it.");
+                    throw new WrongArgException("You should write the old password to change it.");
                 }
             } else if (thisUser.getPassword().equals(oldPasswordText.getText())){
                 correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
             } else {
-                throw new WrongArgumentException("Old password isn't correct.");
+                throw new WrongArgException("Old password isn't correct.");
             }
             User newUser = getDBController().modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
             getGraphicCC().setThisUser(newUser);
             returnScreen();
-        } catch (WrongArgumentException wrongArgument) {
+        } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());
@@ -104,5 +106,13 @@ public class ScreenColoredUserInfoController extends ScreenColoredDefaultModel i
                 errorText.setText("Can't DELETE this account.");
             }
         }
+    }
+
+    public void appODBIngredients(ActionEvent actionEvent) {
+        DAOIngredient.getDaoIngredientInstance().loadIngredientsFromOriginalDB();
+    }
+
+    public void appODBUsers(ActionEvent actionEvent) {
+        DAOUser.getDaoUserInstance().loadUsersFromOriginalDB();
     }
 }

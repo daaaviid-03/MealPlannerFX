@@ -11,6 +11,7 @@ module org.example.mealplannerfx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires mysql.connector.j;
 
     exports org.example.mealplannerfx.coloredScreen;
     opens org.example.mealplannerfx.coloredScreen to javafx.fxml;

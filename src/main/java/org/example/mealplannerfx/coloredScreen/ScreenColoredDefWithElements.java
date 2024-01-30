@@ -8,18 +8,18 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ScreenColoredDefaultModelWithElements extends ScreenColoredDefaultModel implements Initializable {
-    private List<ScreenColoredElementInListMaskController> ingredientsList = new ArrayList<ScreenColoredElementInListMaskController>();
-    private List<ScreenColoredElementInListMaskController> stepsList = new ArrayList<ScreenColoredElementInListMaskController>();
+public abstract class ScreenColoredDefWithElements extends ScreenColoredDef implements Initializable {
+    private List<ScreenColoredDefWithList> ingredientsList = new ArrayList<ScreenColoredDefWithList>();
+    private List<ScreenColoredDefWithList> stepsList = new ArrayList<ScreenColoredDefWithList>();
     private boolean ingredientsWithUnits = true;
-    private ScreenColoredElementInListMaskController createNewElementInListMask(int position, List<ScreenColoredElementInListMaskController> elementsInList, VBox elementsInVBox, String sourceFile, ScreenColoredDefaultModelWithElements thisClass){
+    private ScreenColoredDefWithList createNewElementInListMask(int position, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox, String sourceFile, ScreenColoredDefWithElements thisClass){
         try {
             // Load fxml
             FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(sourceFile));
             // Add element to list in the fxml
             elementsInVBox.getChildren().add(position, fxmlLoader.load());
             // Set super controller of element to this controller
-            ScreenColoredElementInListMaskController sceilmc = fxmlLoader.getController();
+            ScreenColoredDefWithList sceilmc = fxmlLoader.getController();
             sceilmc.setControllerSup(thisClass);
             sceilmc.setThisVBox(elementsInVBox);
             sceilmc.setThisPosition(position);
@@ -35,7 +35,7 @@ public abstract class ScreenColoredDefaultModelWithElements extends ScreenColore
         }
     }
 
-    private void deleteElementInListMask(int pos, List<ScreenColoredElementInListMaskController> elementsInList, VBox elementsInVBox){
+    private void deleteElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
         if (elementsInList.size() > 1) {
             try {
                 // Remove item from list
@@ -52,11 +52,11 @@ public abstract class ScreenColoredDefaultModelWithElements extends ScreenColore
         }
     }
 
-    private void upArrowElementInListMask(int pos, List<ScreenColoredElementInListMaskController> elementsInList, VBox elementsInVBox){
+    private void upArrowElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
         if (pos >= 1) {
             try {
                 // Change item from list
-                ScreenColoredElementInListMaskController elementUp = elementsInList.get(pos - 1);
+                ScreenColoredDefWithList elementUp = elementsInList.get(pos - 1);
                 elementsInList.remove(pos - 1);
                 elementsInList.add(pos, elementUp);
                 // Change indexes
@@ -72,11 +72,11 @@ public abstract class ScreenColoredDefaultModelWithElements extends ScreenColore
         }
     }
 
-    private void downArrowElementInListMask(int pos, List<ScreenColoredElementInListMaskController> elementsInList, VBox elementsInVBox){
+    private void downArrowElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
         if (pos < elementsInList.size() - 1) {
             try {
                 // Change item from list
-                ScreenColoredElementInListMaskController elementUp = elementsInList.get(pos);
+                ScreenColoredDefWithList elementUp = elementsInList.get(pos);
                 elementsInList.remove(pos);
                 elementsInList.add(pos + 1, elementUp);
                 // Change indexes
@@ -97,9 +97,9 @@ public abstract class ScreenColoredDefaultModelWithElements extends ScreenColore
     }
 
     public void addIngredient(int pos, VBox ingredientsVBox) {
-        ScreenColoredElementInListMaskController sceilmc = this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
+        ScreenColoredDefWithList sceilmc = this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
         if (!ingredientsWithUnits){
-            ScreenColoredZZNewIngredientMaskController sczznimc = (ScreenColoredZZNewIngredientMaskController) sceilmc;
+            ScreenColoredInListNewIngredientController sczznimc = (ScreenColoredInListNewIngredientController) sceilmc;
             sczznimc.deletePortions();
         }
     }
@@ -120,11 +120,11 @@ public abstract class ScreenColoredDefaultModelWithElements extends ScreenColore
         downArrowElementInListMask(pos, stepsList, stepsVBox);
     }
 
-    public List<ScreenColoredElementInListMaskController> getIngredientsList() {
+    public List<ScreenColoredDefWithList> getIngredientsList() {
         return ingredientsList;
     }
 
-    public List<ScreenColoredElementInListMaskController> getStepsList() {
+    public List<ScreenColoredDefWithList> getStepsList() {
         return stepsList;
     }
 
