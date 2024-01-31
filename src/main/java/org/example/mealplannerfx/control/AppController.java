@@ -1,9 +1,9 @@
 package org.example.mealplannerfx.control;
 
-import org.example.mealplannerfx.bwScreen.GraphicControllerBW;
+import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
 import org.example.mealplannerfx.dao.db.*;
 import org.example.mealplannerfx.dao.fs.*;
-import org.example.mealplannerfx.coloredScreen.GraphicControllerColored;
+import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
 
 public class AppController{
     private static AppController appControllerInstance;

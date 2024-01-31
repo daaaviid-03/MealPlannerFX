@@ -13,12 +13,12 @@ module org.example.mealplannerfx {
     requires java.sql;
     requires mysql.connector.j;
 
-    exports org.example.mealplannerfx.coloredScreen;
-    opens org.example.mealplannerfx.coloredScreen to javafx.fxml;
+    exports org.example.mealplannerfx.coloredscreen;
+    opens org.example.mealplannerfx.coloredscreen to javafx.fxml;
     exports org.example.mealplannerfx.control;
     opens org.example.mealplannerfx.control to javafx.fxml;
-    exports org.example.mealplannerfx.bwScreen;
-    opens org.example.mealplannerfx.bwScreen to javafx.fxml;
+    exports org.example.mealplannerfx.bwscreen;
+    opens org.example.mealplannerfx.bwscreen to javafx.fxml;
     exports org.example.mealplannerfx.dao;
     opens org.example.mealplannerfx.dao to javafx.fxml;
     opens org.example.mealplannerfx.entity to javafx.fxml;
