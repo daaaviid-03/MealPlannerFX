@@ -9,12 +9,9 @@ public class GetGlobalSettings {
     private static final String DEFAULT_DBMS_SYSTEM = "File System";
     private static final String DEFAULT_VIEW_SYSTEM = "Colored Screens";
     public static void saveGlobalSettings(){
-        try {
+        try (ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME)))) {
             String dBMS = AppController.getAppControllerInstance().getNextDBMS();
             String viewMS = AppController.getAppControllerInstance().getNextViewMS();
-            FileOutputStream thisFile = new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME);
-            // Save the settings in a binary file
-            ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(thisFile));
             if (dBMS != null){
                 stateFileObj.writeObject(dBMS);
             } else {
@@ -36,7 +33,6 @@ public class GetGlobalSettings {
         try (ObjectInputStream stateFileObj = new ObjectInputStream(new FileInputStream(GLOBAL_SETTINGS_FILE_NAME))) {
             String dBMS = (String) stateFileObj.readObject();
             String viewMS = (String) stateFileObj.readObject();
-            stateFileObj.close();
             AppController.getAppControllerInstance().setActualDBMS(dBMS);
             AppController.getAppControllerInstance().setActualViewMS(viewMS);
         } catch (Exception e) {
