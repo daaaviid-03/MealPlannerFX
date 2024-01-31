@@ -23,13 +23,28 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private static GraphicControllerColored graphicControllerColoredInstance;
     private final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
+    /**
+     * The anchorPane that surrounds the scene to be able to resize the screen
+     */
     private final AnchorPane anchorPaneResize = new AnchorPane();
     private Map<String, Object> namespace;
     private FXMLLoader thisFxmlLoader;
     // Objects of saved messages
+    /**
+     * Active user in the system
+     */
     private User thisUser;
+    /**
+     * Active day to explore in the system
+     */
     private long dayToExplore;
+    /**
+     * Last selected recipe from the screen of searching recipes to the one-day screen.
+     */
     private Recipe lastRecipeSelected;
+    /**
+     * The recipe to show, if there is any
+     */
     private Recipe recipeToShow;
     /**
      * Whether is breakfast, launch or dinner.
@@ -44,15 +59,15 @@ public class GraphicControllerColored extends Application implements GraphicCont
     @Override
     public void init(){
         setGraphicControllerColoredInstance(this);
-        this.screensFXML.put("login", "screen-colored-login-view.fxml"); // User
-        this.screensFXML.put("register", "screen-colored-register-view.fxml"); // User
-        this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml"); // dayToExplore
-        this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml"); // lastRecipeSelected
-        this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml"); //
-        this.screensFXML.put("searchNewFood", "screen-colored-search-view.fxml"); // lastRecipeSelected
-        this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml"); //
-        this.screensFXML.put("stats", "screen-colored-stats-view.fxml"); //
-        this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml"); //
+        this.screensFXML.put("login", "screen-colored-login-view.fxml");
+        this.screensFXML.put("register", "screen-colored-register-view.fxml");
+        this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
+        this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml");
+        this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml");
+        this.screensFXML.put("searchNewFood", "screen-colored-search-view.fxml");
+        this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml");
+        this.screensFXML.put("stats", "screen-colored-stats-view.fxml");
+        this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml");
     }
     @Override
     public void start(Stage stage) throws Exception {
@@ -78,14 +93,14 @@ public class GraphicControllerColored extends Application implements GraphicCont
         stage.show();
     }
     @Override
-    public void stop(){
-
-    }
-    @Override
     public void startView(){
         GraphicControllerColored.main(null);
     }
 
+    /**
+     * Starts a new screen in the stage
+     * @param screenName the key name of the screen
+     */
     public void startScreenColored(String screenName){
         thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
@@ -94,7 +109,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
+            //System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
     public void startScreenColored(String screenName, String previousScreen){

@@ -27,15 +27,13 @@ public class GetGlobalSettings {
                 stateFileObj.writeObject(DEFAULT_VIEW_SYSTEM);
                 AppController.getAppControllerInstance().setActualViewMS(DEFAULT_VIEW_SYSTEM);
             }
-            stateFileObj.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void loadGlobalSettings(){
-        try {
-            ObjectInputStream stateFileObj = new ObjectInputStream(new FileInputStream(GLOBAL_SETTINGS_FILE_NAME));
+        try (ObjectInputStream stateFileObj = new ObjectInputStream(new FileInputStream(GLOBAL_SETTINGS_FILE_NAME))) {
             String dBMS = (String) stateFileObj.readObject();
             String viewMS = (String) stateFileObj.readObject();
             stateFileObj.close();

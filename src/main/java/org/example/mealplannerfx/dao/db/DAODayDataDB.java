@@ -43,7 +43,7 @@ public class DAODayDataDB extends DAODayData {
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            throw new RuntimeException(e);
         }
         return dayData;
     }
