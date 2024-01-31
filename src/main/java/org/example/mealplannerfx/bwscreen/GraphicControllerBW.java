@@ -10,11 +10,11 @@ public class GraphicControllerBW extends Application implements GraphicControlle
 
     @Override
     public void startView(){
-
+        // The start view method
     }
 
     @Override
     public void start(Stage stage) throws Exception {
-
+        // The start method
     }
 }
