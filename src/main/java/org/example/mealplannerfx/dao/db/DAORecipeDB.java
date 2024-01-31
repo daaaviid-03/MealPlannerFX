@@ -31,7 +31,7 @@ public class DAORecipeDB extends DAORecipe {
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return null;
         }
         return thisRecipe;
     }
@@ -85,7 +85,7 @@ public class DAORecipeDB extends DAORecipe {
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return null;
         }
         if (recipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");

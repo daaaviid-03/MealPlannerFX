@@ -33,7 +33,7 @@ public class DAOIngredientDB extends DAOIngredient {
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return ingredients;
         }
         return ingredients;
     }
@@ -75,7 +75,7 @@ public class DAOIngredientDB extends DAOIngredient {
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return portions;
         }
         return portions;
     }

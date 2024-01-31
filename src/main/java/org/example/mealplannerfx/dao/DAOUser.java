@@ -67,7 +67,7 @@ public abstract class DAOUser {
             }
             saveUsers(users);
         } catch (Exception e) {
-            System.err.println("Can't load original User's DB file due to: " + e.getMessage());
+            // No action
         }
     }
 

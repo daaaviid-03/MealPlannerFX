@@ -68,7 +68,7 @@ public abstract class DAOIngredient {
             }
             saveIngredients(ingredients);
         } catch (Exception e) {
-            System.err.println("Can't load original Ingredient's DB file due to: " + e.getMessage());
+            // No action
         }
     }
 

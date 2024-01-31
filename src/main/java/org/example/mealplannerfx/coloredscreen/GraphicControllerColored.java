@@ -11,6 +11,7 @@ import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.GraphicController;
 
+import java.nio.file.NoSuchFileException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -108,7 +109,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            // No action
         }
     }
     public void startScreenColored(String screenName, String previousScreen){
