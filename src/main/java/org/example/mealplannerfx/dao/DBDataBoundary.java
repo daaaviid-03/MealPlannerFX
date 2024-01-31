@@ -21,7 +21,6 @@ public class DBDataBoundary {
     private final static int MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP = 600;
     private final static int MIN_NUMBER_OF_CHARS_IN_PASSWORD = 3;
     private final static int MAX_NUMBER_OF_CHARS_IN_PASSWORD = 60;
-    private final static String EMAIL_MATCH = "^[^@]+@[^@]+\\\\..+$";
     private final static int MAX_NUMBER_OF_YEARS_FOR_USER = 130;
     private final static float MIN_HEIGHT_IN_CM_FOR_USER = 20f;
     private final static float MAX_HEIGHT_IN_CM_FOR_USER = 300f;
@@ -55,8 +54,21 @@ public class DBDataBoundary {
         }
         return nickname;
     }
+    private static boolean isGoodEmail(String email){
+        int correctLevel = 0;
+        for (int i = 0; i < email.length(); i++){
+            if ((i > 0) && (correctLevel == 0) && (email.charAt(i) == '@')){
+                correctLevel = 1;
+            } else if ((i > 3) && (correctLevel == 1) && (email.charAt(i) == '.')) {
+                correctLevel = 2;
+            } else if ((i > 4) && (correctLevel == 2)) {
+                correctLevel = 3;
+            }
+        }
+        return correctLevel == 3;
+    }
     public static String correctEmailString(String email) throws WrongArgException {
-        if(!email.matches(EMAIL_MATCH)){
+        if(!isGoodEmail(email)){
             throw new WrongArgException("The email is incorrect, it should be like: examle@domain.com.");
         }
         return email;

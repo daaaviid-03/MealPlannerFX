@@ -52,9 +52,7 @@ public class FileRW <TypeClass> {
             maxLength = Integer.MAX_VALUE;
         }
         List<TypeClass> typeClasses = new ArrayList<>();
-        try {
-            FileInputStream fileInputStream = new FileInputStream(fileName);
-            ObjectInputStream fileStream = new ObjectInputStream(fileInputStream);
+        try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
                 try {
@@ -67,7 +65,6 @@ public class FileRW <TypeClass> {
                     fileEnded = true;
                 }
             }
-            fileStream.close();
         } catch (Exception e) {
             // The file doesn't exist
         }
@@ -81,9 +78,7 @@ public class FileRW <TypeClass> {
      */
     @SuppressWarnings("unchecked")
     public TypeClass getObjectAs(Predicate<TypeClass> toCertificate){
-        try {
-            FileInputStream fileInputStream = new FileInputStream(fileName);
-            ObjectInputStream fileStream = new ObjectInputStream(fileInputStream);
+        try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
                 try {
@@ -96,7 +91,6 @@ public class FileRW <TypeClass> {
                     fileEnded = true;
                 }
             }
-            fileStream.close();
         } catch (Exception e) {
             // The file doesn't exist
         }
@@ -108,13 +102,10 @@ public class FileRW <TypeClass> {
      * @param objectsList the list of objects to save
      */
     public void setAllObjects(List<TypeClass> objectsList){
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(fileName);
-            ObjectOutputStream fileOutStream = new ObjectOutputStream(new BufferedOutputStream(fileOutputStream));
+        try (ObjectOutputStream fileOutStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)))){
             for (TypeClass typeClass : objectsList){
                 fileOutStream.writeObject(typeClass);
             }
-            fileOutStream.close();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

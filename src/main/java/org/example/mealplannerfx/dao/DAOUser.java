@@ -59,9 +59,8 @@ public abstract class DAOUser {
      * Load all the users from the original DB (txt) into de binary file
      */
     public void loadUsersFromOriginalDB(){
-        try {
+        try (BufferedReader in = new BufferedReader(new FileReader(USER_ORIGINAL_DB_TXT))){
             List<User> users = new ArrayList<>();
-            BufferedReader in = new BufferedReader(new FileReader(USER_ORIGINAL_DB_TXT));
             String line;
             while((line = in.readLine()) != null){
                 String[] s = line.split("\t");

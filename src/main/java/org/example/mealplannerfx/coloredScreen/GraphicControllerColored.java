@@ -108,8 +108,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
             Parent parent = thisFxmlLoader.load();
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
-        } catch (Exception ignore){
-
+        } catch (Exception e){
+            return;
         }
     }
     public void startScreenColored(String screenName, String previousScreen){

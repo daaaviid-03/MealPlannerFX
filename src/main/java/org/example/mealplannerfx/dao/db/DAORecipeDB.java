@@ -24,9 +24,8 @@ public class DAORecipeDB extends DAORecipe {
             return null;
         }
         Recipe thisRecipe = null;
-        try {
-            String query = "SELECT * FROM Recipe WHERE recipeId = " + id + ";";
-            ResultSet resultSet = connectionManager.newQuery(query);
+        String query = "SELECT * FROM Recipe WHERE recipeId = " + id + ";";
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
             if (resultSet.next()){
                 thisRecipe = getRecipeFromResultSet(resultSet);
             }
@@ -80,8 +79,7 @@ public class DAORecipeDB extends DAORecipe {
         }
         query.append(")) ORDER BY recipeName;");
         List<Recipe> recipes = new ArrayList<>();
-        try {
-            ResultSet resultSet = connectionManager.newQuery(query.toString());
+        try (ResultSet resultSet = connectionManager.newQuery(query.toString())){
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 recipes.add(getRecipeFromResultSet(resultSet));
             }
@@ -116,9 +114,8 @@ public class DAORecipeDB extends DAORecipe {
         return thisRecipe;
     }
     private void loadIngredientsInRecipe(Recipe recipe) {
-        try {
-            String query = "SELECT * FROM IngredientInRecipe WHERE (recipeId = " + recipe.getId() + ");";
-            ResultSet resultIngredientInRecipe = connectionManager.newQuery(query);
+        String query = "SELECT * FROM IngredientInRecipe WHERE (recipeId = " + recipe.getId() + ");";
+        try (ResultSet resultIngredientInRecipe = connectionManager.newQuery(query)){
             List<Ingredient> ingredientList = new ArrayList<>();
             List<Float> ingredientsQuantityList = new ArrayList<>();
             List<String> ingredientsPortionsNamesList = new ArrayList<>();
@@ -141,9 +138,8 @@ public class DAORecipeDB extends DAORecipe {
 
     private List<String> getStepsFromRecipe(long recipeId) {
         List<String> stepsList = new ArrayList<>();
-        try {
-            String query = "SELECT stepDescription FROM StepsInRecipe WHERE (recipeId = " + recipeId + ") ORDER BY stepPosition ASC;";
-            ResultSet resultSteps = connectionManager.newQuery(query);
+        String query = "SELECT stepDescription FROM StepsInRecipe WHERE (recipeId = " + recipeId + ") ORDER BY stepPosition ASC;";
+        try (ResultSet resultSteps = connectionManager.newQuery(query)){
             while (resultSteps.next()){
                 String step = resultSteps.getString("stepDescription");
                 stepsList.add(step);

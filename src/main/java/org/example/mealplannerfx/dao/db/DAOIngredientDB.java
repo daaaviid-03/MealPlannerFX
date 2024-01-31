@@ -18,9 +18,8 @@ public class DAOIngredientDB extends DAOIngredient {
     @Override
     public List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements) {
         List<Ingredient> ingredients = new ArrayList<>();
-        try {
-            String query = "SELECT * FROM Ingredient WHERE ingredientName RLIKE '" + regex + "' ORDER BY ingredientName;";
-            ResultSet resultSet = connectionManager.newQuery(query);
+        String query = "SELECT * FROM Ingredient WHERE ingredientName RLIKE '" + regex + "' ORDER BY ingredientName;";
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 String name = resultSet.getString("ingredientName");
                 float calories = resultSet.getFloat("calories");
@@ -67,9 +66,8 @@ public class DAOIngredientDB extends DAOIngredient {
 
     private Map<String, Float> getPortionsFromIngredient(String name){
         Map<String, Float> portions = new HashMap<>();
-        try {
-            String query = "SELECT * FROM FoodPortions WHERE (ingredientName = '" + name + "');";
-            ResultSet resultSet = connectionManager.newQuery(query);
+        String query = "SELECT * FROM FoodPortions WHERE (ingredientName = '" + name + "');";
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
             while (resultSet.next()){
                 String portionName = resultSet.getString("portionName");
                 float quantity = resultSet.getFloat("quantity");

@@ -14,9 +14,8 @@ public class DAOUserDB extends DAOUser {
 
     @Override
     public User getUser(String nick) {
-        try {
-            String query = "SELECT * FROM UserT WHERE nickname = '" + nick + "';";
-            ResultSet resultSet = connectionManager.newQuery(query);
+        String query = "SELECT * FROM UserT WHERE nickname = '" + nick + "';";
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
             if (resultSet.next()){
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("pass");

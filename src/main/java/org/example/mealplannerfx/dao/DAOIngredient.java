@@ -56,9 +56,8 @@ public abstract class DAOIngredient {
      * Load all the ingredients from the original DB (txt) into de binary file
      */
     public void loadIngredientsFromOriginalDB(){
-        try {
+        try (BufferedReader in = new BufferedReader(new FileReader(INGREDIENTS_ORIGINAL_DB_TXT))){
             List<Ingredient> ingredients = new ArrayList<>();
-            BufferedReader in = new BufferedReader(new FileReader(INGREDIENTS_ORIGINAL_DB_TXT));
             String line;
             while((line = in.readLine()) != null){
                 Map<String, Float> portions = new HashMap<>();
