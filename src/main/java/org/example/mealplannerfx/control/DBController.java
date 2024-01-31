@@ -44,9 +44,9 @@ public class DBController {
     public static List<DayData> getDaysData(String nick, long fromDate, long toDate){
         return daoDayData.getDayDataFromUserBetween(nick, fromDate, toDate);
     }
-    public static void deleteRecipeFromDB(Recipe recipe){
-        daoRecipe.deleteRecipe(recipe.getId());
-    }
+//    public static void deleteRecipeFromDB(Recipe recipe){
+//        daoRecipe.deleteRecipe(recipe.getId());
+//    }
     public static void createNewRecipeDB(String name, String description, String owner, List<String> steps, int duration,
                                   List<Ingredient> ingredients, List<Float> ingredientsQuantity,
                                   List<String> ingredientsPortionsNames){
@@ -55,11 +55,11 @@ public class DBController {
         daoRecipe.saveRecipe(recipe);
     }
     private static String getRegexFromQuery(String query){
-        String regexName = "";
+        StringBuilder regexName = new StringBuilder();
         if (query != null && !query.isEmpty()){
-            regexName += "(?i)^";
+            regexName.append("(?i)^");
             for (String namePartial : query.split(" ")){
-                regexName += "(?=.*" + namePartial + ")";
+                regexName.append("(?=.*").append(namePartial).append(")");
             }
         }
         return regexName + ".*";
@@ -68,7 +68,11 @@ public class DBController {
                                            Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                            List<Ingredient> ingredients, Boolean allOfThoseIngredients,
                                            Boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
-        List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(getRegexFromQuery(name), duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
+        String nameRegex = "^(?i)" + name + "$";
+        if (!exactSameName){
+            nameRegex = getRegexFromQuery(name);
+        }
+        List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(nameRegex, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
                 allOfThoseIngredients, allFieldsInCommon, thisUser, numberOfElements);
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
