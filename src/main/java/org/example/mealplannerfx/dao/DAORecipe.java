@@ -41,7 +41,7 @@ public abstract class DAORecipe {
     public abstract List<Recipe> getAllRecipesAs(String regexName, Integer duration,
                                                  Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                                  List<Ingredient> ingredients, Boolean allOfThoseIngredients,
-                                                 Boolean allFieldsInCommon, User thisUser, Integer numberOfElements) throws WrongArgException;
+                                                 Boolean allFieldsInCommon, User thisUser) throws WrongArgException;
 
     /**
      * Obtain all the recipes in the file
@@ -50,7 +50,7 @@ public abstract class DAORecipe {
     public List<Recipe> getAllRecipes(){
         try {
             return getAllRecipesAs(".*", null, null, null, null,
-                    null, null, null, null);
+                    null, null, null);
         } catch (WrongArgException wrongArgException){
             return new ArrayList<>();
         }

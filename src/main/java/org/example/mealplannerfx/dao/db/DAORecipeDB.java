@@ -39,8 +39,7 @@ public class DAORecipeDB extends DAORecipe {
     @Override
     public List<Recipe> getAllRecipesAs(String regexName, Integer duration, Boolean toBeGraterEqualDuration,
                                         Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                        Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser,
-                                        Integer numberOfElements) throws WrongArgException {
+                                        Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser) throws WrongArgException {
         StringBuilder query = new StringBuilder("SELECT recipeName FROM Recipe WHERE ((");
         if (thisUser != null){
             query.append("ownerNickname = '").append(thisUser.getNickname()).append("') AND (");
@@ -80,12 +79,12 @@ public class DAORecipeDB extends DAORecipe {
         query.append(")) ORDER BY recipeName;");
         List<Recipe> recipes = new ArrayList<>();
         try (ResultSet resultSet = connectionManager.newQuery(query.toString())){
-            while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
+            while (resultSet.next()){
                 recipes.add(getRecipeFromResultSet(resultSet));
             }
             connectionManager.endQuery(resultSet);
         } catch (Exception e){
-            return null;
+            return recipes;
         }
         if (recipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");

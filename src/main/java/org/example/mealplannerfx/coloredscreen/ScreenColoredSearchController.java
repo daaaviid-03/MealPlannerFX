@@ -89,7 +89,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
             }
             List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,
-                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser, 10);
+                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));
             errorText.setText("");
         } catch (WrongArgException e) {

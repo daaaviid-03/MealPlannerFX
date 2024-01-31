@@ -67,13 +67,13 @@ public class DBController {
     public static List<Recipe> getRecipesSortedBy(String name, boolean exactSameName, Integer duration,
                                            boolean toBeGraterEqualDuration, boolean toBeLowerEqualDuration,
                                            List<Ingredient> ingredients, boolean allOfThoseIngredients,
-                                                  boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
+                                                  boolean allFieldsInCommon, User thisUser) throws WrongArgException {
         String nameRegex = "^(?i)" + name + "$";
         if (!exactSameName){
             nameRegex = getRegexFromQuery(name);
         }
         List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(nameRegex, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
-                allOfThoseIngredients, allFieldsInCommon, thisUser, numberOfElements);
+                allOfThoseIngredients, allFieldsInCommon, thisUser);
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
         }

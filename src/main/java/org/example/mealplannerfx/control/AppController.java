@@ -10,10 +10,7 @@ public class AppController{
     private String nextDBMS;
     private String nextViewMS;
 
-    private AppController(){
-        GetGlobalSettings.loadGlobalSettings();
-        startView();
-    }
+    private AppController(){}
 
     public void startView(){
         if (actualViewMS.equals("B/W Screens")) {
@@ -28,6 +25,7 @@ public class AppController{
     public static AppController getAppControllerInstance() {
         if (appControllerInstance == null){
             appControllerInstance = new AppController();
+            GetGlobalSettings.loadGlobalSettings();
         }
         return appControllerInstance;
     }

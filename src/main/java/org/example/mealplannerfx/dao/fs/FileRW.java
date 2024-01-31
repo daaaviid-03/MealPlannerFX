@@ -28,7 +28,7 @@ public class FileRW <T> {
      * @return list of all objects of type T from the file
      */
     public List<T> getAllObjects(){
-        return getAllObjectsAs(T -> (true));
+        return getAllObjectsAs(t -> (true));
     }
 
     /**
@@ -126,7 +126,7 @@ public class FileRW <T> {
      * @param toCertificate the lambda function of the objects to delete
      */
     public void deleteObjects(Predicate<T> toCertificate){
-        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
+        List<T> allObjects = getAllObjectsAs(t -> (!toCertificate.test(t)));
         setAllObjects(allObjects);
     }
 
@@ -136,7 +136,7 @@ public class FileRW <T> {
      * @param toCertificate the lambda function of the objects to delete
      */
     public void appendObjectsWithout(List<T> objectsList, Predicate<T> toCertificate){
-        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
+        List<T> allObjects = getAllObjectsAs(t -> (!toCertificate.test(t)));
         allObjects.addAll(objectsList);
         setAllObjects(allObjects);
     }
@@ -146,7 +146,7 @@ public class FileRW <T> {
      * @param toCertificate the lambda function of the objects to delete
      */
     public void appendObjectsWithout(T object, Predicate<T> toCertificate){
-        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
+        List<T> allObjects = getAllObjectsAs(t -> (!toCertificate.test(t)));
         allObjects.add(object);
         setAllObjects(allObjects);
     }

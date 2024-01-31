@@ -22,8 +22,7 @@ public class DAORecipeFS extends DAORecipe {
     @Override
     public List<Recipe> getAllRecipesAs(String regexName, Integer duration, Boolean toBeGraterEqualDuration,
                                         Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                        Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser,
-                                        Integer numberOfElements) throws WrongArgException {
+                                        Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser) throws WrongArgException {
 
         List<Recipe> correctRecipes = fileRW.getAllObjectsAs(recipe -> {
             boolean isCandidateForIngredients = allFieldsInCommon;
@@ -55,7 +54,7 @@ public class DAORecipeFS extends DAORecipe {
             return (isCandidateForUser && ((allFieldsInCommon && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
                         (!allFieldsInCommon && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
 
-        }, numberOfElements);
+        });
 
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
