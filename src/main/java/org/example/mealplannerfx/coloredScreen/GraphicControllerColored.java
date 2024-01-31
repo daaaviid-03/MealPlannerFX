@@ -59,7 +59,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     @Override
     public void init(){
         setGraphicControllerColoredInstance(this);
-        this.screensFXML.put("login", "screen-colored-login-view.fxml");
+        this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-colored-login-view.fxml");
         this.screensFXML.put("register", "screen-colored-register-view.fxml");
         this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
         this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml");
@@ -108,9 +108,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
             Parent parent = thisFxmlLoader.load();
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
-        } catch (Exception e){
-            //System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
-            throw new RuntimeException(e);
+        } catch (Exception ignore){
+
         }
     }
     public void startScreenColored(String screenName, String previousScreen){

@@ -8,7 +8,7 @@ import java.sql.*;
 public class ConnectionManager {
     private final static String URL_RUTE = "jdbc:mysql://localhost:3306/mealplannerschema";
     private final static String USER_NAME = "root";
-    private final static String PASSWORD = "Password1234";
+    private final static String PASSWORD = System.getenv("PASSWORD");
     private Connection connection;
     private Statement statement;
     private static ConnectionManager connectionManagerInstance;

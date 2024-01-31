@@ -21,7 +21,7 @@ public class DBDataBoundary {
     private final static int MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP = 600;
     private final static int MIN_NUMBER_OF_CHARS_IN_PASSWORD = 3;
     private final static int MAX_NUMBER_OF_CHARS_IN_PASSWORD = 60;
-    private final static String EMAIL_MATCH = ".*@.*[.].*";
+    private final static String EMAIL_MATCH = "^[^@]+@[^@]+\\\\..+$";
     private final static int MAX_NUMBER_OF_YEARS_FOR_USER = 130;
     private final static float MIN_HEIGHT_IN_CM_FOR_USER = 20f;
     private final static float MAX_HEIGHT_IN_CM_FOR_USER = 300f;
