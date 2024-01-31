@@ -25,7 +25,6 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
     private ComboBox<String> unitComboBox;
     @FXML
     private TextField quantityBoxTextIngredient;
-    private final DBController dBController = DBController.getDBControllerInstance();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hideListOfElements();
@@ -57,7 +56,7 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
     }
 
     public void showFilteredElements(String newValue) {
-        List<Ingredient> foundedElements = dBController.getListOfAllIngredientsByName(newValue, null);
+        List<Ingredient> foundedElements = DBController.getListOfAllIngredientsByName(newValue, null);
         boolean toShowElements = !(foundedElements.size() == 1 && foundedElements.getFirst().getName().equals(ingredientText.getText()));
         ingredientListText.setVisible(toShowElements);
         if (!ingredientListText.isVisible()){
@@ -74,7 +73,7 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
     private void selectedElement(String newValue){
         ingredientText.setText(newValue);
         try {
-            unitComboBox.setItems(FXCollections.observableArrayList(dBController.getIngredientPortionsNames(newValue)));
+            unitComboBox.setItems(FXCollections.observableArrayList(DBController.getIngredientPortionsNames(newValue)));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

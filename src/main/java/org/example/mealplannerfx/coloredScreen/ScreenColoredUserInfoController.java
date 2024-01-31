@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.GetGlobalSettings;
 import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DAOIngredient;
@@ -78,7 +79,7 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
             } else {
                 throw new WrongArgException("Old password isn't correct.");
             }
-            User newUser = getDBController().modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
+            User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
             getGraphicCC().setThisUser(newUser);
             returnScreen();
         } catch (WrongArgException wrongArgument) {
@@ -99,7 +100,7 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
         if (showConfirmationScreen("DELETE this account forever. (This action can't be undone)",
                 "Cancel", "DELETE ACCOUNT")){
             try {
-                getDBController().deleteUserFromDB(thisUser.getNickname());
+                DBController.deleteUserFromDB(thisUser.getNickname());
                 getGraphicCC().setThisUser(null);
                 getGraphicCC().startScreenColored("login");
             } catch (Exception e) {

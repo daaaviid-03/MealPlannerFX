@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.entity.DayData;
 
 import java.net.URL;
@@ -72,7 +73,7 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
     }
 
     private void setDayDataOfCalendar(int i, int j, int actualDay, long epochFirstDayMonth){
-        DayData dayData = getDBController().getSpecificDayData(getGraphicCC().getThisUser().getNickname(),
+        DayData dayData = DBController.getSpecificDayData(getGraphicCC().getThisUser().getNickname(),
                 epochFirstDayMonth + actualDay - 1);
         Button breakfast = (Button)getGraphicCC().searchForObjInScene("DayButton_Breakfast_" + i + "_" + j);
         Button launch = (Button)getGraphicCC().searchForObjInScene("DayButton_Launch_" + i + "_" + j);
@@ -81,19 +82,19 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
             breakfast.setVisible(false);
         } else {
             breakfast.setVisible(true);
-            breakfast.setText(getDBController().getRecipe(dayData.getBreakfastId()).getName());
+            breakfast.setText(DBController.getRecipe(dayData.getBreakfastId()).getName());
         }
         if (dayData == null || dayData.getLunchId() == null) {
             launch.setVisible(false);
         } else {
             launch.setVisible(true);
-            launch.setText(getDBController().getRecipe(dayData.getLunchId()).getName());
+            launch.setText(DBController.getRecipe(dayData.getLunchId()).getName());
         }
         if (dayData == null || dayData.getDinnerId() == null) {
             dinner.setVisible(false);
         } else {
             dinner.setVisible(true);
-            dinner.setText(getDBController().getRecipe(dayData.getDinnerId()).getName());
+            dinner.setText(DBController.getRecipe(dayData.getDinnerId()).getName());
         }
     }
 

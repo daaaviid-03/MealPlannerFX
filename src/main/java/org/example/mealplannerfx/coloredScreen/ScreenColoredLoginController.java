@@ -9,7 +9,6 @@ import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.WrongArgException;
 
 public class ScreenColoredLoginController {
-    private DBController dBController = DBController.getDBControllerInstance();
     private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
     private Label errorText;
@@ -22,8 +21,8 @@ public class ScreenColoredLoginController {
         String nick = nicknameText.getText();
         String pass = passwordText.getText();
         try {
-            dBController.checkUserInDB(nick, pass);
-            User thisUser = dBController.getUserInfo(nick);
+            DBController.checkUserInDB(nick, pass);
+            User thisUser = DBController.getUserInfo(nick);
             graphicCC.setThisUser(thisUser);
             graphicCC.startScreenColored("mainMenu");
         } catch (WrongArgException wrongArgument) {

@@ -16,73 +16,70 @@ class DBControllerTest {
         DAORecipe daoRecipe = new DAORecipeFS();
         DAORecipeMaxId daoRecipeMaxId = new DAORecipeMaxIdFS();
         DAOUser daoUser = new DAOUserFS();
-        DBController dbController = new DBController();
 
-        dbController.createUser("testUser1", "password1", 180, 70,
+        DBController.createUser("testUser1", "password1", 180, 70,
                 "example@gmail.com", 12345);
-        dbController.createUser("testUser2", "password2", 180, 70,
+        DBController.createUser("testUser2", "password2", 180, 70,
                 "example@gmail.com", 12345);
-        dbController.createUser("testUser3", "password3", 180, 70,
+        DBController.createUser("testUser3", "password3", 180, 70,
                 "example@gmail.com", 12345);
     }
 
     @Test
     void checkUserInDB() {
-        // Obtain the DBController instance
-        DBController dbController = DBController.getDBControllerInstance();
         // Test check by nickname to success
-        assertTrue(dbController.checkUserInDB("testUser1"));
-        assertTrue(dbController.checkUserInDB("testUser2"));
-        assertTrue(dbController.checkUserInDB("testUser3"));
+        assertTrue(DBController.checkUserInDB("testUser1"));
+        assertTrue(DBController.checkUserInDB("testUser2"));
+        assertTrue(DBController.checkUserInDB("testUser3"));
         // Test check by nickname to fail
-        assertFalse(dbController.checkUserInDB("testUserNosvds"));
-        assertFalse(dbController.checkUserInDB("sDFsdsS"));
-        assertFalse(dbController.checkUserInDB("sdfSDFSdfa"));
+        assertFalse(DBController.checkUserInDB("testUserNosvds"));
+        assertFalse(DBController.checkUserInDB("sDFsdsS"));
+        assertFalse(DBController.checkUserInDB("sdfSDFSdfa"));
         // Test check by nickname and password to success
         try {
-            dbController.checkUserInDB("testUser1", "password1");
+            DBController.checkUserInDB("testUser1", "password1");
         } catch (WrongArgException wrongArgException){
             fail();
         }
         try {
-            dbController.checkUserInDB("testUser2", "password2");
+            DBController.checkUserInDB("testUser2", "password2");
         } catch (WrongArgException wrongArgException){
             fail();
         }
         try {
-            dbController.checkUserInDB("testUser3", "password3");
+            DBController.checkUserInDB("testUser3", "password3");
         } catch (WrongArgException wrongArgException){
             fail();
         }
         // Test check by nickname and password to fail by password
         try {
-            dbController.checkUserInDB("testUser1", "passwordWrong");
+            DBController.checkUserInDB("testUser1", "passwordWrong");
         } catch (WrongArgException wrongArgException){
             assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         try {
-            dbController.checkUserInDB("testUser2", "passwordWrong");
+            DBController.checkUserInDB("testUser2", "passwordWrong");
         } catch (WrongArgException wrongArgException){
             assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         try {
-            dbController.checkUserInDB("testUser3", "passwordWrong");
+            DBController.checkUserInDB("testUser3", "passwordWrong");
         } catch (WrongArgException wrongArgException){
             assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
         }
         // Test check by nickname and password to fail by nickname
         try {
-            dbController.checkUserInDB("testUserN", "password1");
+            DBController.checkUserInDB("testUserN", "password1");
         } catch (WrongArgException wrongArgException){
             assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
         try {
-            dbController.checkUserInDB("davbfdsb", "password2");
+            DBController.checkUserInDB("davbfdsb", "password2");
         } catch (WrongArgException wrongArgException){
             assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
         try {
-            dbController.checkUserInDB("ASDFSDFSD", "BVdfBADFBD");
+            DBController.checkUserInDB("ASDFSDFSD", "BVdfBADFBD");
         } catch (WrongArgException wrongArgException){
             assertEquals("Nickname doesn't exists", wrongArgException.getWrongArgumentDescription());
         }
@@ -90,10 +87,8 @@ class DBControllerTest {
 
     @Test
     void getUserInfo() {
-        // Obtain the DBController instance
-        DBController dbController = DBController.getDBControllerInstance();
         // Test get the users objects
-        User user1 = dbController.getUserInfo("testUser1");
+        User user1 = DBController.getUserInfo("testUser1");
         assertEquals(user1.getNickname(), "testUser1");
         assertEquals(user1.getPassword(), "password1");
         assertEquals(user1.getBirth(), 12345);
@@ -101,7 +96,7 @@ class DBControllerTest {
         assertEquals(user1.getWeight(), 70);
         assertEquals(user1.getHeight(), 180);
 
-        User user2 = dbController.getUserInfo("testUser2");
+        User user2 = DBController.getUserInfo("testUser2");
         assertEquals(user2.getNickname(), "testUser2");
         assertEquals(user2.getPassword(), "password2");
         assertEquals(user2.getBirth(), 12345);
@@ -109,7 +104,7 @@ class DBControllerTest {
         assertEquals(user2.getWeight(), 70);
         assertEquals(user2.getHeight(), 180);
 
-        User user3 = dbController.getUserInfo("testUser3");
+        User user3 = DBController.getUserInfo("testUser3");
         assertEquals(user3.getNickname(), "testUser3");
         assertEquals(user3.getPassword(), "password3");
         assertEquals(user3.getBirth(), 12345);
@@ -121,15 +116,13 @@ class DBControllerTest {
 
     @Test
     void deleteUserFromDB() {
-        // Obtain the DBController instance
-        DBController dbController = DBController.getDBControllerInstance();
         // Deletes the 3 users
-        dbController.deleteUserFromDB("testUser1");
-        dbController.deleteUserFromDB("testUser2");
-        dbController.deleteUserFromDB("testUser3");
+        DBController.deleteUserFromDB("testUser1");
+        DBController.deleteUserFromDB("testUser2");
+        DBController.deleteUserFromDB("testUser3");
         // Checks that are not in the db
-        assertFalse(dbController.checkUserInDB("testUser1"));
-        assertFalse(dbController.checkUserInDB("testUser2"));
-        assertFalse(dbController.checkUserInDB("testUser3"));
+        assertFalse(DBController.checkUserInDB("testUser1"));
+        assertFalse(DBController.checkUserInDB("testUser2"));
+        assertFalse(DBController.checkUserInDB("testUser3"));
     }
 }

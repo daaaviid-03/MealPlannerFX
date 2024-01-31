@@ -14,7 +14,7 @@ import org.example.mealplannerfx.control.DBController;
 
 public abstract class ScreenColoredDef implements Initializable {
     private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-    private final DBController dBController = DBController.getDBControllerInstance();
+    //private final DBController dBController = DBController.getDBControllerInstance();
     @FXML
     private Button avatarButton;
     @FXML
@@ -55,9 +55,9 @@ public abstract class ScreenColoredDef implements Initializable {
     public GraphicControllerColored getGraphicCC() {
         return graphicCC;
     }
-    public DBController getDBController() {
-        return dBController;
-    }
+//    public DBController getDBController() {
+//        return dBController;
+//    }
     public void setPreviousScreen(String previousScreenName){
         previousScreen = previousScreenName;
     }

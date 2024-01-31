@@ -17,29 +17,15 @@ public class DBController {
     private static final DAOUser daoUser = DAOUser.getDaoUserInstance();
     private static final DAODayData daoDayData = DAODayData.getDaoDayDataInstance();
 
-    private static DBController dBControllerInstance;
-    // Singelton GOF
-    public DBController(){
-        setDBControllerInstance(this);
-    }
-    private void setDBControllerInstance(DBController dbController){
-        dBControllerInstance = dbController;
-    }
-    public static DBController getDBControllerInstance(){
-        return dBControllerInstance;
-    }
-
-    // DB Controller functions
-
     /**
      * Obtain the next available recipe id and increase it
      * @return the next available recipe id
      */
-    public long getNextRecipeId(){
+    public static long getNextRecipeId(){
         return daoRecipe.getNextRecipeId();
     }
 
-    public void checkUserInDB(String nick, String pass) throws WrongArgException {
+    public static void checkUserInDB(String nick, String pass) throws WrongArgException {
         User user = getUserInfo(nick);
         if(user != null){
             if(!user.getPassword().equals(pass)){
@@ -49,26 +35,26 @@ public class DBController {
             throw new WrongArgException("Nickname doesn't exists");
         }
     }
-    public boolean checkUserInDB(String nick){
+    public static boolean checkUserInDB(String nick){
         return getUserInfo(nick) != null;
     }
-    public User getUserInfo(String nick){
+    public static User getUserInfo(String nick){
         return daoUser.getUser(nick);
     }
-    public List<DayData> getDaysData(String nick, long fromDate, long toDate){
+    public static List<DayData> getDaysData(String nick, long fromDate, long toDate){
         return daoDayData.getDayDataFromUserBetween(nick, fromDate, toDate);
     }
-    public void deleteRecipeFromDB(Recipe recipe){
+    public static void deleteRecipeFromDB(Recipe recipe){
         daoRecipe.deleteRecipe(recipe.getId());
     }
-    public void createNewRecipeDB(String name, String description, String owner, List<String> steps, int duration,
+    public static void createNewRecipeDB(String name, String description, String owner, List<String> steps, int duration,
                                   List<Ingredient> ingredients, List<Float> ingredientsQuantity,
                                   List<String> ingredientsPortionsNames){
         Recipe recipe = new Recipe(getNextRecipeId(), name, description, owner, steps, duration, ingredients,
                 ingredientsQuantity, ingredientsPortionsNames);
         daoRecipe.saveRecipe(recipe);
     }
-    private String getRegexFromQuery(String query){
+    private static String getRegexFromQuery(String query){
         String regexName = "";
         if (query != null && !query.isEmpty()){
             regexName += "(?i)^";
@@ -78,7 +64,7 @@ public class DBController {
         }
         return regexName + ".*";
     }
-    public List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration,
+    public static List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration,
                                            Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
                                            List<Ingredient> ingredients, Boolean allOfThoseIngredients,
                                            Boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
@@ -89,37 +75,37 @@ public class DBController {
         }
         return correctRecipes;
     }
-    public void deleteUserFromDB(String nick){
+    public static void deleteUserFromDB(String nick){
         daoUser.deleteCompleteUser(nick);
     }
 
-    public DayData getSpecificDayData(String nick, long dayNumber){
+    public static DayData getSpecificDayData(String nick, long dayNumber){
         return daoDayData.getOrCreateDayDataFromUserIn(nick, dayNumber);
     }
 
-    public Ingredient getIngredientByName(String name){
+    public static Ingredient getIngredientByName(String name){
         return daoIngredient.getIngredient(name);
     }
-    public List<String> getIngredientPortionsNames(String name){
+    public static List<String> getIngredientPortionsNames(String name){
         List<String> portionsList = new ArrayList<>(getIngredientByName(name).getFoodPortionsNamesList());
         portionsList.add("g");
         return portionsList;
     }
-    public List<Ingredient> getListOfAllIngredientsByName(String name, Integer numberOfElements) {
+    public static List<Ingredient> getListOfAllIngredientsByName(String name, Integer numberOfElements) {
         return daoIngredient.getAllIngredientsAsRegex(getRegexFromQuery(name), numberOfElements);
     }
 
-    public Recipe getRecipe(Long id){
+    public static Recipe getRecipe(Long id){
         return daoRecipe.getRecipe(id);
     }
 
-    public User createUser(String nick, String pas, float height, float weight, String email, long birth) {
+    public static User createUser(String nick, String pas, float height, float weight, String email, long birth) {
         User newUser = new User(nick, height, weight, birth, email, pas);
         daoUser.saveUser(newUser);
         return newUser;
     }
 
-    public User modifyUser(String nickname, String correctRepPass, float correctHeight, float correctWeight, String email, long birth) {
+    public static User modifyUser(String nickname, String correctRepPass, float correctHeight, float correctWeight, String email, long birth) {
         User user = daoUser.getUser(nickname);
         user.setPassword(correctRepPass);
         user.setHeight(correctHeight);
@@ -130,7 +116,7 @@ public class DBController {
         return user;
     }
 
-    public void saveDayData(DayData thisDayData) {
+    public static void saveDayData(DayData thisDayData) {
         daoDayData.saveDayData(thisDayData);
     }
 }

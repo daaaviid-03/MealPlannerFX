@@ -38,7 +38,6 @@ public class AppController{
                 DAOUser daoUserFS = new DAOUserFS();
                 break;
         }
-        DBController dbController = new DBController();
     }
     public void startView(){
         switch (actualViewMS) {

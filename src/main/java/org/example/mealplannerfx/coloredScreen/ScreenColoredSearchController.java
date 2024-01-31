@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
@@ -88,7 +89,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
             if (onlyMinesCheckBox.isSelected()){
                 thisUser = getGraphicCC().getThisUser();
             }
-            List<Recipe> recipes = getDBController().getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
+            List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,
                     allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser, 10);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));

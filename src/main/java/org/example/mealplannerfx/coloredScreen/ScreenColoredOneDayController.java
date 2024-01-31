@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Recipe;
 
@@ -50,7 +51,7 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
             thisDayData.setMealByName(getGraphicCC().getMealNameOfLastSelected(), recipe);
             getGraphicCC().setLastRecipeSelected(null);
             getGraphicCC().setMealNameOfLastSelected(null);
-            getDBController().saveDayData(thisDayData);
+            DBController.saveDayData(thisDayData);
         }
         setDayDataFromCalendar();
     }
@@ -63,13 +64,13 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
         // Set day data info
-        setButtonToInfo(breakfast_button, getDBController().getRecipe(thisDayData.getBreakfastId()));
-        setButtonToInfo(lunch_button, getDBController().getRecipe(thisDayData.getLunchId()));
-        setButtonToInfo(dinner_button, getDBController().getRecipe(thisDayData.getDinnerId()));
+        setButtonToInfo(breakfast_button, DBController.getRecipe(thisDayData.getBreakfastId()));
+        setButtonToInfo(lunch_button, DBController.getRecipe(thisDayData.getLunchId()));
+        setButtonToInfo(dinner_button, DBController.getRecipe(thisDayData.getDinnerId()));
     }
 
     private void setDayDataFromDayNumber() {
-        thisDayData = getDBController().getSpecificDayData(getGraphicCC().getThisUser().getNickname(), dayNumber);
+        thisDayData = DBController.getSpecificDayData(getGraphicCC().getThisUser().getNickname(), dayNumber);
     }
 
     private void setButtonToInfo(Button button, Recipe recipe){
@@ -115,7 +116,7 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     }
 
     public void recipeViewButton(ActionEvent actionEvent) {
-        Recipe thisRecipe = getDBController().getRecipe(thisDayData.getMealByName(getNameOfMealFromActionEvent(actionEvent)));
+        Recipe thisRecipe = DBController.getRecipe(thisDayData.getMealByName(getNameOfMealFromActionEvent(actionEvent)));
         if (thisRecipe == null){
             recipeEditButton(actionEvent);
             return;

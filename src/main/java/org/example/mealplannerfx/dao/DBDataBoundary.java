@@ -50,7 +50,7 @@ public class DBDataBoundary {
     }
     public static String correctUserNicknameRegisterString(String nickname) throws WrongArgException {
         correctUserNicknameString(nickname);
-        if (DBController.getDBControllerInstance().checkUserInDB(nickname)){
+        if (DBController.checkUserInDB(nickname)){
             throw new WrongArgException("This nick name is already took.");
         }
         return nickname;
@@ -135,7 +135,7 @@ public class DBDataBoundary {
             if(!ingredName.isEmpty()){
                 String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
                 try {
-                    ingredients.add(DBController.getDBControllerInstance().getIngredientByName(ingredName));
+                    ingredients.add(DBController.getIngredientByName(ingredName));
                 } catch (Exception e) {
                     throw new WrongArgException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
                 }
@@ -160,7 +160,7 @@ public class DBDataBoundary {
             if(!ingredName.isEmpty()){
                 String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
                 try {
-                    ingredients.add(DBController.getDBControllerInstance().getIngredientByName(ingredName));
+                    ingredients.add(DBController.getIngredientByName(ingredName));
                 } catch (Exception e) {
                     throw new WrongArgException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
                 }

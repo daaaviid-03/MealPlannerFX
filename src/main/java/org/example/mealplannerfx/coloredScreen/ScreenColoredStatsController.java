@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.DayData;
 import org.example.mealplannerfx.entity.Ingredient;
@@ -35,7 +36,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
             numOfMeals.setText(String.valueOf(getNumberOfMealsInDates()));
             float calTotVal = 0, carbTotVal = 0, protTotVal = 0, fatTotVal = 0;
             for (String ingredName : portionsOfIngredients.keySet()){
-                Ingredient ingredient = getDBController().getIngredientByName(ingredName);
+                Ingredient ingredient = DBController.getIngredientByName(ingredName);
                 for (String portionName : portionsOfIngredients.get(ingredName).keySet()){
                     float hundredGramsOfIngred = ingredient.getFoodPortionInGrams(portionName) *
                             portionsOfIngredients.get(ingredName).get(portionName) / 100;
@@ -58,7 +59,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
     }
     private int getNumberOfMealsInDates() throws Exception {
         int count = 0;
-        for (DayData dayData : getDBController().getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
+        for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
             if (dayData.getBreakfastId() != null){
                 count++;
             }
