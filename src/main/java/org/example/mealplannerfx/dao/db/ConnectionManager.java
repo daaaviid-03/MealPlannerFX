@@ -6,9 +6,9 @@ import java.sql.*;
  * Class to manage the connection to the JDBC and ensure that there is only one connection at a time
  */
 public class ConnectionManager {
-    private final static String URL_RUTE = "jdbc:mysql://localhost:3306/mealplannerschema";
-    private final static String USER_NAME = "root";
-    private final static String PASSWORD = System.getenv("PASSWORD");
+    private static final String URL_RUTE = "jdbc:mysql://localhost:3306/mealplannerschema";
+    private static final String USER_NAME = "root";
+    private static final String PASSWORD = System.getenv("PASSWORD");
     private Connection connection;
     private Statement statement;
     private static ConnectionManager connectionManagerInstance;
@@ -22,9 +22,7 @@ public class ConnectionManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL_RUTE, USER_NAME, PASSWORD);
-            if (connection != null) {
-                statement = connection.createStatement();
-            }
+            statement = connection.createStatement();
         } catch (Exception e) {
             // No action
         }
@@ -38,7 +36,7 @@ public class ConnectionManager {
         try {
             statement.execute(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 
@@ -46,11 +44,11 @@ public class ConnectionManager {
      * Execute a query that has a result set in the DB
      * @param query the query to execute
      */
-    public ResultSet newQuery(String query) {
+    public ResultSet newQuery(String query) throws SQLException{
         try {
             return statement.executeQuery(query);
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new SQLException(e);
         }
     }
 
@@ -62,7 +60,7 @@ public class ConnectionManager {
         try {
             resultSet.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 
@@ -74,7 +72,7 @@ public class ConnectionManager {
             statement.close();
             connection.close();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 

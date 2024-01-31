@@ -37,9 +37,29 @@ public class DAORecipeDB extends DAORecipe {
     }
 
     @Override
-    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, Boolean toBeGraterEqualDuration,
-                                        Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                        Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser) throws WrongArgException {
+    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, boolean toBeGraterEqualDuration,
+                                        boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
+                                        boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser) throws WrongArgException {
+        String query = getQuery(regexName, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
+                allOfThoseIngredients, allFieldsInCommon, thisUser);
+        List<Recipe> recipes = new ArrayList<>();
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
+            while (resultSet.next()){
+                recipes.add(getRecipeFromResultSet(resultSet));
+            }
+            connectionManager.endQuery(resultSet);
+        } catch (Exception e){
+            return recipes;
+        }
+        if (recipes.isEmpty()){
+            throw new WrongArgException("No recipe matches with that filters.");
+        }
+        return recipes;
+    }
+
+    private static String getQuery(String regexName, Integer duration, boolean toBeGraterEqualDuration,
+                                   boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
+                                   boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser) {
         StringBuilder query = new StringBuilder("SELECT recipeName FROM Recipe WHERE ((");
         if (thisUser != null){
             query.append("ownerNickname = '").append(thisUser.getNickname()).append("') AND (");
@@ -77,19 +97,7 @@ public class DAORecipeDB extends DAORecipe {
             }
         }
         query.append(")) ORDER BY recipeName;");
-        List<Recipe> recipes = new ArrayList<>();
-        try (ResultSet resultSet = connectionManager.newQuery(query.toString())){
-            while (resultSet.next()){
-                recipes.add(getRecipeFromResultSet(resultSet));
-            }
-            connectionManager.endQuery(resultSet);
-        } catch (Exception e){
-            return recipes;
-        }
-        if (recipes.isEmpty()){
-            throw new WrongArgException("No recipe matches with that filters.");
-        }
-        return recipes;
+        return query.toString();
     }
 
     @Override

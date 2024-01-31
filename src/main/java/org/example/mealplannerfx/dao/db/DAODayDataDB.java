@@ -18,10 +18,9 @@ public class DAODayDataDB extends DAODayData {
     @Override
     public List<DayData> getDayDataFromUserBetween(String nick, long fromDate, long toDate) {
         List<DayData> dayData = new ArrayList<>();
-        try {
-            String query = "SELECT * FROM DayData WHERE (userNickname = '" + nick + "' AND " +
-                    fromDate + " <= dayNumber <= " + toDate + ");";
-            ResultSet resultSet = connectionManager.newQuery(query);
+        String query = "SELECT * FROM DayData WHERE (userNickname = '" + nick + "' AND " +
+                fromDate + " <= dayNumber <= " + toDate + ");";
+        try (ResultSet resultSet = connectionManager.newQuery(query)){
             while (resultSet.next()){
                 long dayNumber = resultSet.getLong("dayNumber");
                 Long breakfastRecipeId = resultSet.getLong("breakfastRecipe");

@@ -19,6 +19,8 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
     private Label monthText;
     private long epochFirstDayMonth;
     private int initialDayOfWeek;
+
+    private static final String THIS_SCREEN_NAME = "mainMenu";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel(true);
@@ -52,23 +54,25 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
                 Button thisButton = (Button)getGraphicCC().searchForObjInScene("DayButton_" + i + "_" + j);
-                if(actualDay <= 0 || actualDay > lenOfMonth){
-                    thisButton.setVisible(false);
-                }else{
-                    thisButton.setVisible(true);
+                thisButton.setVisible(!(actualDay <= 0 || actualDay > lenOfMonth));
+                if (actualDay <= 0 || actualDay > lenOfMonth){
                     Label thisLabel = (Label)getGraphicCC().searchForObjInScene("dayToShowText_" + i + "_" + j);
                     thisLabel.setText(String.valueOf(actualDay));
                     setDayDataOfCalendar(i, j, actualDay, epochFirstDayMonth);
-                    if (todayDay != null && todayDay.equals(actualDay)){
-                        thisButton.setStyle("-fx-background-color: #7f84b5;");
-                    } else if(j < 5){
-                        thisButton.setStyle("-fx-background-color: #d4e6e6;");
-                    } else {
-                        thisButton.setStyle("-fx-background-color: #8ac0c0;");
-                    }
+                    setStyle(todayDay, actualDay, thisButton, j);
                 }
                 actualDay++;
             }
+        }
+    }
+
+    private static void setStyle(Integer todayDay, int actualDay, Button thisButton, int j) {
+        if (todayDay != null && todayDay.equals(actualDay)){
+            thisButton.setStyle("-fx-background-color: #7f84b5;");
+        } else if(j < 5){
+            thisButton.setStyle("-fx-background-color: #d4e6e6;");
+        } else {
+            thisButton.setStyle("-fx-background-color: #8ac0c0;");
         }
     }
 
@@ -118,14 +122,14 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
     }
 
     public void makeShoppingListButtonClicked() {
-        getGraphicCC().startScreenColored("shoppingList", "mainMenu");
+        getGraphicCC().startScreenColored("shoppingList", THIS_SCREEN_NAME);
     }
 
     public void viewStatisticsButtonClicked() {
-        getGraphicCC().startScreenColored("stats", "mainMenu");
+        getGraphicCC().startScreenColored("stats", THIS_SCREEN_NAME);
     }
 
     public void addNewRecipeButtonClicked() {
-        getGraphicCC().startScreenColored("newRecipe", "mainMenu");
+        getGraphicCC().startScreenColored("newRecipe", THIS_SCREEN_NAME);
     }
 }

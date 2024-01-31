@@ -6,7 +6,7 @@ import org.example.mealplannerfx.entity.User;
 import java.util.List;
 
 public class DAOUserFS extends DAOUser {
-    private final static String USERS_FILE_NAME_DB = "fileData/fileDataBase/usersInfo_DB.usersInfo";
+    private static final String USERS_FILE_NAME_DB = "fileData/fileDataBase/usersInfo_DB.usersInfo";
     private final FileRW<User> fileRW = new FileRW<>(USERS_FILE_NAME_DB);
 
     @Override

@@ -6,7 +6,7 @@ import org.example.mealplannerfx.entity.Ingredient;
 import java.util.*;
 
 public class DAOIngredientFS extends DAOIngredient {
-    private final static String INGREDIENTS_FILE_NAME_DB = "fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo";
+    private static final String INGREDIENTS_FILE_NAME_DB = "fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo";
     private final FileRW<Ingredient> fileRW = new FileRW<>(INGREDIENTS_FILE_NAME_DB);
     @Override
     public List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements) {

@@ -6,7 +6,7 @@ import org.example.mealplannerfx.entity.DayData;
 import java.util.List;
 
 public class DAODayDataFS extends DAODayData {
-    private final static String DAY_DATA_FILE_NAME_DB = "fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo";
+    private static final String DAY_DATA_FILE_NAME_DB = "fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo";
     private final FileRW<DayData> fileRW = new FileRW<>(DAY_DATA_FILE_NAME_DB);
 
     @Override

@@ -129,8 +129,8 @@ public class DBDataBoundary {
     }
     public static String correctPasswordRegisterString(String password, String passwordRepeated) throws
             WrongArgException {
-        password = correctPasswordString(password);
-        passwordRepeated = correctPasswordString(passwordRepeated);
+        correctPasswordString(password);
+        correctPasswordString(passwordRepeated);
         if (!password.equals(passwordRepeated)){
             throw new WrongArgException("The passwords doesn't match.");
         }
@@ -188,7 +188,7 @@ public class DBDataBoundary {
         for (ScreenColoredDefWithList elemController : stepsList) {
             ScreenColoredInListNewStepController mCont = (ScreenColoredInListNewStepController) elemController;
             String stepInfo = mCont.getStepString();
-            stepInfo = correctNormalStringLength(stepInfo, "Step in position " + (mCont.getThisPosition() + 1), 0, MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP, "");
+            correctNormalStringLength(stepInfo, "Step in position " + (mCont.getThisPosition() + 1), 0, MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP, "");
             if(!stepInfo.isEmpty()){
                 steps.add(stepInfo);
             }

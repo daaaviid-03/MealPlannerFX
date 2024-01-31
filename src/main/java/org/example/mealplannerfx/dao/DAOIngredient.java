@@ -10,7 +10,7 @@ import java.io.FileReader;
 import java.util.*;
 
 public abstract class DAOIngredient {
-    private final static String INGREDIENTS_ORIGINAL_DB_TXT = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
+    private static final String INGREDIENTS_ORIGINAL_DB_TXT = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
     /**
      * The object that contains the instance of the singleton class
      */

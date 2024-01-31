@@ -7,7 +7,7 @@ import org.example.mealplannerfx.entity.Recipe;
 import java.util.List;
 
 public class DAORecipeMaxIdFS extends DAORecipeMaxId {
-    private final static String RECIPES_MAX_ID_FILE_NAME_DB = "fileData/fileDataBase/recipesMaxId_DB.recipesMaxId";
+    private static final String RECIPES_MAX_ID_FILE_NAME_DB = "fileData/fileDataBase/recipesMaxId_DB.recipesMaxId";
     private final FileRW<Long> fileRW = new FileRW<>(RECIPES_MAX_ID_FILE_NAME_DB);
 
     private long getRecipeMaxId() {
