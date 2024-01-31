@@ -17,7 +17,7 @@ public abstract class DAORecipe {
      */
     private static DAORecipe daoRecipeInstance;
 
-    private DAORecipe(){}
+    protected DAORecipe(){}
 
     /**
      * Obtain the recipe that has the exact id

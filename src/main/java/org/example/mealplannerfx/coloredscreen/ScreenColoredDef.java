@@ -12,7 +12,6 @@ import javafx.scene.layout.AnchorPane;
 
 public abstract class ScreenColoredDef implements Initializable {
     private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-    //private final DBController dBController = DBController.getDBControllerInstance();
     @FXML
     private Button avatarButton;
     @FXML
@@ -20,7 +19,7 @@ public abstract class ScreenColoredDef implements Initializable {
     private boolean confirmExit;
     private String previousScreen = "mainMenu";
     private Boolean alertResponse = null;
-    private final static String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-colored-zz-viewRecipe-mask.fxml";
+    private static final String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-colored-zz-viewRecipe-mask.fxml";
     public void initializeDefaultModel(boolean confirmExit) {
         this.confirmExit = confirmExit;
         String nickname = graphicCC.getThisUser().getNickname();
@@ -51,9 +50,6 @@ public abstract class ScreenColoredDef implements Initializable {
     public GraphicControllerColored getGraphicCC() {
         return graphicCC;
     }
-//    public DBController getDBController() {
-//        return dBController;
-//    }
     public void setPreviousScreen(String previousScreenName){
         previousScreen = previousScreenName;
     }

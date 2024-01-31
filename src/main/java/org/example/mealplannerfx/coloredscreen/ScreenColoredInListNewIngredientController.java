@@ -27,16 +27,11 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hideListOfElements();
-        ingredientText.textProperty().addListener((observable, oldValue, newValue) -> {
-            //showFilteredElements(newValue);
-        });
 
         ingredientText.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue){
                 hideListOfElements();
-            } //else {
-                //showFilteredElements(ingredientText.getText());
-            //}
+            }
         });
 
         ingredientListText.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValueObj, newValueObj) -> {

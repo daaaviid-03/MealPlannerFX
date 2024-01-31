@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 /**
- * Class to read and write objects of type TypeClass into a file
- * @param <TypeClass> the class of the objects to save into the file
+ * Class to read and write objects of type T into a file
+ * @param <T> the class of the objects to save into the file
  */
-public class FileRW <TypeClass> {
+public class FileRW <T> {
     /**
      * The name of the file to interact
      */
@@ -24,41 +24,41 @@ public class FileRW <TypeClass> {
     }
 
     /**
-     * Obtain a list of all objects of type TypeClass from the file
-     * @return list of all objects of type TypeClass from the file
+     * Obtain a list of all objects of type T from the file
+     * @return list of all objects of type T from the file
      */
-    public List<TypeClass> getAllObjects(){
-        return getAllObjectsAs(typeClass -> (true));
+    public List<T> getAllObjects(){
+        return getAllObjectsAs(T -> (true));
     }
 
     /**
-     * Obtain a list of all objects of type TypeClass from the file that certificates the lambda function
+     * Obtain a list of all objects of type T from the file that certificates the lambda function
      * @param toCertificate the lambda function to check
      * @return the list of objects that certificates the lambda function
      */
-    public List<TypeClass> getAllObjectsAs(Predicate<TypeClass> toCertificate){
+    public List<T> getAllObjectsAs(Predicate<T> toCertificate){
         return getAllObjectsAs(toCertificate, Integer.MAX_VALUE);
     }
 
     /**
-     * Obtain a list of all objects of type TypeClass from the file that certificates the lambda function
+     * Obtain a list of all objects of type T from the file that certificates the lambda function
      * @param toCertificate the lambda function to check
      * @param maxLength max length of the resulting list
      * @return the list of objects that certificates the lambda function
      */
     @SuppressWarnings("unchecked")
-    public List<TypeClass> getAllObjectsAs(Predicate<TypeClass> toCertificate, Integer maxLength){
+    public List<T> getAllObjectsAs(Predicate<T> toCertificate, Integer maxLength){
         if (maxLength == null){
             maxLength = Integer.MAX_VALUE;
         }
-        List<TypeClass> typeClasses = new ArrayList<>();
+        List<T> TS = new ArrayList<>();
         try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
                 try {
-                    TypeClass typeClass = (TypeClass) fileStream.readObject();
+                    T typeClass = (T) fileStream.readObject();
                     if(toCertificate.test(typeClass) && maxLength-- > 0) {
-                        typeClasses.add(typeClass);
+                        TS.add(typeClass);
                     }
                 } catch (ClassNotFoundException | IOException e) {
                     // End Of File
@@ -68,21 +68,21 @@ public class FileRW <TypeClass> {
         } catch (Exception e) {
             // The file doesn't exist
         }
-        return typeClasses;
+        return TS;
     }
 
     /**
-     * Obtain the object of type TypeClass from the file that certificate the lambda function
+     * Obtain the object of type T from the file that certificate the lambda function
      * @param toCertificate the lambda function to check
      * @return the object that certificate the lambda function
      */
     @SuppressWarnings("unchecked")
-    public TypeClass getObjectAs(Predicate<TypeClass> toCertificate){
+    public T getObjectAs(Predicate<T> toCertificate){
         try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
                 try {
-                    TypeClass typeClass = (TypeClass) fileStream.readObject();
+                    T typeClass = (T) fileStream.readObject();
                     if(toCertificate.test(typeClass)) {
                         return typeClass;
                     }
@@ -101,9 +101,9 @@ public class FileRW <TypeClass> {
      * Save all the objects in the list in the file erasing their actual values
      * @param objectsList the list of objects to save
      */
-    public void setAllObjects(List<TypeClass> objectsList){
+    public void setAllObjects(List<T> objectsList){
         try (ObjectOutputStream fileOutStream = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(fileName)))){
-            for (TypeClass typeClass : objectsList){
+            for (T typeClass : objectsList){
                 fileOutStream.writeObject(typeClass);
             }
         } catch (Exception e) {
@@ -115,18 +115,18 @@ public class FileRW <TypeClass> {
      * Save the object in the file erasing their actual value
      * @param object the object to save
      */
-    public void setAllObjects(TypeClass object){
-        List<TypeClass> typeClasses = new ArrayList<>();
-        typeClasses.add(object);
-        setAllObjects(typeClasses);
+    public void setAllObjects(T object){
+        List<T> TS = new ArrayList<>();
+        TS.add(object);
+        setAllObjects(TS);
     }
 
     /**
      * Deletes the objects that certificates the lambda function
      * @param toCertificate the lambda function of the objects to delete
      */
-    public void deleteObjects(Predicate<TypeClass> toCertificate){
-        List<TypeClass> allObjects = getAllObjectsAs(typeClass -> (!toCertificate.test(typeClass)));
+    public void deleteObjects(Predicate<T> toCertificate){
+        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
         setAllObjects(allObjects);
     }
 
@@ -135,8 +135,8 @@ public class FileRW <TypeClass> {
      * @param objectsList the list of objects to append into the file
      * @param toCertificate the lambda function of the objects to delete
      */
-    public void appendObjectsWithout(List<TypeClass> objectsList, Predicate<TypeClass> toCertificate){
-        List<TypeClass> allObjects = getAllObjectsAs(typeClass -> (!toCertificate.test(typeClass)));
+    public void appendObjectsWithout(List<T> objectsList, Predicate<T> toCertificate){
+        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
         allObjects.addAll(objectsList);
         setAllObjects(allObjects);
     }
@@ -145,8 +145,8 @@ public class FileRW <TypeClass> {
      * @param object the object to append into the file
      * @param toCertificate the lambda function of the objects to delete
      */
-    public void appendObjectsWithout(TypeClass object, Predicate<TypeClass> toCertificate){
-        List<TypeClass> allObjects = getAllObjectsAs(typeClass -> (!toCertificate.test(typeClass)));
+    public void appendObjectsWithout(T object, Predicate<T> toCertificate){
+        List<T> allObjects = getAllObjectsAs(T -> (!toCertificate.test(T)));
         allObjects.add(object);
         setAllObjects(allObjects);
     }

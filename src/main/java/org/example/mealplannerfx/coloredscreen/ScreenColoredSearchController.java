@@ -44,7 +44,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
     @FXML
     private Label errorText;
     private Recipe lastRecipeSelected;
-    private final static String NO_ELEMENTS_FOUND_TEXT = "-- No elements found --";
+    private static final String NO_ELEMENTS_FOUND_TEXT = "-- No elements found --";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

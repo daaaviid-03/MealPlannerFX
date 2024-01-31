@@ -4,10 +4,13 @@ import java.io.*;
 
 public class GetGlobalSettings {
     private static final String GLOBAL_SETTINGS_FILE_NAME = "fileData/globalSettings/globalSettings.globalSettings";
-    public static final String[] DBMS_TYPES = {"DBMS (SQL)", "File System"};
-    public static final String[] VIEW_MS_TYPES = {"Colored Screens", "B/W Screens"};
+    private static final String[] DBMS_TYPES = {"DBMS (SQL)", "File System"};
+    private static final String[] VIEW_MS_TYPES = {"Colored Screens", "B/W Screens"};
     private static final String DEFAULT_DBMS_SYSTEM = "File System";
     private static final String DEFAULT_VIEW_SYSTEM = "Colored Screens";
+
+    private GetGlobalSettings(){}
+
     public static void saveGlobalSettings(){
         try (ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME)))) {
             String dBMS = AppController.getAppControllerInstance().getNextDBMS();
@@ -39,5 +42,12 @@ public class GetGlobalSettings {
             // If the file doesn't exist
             saveGlobalSettings();
         }
+    }
+    public static String[] getDbmsTypes(){
+        return DBMS_TYPES;
+    }
+
+    public static String[] getViewMsTypes(){
+        return VIEW_MS_TYPES;
     }
 }

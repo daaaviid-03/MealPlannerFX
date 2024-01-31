@@ -49,12 +49,12 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
         heightText.setText(String.valueOf(thisUser.getHeight()));
         weightText.setText(String.valueOf(thisUser.getWeight()));
         // Global settings
-        dBMSComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.DBMS_TYPES));
+        dBMSComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.getDbmsTypes()));
         dBMSComboBox.setValue(AppController.getAppControllerInstance().getActualDBMS());
         dBMSComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
                 AppController.getAppControllerInstance().setNextDBMS(newValue)));
 
-        gUIComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.VIEW_MS_TYPES));
+        gUIComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.getViewMsTypes()));
         gUIComboBox.setValue(AppController.getAppControllerInstance().getActualViewMS());
         gUIComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
                 AppController.getAppControllerInstance().setNextViewMS(newValue)));

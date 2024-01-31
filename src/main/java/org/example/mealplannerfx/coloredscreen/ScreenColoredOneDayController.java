@@ -21,20 +21,20 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     @FXML
     private AnchorPane recipeViewerPlane;
     @FXML
-    private Button lunch_button;
+    private Button lunchButton;
     @FXML
-    private Button breakfast_button;
+    private Button breakfastButton;
     @FXML
-    private Button dinner_button;
+    private Button dinnerButton;
     @FXML
     private Label dayText;
     private long dayNumber;
     private DayData thisDayData;
 
-    private final static String NO_RECIPE_STYLE = "-fx-background-color: #dbdcdb; -fx-background-radius: 40px;" +
+    private static final String NO_RECIPE_STYLE = "-fx-background-color: #dbdcdb; -fx-background-radius: 40px;" +
             " -fx-border-radius: 40px; -fx-border-color: #a9a9a9; -fx-border-width: 6px; -fx-border-style: dashed;" +
             " -fx-text-fill: #a9a9a9; -fx-font-size: 65;";
-    private final static String YES_RECIPE_STYLE = "-fx-background-color: #98c0f6; -fx-background-radius: 40px;" +
+    private static final String YES_RECIPE_STYLE = "-fx-background-color: #98c0f6; -fx-background-radius: 40px;" +
             " -fx-border-radius: 40px; -fx-border-color: #74a7e4; -fx-border-width: 6px; -fx-border-style: solid;" +
             " -fx-text-fill: #336ca5; -fx-font-size: 30;";
     @Override
@@ -64,9 +64,9 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
         // Set day data info
-        setButtonToInfo(breakfast_button, DBController.getRecipe(thisDayData.getBreakfastId()));
-        setButtonToInfo(lunch_button, DBController.getRecipe(thisDayData.getLunchId()));
-        setButtonToInfo(dinner_button, DBController.getRecipe(thisDayData.getDinnerId()));
+        setButtonToInfo(breakfastButton, DBController.getRecipe(thisDayData.getBreakfastId()));
+        setButtonToInfo(lunchButton, DBController.getRecipe(thisDayData.getLunchId()));
+        setButtonToInfo(dinnerButton, DBController.getRecipe(thisDayData.getDinnerId()));
     }
 
     private void setDayDataFromDayNumber() {

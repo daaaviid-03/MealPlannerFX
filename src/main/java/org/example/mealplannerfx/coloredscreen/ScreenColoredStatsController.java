@@ -34,12 +34,15 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
         try {
             Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             numOfMeals.setText(String.valueOf(getNumberOfMealsInDates()));
-            float calTotVal = 0, carbTotVal = 0, proteinTotVal = 0, fatTotVal = 0;
-            for (String ingredientName : portionsOfIngredients.keySet()){
-                Ingredient ingredient = DBController.getIngredientByName(ingredientName);
-                for (String portionName : portionsOfIngredients.get(ingredientName).keySet()){
+            float calTotVal = 0;
+            float carbTotVal = 0;
+            float proteinTotVal = 0;
+            float fatTotVal = 0;
+            for (Map.Entry<String, Map<String, Float>> ingredientName : portionsOfIngredients.entrySet()){
+                Ingredient ingredient = DBController.getIngredientByName(ingredientName.getKey());
+                for (String portionName : portionsOfIngredients.get(ingredientName.getKey()).keySet()){
                     float hundredGramsOfIngredient = ingredient.getFoodPortionInGrams(portionName) *
-                            portionsOfIngredients.get(ingredientName).get(portionName) / 100;
+                            portionsOfIngredients.get(ingredientName.getKey()).get(portionName) / 100;
                     calTotVal += hundredGramsOfIngredient * ingredient.getCalories();
                     carbTotVal += hundredGramsOfIngredient * ingredient.getCarbohydrates();
                     proteinTotVal += hundredGramsOfIngredient * ingredient.getProteins();

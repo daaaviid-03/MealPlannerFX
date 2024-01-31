@@ -13,7 +13,7 @@ public abstract class DAORecipeMaxId {
     /**
      * Constructor in witch is assigned the instance of the singleton class
      */
-    private DAORecipeMaxId(){}
+    protected DAORecipeMaxId(){}
 
     /**
      * Obtain the next recipe max id available and adds the actual value plus une

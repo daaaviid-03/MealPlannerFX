@@ -16,15 +16,12 @@ public class AppController{
     }
 
     public void startView(){
-        switch (actualViewMS) {
-            case "Colored Screens":
-                GraphicController graphicControllerColored = GraphicControllerColored.getGCCInstance();
-                graphicControllerColored.startView();
-                break;
-            case "B/W Screens":
-                GraphicController graphicControllerBW = new GraphicControllerBW();
-                graphicControllerBW.startView();
-                break;
+        if (actualViewMS.equals("B/W Screens")) {
+            GraphicController graphicControllerBW = new GraphicControllerBW();
+            graphicControllerBW.startView();
+        } else {
+            GraphicController graphicControllerColored = GraphicControllerColored.getGCCInstance();
+            graphicControllerColored.startView();
         }
     }
 

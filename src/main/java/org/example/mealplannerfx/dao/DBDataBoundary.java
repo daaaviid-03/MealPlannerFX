@@ -13,19 +13,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBDataBoundary {
-    private final static int MIN_NUM_OF_CHARS_IN_RECIPE_NAME = 3;
-    private final static int MAX_NUMBER_OF_CHARS_IN_RECIPE_NAME = 60;
-    private final static int MIN_NUMBER_OF_CHARS_IN_USER_NICKNAME = 3;
-    private final static int MAX_NUMBER_OF_CHARS_IN_USER_NICKNAME = 60;
-    private final static int MAX_NUMBER_OF_CHARS_IN_RECIPE_DESCRIPTION = 600;
-    private final static int MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP = 600;
-    private final static int MIN_NUMBER_OF_CHARS_IN_PASSWORD = 3;
-    private final static int MAX_NUMBER_OF_CHARS_IN_PASSWORD = 60;
-    private final static int MAX_NUMBER_OF_YEARS_FOR_USER = 130;
-    private final static float MIN_HEIGHT_IN_CM_FOR_USER = 20f;
-    private final static float MAX_HEIGHT_IN_CM_FOR_USER = 300f;
-    private final static float MIN_WEIGHT_IN_KG_FOR_USER = 3f;
-    private final static float MAX_WEIGHT_IN_KG_FOR_USER = 300f;
+    private static final int MIN_NUM_OF_CHARS_IN_RECIPE_NAME = 3;
+    private static final int MAX_NUMBER_OF_CHARS_IN_RECIPE_NAME = 60;
+    private static final int MIN_NUMBER_OF_CHARS_IN_USER_NICKNAME = 3;
+    private static final int MAX_NUMBER_OF_CHARS_IN_USER_NICKNAME = 60;
+    private static final int MAX_NUMBER_OF_CHARS_IN_RECIPE_DESCRIPTION = 600;
+    private static final int MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP = 600;
+    private static final int MIN_NUMBER_OF_CHARS_IN_PASSWORD = 3;
+    private static final int MAX_NUMBER_OF_CHARS_IN_PASSWORD = 60;
+    private static final int MAX_NUMBER_OF_YEARS_FOR_USER = 130;
+    private static final float MIN_HEIGHT_IN_CM_FOR_USER = 20f;
+    private static final float MAX_HEIGHT_IN_CM_FOR_USER = 300f;
+    private static final float MIN_WEIGHT_IN_KG_FOR_USER = 3f;
+    private static final float MAX_WEIGHT_IN_KG_FOR_USER = 300f;
+
+    private DBDataBoundary(){}
+
     private static String correctNormalStringLength(String text, String nameOfString, int minLength, int maxLength,
                                                     String defaultValue) throws WrongArgException {
         if(minLength > 0 && text.isEmpty() && defaultValue == null){

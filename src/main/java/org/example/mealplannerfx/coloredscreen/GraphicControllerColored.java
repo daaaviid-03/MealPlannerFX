@@ -15,11 +15,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GraphicControllerColored extends Application implements GraphicController {
-    private final static double WINDOW_HEIGHT_DEFAULT = 1080;
-    private final static double WINDOW_WIDTH_DEFAULT = 1920;
-    private final static double WINDOW_HEIGHT = 720;
-    private final static double WINDOW_WIDTH = 1280;
-    private final static String FIRST_SCREEN_TO_SHOW_NAME = "login";
+    private static final double WINDOW_HEIGHT_DEFAULT = 1080;
+    private static final double WINDOW_WIDTH_DEFAULT = 1920;
+    private static final double WINDOW_HEIGHT = 720;
+    private static final double WINDOW_WIDTH = 1280;
+    private static final String FIRST_SCREEN_TO_SHOW_NAME = "login";
     private static GraphicControllerColored graphicControllerColoredInstance;
     private final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window

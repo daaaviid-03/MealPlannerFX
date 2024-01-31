@@ -16,7 +16,7 @@ public abstract class DAOIngredient {
      */
     private static DAOIngredient daoIngredientInstance;
 
-    private DAOIngredient(){}
+    protected DAOIngredient(){}
     /**
      * Obtain the ingredient that has the exact name
      * @param name the name of the ingredient

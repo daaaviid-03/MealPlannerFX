@@ -11,7 +11,7 @@ public class ScreenColoredInListNewStepController extends ScreenColoredDefWithLi
     private TextField stepText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // No need to initialize nothing
     }
 
     public void upArrowStepClicked() {

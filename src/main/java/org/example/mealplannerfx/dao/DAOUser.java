@@ -17,7 +17,7 @@ public abstract class DAOUser {
      */
     private static DAOUser daoUserInstance;
 
-    private DAOUser(){}
+    protected DAOUser(){}
     /**
      * Obtain the user that has the exact name
      * @param nick the name of the user

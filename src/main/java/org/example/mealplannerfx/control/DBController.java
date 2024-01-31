@@ -17,6 +17,8 @@ public class DBController {
     private static final DAOUser daoUser = DAOUser.getDaoUserInstance();
     private static final DAODayData daoDayData = DAODayData.getDaoDayDataInstance();
 
+    private DBController(){}
+
     /**
      * Obtain the next available recipe id and increase it
      * @return the next available recipe id
@@ -62,10 +64,10 @@ public class DBController {
         }
         return regexName + ".*";
     }
-    public static List<Recipe> getRecipesSortedBy(String name, Boolean exactSameName, Integer duration,
-                                           Boolean toBeGraterEqualDuration, Boolean toBeLowerEqualDuration,
-                                           List<Ingredient> ingredients, Boolean allOfThoseIngredients,
-                                           Boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
+    public static List<Recipe> getRecipesSortedBy(String name, boolean exactSameName, Integer duration,
+                                           boolean toBeGraterEqualDuration, boolean toBeLowerEqualDuration,
+                                           List<Ingredient> ingredients, boolean allOfThoseIngredients,
+                                                  boolean allFieldsInCommon, User thisUser, int numberOfElements) throws WrongArgException {
         String nameRegex = "^(?i)" + name + "$";
         if (!exactSameName){
             nameRegex = getRegexFromQuery(name);

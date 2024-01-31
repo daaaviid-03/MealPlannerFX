@@ -7,9 +7,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing2">
+    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing singleton clases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewIngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewIngredientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewStepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewStepController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredOneDayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredOneDayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredShoppingListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredStatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredStatsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredUserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredUserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/DBController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/WrongArgException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/WrongArgException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAODayData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAODayData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipeMaxId.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAORecipeMaxId.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-oneDay-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-oneDay-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +368,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706734865621</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Fixing singleton clases">
+      <option name="closed" value="true" />
+      <created>1706736232986</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1706736232986</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -387,6 +416,7 @@
     <MESSAGE value="Fix warnings" />
     <MESSAGE value="Fixing" />
     <MESSAGE value="Fixing2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing2" />
+    <MESSAGE value="Fixing singleton clases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing singleton clases" />
   </component>
 </project>

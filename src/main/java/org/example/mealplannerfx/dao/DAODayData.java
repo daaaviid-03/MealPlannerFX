@@ -13,7 +13,7 @@ public abstract class DAODayData {
      */
     private static DAODayData daoDayDataInstance;
 
-    private DAODayData(){}
+    protected DAODayData(){}
 
     /**
      * Obtain the dayData that are in the ingredient

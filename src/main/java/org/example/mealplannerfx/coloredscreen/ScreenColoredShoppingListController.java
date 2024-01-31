@@ -25,10 +25,10 @@ public class ScreenColoredShoppingListController extends ScreenColoredDefWithSta
             Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             List<String> shoppingList = new ArrayList<>();
             int cont = 1;
-            for (String ingredientName : portionsOfIngredients.keySet()){
-                for (String portionName : portionsOfIngredients.get(ingredientName).keySet()){
+            for (Map.Entry<String, Map<String, Float>> ingredientName : portionsOfIngredients.entrySet()){
+                for (String portionName : portionsOfIngredients.get(ingredientName.getKey()).keySet()){
                     shoppingList.add(cont + ". " + ingredientName + "  ->  (" +
-                            portionsOfIngredients.get(ingredientName).get(portionName) + ") units of (" + portionName +
+                            portionsOfIngredients.get(ingredientName.getKey()).get(portionName) + ") units of (" + portionName +
                             ").");
                     cont++;
                 }
