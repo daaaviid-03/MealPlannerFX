@@ -68,7 +68,6 @@ public abstract class DAOIngredient {
                 Ingredient thisIngredient = new Ingredient(s[0], Float.parseFloat(s[1]), Float.parseFloat(s[2]), Float.parseFloat(s[3]), Float.parseFloat(s[4]), s[5], portions);
                 ingredients.add(thisIngredient);
             }
-            in.close();
             saveIngredients(ingredients);
         } catch (Exception e) {
             System.err.println("Can't load original Ingredient's DB file due to: " + e.getMessage());

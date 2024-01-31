@@ -67,7 +67,6 @@ public abstract class DAOUser {
                 User thisUser = new User(s[0], Float.parseFloat(s[1]), Float.parseFloat(s[2]), Long.parseLong(s[3]), s[4], s[5]);
                 users.add(thisUser);
             }
-            in.close();
             saveUsers(users);
         } catch (Exception e) {
             System.err.println("Can't load original User's DB file due to: " + e.getMessage());

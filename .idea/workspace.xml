@@ -7,17 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredScreen/GraphicControllerColored.java" afterDir="false" />
+    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing2">
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeMaxIdDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeMaxIdDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOUserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOUserDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -323,7 +315,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706732730719</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Fixing2">
+      <option name="closed" value="true" />
+      <created>1706734224525</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706734224525</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Fixing2">
+      <option name="closed" value="true" />
+      <created>1706734342294</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1706734342294</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -362,6 +370,7 @@
     <MESSAGE value="funcional" />
     <MESSAGE value="Fix warnings" />
     <MESSAGE value="Fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing" />
+    <MESSAGE value="Fixing2" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixing2" />
   </component>
 </project>
