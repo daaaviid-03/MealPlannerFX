@@ -131,25 +131,6 @@ public class FileRW <TypeClass> {
     }
 
     /**
-     * Append a list of objects into the file
-     * @param objectsList the list of objects to append into the file
-     */
-    public void appendObjects(List<TypeClass> objectsList){
-        List<TypeClass> allObjects = getAllObjects();
-        allObjects.addAll(objectsList);
-        setAllObjects(allObjects);
-    }
-    /**
-     * Append one object into the file
-     * @param object the object to append into the file
-     */
-    public void appendObjects(TypeClass object){
-        List<TypeClass> allObjects = getAllObjects();
-        allObjects.add(object);
-        setAllObjects(allObjects);
-    }
-
-    /**
      * Deletes the objects that certificates the lambda function
      * @param toCertificate the lambda function of the objects to delete
      */

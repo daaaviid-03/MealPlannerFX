@@ -1,13 +1,11 @@
 package org.example.mealplannerfx.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class User implements Serializable {
-    private String nickname, email, password;
+    private final String nickname;
+    private String email;
+    private String password;
     private long birth;
     private float height, weight;
 
@@ -22,10 +20,6 @@ public class User implements Serializable {
 
     public String getNickname() {
         return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
     }
 
     public long getBirth() {

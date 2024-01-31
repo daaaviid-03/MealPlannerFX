@@ -4,7 +4,6 @@ import org.example.mealplannerfx.dao.DAOUser;
 import org.example.mealplannerfx.entity.User;
 
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DAOUserDB extends DAOUser {

@@ -23,15 +23,11 @@ public abstract class ScreenColoredDefWithStats extends ScreenColoredDef impleme
         fromDate.setValue(LocalDate.now());
         toDate.setValue(LocalDate.now().plusDays(7));
         onDatesChanged();
-        fromDate.valueProperty().addListener((observable, oldValue, newValue) -> {
-            onDatesChanged();
-        });
-        toDate.valueProperty().addListener((observable, oldValue, newValue) -> {
-            onDatesChanged();
-        });
+        fromDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChanged());
+        toDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChanged());
     }
 
-    public Map<String, Map<String, Float>> getAllPortionsOfIngredInDates() throws Exception {
+    public Map<String, Map<String, Float>> getAllPortionsOfIngredientDates() throws Exception {
         long fromDateLong = fromDate.getValue().toEpochDay();
         long toDateLong = toDate.getValue().toEpochDay();
         if (fromDateLong > toDateLong){
@@ -41,28 +37,28 @@ public abstract class ScreenColoredDefWithStats extends ScreenColoredDef impleme
         // of each ingredient.
         Map<String, Map<String, Float>> portionsOfIngredients = new HashMap<>();
         for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), fromDateLong, toDateLong)){
-            getIngredientsPorionsFromRecipe(DBController.getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
-            getIngredientsPorionsFromRecipe(DBController.getRecipe(dayData.getLunchId()), portionsOfIngredients);
-            getIngredientsPorionsFromRecipe(DBController.getRecipe(dayData.getDinnerId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getLunchId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getDinnerId()), portionsOfIngredients);
         }
         return portionsOfIngredients;
     }
 
-    private static void getIngredientsPorionsFromRecipe(Recipe recipe, Map<String, Map<String, Float>> portionsOfIngredients) {
+    private static void getIngredientsPortionsFromRecipe(Recipe recipe, Map<String, Map<String, Float>> portionsOfIngredients) {
         if (recipe != null){
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
-                String ingredName = recipe.getIngredientInPos(i).getName();
+                String ingredientName = recipe.getIngredientInPos(i).getName();
                 String portionName = recipe.getIngredientPortionNameInPos(i);
                 Float portionQuantity = recipe.getIngredientQuantityInPos(i);
-                if (!portionsOfIngredients.containsKey(ingredName)){
-                    portionsOfIngredients.put(ingredName, new HashMap<>());
-                    portionsOfIngredients.get(ingredName).put(portionName, portionQuantity);
+                if (!portionsOfIngredients.containsKey(ingredientName)){
+                    portionsOfIngredients.put(ingredientName, new HashMap<>());
+                    portionsOfIngredients.get(ingredientName).put(portionName, portionQuantity);
                 } else {
-                    if (portionsOfIngredients.get(ingredName).containsKey(portionName)){
-                        portionsOfIngredients.get(ingredName).put(portionName,
-                                portionsOfIngredients.get(ingredName).get(portionName) + portionQuantity);
+                    if (portionsOfIngredients.get(ingredientName).containsKey(portionName)){
+                        portionsOfIngredients.get(ingredientName).put(portionName,
+                                portionsOfIngredients.get(ingredientName).get(portionName) + portionQuantity);
                     } else {
-                        portionsOfIngredients.get(ingredName).put(portionName, portionQuantity);
+                        portionsOfIngredients.get(ingredientName).put(portionName, portionQuantity);
                     }
                 }
             }

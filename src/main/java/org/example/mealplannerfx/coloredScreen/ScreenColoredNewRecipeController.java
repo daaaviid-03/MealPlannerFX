@@ -1,6 +1,5 @@
 package org.example.mealplannerfx.coloredScreen;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -36,13 +35,13 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElemen
         addStep(0, stepsVBox);
     }
 
-    public void createRecipeClicked(ActionEvent actionEvent) {
+    public void createRecipeClicked() {
         try {
             String name = DBDataBoundary.correctRecipeNameString(nameText.getText());
             String desc = DBDataBoundary.correctRecipeDescriptionString(descriptionText.getText());
-            List<Ingredient> ingredients = new ArrayList<Ingredient>();
-            List<Float> ingredientsQuantity = new ArrayList<Float>();
-            List<String> ingredientsPortionsNames = new ArrayList<String>();
+            List<Ingredient> ingredients = new ArrayList<>();
+            List<Float> ingredientsQuantity = new ArrayList<>();
+            List<String> ingredientsPortionsNames = new ArrayList<>();
             DBDataBoundary.correctIngredients(getIngredientsList(), ingredients, ingredientsQuantity, ingredientsPortionsNames);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
             int duration = DBDataBoundary.correctDuration(durationText.getText());

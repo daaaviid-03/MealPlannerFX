@@ -1,6 +1,5 @@
 package org.example.mealplannerfx.coloredScreen;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import org.example.mealplannerfx.control.DBController;
 
 public abstract class ScreenColoredDef implements Initializable {
     private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
@@ -29,10 +27,10 @@ public abstract class ScreenColoredDef implements Initializable {
         nicknameText.setText(nickname);
         avatarButton.setText(String.valueOf(nickname.toUpperCase().charAt(0)));
     }
-    public void userInfoButtonClicked(ActionEvent actionEvent) {
+    public void userInfoButtonClicked() {
         graphicCC.startScreenColored("userInfo");
     }
-    public void returnButtonClicked(ActionEvent actionEvent) {
+    public void returnButtonClicked() {
         if(!confirmExit || showConfirmationScreen("Exit this screen.", "Cancel", "Exit")){
             returnScreen();
         }
@@ -47,9 +45,7 @@ public abstract class ScreenColoredDef implements Initializable {
         ButtonType noActionOption = new ButtonType(noActionText);
         ButtonType actionOption = new ButtonType(actionText);
         alert.getButtonTypes().setAll(noActionOption, actionOption);
-        alert.showAndWait().ifPresent(response -> {
-            alertResponse = response == actionOption;
-        });
+        alert.showAndWait().ifPresent(response -> alertResponse = response == actionOption);
         return alertResponse;
     }
     public GraphicControllerColored getGraphicCC() {

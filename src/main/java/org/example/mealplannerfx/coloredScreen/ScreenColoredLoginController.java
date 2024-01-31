@@ -9,7 +9,7 @@ import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.WrongArgException;
 
 public class ScreenColoredLoginController {
-    private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
+    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
     private Label errorText;
     @FXML

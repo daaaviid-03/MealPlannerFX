@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ScreenColoredDefWithElements extends ScreenColoredDef implements Initializable {
-    private List<ScreenColoredDefWithList> ingredientsList = new ArrayList<ScreenColoredDefWithList>();
-    private List<ScreenColoredDefWithList> stepsList = new ArrayList<ScreenColoredDefWithList>();
+    private final List<ScreenColoredDefWithList> ingredientsList = new ArrayList<>();
+    private final List<ScreenColoredDefWithList> stepsList = new ArrayList<>();
     private boolean ingredientsWithUnits = true;
     private ScreenColoredDefWithList createNewElementInListMask(int position, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox, String sourceFile, ScreenColoredDefWithElements thisClass){
         try {
@@ -19,17 +19,17 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
             // Add element to list in the fxml
             elementsInVBox.getChildren().add(position, fxmlLoader.load());
             // Set super controller of element to this controller
-            ScreenColoredDefWithList sceilmc = fxmlLoader.getController();
-            sceilmc.setControllerSup(thisClass);
-            sceilmc.setThisVBox(elementsInVBox);
-            sceilmc.setThisPosition(position);
+            ScreenColoredDefWithList screenWithList = fxmlLoader.getController();
+            screenWithList.setControllerSup(thisClass);
+            screenWithList.setThisVBox(elementsInVBox);
+            screenWithList.setThisPosition(position);
             // Add to list of elements
-            elementsInList.add(position, sceilmc);
+            elementsInList.add(position, screenWithList);
             // Correct all the indexes of the following ones
             for (int i = position + 1; i < elementsInList.size(); i++) {
                 elementsInList.get(i).setThisPositionPlusOne();
             }
-            return sceilmc;
+            return screenWithList;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -97,10 +97,10 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
     }
 
     public void addIngredient(int pos, VBox ingredientsVBox) {
-        ScreenColoredDefWithList sceilmc = this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
+        ScreenColoredDefWithList screenWithList = this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
         if (!ingredientsWithUnits){
-            ScreenColoredInListNewIngredientController sczznimc = (ScreenColoredInListNewIngredientController) sceilmc;
-            sczznimc.deletePortions();
+            ScreenColoredInListNewIngredientController screenIngredient = (ScreenColoredInListNewIngredientController) screenWithList;
+            screenIngredient.deletePortions();
         }
     }
 

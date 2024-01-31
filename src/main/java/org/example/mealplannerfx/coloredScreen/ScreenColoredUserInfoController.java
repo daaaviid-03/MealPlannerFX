@@ -1,7 +1,6 @@
 package org.example.mealplannerfx.coloredScreen;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -61,7 +60,7 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
                 AppController.getAppControllerInstance().setNextViewMS(newValue)));
     }
 
-    public void applyChangesButtonClicked(ActionEvent actionEvent) {
+    public void applyChangesButtonClicked() {
         try {
             String email = DBDataBoundary.correctEmailString(emailText.getText());
             long birth = DBDataBoundary.correctBirthLong(birthDate.getValue());
@@ -89,14 +88,14 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
         }
     }
 
-    public void logOutButtonClicked(ActionEvent actionEvent) {
+    public void logOutButtonClicked() {
         if (showConfirmationScreen("Log out.", "Cancel", "Log out")){
             getGraphicCC().setThisUser(null);
             getGraphicCC().startScreenColored("login");
         }
     }
 
-    public void deleteAccountButtonClicked(ActionEvent actionEvent) {
+    public void deleteAccountButtonClicked() {
         if (showConfirmationScreen("DELETE this account forever. (This action can't be undone)",
                 "Cancel", "DELETE ACCOUNT")){
             try {
@@ -109,11 +108,11 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
         }
     }
 
-    public void appODBIngredients(ActionEvent actionEvent) {
+    public void appODBIngredients() {
         DAOIngredient.getDaoIngredientInstance().loadIngredientsFromOriginalDB();
     }
 
-    public void appODBUsers(ActionEvent actionEvent) {
+    public void appODBUsers() {
         DAOUser.getDaoUserInstance().loadUsersFromOriginalDB();
     }
 }

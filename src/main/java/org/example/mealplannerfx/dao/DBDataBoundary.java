@@ -112,11 +112,11 @@ public class DBDataBoundary {
         return correctNormalStringLength(password, "Password", MIN_NUMBER_OF_CHARS_IN_PASSWORD,
                 MAX_NUMBER_OF_CHARS_IN_PASSWORD, null);
     }
-    public static String correctPasswordRegisterString(String password, String passwordRepited) throws
+    public static String correctPasswordRegisterString(String password, String passwordRepeated) throws
             WrongArgException {
         password = correctPasswordString(password);
-        passwordRepited = correctPasswordString(passwordRepited);
-        if (!password.equals(passwordRepited)){
+        passwordRepeated = correctPasswordString(passwordRepeated);
+        if (!password.equals(passwordRepeated)){
             throw new WrongArgException("The passwords doesn't match.");
         }
         return password;
@@ -131,11 +131,11 @@ public class DBDataBoundary {
                                           List<String> ingredientsPortionsNames) throws WrongArgException {
         for (ScreenColoredDefWithList elemController : ingredientsList) {
             ScreenColoredInListNewIngredientController mCont = (ScreenColoredInListNewIngredientController) elemController;
-            String ingredName = mCont.getIngredientName();
-            if(!ingredName.isEmpty()){
+            String ingredientName = mCont.getIngredientName();
+            if(!ingredientName.isEmpty()){
                 String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
                 try {
-                    ingredients.add(DBController.getIngredientByName(ingredName));
+                    ingredients.add(DBController.getIngredientByName(ingredientName));
                 } catch (Exception e) {
                     throw new WrongArgException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
                 }
@@ -156,11 +156,11 @@ public class DBDataBoundary {
     public static void correctIngredients(List<ScreenColoredDefWithList> ingredientsList, List<Ingredient> ingredients) throws WrongArgException {
         for (ScreenColoredDefWithList elemController : ingredientsList) {
             ScreenColoredInListNewIngredientController mCont = (ScreenColoredInListNewIngredientController) elemController;
-            String ingredName = mCont.getIngredientName();
-            if(!ingredName.isEmpty()){
+            String ingredientName = mCont.getIngredientName();
+            if(!ingredientName.isEmpty()){
                 String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
                 try {
-                    ingredients.add(DBController.getIngredientByName(ingredName));
+                    ingredients.add(DBController.getIngredientByName(ingredientName));
                 } catch (Exception e) {
                     throw new WrongArgException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
                 }

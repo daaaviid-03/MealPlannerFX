@@ -12,15 +12,15 @@ public class DAORecipeMaxIdDB extends DAORecipeMaxId {
 
     @Override
     public long getNextAndAddRecipeMaxId() {
-        long nextRedipeId = -1L;
+        long nextRecipeId = -1L;
         try {
             String query = "SELECT * FROM MaxRecipeId;";
             ResultSet resultSet = connectionManager.newQuery(query);
             if (resultSet.next()){
-                nextRedipeId = resultSet.getLong("maxRecipeIdLong") + 1;
+                nextRecipeId = resultSet.getLong("maxRecipeIdLong") + 1;
                 connectionManager.endQuery(resultSet);
-                connectionManager.newQueryNoResult("UPDATE MaxRecipeId SET maxRecipeIdLong = " + nextRedipeId +
-                        " WHERE maxRecipeIdLong = " + (nextRedipeId - 1) + ";");
+                connectionManager.newQueryNoResult("UPDATE MaxRecipeId SET maxRecipeIdLong = " + nextRecipeId +
+                        " WHERE maxRecipeIdLong = " + (nextRecipeId - 1) + ";");
             } else {
                 connectionManager.endQuery(resultSet);
                 connectionManager.newQueryNoResult("INSERT INTO MaxRecipeId (maxRecipeIdLong) VALUES (-1);");
@@ -28,6 +28,6 @@ public class DAORecipeMaxIdDB extends DAORecipeMaxId {
         } catch (Exception e){
             System.err.println(e.getMessage());
         }
-        return nextRedipeId;
+        return nextRecipeId;
     }
 }

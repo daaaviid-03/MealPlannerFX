@@ -23,8 +23,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private static GraphicControllerColored graphicControllerColoredInstance;
     private final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
-    private final AnchorPane anchorPaneRedim = new AnchorPane();
-    private Stage thisStage;
+    private final AnchorPane anchorPaneResize = new AnchorPane();
     private Map<String, Object> namespace;
     private FXMLLoader thisFxmlLoader;
     // Objects of saved messages
@@ -57,27 +56,26 @@ public class GraphicControllerColored extends Application implements GraphicCont
     }
     @Override
     public void start(Stage stage) throws Exception {
-        thisStage = stage;
-        thisStage.setTitle("MealPlanner");
+        stage.setTitle("MealPlanner");
         // Set listener to the change of the size of the window
-        thisStage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-            anchorPaneRedim.setScaleX(newWidth.doubleValue()/WINDOW_WIDTH_DEFAULT);
-            anchorPaneRedim.setTranslateX(-(WINDOW_WIDTH_DEFAULT - newWidth.doubleValue())/2);
+        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+            anchorPaneResize.setScaleX(newWidth.doubleValue()/WINDOW_WIDTH_DEFAULT);
+            anchorPaneResize.setTranslateX(-(WINDOW_WIDTH_DEFAULT - newWidth.doubleValue())/2);
         });
-        thisStage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-            anchorPaneRedim.setScaleY(newHeight.doubleValue()/WINDOW_HEIGHT_DEFAULT);
-            anchorPaneRedim.setTranslateY(-(WINDOW_HEIGHT_DEFAULT - newHeight.doubleValue())/2);
+        stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
+            anchorPaneResize.setScaleY(newHeight.doubleValue()/WINDOW_HEIGHT_DEFAULT);
+            anchorPaneResize.setTranslateY(-(WINDOW_HEIGHT_DEFAULT - newHeight.doubleValue())/2);
         });
         // Start first screen
         startScreenColored(FIRST_SCREEN_TO_SHOW_NAME);
-        // Surround the anchor plane that redimensionates with the other one
+        // Surround the anchor plane that resize with the other one
         AnchorPane anchorPaneSup = new AnchorPane();
-        anchorPaneSup.getChildren().setAll(anchorPaneRedim);
+        anchorPaneSup.getChildren().setAll(anchorPaneResize);
         Scene scene = new Scene(anchorPaneSup, WINDOW_WIDTH, WINDOW_HEIGHT);
         // Set the scene
-        this.thisStage.setScene(scene);
+        stage.setScene(scene);
         // Show stage
-        thisStage.show();
+        stage.show();
     }
     @Override
     public void stop(){
@@ -87,17 +85,14 @@ public class GraphicControllerColored extends Application implements GraphicCont
     public void startView(){
         GraphicControllerColored.main(null);
     }
-    @Override
-    public void endView(){
-        thisStage.close();
-    }
+
     public void startScreenColored(String screenName){
         thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
             Parent parent = thisFxmlLoader.load();
-            // Surround the scene with the anchor plane that redimensionates
-            anchorPaneRedim.getChildren().setAll(parent);
+            // Surround the scene with the anchor plane that resize
+            anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
             System.err.println("Error loading " + screenName + " screen due to: " + e.getCause() + "\nFrom: " + e.getMessage());
         }

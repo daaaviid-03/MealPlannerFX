@@ -9,12 +9,12 @@ import java.util.*;
 public abstract class DAOIngredient {
     private final static String INGREDIENTS_ORIGINAL_DB_TXT = "fileData/originalDataToDB/ingredientsOriginalDB.txt";
     /**
-     * The object that contains the instance of the singelton class
+     * The object that contains the instance of the singleton class
      */
     private static DAOIngredient daoIngredientInstance;
 
     /**
-     * Constructor in witch is assigned the instance of the singelton class
+     * Constructor in witch is assigned the instance of the singleton class
      */
     public DAOIngredient(){
         setDaoIngredientInstance(this);
@@ -22,7 +22,7 @@ public abstract class DAOIngredient {
     /**
      * Obtain the ingredient that has the exact name
      * @param name the name of the ingredient
-     * @return the ingredient object of the especific name, if it doesn't exist, returns null
+     * @return the ingredient object of the specific name, if it doesn't exist, returns null
      */
     public Ingredient getIngredient(String name){
         List<Ingredient> ingredient = getAllIngredientsAsRegex("^" + name + "$", 1);

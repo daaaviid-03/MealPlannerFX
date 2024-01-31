@@ -1,7 +1,6 @@
 package org.example.mealplannerfx.coloredScreen;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -52,9 +51,8 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
         initializeDefaultModel(false);
         setIngredientsWithUnits(false);
         addIngredient(0, ingredientsVBox);
-        listOfFoundedRecipes.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValueObj, newValueObj) -> {
-            selectedElement(newValueObj);
-        });
+        listOfFoundedRecipes.getSelectionModel().selectedItemProperty().addListener(
+                (observableValue, oldValueObj, newValueObj) -> selectedElement(newValueObj));
         searchRecipes();
     }
 
@@ -67,12 +65,12 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
         visualizeRecipeInPlane(recipeViewerPlane);
     }
 
-    public void continueWithSelection(ActionEvent actionEvent) {
+    public void continueWithSelection() {
         if (lastRecipeSelected != null) {
             getGraphicCC().setLastRecipeSelected(lastRecipeSelected);
             returnScreen();
         } else {
-            returnButtonClicked(actionEvent);
+            returnButtonClicked();
         }
     }
 

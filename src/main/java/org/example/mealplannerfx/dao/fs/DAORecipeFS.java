@@ -10,14 +10,7 @@ import java.util.*;
 
 public class DAORecipeFS extends DAORecipe {
     private final static String RECIPES_FILE_NAME_DB = "fileData/fileDataBase/recipesInfo_DB.recipesInfo";
-    private final static String RECIPES_MAX_ID_FILE_NAME_DB = "fileData/fileDataBase/recipesMaxId_DB.recipesMaxId";
     private final FileRW<Recipe> fileRW = new FileRW<>(RECIPES_FILE_NAME_DB);
-    private final static Comparator<Recipe> RECIPE_COMPARATOR = new Comparator<Recipe>() {
-        @Override
-        public int compare(Recipe recipe1, Recipe recipe2) {
-            return recipe1.getName().compareTo(recipe2.getName());
-        }
-    };
     @Override
     public Recipe getRecipe(Long id) {
         if (id == null){
@@ -67,7 +60,7 @@ public class DAORecipeFS extends DAORecipe {
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
         }
-        correctRecipes.sort(RECIPE_COMPARATOR);
+        correctRecipes.sort(Comparator.comparing(Recipe::getName));
         return correctRecipes;
     }
 
@@ -77,8 +70,8 @@ public class DAORecipeFS extends DAORecipe {
     }
 
     @Override
-    public void saveRecipe(Recipe recipe) {
-        fileRW.appendObjects(recipe);
+    public void saveRecipe(Recipe recipeToSave) {
+        fileRW.appendObjectsWithout(recipeToSave, recipe -> (recipe.getId() == recipeToSave.getId()));
     }
 
     @Override

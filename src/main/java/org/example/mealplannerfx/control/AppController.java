@@ -1,11 +1,9 @@
 package org.example.mealplannerfx.control;
 
 import org.example.mealplannerfx.bwScreen.GraphicControllerBW;
-import org.example.mealplannerfx.dao.*;
 import org.example.mealplannerfx.dao.db.*;
 import org.example.mealplannerfx.dao.fs.*;
 import org.example.mealplannerfx.coloredScreen.GraphicControllerColored;
-import org.example.mealplannerfx.entity.DayData;
 
 public class AppController{
     private static AppController appControllerInstance;
@@ -24,18 +22,18 @@ public class AppController{
     public void getDB(){
         switch (actualDBMS){
             case "DBMS (SQL)":
-                DAODayData daoDayDataDB = new DAODayDataDB();
-                DAOIngredient daoIngredientDB = new DAOIngredientDB();
-                DAORecipe daoRecipeDB = new DAORecipeDB();
-                DAORecipeMaxId daoRecipeMaxIdDB = new DAORecipeMaxIdDB();
-                DAOUser daoUserDB = new DAOUserDB();
+                new DAODayDataDB();
+                new DAOIngredientDB();
+                new DAORecipeDB();
+                new DAORecipeMaxIdDB();
+                new DAOUserDB();
                 break;
             case "File System":
-                DAODayData daoDayDataFS = new DAODayDataFS();
-                DAOIngredient daoIngredientFS = new DAOIngredientFS();
-                DAORecipe daoRecipeFS = new DAORecipeFS();
-                DAORecipeMaxId daoRecipeMaxIdFS = new DAORecipeMaxIdFS();
-                DAOUser daoUserFS = new DAOUserFS();
+                new DAODayDataFS();
+                new DAOIngredientFS();
+                new DAORecipeFS();
+                new DAORecipeMaxIdFS();
+                new DAOUserFS();
                 break;
         }
     }

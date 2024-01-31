@@ -1,7 +1,6 @@
 package org.example.mealplannerfx.coloredScreen;
 
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -79,11 +78,11 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
         }
     }
 
-    public void deleteIngredient(ActionEvent actionEvent) {
+    public void deleteIngredient() {
         getControllerSup().deleteIngredient(getThisPosition(), getThisVBox());
     }
 
-    public void addIngredient(ActionEvent actionEvent) {
+    public void addIngredient() {
         getControllerSup().addIngredient(getThisPosition() + 1, getThisVBox());
     }
 
@@ -92,11 +91,11 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
     }
 
     public String getIngredientName(){
-        return ingredientText.getText().toString();
+        return ingredientText.getText();
     }
 
     public String getPortionName() {
-        String text = unitComboBox.getValue().toString();
+        String text = unitComboBox.getValue();
         if (text.equals(unitComboBox.getPromptText())){
             throw new EmptyStackException();
         } else {
@@ -111,7 +110,7 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
         quantityBoxTextIngredient.setVisible(false);
     }
 
-    public void searchIngredientsButtonClicked(ActionEvent actionEvent) {
+    public void searchIngredientsButtonClicked() {
         showFilteredElements(ingredientText.getText());
     }
 }

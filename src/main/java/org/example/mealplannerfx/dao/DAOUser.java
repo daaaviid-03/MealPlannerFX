@@ -5,14 +5,12 @@ import org.example.mealplannerfx.entity.User;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class DAOUser {
     private final static String USER_ORIGINAL_DB_TXT = "fileData/originalDataToDB/usersOriginalDB.txt";
     /**
-     * The object that contains the instance of the singelton class
+     * The object that contains the instance of the singleton class
      */
     private static DAOUser daoUserInstance;
 

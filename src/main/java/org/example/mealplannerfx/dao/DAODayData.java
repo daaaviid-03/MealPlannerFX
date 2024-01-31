@@ -3,11 +3,10 @@ package org.example.mealplannerfx.dao;
 import org.example.mealplannerfx.entity.DayData;
 
 import java.util.List;
-import java.util.Map;
 
 public abstract class DAODayData {
     /**
-     * The object that contains the instance of the singelton class
+     * The object that contains the instance of the singleton class
      */
     private static DAODayData daoDayDataInstance;
 

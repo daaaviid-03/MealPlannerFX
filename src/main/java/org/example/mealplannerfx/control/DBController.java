@@ -44,9 +44,7 @@ public class DBController {
     public static List<DayData> getDaysData(String nick, long fromDate, long toDate){
         return daoDayData.getDayDataFromUserBetween(nick, fromDate, toDate);
     }
-//    public static void deleteRecipeFromDB(Recipe recipe){
-//        daoRecipe.deleteRecipe(recipe.getId());
-//    }
+
     public static void createNewRecipeDB(String name, String description, String owner, List<String> steps, int duration,
                                   List<Ingredient> ingredients, List<Float> ingredientsQuantity,
                                   List<String> ingredientsPortionsNames){

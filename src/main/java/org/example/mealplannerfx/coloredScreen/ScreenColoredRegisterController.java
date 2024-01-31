@@ -11,7 +11,7 @@ import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
 public class ScreenColoredRegisterController {
-    private GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
+    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
     private Label errorText;
     @FXML

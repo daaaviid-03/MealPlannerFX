@@ -1,6 +1,5 @@
 package org.example.mealplannerfx.coloredScreen;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -15,19 +14,19 @@ public class ScreenColoredInListNewStepController extends ScreenColoredDefWithLi
 
     }
 
-    public void upArrowStepClicked(ActionEvent actionEvent) {
+    public void upArrowStepClicked() {
         getControllerSup().upArrowStepClicked(getThisPosition(), getThisVBox());
     }
 
-    public void downArrowStepClicked(ActionEvent actionEvent) {
+    public void downArrowStepClicked() {
         getControllerSup().downArrowStepClicked(getThisPosition(), getThisVBox());
     }
 
-    public void deleteStep(ActionEvent actionEvent) {
+    public void deleteStep() {
         getControllerSup().deleteStep(getThisPosition(), getThisVBox());
     }
 
-    public void addStep(ActionEvent actionEvent) {
+    public void addStep() {
         getControllerSup().addStep(getThisPosition() + 1, getThisVBox());
     }
 

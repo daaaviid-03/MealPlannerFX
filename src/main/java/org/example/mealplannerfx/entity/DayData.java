@@ -1,13 +1,13 @@
 package org.example.mealplannerfx.entity;
 
-import org.example.mealplannerfx.control.DBController;
-
 import java.io.Serializable;
 
 public class DayData implements Serializable {
-    private String userNickname;
-    private long dayNumber;
-    private Long breakfast, lunch, dinner;
+    private final String userNickname;
+    private final long dayNumber;
+    private Long breakfast;
+    private Long lunch;
+    private Long dinner;
     public DayData(String userNickname, long dayNumber) {
         this.userNickname = userNickname;
         this.dayNumber = dayNumber;
@@ -28,9 +28,6 @@ public class DayData implements Serializable {
         return dayNumber;
     }
 
-    public void setDayNumber(long dayNumber) {
-        this.dayNumber = dayNumber;
-    }
     public Long getMealByName(String mealName){
         return switch (mealName){
             case "breakfast" -> getBreakfastId();
@@ -62,11 +59,6 @@ public class DayData implements Serializable {
     public String getUserNickname() {
         return userNickname;
     }
-
-    public void setUserNickname(String userNickname) {
-        this.userNickname = userNickname;
-    }
-
     public Long getBreakfastId() {
         return breakfast;
     }

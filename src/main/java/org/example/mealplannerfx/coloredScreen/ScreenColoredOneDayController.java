@@ -82,13 +82,13 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
             button.setText("+  Recipe");
         }
     }
-    public void previousDayButtonClicked(ActionEvent actionEvent) {
+    public void previousDayButtonClicked() {
         dayNumber--;
         setDayDataFromDayNumber();
         setDayDataFromCalendar();
     }
 
-    public void nextDayButtonClicked(ActionEvent actionEvent) {
+    public void nextDayButtonClicked() {
         dayNumber++;
         setDayDataFromDayNumber();
         setDayDataFromCalendar();
@@ -104,13 +104,6 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
         setDayDataFromCalendar();
     }
 
-    public long getDayNumber() {
-        return dayNumber;
-    }
-
-    public void setDayNumber(long dayNumber) {
-        this.dayNumber = dayNumber;
-    }
     private String getNameOfMealFromActionEvent(ActionEvent actionEvent){
         return ((Button)actionEvent.getSource()).getId().split("_")[0];
     }

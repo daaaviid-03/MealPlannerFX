@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Recipe implements Serializable {
-    private long id;
+    private final long id;
     private String name;
-    private String description;
-    private String owner;
-    private List<String> steps;
+    private final String description;
+    private final String owner;
+    private final List<String> steps;
     private int duration;
     private List<Ingredient> ingredients;
     private List<Float> ingredientsQuantity;
@@ -34,10 +34,6 @@ public class Recipe implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -50,24 +46,12 @@ public class Recipe implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getOwner() {
         return owner;
     }
 
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
     public List<String> getSteps() {
         return steps;
-    }
-
-    public void setSteps(List<String> steps) {
-        this.steps = steps;
     }
 
     public int getDuration() {
@@ -89,9 +73,6 @@ public class Recipe implements Serializable {
         this.ingredients = ingredients;
     }
 
-    public List<Float> getIngredientsQuantity() {
-        return ingredientsQuantity;
-    }
     public float getIngredientQuantityInPos(int pos) {
         return ingredientsQuantity.get(pos);
     }
@@ -100,9 +81,6 @@ public class Recipe implements Serializable {
         this.ingredientsQuantity = ingredientsQuantity;
     }
 
-    public List<String> getIngredientsPortionsNames() {
-        return ingredientsPortionsNames;
-    }
     public String getIngredientPortionNameInPos(int pos) {
         return ingredientsPortionsNames.get(pos);
     }

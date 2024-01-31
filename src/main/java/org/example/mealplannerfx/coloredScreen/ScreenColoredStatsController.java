@@ -20,7 +20,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
     @FXML
     private TextField carbTot;
     @FXML
-    private TextField protTot;
+    private TextField proteinTot;
     @FXML
     private TextField fatTot;
     @FXML
@@ -32,23 +32,23 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
     @Override
     public void onDatesChanged() {
         try {
-            Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredInDates();
+            Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             numOfMeals.setText(String.valueOf(getNumberOfMealsInDates()));
-            float calTotVal = 0, carbTotVal = 0, protTotVal = 0, fatTotVal = 0;
-            for (String ingredName : portionsOfIngredients.keySet()){
-                Ingredient ingredient = DBController.getIngredientByName(ingredName);
-                for (String portionName : portionsOfIngredients.get(ingredName).keySet()){
-                    float hundredGramsOfIngred = ingredient.getFoodPortionInGrams(portionName) *
-                            portionsOfIngredients.get(ingredName).get(portionName) / 100;
-                    calTotVal += hundredGramsOfIngred * ingredient.getCalories();
-                    carbTotVal += hundredGramsOfIngred * ingredient.getCarbohydrates();
-                    protTotVal += hundredGramsOfIngred * ingredient.getProteins();
-                    fatTotVal += hundredGramsOfIngred * ingredient.getFats();
+            float calTotVal = 0, carbTotVal = 0, proteinTotVal = 0, fatTotVal = 0;
+            for (String ingredientName : portionsOfIngredients.keySet()){
+                Ingredient ingredient = DBController.getIngredientByName(ingredientName);
+                for (String portionName : portionsOfIngredients.get(ingredientName).keySet()){
+                    float hundredGramsOfIngredient = ingredient.getFoodPortionInGrams(portionName) *
+                            portionsOfIngredients.get(ingredientName).get(portionName) / 100;
+                    calTotVal += hundredGramsOfIngredient * ingredient.getCalories();
+                    carbTotVal += hundredGramsOfIngredient * ingredient.getCarbohydrates();
+                    proteinTotVal += hundredGramsOfIngredient * ingredient.getProteins();
+                    fatTotVal += hundredGramsOfIngredient * ingredient.getFats();
                 }
             }
             calTot.setText(String.valueOf(calTotVal));
             carbTot.setText(String.valueOf(carbTotVal));
-            protTot.setText(String.valueOf(protTotVal));
+            proteinTot.setText(String.valueOf(proteinTotVal));
             fatTot.setText(String.valueOf(fatTotVal));
             errorText.setText("");
         } catch (WrongArgException e){
@@ -57,7 +57,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
             errorText.setText(e.getMessage());
         }
     }
-    private int getNumberOfMealsInDates() throws Exception {
+    private int getNumberOfMealsInDates() {
         int count = 0;
         for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
             if (dayData.getBreakfastId() != null){

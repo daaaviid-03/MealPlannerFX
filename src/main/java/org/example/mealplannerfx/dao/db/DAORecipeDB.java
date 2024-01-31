@@ -42,47 +42,46 @@ public class DAORecipeDB extends DAORecipe {
                                         Boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
                                         Boolean allOfThoseIngredients, Boolean allFieldsInCommon, User thisUser,
                                         Integer numberOfElements) throws WrongArgException {
-        String query = "SELECT recipeName FROM Recipe WHERE ((";
+        StringBuilder query = new StringBuilder("SELECT recipeName FROM Recipe WHERE ((");
         if (thisUser != null){
-            query += "ownerNickname = '" + thisUser.getNickname() + "') AND (";
+            query.append("ownerNickname = '").append(thisUser.getNickname()).append("') AND (");
         }
-        query += "recipeName RLIKE '" + regexName + "'";
-        String conjuntionAll = " OR ";
+        query.append("recipeName RLIKE '").append(regexName).append("'");
+        String conjunctionAll = " OR ";
         if (allFieldsInCommon){
-            conjuntionAll = " AND ";
+            conjunctionAll = " AND ";
         }
-        String conjuntionIngredients = " OR ";
+        String conjunctionIngredients = " OR ";
         if (allOfThoseIngredients){
-            conjuntionIngredients = " AND ";
+            conjunctionIngredients = " AND ";
         }
         if (duration != null){
             if (toBeGraterEqualDuration){
-                query += conjuntionAll + "duration >= " + duration;
+                query.append(conjunctionAll).append("duration >= ").append(duration);
             } else {
-                query += conjuntionAll + "duration < " + duration;
+                query.append(conjunctionAll).append("duration < ").append(duration);
             }
             if (toBeLowerEqualDuration){
-                query += conjuntionAll + "duration <= " + duration;
+                query.append(conjunctionAll).append("duration <= ").append(duration);
             } else {
-                query += conjuntionAll + "duration > " + duration;
+                query.append(conjunctionAll).append("duration > ").append(duration);
             }
         }
         for (int i = 0; i < ingredients.size(); i++) {
             if (i == 0){
-                query += conjuntionAll + "(";
+                query.append(conjunctionAll).append("(");
             }
-            query += "recipeId IN (SELECT recipeId FROM IngredientInRecipe WHERE ingredientName = '" +
-                    ingredients.get(i).getName() + "')";
+            query.append("recipeId IN (SELECT recipeId FROM IngredientInRecipe WHERE ingredientName = '").append(ingredients.get(i).getName()).append("')");
             if (i < ingredients.size() - 1){
-                query += conjuntionIngredients;
+                query.append(conjunctionIngredients);
             } else {
-                query += ")";
+                query.append(")");
             }
         }
-        query += ")) ORDER BY recipeName;";
+        query.append(")) ORDER BY recipeName;");
         List<Recipe> recipes = new ArrayList<>();
         try {
-            ResultSet resultSet = connectionManager.newQuery(query);
+            ResultSet resultSet = connectionManager.newQuery(query.toString());
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 recipes.add(getRecipeFromResultSet(resultSet));
             }

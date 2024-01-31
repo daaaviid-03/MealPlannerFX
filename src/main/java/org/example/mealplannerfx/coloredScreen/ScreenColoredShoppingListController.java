@@ -22,13 +22,13 @@ public class ScreenColoredShoppingListController extends ScreenColoredDefWithSta
     @Override
     public void onDatesChanged() {
         try {
-            Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredInDates();
+            Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             List<String> shoppingList = new ArrayList<>();
             int cont = 1;
-            for (String ingredName : portionsOfIngredients.keySet()){
-                for (String portionName : portionsOfIngredients.get(ingredName).keySet()){
-                    shoppingList.add(cont + ". " + ingredName + "  ->  (" +
-                            portionsOfIngredients.get(ingredName).get(portionName) + ") units of (" + portionName +
+            for (String ingredientName : portionsOfIngredients.keySet()){
+                for (String portionName : portionsOfIngredients.get(ingredientName).keySet()){
+                    shoppingList.add(cont + ". " + ingredientName + "  ->  (" +
+                            portionsOfIngredients.get(ingredientName).get(portionName) + ") units of (" + portionName +
                             ").");
                     cont++;
                 }

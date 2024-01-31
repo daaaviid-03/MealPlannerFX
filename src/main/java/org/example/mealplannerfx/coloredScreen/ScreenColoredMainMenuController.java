@@ -98,34 +98,34 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
         }
     }
 
-    public void previousMonthButtonClicked(ActionEvent actionEvent) {
+    public void previousMonthButtonClicked() {
         toShowCalendar.add(Calendar.MONTH, -1);
         setCalendarButtons();
     }
 
-    public void nextMonthButtonClicked(ActionEvent actionEvent) {
+    public void nextMonthButtonClicked() {
         toShowCalendar.add(Calendar.MONTH, 1);
         setCalendarButtons();
     }
 
     public void calendarDayButtonClicked(ActionEvent actionEvent) {
-        String[] valores = ((Button)actionEvent.getSource()).getId().split("_");
-        int posY = Integer.parseInt(valores[1]);
-        int posX = Integer.parseInt(valores[2]);
+        String[] values = ((Button)actionEvent.getSource()).getId().split("_");
+        int posY = Integer.parseInt(values[1]);
+        int posX = Integer.parseInt(values[2]);
         long dayNumber = epochFirstDayMonth + posX + posY * 7L + initialDayOfWeek - 1;
         getGraphicCC().setDayToExplore(dayNumber);
         getGraphicCC().startScreenColored("oneDay", "mainMenu");
     }
 
-    public void makeShoppingListButtonClicked(ActionEvent actionEvent) {
+    public void makeShoppingListButtonClicked() {
         getGraphicCC().startScreenColored("shoppingList", "mainMenu");
     }
 
-    public void viewStatisticsButtonClicked(ActionEvent actionEvent) {
+    public void viewStatisticsButtonClicked() {
         getGraphicCC().startScreenColored("stats", "mainMenu");
     }
 
-    public void addNewRecipeButtonClicked(ActionEvent actionEvent) {
+    public void addNewRecipeButtonClicked() {
         getGraphicCC().startScreenColored("newRecipe", "mainMenu");
     }
 }

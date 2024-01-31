@@ -2,7 +2,6 @@ package org.example.mealplannerfx.bwScreen;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.GraphicController;
 
 import java.util.HashMap;
@@ -20,10 +19,7 @@ public class GraphicControllerBW extends Application implements GraphicControlle
     public void startView(){
 
     }
-    @Override
-    public void endView(){
 
-    }
     private void StartScreenColored(String screenName){
 
     }
