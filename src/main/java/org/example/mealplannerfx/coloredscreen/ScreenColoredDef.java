@@ -60,7 +60,7 @@ public abstract class ScreenColoredDef implements Initializable {
             // Set element in the fxml
             anchorPane.getChildren().setAll((Node)fxmlLoader.load());
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DAOUser {
-    private final static String USER_ORIGINAL_DB_TXT = "fileData/originalDataToDB/usersOriginalDB.txt";
+    private static final String USER_ORIGINAL_DB_TXT = "fileData/originalDataToDB/usersOriginalDB.txt";
     /**
      * The object that contains the instance of the singleton class
      */

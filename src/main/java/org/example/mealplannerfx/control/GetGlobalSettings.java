@@ -28,7 +28,7 @@ public class GetGlobalSettings {
                 AppController.getAppControllerInstance().setActualViewMS(DEFAULT_VIEW_SYSTEM);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 

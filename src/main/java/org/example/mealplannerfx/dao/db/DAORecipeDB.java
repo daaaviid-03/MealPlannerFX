@@ -132,7 +132,7 @@ public class DAORecipeDB extends DAORecipe {
             recipe.setIngredientsQuantity(ingredientsQuantityList);
             recipe.setIngredientsPortionsNames(ingredientsPortionsNamesList);
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            // No action
         }
     }
 
@@ -147,9 +147,8 @@ public class DAORecipeDB extends DAORecipe {
             connectionManager.endQuery(resultSteps);
             return stepsList;
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return stepsList;
         }
-        return stepsList;
     }
 
     @Override

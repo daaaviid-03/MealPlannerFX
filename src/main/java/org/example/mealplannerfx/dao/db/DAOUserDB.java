@@ -28,7 +28,7 @@ public class DAOUserDB extends DAOUser {
                 return null;
             }
         } catch (Exception e){
-            throw new RuntimeException(e);
+            return null;
         }
     }
 

@@ -8,12 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing smels">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOIngredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewIngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredInListNewIngredientController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/GetGlobalSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DAOUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOIngredientDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAODayDataDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAODayDataDB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeMaxIdDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAORecipeMaxIdDB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOUserDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/DAOUserDB.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -367,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706738052695</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixing smels">
+      <option name="closed" value="true" />
+      <created>1706742326737</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1706742326738</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

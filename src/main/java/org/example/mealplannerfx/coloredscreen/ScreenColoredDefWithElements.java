@@ -31,7 +31,7 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
             }
             return screenWithList;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            return null;
         }
     }
 
@@ -47,7 +47,7 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
                 // Remove element from list in the fxml
                 elementsInVBox.getChildren().remove(pos);
             } catch (Exception e) {
-                throw new RuntimeException(e.getCause());
+                // No action
             }
         }
     }
@@ -67,7 +67,7 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
                 elementsInVBox.getChildren().remove(pos - 1);
                 elementsInVBox.getChildren().add(pos, nodeUp);
             } catch (Exception e) {
-                throw new RuntimeException(e.getCause());
+                // No action
             }
         }
     }
@@ -87,7 +87,7 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
                 elementsInVBox.getChildren().remove(pos);
                 elementsInVBox.getChildren().add(pos + 1, nodeUp);
             } catch (Exception e) {
-                throw new RuntimeException(e.getCause());
+                // No action
             }
         }
     }
@@ -97,8 +97,8 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
     }
 
     public void addIngredient(int pos, VBox ingredientsVBox) {
-        ScreenColoredDefWithList screenWithList = this.createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
-        if (!ingredientsWithUnits){
+        ScreenColoredDefWithList screenWithList = createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
+        if (screenWithList != null && !ingredientsWithUnits){
             ScreenColoredInListNewIngredientController screenIngredient = (ScreenColoredInListNewIngredientController) screenWithList;
             screenIngredient.deletePortions();
         }

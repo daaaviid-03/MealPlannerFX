@@ -25,7 +25,7 @@ public class DAORecipeMaxIdDB extends DAORecipeMaxId {
                 connectionManager.newQueryNoResult("INSERT INTO MaxRecipeId (maxRecipeIdLong) VALUES (-1);");
             }
         } catch (Exception e){
-            System.err.println(e.getMessage());
+            return nextRecipeId;
         }
         return nextRecipeId;
     }

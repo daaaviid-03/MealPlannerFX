@@ -26,7 +26,7 @@ public class ConnectionManager {
                 statement = connection.createStatement();
             }
         } catch (Exception e) {
-            throw new RuntimeException("No DB in (" + URL_RUTE + ") found.");
+            // No action
         }
     }
 

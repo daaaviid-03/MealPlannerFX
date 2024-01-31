@@ -69,7 +69,7 @@ public class ScreenColoredInListNewIngredientController extends ScreenColoredDef
         try {
             unitComboBox.setItems(FXCollections.observableArrayList(DBController.getIngredientPortionsNames(newValue)));
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 
