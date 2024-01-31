@@ -51,14 +51,14 @@ public class FileRW <T> {
         if (maxLength == null){
             maxLength = Integer.MAX_VALUE;
         }
-        List<T> TS = new ArrayList<>();
+        List<T> ts = new ArrayList<>();
         try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
                 try {
                     T typeClass = (T) fileStream.readObject();
                     if(toCertificate.test(typeClass) && maxLength-- > 0) {
-                        TS.add(typeClass);
+                        ts.add(typeClass);
                     }
                 } catch (ClassNotFoundException | IOException e) {
                     // End Of File
@@ -68,7 +68,7 @@ public class FileRW <T> {
         } catch (Exception e) {
             // The file doesn't exist
         }
-        return TS;
+        return ts;
     }
 
     /**
@@ -116,9 +116,9 @@ public class FileRW <T> {
      * @param object the object to save
      */
     public void setAllObjects(T object){
-        List<T> TS = new ArrayList<>();
-        TS.add(object);
-        setAllObjects(TS);
+        List<T> ts = new ArrayList<>();
+        ts.add(object);
+        setAllObjects(ts);
     }
 
     /**

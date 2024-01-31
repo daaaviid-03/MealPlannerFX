@@ -72,8 +72,8 @@ public class DBController {
         if (!exactSameName){
             nameRegex = getRegexFromQuery(name);
         }
-        List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(nameRegex, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
-                allOfThoseIngredients, allFieldsInCommon, thisUser);
+        List<Recipe> correctRecipes = daoRecipe.getAllRecipesAs(nameRegex, duration, toBeGraterEqualDuration,
+                toBeLowerEqualDuration, ingredients, allOfThoseIngredients, allFieldsInCommon, thisUser);
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
         }
