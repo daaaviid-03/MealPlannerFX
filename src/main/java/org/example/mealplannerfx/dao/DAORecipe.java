@@ -1,6 +1,9 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.AppController;
 import org.example.mealplannerfx.control.WrongArgException;
+import org.example.mealplannerfx.dao.db.DAORecipeDB;
+import org.example.mealplannerfx.dao.fs.DAORecipeFS;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
@@ -14,12 +17,8 @@ public abstract class DAORecipe {
      */
     private static DAORecipe daoRecipeInstance;
 
-    /**
-     * Constructor in witch is assigned the instance of the singleton class
-     */
-    public DAORecipe(){
-        setDaoRecipeInstance(this);
-    }
+    private DAORecipe(){}
+
     /**
      * Obtain the recipe that has the exact id
      * @param id the id of the recipe
@@ -87,10 +86,14 @@ public abstract class DAORecipe {
     }
 
     public static DAORecipe getDaoRecipeInstance() {
+        if (daoRecipeInstance == null){
+            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+                daoRecipeInstance = new DAORecipeDB();
+            } else {
+                daoRecipeInstance = new DAORecipeFS();
+            }
+        }
         return daoRecipeInstance;
     }
 
-    public static void setDaoRecipeInstance(DAORecipe daoRecipeInstance) {
-        DAORecipe.daoRecipeInstance = daoRecipeInstance;
-    }
 }

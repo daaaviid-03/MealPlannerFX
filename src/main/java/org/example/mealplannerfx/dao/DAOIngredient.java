@@ -1,5 +1,8 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.dao.db.DAOIngredientDB;
+import org.example.mealplannerfx.dao.fs.DAOIngredientFS;
 import org.example.mealplannerfx.entity.Ingredient;
 
 import java.io.BufferedReader;
@@ -13,12 +16,7 @@ public abstract class DAOIngredient {
      */
     private static DAOIngredient daoIngredientInstance;
 
-    /**
-     * Constructor in witch is assigned the instance of the singleton class
-     */
-    public DAOIngredient(){
-        setDaoIngredientInstance(this);
-    }
+    private DAOIngredient(){}
     /**
      * Obtain the ingredient that has the exact name
      * @param name the name of the ingredient
@@ -75,10 +73,14 @@ public abstract class DAOIngredient {
     }
 
     public static DAOIngredient getDaoIngredientInstance() {
+        if (daoIngredientInstance == null){
+            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+                daoIngredientInstance = new DAOIngredientDB();
+            } else {
+                daoIngredientInstance = new DAOIngredientFS();
+            }
+        }
         return daoIngredientInstance;
     }
 
-    public static void setDaoIngredientInstance(DAOIngredient daoIngredientInstance) {
-        DAOIngredient.daoIngredientInstance = daoIngredientInstance;
-    }
 }

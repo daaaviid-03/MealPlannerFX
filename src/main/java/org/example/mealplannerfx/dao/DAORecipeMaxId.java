@@ -1,5 +1,9 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.dao.db.DAORecipeMaxIdDB;
+import org.example.mealplannerfx.dao.fs.DAORecipeMaxIdFS;
+
 public abstract class DAORecipeMaxId {
     /**
      * The object that contains the instance of the singleton class
@@ -9,9 +13,7 @@ public abstract class DAORecipeMaxId {
     /**
      * Constructor in witch is assigned the instance of the singleton class
      */
-    public DAORecipeMaxId(){
-        setDaoRecipeMaxIdInstance(this);
-    }
+    private DAORecipeMaxId(){}
 
     /**
      * Obtain the next recipe max id available and adds the actual value plus une
@@ -19,10 +21,13 @@ public abstract class DAORecipeMaxId {
      */
     public abstract long getNextAndAddRecipeMaxId();
     public static DAORecipeMaxId getDaoRecipeMaxIdInstance() {
+        if (daoRecipeMaxIdInstance == null){
+            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+                daoRecipeMaxIdInstance = new DAORecipeMaxIdDB();
+            } else {
+                daoRecipeMaxIdInstance = new DAORecipeMaxIdFS();
+            }
+        }
         return daoRecipeMaxIdInstance;
-    }
-
-    public static void setDaoRecipeMaxIdInstance(DAORecipeMaxId daoRecipeMaxIdInstance) {
-        DAORecipeMaxId.daoRecipeMaxIdInstance = daoRecipeMaxIdInstance;
     }
 }

@@ -1,5 +1,8 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.dao.db.DAODayDataDB;
+import org.example.mealplannerfx.dao.fs.DAODayDataFS;
 import org.example.mealplannerfx.entity.DayData;
 
 import java.util.List;
@@ -10,12 +13,7 @@ public abstract class DAODayData {
      */
     private static DAODayData daoDayDataInstance;
 
-    /**
-     * Constructor in witch is assigned the instance of the singleton class
-     */
-    public DAODayData(){
-        setDaoDayDataInstance(this);
-    }
+    private DAODayData(){}
 
     /**
      * Obtain the dayData that are in the ingredient
@@ -57,10 +55,13 @@ public abstract class DAODayData {
     }
 
     public static DAODayData getDaoDayDataInstance() {
+        if (daoDayDataInstance == null){
+            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+                daoDayDataInstance = new DAODayDataDB();
+            } else {
+                daoDayDataInstance = new DAODayDataFS();
+            }
+        }
         return daoDayDataInstance;
-    }
-
-    public static void setDaoDayDataInstance(DAODayData daoDayDataInstance) {
-        DAODayData.daoDayDataInstance = daoDayDataInstance;
     }
 }

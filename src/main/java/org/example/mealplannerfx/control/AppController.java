@@ -1,8 +1,6 @@
 package org.example.mealplannerfx.control;
 
 import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
-import org.example.mealplannerfx.dao.db.*;
-import org.example.mealplannerfx.dao.fs.*;
 import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
 
 public class AppController{
@@ -12,35 +10,15 @@ public class AppController{
     private String nextDBMS;
     private String nextViewMS;
 
-    public AppController(){
-        appControllerInstance = this;
+    private AppController(){
         GetGlobalSettings.loadGlobalSettings();
-        getDB();
         startView();
     }
 
-    public void getDB(){
-        switch (actualDBMS){
-            case "DBMS (SQL)":
-                new DAODayDataDB();
-                new DAOIngredientDB();
-                new DAORecipeDB();
-                new DAORecipeMaxIdDB();
-                new DAOUserDB();
-                break;
-            case "File System":
-                new DAODayDataFS();
-                new DAOIngredientFS();
-                new DAORecipeFS();
-                new DAORecipeMaxIdFS();
-                new DAOUserFS();
-                break;
-        }
-    }
     public void startView(){
         switch (actualViewMS) {
             case "Colored Screens":
-                GraphicController graphicControllerColored = new GraphicControllerColored();
+                GraphicController graphicControllerColored = GraphicControllerColored.getGCCInstance();
                 graphicControllerColored.startView();
                 break;
             case "B/W Screens":
@@ -51,6 +29,9 @@ public class AppController{
     }
 
     public static AppController getAppControllerInstance() {
+        if (appControllerInstance == null){
+            appControllerInstance = new AppController();
+        }
         return appControllerInstance;
     }
 

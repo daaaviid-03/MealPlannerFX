@@ -13,6 +13,8 @@ public class ConnectionManager {
     private Statement statement;
     private static ConnectionManager connectionManagerInstance;
 
+    private ConnectionManager(){}
+
     /**
      * Starts the connection with the JDBC
      */

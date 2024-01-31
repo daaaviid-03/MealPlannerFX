@@ -1,5 +1,8 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.dao.db.DAOUserDB;
+import org.example.mealplannerfx.dao.fs.DAOUserFS;
 import org.example.mealplannerfx.entity.User;
 
 import java.io.BufferedReader;
@@ -14,12 +17,7 @@ public abstract class DAOUser {
      */
     private static DAOUser daoUserInstance;
 
-    /**
-     * Constructor in witch is assigned the instance of the singleton class
-     */
-    public DAOUser(){
-        setDaoUserInstance(this);
-    }
+    private DAOUser(){}
     /**
      * Obtain the user that has the exact name
      * @param nick the name of the user
@@ -74,10 +72,14 @@ public abstract class DAOUser {
     }
 
     public static DAOUser getDaoUserInstance() {
+        if (daoUserInstance == null){
+            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+                daoUserInstance = new DAOUserDB();
+            } else {
+                daoUserInstance = new DAOUserFS();
+            }
+        }
         return daoUserInstance;
     }
 
-    public static void setDaoUserInstance(DAOUser daoUserInstance) {
-        DAOUser.daoUserInstance = daoUserInstance;
-    }
 }

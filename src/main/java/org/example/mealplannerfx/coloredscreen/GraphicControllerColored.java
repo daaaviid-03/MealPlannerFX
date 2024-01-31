@@ -50,15 +50,14 @@ public class GraphicControllerColored extends Application implements GraphicCont
      * Whether is breakfast, launch or dinner.
      */
     private String mealNameOfLastSelected;
-    private void setGraphicControllerColoredInstance(GraphicControllerColored gcc){
-        graphicControllerColoredInstance = gcc;
-    }
+
+    private GraphicControllerColored(){}
+
     public static void main(String[] args){
         launch(GraphicControllerColored.class);
     }
     @Override
     public void init(){
-        setGraphicControllerColoredInstance(this);
         this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-colored-login-view.fxml");
         this.screensFXML.put("register", "screen-colored-register-view.fxml");
         this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
@@ -109,7 +108,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            return;
+            System.err.println(e.getMessage());
         }
     }
     public void startScreenColored(String screenName, String previousScreen){
@@ -119,6 +118,9 @@ public class GraphicControllerColored extends Application implements GraphicCont
         }
     }
     public static GraphicControllerColored getGCCInstance(){
+        if (graphicControllerColoredInstance == null){
+            graphicControllerColoredInstance = new GraphicControllerColored();
+        }
         return graphicControllerColoredInstance;
     }
     public User getThisUser() {
