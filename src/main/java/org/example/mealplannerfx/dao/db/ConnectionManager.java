@@ -13,7 +13,9 @@ public class ConnectionManager {
     private Statement statement;
     private static ConnectionManager connectionManagerInstance;
 
-    private ConnectionManager(){}
+    private ConnectionManager(){
+        startConnection();
+    }
 
     /**
      * Starts the connection with the JDBC
@@ -21,8 +23,10 @@ public class ConnectionManager {
     public void startConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
+            System.out.println(PASSWORD);
             connection = DriverManager.getConnection(URL_RUTE, USER_NAME, PASSWORD);
             statement = connection.createStatement();
+            System.out.println("Conection");
         } catch (Exception e) {
             // No action
         }
@@ -83,7 +87,6 @@ public class ConnectionManager {
     public static ConnectionManager getConnectionManagerInstance() {
         if (connectionManagerInstance == null){
             connectionManagerInstance = new ConnectionManager();
-            connectionManagerInstance.startConnection();
         }
         return connectionManagerInstance;
     }

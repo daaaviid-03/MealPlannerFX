@@ -11,39 +11,24 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWShoppingListController">
    <children>
-      <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
+      <HBox alignment="TOP_CENTER" layoutX="363.0" layoutY="6.0" prefHeight="150.0" prefWidth="846.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Shopping List" textFill="#000000a4">
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Shopping List">
                <font>
-                  <Font size="100.0" />
+                  <Font name="System Bold" size="80.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Button>
-      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Button>
       <ListView fx:id="listOfIngredients" fixedCellSize="25.0" layoutX="683.0" layoutY="505.0" prefHeight="318.0" prefWidth="556.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
       <Label fx:id="errorText" alignment="TOP_CENTER" contentDisplay="RIGHT" layoutX="701.0" layoutY="299.0" prefHeight="22.0" textAlignment="CENTER" textFill="#ff0000c6">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" layoutX="406.0" layoutY="225.0">
+      <HBox alignment="CENTER" layoutX="292.0" layoutY="223.0">
          <children>
-            <Label text="The shopping list from:">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="The shopping list from:">
                <font>
                   <Font size="30.0" />
                </font>
@@ -56,7 +41,7 @@
                   <Insets right="100.0" />
                </HBox.margin>
             </DatePicker>
-            <Label text=", to: ">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text=", to: ">
                <font>
                   <Font size="30.0" />
                </font>
@@ -68,5 +53,20 @@
             </DatePicker>
          </children>
       </HBox>
+      <Button layoutX="1561.0" layoutY="47.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="113.0" prefWidth="361.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="User Settings">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1157.0" layoutY="70.0" prefHeight="66.0" prefWidth="385.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="123.0" prefWidth="282.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Return">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

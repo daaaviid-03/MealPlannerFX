@@ -102,7 +102,7 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
     }
 
     public void addIngredient(int pos, VBox ingredientsVBox) {
-        ScreenBWDefWithList screenWithList = createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
+        ScreenBWDefWithList screenWithList = createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-bw-zz-newIngredient-mask.fxml", this);
         if (screenWithList != null && !ingredientsWithUnits){
             ScreenBWInListNewIngredientController screenIngredient = (ScreenBWInListNewIngredientController) screenWithList;
             screenIngredient.deletePortions();
@@ -114,7 +114,7 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
     }
 
     public void addStep(int pos, VBox stepsVBox) {
-        this.createNewElementInListMask(pos, stepsList, stepsVBox, "screen-colored-zz-newStep-mask.fxml", this);
+        this.createNewElementInListMask(pos, stepsList, stepsVBox, "screen-bw-zz-newStep-mask.fxml", this);
     }
 
     public void upArrowStepClicked(int pos, VBox stepsVBox) {

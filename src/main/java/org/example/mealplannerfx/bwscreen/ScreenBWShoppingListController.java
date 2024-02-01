@@ -20,7 +20,7 @@ public class ScreenBWShoppingListController extends ScreenBWDefWithStats impleme
     private Label errorText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(false);
+        initializeDefaultModel("shoppingList", false);
     }
     @Override
     public void onDatesChanged() {

@@ -7,44 +7,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing smels">
-      <change afterPath="$PROJECT_DIR$/ConnectionMySQL/mysql-connector-j-8.3.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicBWColored.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithElements.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewIngredientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewStepController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWLoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWRegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-login-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-mainMenu-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-newRecipe-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-oneDay-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-register-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-search-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-shoppingList-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-stats-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-userInfo-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newIngredient-mask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newStep-mask.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-viewRecipe-mask.fxml" afterDir="false" />
+    <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="BW Screens">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDaySelectController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInitController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-init-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-mainMenu-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicControllerBW.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredNewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredNewRecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/dayDataFromUserInfo_DB.dayDataInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/ingredientsInfo_DB.ingredientsInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/fileDataBase/usersInfo_DB.usersInfo" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/fileDataBase/usersInfo_DB.usersInfo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicBWColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicBWColored.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithElements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithElements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWLoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWLoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWRegisterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/GraphicControllerColored.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredMainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredViewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredViewRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-mainMenu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-mainMenu-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-newRecipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-newRecipe-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-oneDay-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-oneDay-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-search-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-search-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-shoppingList-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-shoppingList-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-stats-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-stats-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-userInfo-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-userInfo-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-zz-newIngredient-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-zz-newIngredient-mask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-zz-newStep-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newStep-mask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreenviews/screen-bw-zz-viewRecipe-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-viewRecipe-mask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-mainMenu-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-day-select-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-newRecipe-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-newRecipe-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-oneDay-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-oneDay-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-register-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-register-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-search-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-search-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-shoppingList-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-shoppingList-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-stats-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-stats-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-userInfo-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-userInfo-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-zz-newIngredient-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newIngredient-mask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-zz-newStep-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-zz-newStep-mask.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreenviews/screen-colored-zz-viewRecipe-mask.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/coloredscreen/screen-colored-zz-viewRecipe-mask.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +70,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -68,6 +83,18 @@
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
       </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenRunner">
+    <option name="environmentProperties">
+      <map>
+        <entry key="PASSWORD" value="Password1234" />
+      </map>
+    </option>
+    <option name="mavenProperties">
+      <map>
+        <entry key="PASSWORD" value="Password1234" />
+      </map>
     </option>
   </component>
   <component name="ProblemsViewState">
@@ -99,23 +126,24 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/ConnectionMySQL/mysql-connector-j-8.3.0.jar",
+    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/bwscreen",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42413792",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "configurable.group.build"
+    "settings.editor.selected.configurable": "reference.settings.project.maven.runner"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\bwscreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\java\org\example\mealplannerfx\bwscreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\originalDataToDB" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\settingsScreen" />
-      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\java\org\example\mealplannerfx\settingsScreen" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredscreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\ConnectionMySQL" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredScreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\originalDataToDB" />
@@ -129,15 +157,18 @@
       <recent name="org.example.mealplannerfx.dao.fs" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.mealplannerfx.bwscreen" />
       <recent name="org.example.mealplannerfx.dao.db" />
       <recent name="org.example.mealplannerfx.dao.fs" />
       <recent name="org.example.mealplannerfx.dao" />
       <recent name="org.example.mealplannerfx.control" />
-      <recent name="org.example.mealplannerfx.settingsScreen" />
     </key>
   </component>
   <component name="RunManager" selected="Application.MealPlannerApp">
     <configuration name="MealPlannerApp" type="Application" factoryName="Application" nameIsGenerated="true">
+      <envs>
+        <env name="PASSWORD" value="Password1234" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="org.example.mealplannerfx.control.MealPlannerApp" />
       <module name="MealPlannerFX" />
       <method v="2">
@@ -189,6 +220,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MealPlannerApp" />
+      <item itemvalue="JUnit.DAOUserTest" />
+      <item itemvalue="JUnit.DBControllerTest" />
+      <item itemvalue="JUnit.DBDataBoundaryTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.DAOUserTest" />
@@ -447,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706746238171</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="BW Screens">
+      <option name="closed" value="true" />
+      <created>1706750418342</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1706750418342</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -489,6 +534,7 @@
     <MESSAGE value="Fixing2" />
     <MESSAGE value="Fixing singleton clases" />
     <MESSAGE value="Fixing smels" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing smels" />
+    <MESSAGE value="BW Screens" />
+    <option name="LAST_COMMIT_MESSAGE" value="BW Screens" />
   </component>
 </project>

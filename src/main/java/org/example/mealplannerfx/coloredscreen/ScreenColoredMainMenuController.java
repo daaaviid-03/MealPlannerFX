@@ -55,7 +55,7 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
             for (int j = 0; j < 7; j++) {
                 Button thisButton = (Button)getGraphicCC().searchForObjInScene("DayButton_" + i + "_" + j);
                 thisButton.setVisible(!(actualDay <= 0 || actualDay > lenOfMonth));
-                if (actualDay <= 0 || actualDay > lenOfMonth){
+                if (!(actualDay <= 0 || actualDay > lenOfMonth)){
                     Label thisLabel = (Label)getGraphicCC().searchForObjInScene("dayToShowText_" + i + "_" + j);
                     thisLabel.setText(String.valueOf(actualDay));
                     setDayDataOfCalendar(i, j, actualDay, epochFirstDayMonth);

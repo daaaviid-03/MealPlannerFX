@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class ScreenBWUserInfoController extends ScreenBWDef implements Initializable {
     @FXML
+    private Button avatarButton;
+    @FXML
     private ComboBox<String> dBMSComboBox;
     @FXML
     private ComboBox<String> gUIComboBox;
@@ -42,8 +44,8 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(false);
-        thisUser = getGraphicCC().getThisUser();
+        initializeDefaultModel("userInfo", false);
+        thisUser = getGbwcInstance().getThisUser();
         emailText.setText(thisUser.getEmail());
         birthDate.setValue(LocalDate.ofEpochDay(thisUser.getBirth()));
         heightText.setText(String.valueOf(thisUser.getHeight()));
@@ -58,6 +60,7 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
         gUIComboBox.setValue(AppController.getAppControllerInstance().getActualViewMS());
         gUIComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
                 AppController.getAppControllerInstance().setNextViewMS(newValue)));
+        avatarButton.setText(String.valueOf(thisUser.getNickname().toUpperCase().charAt(0)));
     }
 
     public void applyChangesButtonClicked() {
@@ -79,7 +82,7 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
                 throw new WrongArgException("Old password isn't correct.");
             }
             User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
-            getGraphicCC().setThisUser(newUser);
+            getGbwcInstance().setThisUser(newUser);
             returnScreen();
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
@@ -90,8 +93,8 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
 
     public void logOutButtonClicked() {
         if (showConfirmationScreen("Log out.", "Cancel", "Log out")){
-            getGraphicCC().setThisUser(null);
-            getGraphicCC().startScreenColored("login");
+            getGbwcInstance().setThisUser(null);
+            getGbwcInstance().startScreenBW("login");
         }
     }
 
@@ -100,8 +103,8 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
                 "Cancel", "DELETE ACCOUNT")){
             try {
                 DBController.deleteUserFromDB(thisUser.getNickname());
-                getGraphicCC().setThisUser(null);
-                getGraphicCC().startScreenColored("login");
+                getGbwcInstance().setThisUser(null);
+                getGbwcInstance().startScreenBW("login");
             } catch (Exception e) {
                 errorText.setText("Can't DELETE this account.");
             }

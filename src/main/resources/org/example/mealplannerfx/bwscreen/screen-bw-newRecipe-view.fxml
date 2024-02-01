@@ -13,61 +13,46 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWNewRecipeController">
    <children>
-      <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
+      <HBox alignment="TOP_CENTER" layoutX="427.0" layoutY="16.0" prefHeight="150.0" prefWidth="846.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="New Recipe" textFill="#000000a4">
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="New Recipe">
                <font>
-                  <Font size="100.0" />
+                  <Font name="System Bold" size="80.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Button>
-      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Button>
-      <HBox layoutX="702.0" layoutY="203.0" prefHeight="46.0">
+      <HBox alignment="CENTER" layoutX="635.0" layoutY="181.0" prefHeight="46.0">
          <children>
-            <Label text="Name:    ">
+            <Label prefHeight="66.0" prefWidth="234.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Name:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="600.0" promptText="(Nameless recipe)">
+            <TextField fx:id="nameText" prefHeight="43.0" prefWidth="600.0" promptText="RECIPE NAME">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
          </children>
       </HBox>
-      <HBox layoutX="632.0" layoutY="261.0" prefHeight="170.0">
+      <HBox alignment="CENTER" layoutX="564.0" layoutY="263.0" prefHeight="170.0">
          <children>
-            <Label text="Description:    ">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Description:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextArea fx:id="descriptionText" prefHeight="170.0" prefWidth="600.0" promptText="Description...">
+            <TextArea fx:id="descriptionText" prefHeight="170.0" prefWidth="600.0" promptText="DESCRIPTION...">
                <font>
                   <Font size="20.0" />
                </font>
             </TextArea>
          </children>
       </HBox>
-      <HBox layoutX="632.0" layoutY="448.0" prefHeight="183.0">
+      <HBox alignment="CENTER" layoutX="564.0" layoutY="450.0" prefHeight="183.0">
          <children>
-            <Label text="Ingredients:    ">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Ingredients:    ">
                <font>
                   <Font size="30.0" />
                </font>
@@ -83,9 +68,9 @@
             </ScrollPane>
          </children>
       </HBox>
-      <HBox layoutX="706.0" layoutY="638.0" prefHeight="183.0">
+      <HBox alignment="CENTER" layoutX="638.0" layoutY="640.0" prefHeight="183.0">
          <children>
-            <Label text="Steps:    ">
+            <Label prefHeight="66.0" prefWidth="228.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Steps:    ">
                <font>
                   <Font size="30.0" />
                </font>
@@ -102,29 +87,24 @@
             </ScrollPane>
          </children>
       </HBox>
-      <Button layoutX="1207.0" layoutY="925.0" mnemonicParsing="false" onAction="#createRecipeClicked" style="-fx-background-color: #a5eea0;" text="Create recipe">
+      <Button layoutX="1224.0" layoutY="901.0" mnemonicParsing="false" onAction="#createRecipeClicked" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Create recipe">
          <font>
             <Font size="30.0" />
          </font>
       </Button>
-      <Button layoutX="682.0" layoutY="925.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Discard recipe">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Button>
-      <HBox alignment="CENTER_LEFT" layoutX="663.0" layoutY="830.0" prefHeight="46.0" prefWidth="636.0">
+      <HBox alignment="CENTER" layoutX="546.0" layoutY="836.0" prefHeight="46.0" prefWidth="636.0">
          <children>
-            <Label text="Duration:    ">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Duration:    ">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="durationText" prefHeight="43.0" prefWidth="110.0" promptText="(20)">
+            <TextField fx:id="durationText" prefHeight="43.0" prefWidth="110.0" promptText="MINS">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <Label text="(min)">
+            <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="(min)">
                <font>
                   <Font size="20.0" />
                </font>
@@ -139,5 +119,20 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Button layoutX="1571.0" layoutY="57.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="113.0" prefWidth="361.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="User Settings">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1167.0" layoutY="80.0" prefHeight="66.0" prefWidth="385.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="30.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="123.0" prefWidth="282.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Return">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

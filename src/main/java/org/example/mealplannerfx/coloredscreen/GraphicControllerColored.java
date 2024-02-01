@@ -3,6 +3,7 @@ package org.example.mealplannerfx.coloredscreen;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +12,6 @@ import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.GraphicController;
 
-import java.nio.file.NoSuchFileException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +21,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private static final double WINDOW_HEIGHT = 720;
     private static final double WINDOW_WIDTH = 1280;
     private static final String FIRST_SCREEN_TO_SHOW_NAME = "login";
-    private static GraphicControllerColored graphicControllerColoredInstance;
+    private static GraphicControllerColored graphicControllerColoredInstance = null;
     private final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
     /**
@@ -52,13 +52,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
      */
     private String mealNameOfLastSelected;
 
-    private GraphicControllerColored(){}
-
-    public static void main(String[] args){
-        launch(GraphicControllerColored.class);
-    }
-    @Override
-    public void init(){
+    public GraphicControllerColored(){
+        graphicControllerColoredInstance = this;
         this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-colored-login-view.fxml");
         this.screensFXML.put("register", "screen-colored-register-view.fxml");
         this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
@@ -69,6 +64,11 @@ public class GraphicControllerColored extends Application implements GraphicCont
         this.screensFXML.put("stats", "screen-colored-stats-view.fxml");
         this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml");
     }
+
+    public static void main(String[] args){
+        launch(GraphicControllerColored.class);
+    }
+
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("MealPlanner");
@@ -102,14 +102,14 @@ public class GraphicControllerColored extends Application implements GraphicCont
      * @param screenName the key name of the screen
      */
     public void startScreenColored(String screenName){
-        thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(this.screensFXML.get(screenName)));
+        thisFxmlLoader = new FXMLLoader(getClass().getResource(this.screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
-            Parent parent = thisFxmlLoader.load();
+            Node parent = thisFxmlLoader.load();
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            // No action
+            throw new RuntimeException(e);
         }
     }
     public void startScreenColored(String screenName, String previousScreen){

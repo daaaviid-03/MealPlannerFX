@@ -51,7 +51,7 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(false);
+        initializeDefaultModel("searchRecipe", false);
         setIngredientsWithUnits(false);
         addIngredient(0, ingredientsVBox);
         listOfFoundedRecipes.getSelectionModel().selectedItemProperty().addListener(
@@ -64,13 +64,13 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
             return;
         }
         lastRecipeSelected = (Recipe) recipe;
-        getGraphicCC().setRecipeToShow(lastRecipeSelected);
+        getGbwcInstance().setRecipeToShow(lastRecipeSelected);
         visualizeRecipeInPlane(recipeViewerPlane);
     }
 
     public void continueWithSelection() {
         if (lastRecipeSelected != null) {
-            getGraphicCC().setLastRecipeSelected(lastRecipeSelected);
+            getGbwcInstance().setLastRecipeSelected(lastRecipeSelected);
             returnScreen();
         } else {
             returnButtonClicked();
@@ -88,7 +88,7 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             User thisUser = null;
             if (onlyMinesCheckBox.isSelected()){
-                thisUser = getGraphicCC().getThisUser();
+                thisUser = getGbwcInstance().getThisUser();
             }
             List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,

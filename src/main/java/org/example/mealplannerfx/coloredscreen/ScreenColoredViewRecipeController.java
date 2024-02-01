@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class ScreenColoredViewRecipeController implements Initializable {
     @FXML
+    private TextField ownerName;
+    @FXML
     private Label recipeName;
     @FXML
     private TextArea descriptionTextArea;
@@ -51,6 +53,7 @@ public class ScreenColoredViewRecipeController implements Initializable {
             }
             stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
             durationText.setText(String.valueOf(recipe.getDuration()));
+            ownerName.setText(recipe.getOwner());
         }
     }
 }

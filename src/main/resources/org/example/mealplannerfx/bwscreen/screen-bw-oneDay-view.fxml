@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWOneDayController">
+   <children>
+      <HBox alignment="TOP_CENTER" layoutX="448.0" layoutY="20.0" prefHeight="150.0" prefWidth="846.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="One Day View">
+               <font>
+                  <Font name="System Bold" size="80.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="65.0" layoutY="268.0" prefHeight="780.0" prefWidth="961.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="850.0">
+               <children>
+                  <Label prefHeight="66.0" prefWidth="220.0" style="-fx-font-size: 40px; -fx-font-weight: bold;" text="Breakfast:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="breakfastButton" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: #000000; -fx-border-width: 8px; -fx-text-fill: #000000; -fx-font-size: 45; -fx-font-weight: bold; -fx-underline: true;" text="Cereal" textAlignment="CENTER">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox alignment="CENTER" prefHeight="240.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="breakfast_delete" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteRecipe" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Delete" textAlignment="CENTER">
+                           <font>
+                              <Font size="43.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="breakfast_edit" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recipeEditButton" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Edit" textAlignment="CENTER">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="850.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="214.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Lunch:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="lunchButton" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: ffffff; -fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: 000000; -fx-border-width: 8px; -fx-border-style: dashed; -fx-font-size: 65; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-underline: true;" text="+  Recipe">
+                     <font>
+                        <Font size="65.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox alignment="CENTER" prefHeight="240.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="lunch_delete" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteRecipe" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Delete" textAlignment="CENTER">
+                           <font>
+                              <Font size="43.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="lunch_edit" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recipeEditButton" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Edit" textAlignment="CENTER">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="850.0">
+               <children>
+                  <Label alignment="CENTER_RIGHT" prefHeight="66.0" prefWidth="214.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Dinner:">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button fx:id="dinnerButton" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: #98c0f6; -fx-background-radius: 1.5em; -fx-border-radius: 1.5em; -fx-border-color: #74a7e4; -fx-border-width: 6px;" text="Cereals">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <VBox alignment="CENTER" prefHeight="240.0" prefWidth="100.0">
+                     <children>
+                        <Button fx:id="dinner_delete" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteRecipe" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Delete" textAlignment="CENTER">
+                           <font>
+                              <Font size="43.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="dinner_edit" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#recipeEditButton" prefHeight="100.0" prefWidth="220.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Edit" textAlignment="CENTER">
+                           <font>
+                              <Font size="39.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="40.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <ScrollPane layoutX="1048.0" layoutY="268.0" prefHeight="739.0" prefWidth="800.0">
+         <content>
+            <AnchorPane fx:id="recipeViewerPlane" minHeight="0.0" minWidth="0.0" />
+         </content>
+      </ScrollPane>
+      <Button layoutX="1561.0" layoutY="47.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="113.0" prefWidth="361.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="User Settings">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1157.0" layoutY="70.0" prefHeight="66.0" prefWidth="385.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="123.0" prefWidth="282.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Return">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
+      <Label fx:id="dayText" layoutX="509.0" layoutY="161.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="31 of December">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

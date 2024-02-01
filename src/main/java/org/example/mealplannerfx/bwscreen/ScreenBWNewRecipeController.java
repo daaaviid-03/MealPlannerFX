@@ -6,8 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
 import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DBDataBoundary;
@@ -34,7 +32,7 @@ public class ScreenBWNewRecipeController extends ScreenBWDefWithElements impleme
     private Label errorText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(true);
+        initializeDefaultModel("newRecipe", true);
         addIngredient(0, ingredientsVBox);
         addStep(0, stepsVBox);
     }
@@ -50,8 +48,8 @@ public class ScreenBWNewRecipeController extends ScreenBWDefWithElements impleme
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
             int duration = DBDataBoundary.correctDuration(durationText.getText());
-            DBController.createNewRecipeDB(name, desc, getGraphicCC().getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-            getGraphicCC().startScreenColored("mainMenu");
+            DBController.createNewRecipeDB(name, desc, getGbwcInstance().getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            getGbwcInstance().startScreenBW("mainMenu");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){

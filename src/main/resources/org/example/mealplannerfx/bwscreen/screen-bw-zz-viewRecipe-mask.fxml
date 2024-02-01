@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffeff2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredscreen.ScreenColoredViewRecipeController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-border-width: 8px; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWViewRecipeController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
             <Label fx:id="recipeName" text="Recipe name">
                <font>
-                  <Font size="40.0" />
+                  <Font name="System Bold" size="60.0" />
                </font>
                <VBox.margin>
                   <Insets bottom="10.0" />
@@ -25,12 +24,12 @@
             </Label>
             <HBox>
                <children>
-                  <Label text="Description:    ">
+                  <Label style="-fx-font-weight: bold;" text="Description:    ">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                   <TextArea fx:id="descriptionTextArea" editable="false" prefHeight="100.0" prefWidth="500.0" text="Description Description Description Description Description &#10;Description Description Description Description Description">
@@ -45,12 +44,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label text="Ingredients:    ">
+                  <Label style="-fx-font-weight: bold;" text="Ingredients:    ">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                   <ListView fx:id="ingredientsList" fixedCellSize="25.0" prefHeight="150.0" prefWidth="500.0" />
@@ -61,12 +60,12 @@
             </HBox>
             <HBox>
                <children>
-                  <Label prefHeight="30.0" prefWidth="127.0" text="Steps:    ">
+                  <Label prefHeight="46.0" prefWidth="202.0" style="-fx-font-weight: bold;" text="Steps:    ">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                   <ListView fx:id="stepsList" fixedCellSize="25.0" prefHeight="150.0" prefWidth="500.0">
@@ -78,12 +77,12 @@
             </HBox>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label prefHeight="30.0" prefWidth="127.0" text="Duration:     ">
+                  <Label prefHeight="46.0" prefWidth="182.0" style="-fx-font-weight: bold;" text="Duration:     ">
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin>
                      <font>
-                        <Font size="20.0" />
+                        <Font size="30.0" />
                      </font>
                   </Label>
                   <TextField fx:id="durationText" editable="false" prefHeight="43.0" prefWidth="110.0" promptText="12">
@@ -91,11 +90,21 @@
                         <Font size="20.0" />
                      </font>
                   </TextField>
-                  <Label prefHeight="30.0" prefWidth="127.0" text="    (min)">
+                  <Label prefHeight="46.0" prefWidth="80.0" style="-fx-font-weight: bold;" text="(min)">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="46.0" prefWidth="138.0" style="-fx-font-weight: bold;" text="   Owner: ">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ownerName" editable="false" prefHeight="43.0" prefWidth="188.0" promptText="nickname">
                      <font>
                         <Font size="20.0" />
                      </font>
-                  </Label>
+                  </TextField>
                </children>
             </HBox>
          </children>

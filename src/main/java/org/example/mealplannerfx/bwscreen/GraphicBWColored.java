@@ -19,7 +19,7 @@ public class GraphicBWColored extends Application implements GraphicController {
     private static final double WINDOW_WIDTH_DEFAULT = 1920;
     private static final double WINDOW_HEIGHT = 720;
     private static final double WINDOW_WIDTH = 1280;
-    private static final String FIRST_SCREEN_TO_SHOW_NAME = "login";
+    private static final String FIRST_SCREEN_TO_SHOW_NAME = "init";
     private static GraphicBWColored graphicBWColoredInstance;
     private final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
@@ -51,22 +51,23 @@ public class GraphicBWColored extends Application implements GraphicController {
      */
     private String mealNameOfLastSelected;
 
-    private GraphicBWColored(){}
-
-    public static void main(String[] args){
-        launch(GraphicBWColored.class);
-    }
-    @Override
-    public void init(){
-        this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-bw-login-view.fxml");
+    public GraphicBWColored(){
+        graphicBWColoredInstance = this;
+        this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-bw-init-view.fxml");
+        this.screensFXML.put("login", "screen-bw-login-view.fxml");
         this.screensFXML.put("register", "screen-bw-register-view.fxml");
         this.screensFXML.put("mainMenu", "screen-bw-mainMenu-view.fxml");
         this.screensFXML.put("newRecipe", "screen-bw-newRecipe-view.fxml");
+        this.screensFXML.put("daySelect", "screen-bw-day-select-view.fxml");
         this.screensFXML.put("oneDay", "screen-bw-oneDay-view.fxml");
         this.screensFXML.put("searchNewFood", "screen-bw-search-view.fxml");
         this.screensFXML.put("shoppingList", "screen-bw-shoppingList-view.fxml");
-        this.screensFXML.put("stats", "screen-colored-bw-view.fxml");
+        this.screensFXML.put("stats", "screen-bw-stats-view.fxml");
         this.screensFXML.put("userInfo", "screen-bw-userInfo-view.fxml");
+    }
+
+    public static void main(String[] args){
+        launch(GraphicBWColored.class);
     }
     @Override
     public void start(Stage stage) throws Exception {
@@ -81,7 +82,7 @@ public class GraphicBWColored extends Application implements GraphicController {
             anchorPaneResize.setTranslateY(-(WINDOW_HEIGHT_DEFAULT - newHeight.doubleValue())/2);
         });
         // Start first screen
-        startScreenColored(FIRST_SCREEN_TO_SHOW_NAME);
+        startScreenBW(FIRST_SCREEN_TO_SHOW_NAME);
         // Surround the anchor plane that resize with the other one
         AnchorPane anchorPaneSup = new AnchorPane();
         anchorPaneSup.getChildren().setAll(anchorPaneResize);
@@ -100,7 +101,7 @@ public class GraphicBWColored extends Application implements GraphicController {
      * Starts a new screen in the stage
      * @param screenName the key name of the screen
      */
-    public void startScreenColored(String screenName){
+    public void startScreenBW(String screenName){
         thisFxmlLoader = new FXMLLoader(GraphicBWColored.class.getResource(this.screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
@@ -108,11 +109,11 @@ public class GraphicBWColored extends Application implements GraphicController {
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            // No action
+            throw new RuntimeException(e);
         }
     }
-    public void startScreenColored(String screenName, String previousScreen){
-        startScreenColored(screenName);
+    public void startScreenBW(String screenName, String previousScreen){
+        startScreenBW(screenName);
         if (previousScreen != null){
             ((ScreenBWDef)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
         }

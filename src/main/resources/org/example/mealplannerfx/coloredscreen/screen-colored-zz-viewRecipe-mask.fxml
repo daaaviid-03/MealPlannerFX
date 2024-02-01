@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffeff2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWViewRecipeController">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffeff2;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredscreen.ScreenColoredViewRecipeController">
    <children>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0">
          <children>
@@ -96,6 +95,16 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
+                  <Label prefHeight="30.0" prefWidth="78.0" text="Owner:  ">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ownerName" editable="false" prefHeight="43.0" prefWidth="182.0" promptText="nickname">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </TextField>
                </children>
             </HBox>
          </children>

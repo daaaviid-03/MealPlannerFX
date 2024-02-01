@@ -1,5 +1,6 @@
 package org.example.mealplannerfx.bwscreen;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -24,16 +25,15 @@ public class ScreenBWLoginController {
             DBController.checkUserInDB(nick, pass);
             User thisUser = DBController.getUserInfo(nick);
             graphicCC.setThisUser(thisUser);
-            graphicCC.startScreenColored("mainMenu");
+            graphicCC.startScreenBW("mainMenu", "init");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
             errorText.setText(e.getMessage());
         }
     }
-    @FXML
-    private void onRegisterButtonClicked(){
-        this.graphicCC.startScreenColored("register");
-    }
 
+    public void returnButtonClicked(ActionEvent actionEvent) {
+        graphicCC.startScreenBW("init");
+    }
 }

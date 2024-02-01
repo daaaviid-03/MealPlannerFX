@@ -28,7 +28,7 @@ public class ScreenBWStatsController extends ScreenBWDefWithStats implements Ini
     private Label errorText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(false);
+        initializeDefaultModel("stats", false);
     }
     @Override
     public void onDatesChanged() {
@@ -63,7 +63,7 @@ public class ScreenBWStatsController extends ScreenBWDefWithStats implements Ini
     }
     private int getNumberOfMealsInDates() {
         int count = 0;
-        for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
+        for (DayData dayData : DBController.getDaysData(getGbwcInstance().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
             if (dayData.getBreakfastId() != null){
                 count++;
             }

@@ -11,23 +11,22 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 public abstract class ScreenBWDef implements Initializable {
-    private final GraphicBWColored graphicCC = GraphicBWColored.getGBWCInstance();
-    @FXML
-    private Button avatarButton;
+    private final GraphicBWColored gbwcInstance = GraphicBWColored.getGBWCInstance();
     @FXML
     private Label nicknameText;
     private boolean confirmExit;
     private String previousScreen = "mainMenu";
     private Boolean alertResponse = null;
-    private static final String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-colored-zz-viewRecipe-mask.fxml";
-    public void initializeDefaultModel(boolean confirmExit) {
+    private static final String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-bw-zz-viewRecipe-mask.fxml";
+    private String nameThisScreen;
+    public void initializeDefaultModel(String nameThisScreen, boolean confirmExit) {
+        this.nameThisScreen = nameThisScreen;
         this.confirmExit = confirmExit;
-        String nickname = graphicCC.getThisUser().getNickname();
+        String nickname = gbwcInstance.getThisUser().getNickname();
         nicknameText.setText(nickname);
-        avatarButton.setText(String.valueOf(nickname.toUpperCase().charAt(0)));
     }
     public void userInfoButtonClicked() {
-        graphicCC.startScreenColored("userInfo");
+        gbwcInstance.startScreenBW("userInfo", nameThisScreen);
     }
     public void returnButtonClicked() {
         if(!confirmExit || showConfirmationScreen("Exit this screen.", "Cancel", "Exit")){
@@ -35,7 +34,10 @@ public abstract class ScreenBWDef implements Initializable {
         }
     }
     public void returnScreen() {
-        graphicCC.startScreenColored(previousScreen);
+        if (previousScreen.equals(nameThisScreen)){
+            previousScreen = "init";
+        }
+        gbwcInstance.startScreenBW(previousScreen);
     }
     public boolean showConfirmationScreen(String message, String noActionText, String actionText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -47,8 +49,8 @@ public abstract class ScreenBWDef implements Initializable {
         alert.showAndWait().ifPresent(response -> alertResponse = response == actionOption);
         return alertResponse;
     }
-    public GraphicBWColored getGraphicCC() {
-        return graphicCC;
+    public GraphicBWColored getGbwcInstance() {
+        return gbwcInstance;
     }
     public void setPreviousScreen(String previousScreenName){
         previousScreen = previousScreenName;

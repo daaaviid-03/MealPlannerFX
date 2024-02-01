@@ -16,13 +16,16 @@
             <HBox.margin>
                <Insets right="5.0" />
             </HBox.margin>
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
          </Label>
             <VBox prefHeight="43.0" prefWidth="25.0">
                 <HBox.margin>
                     <Insets right="5.0" />
                 </HBox.margin>
                 <children>
-                    <Button fx:id="upArrowStep" mnemonicParsing="false" onAction="#upArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-background-color: #80cee1;" text="ʌ">
+                    <Button fx:id="upArrowStep" mnemonicParsing="false" onAction="#upArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-border-width: 2px; -fx-border-radius: 0.5em; -fx-background-radius: 0.5em; -fx-border-color: #000000; -fx-font-weight: bold; -fx-underline: true;" text="ʌ">
                         <VBox.margin>
                             <Insets bottom="4.0" />
                         </VBox.margin>
@@ -30,14 +33,14 @@
                             <Font size="10.0" />
                         </font>
                     </Button>
-                    <Button fx:id="downArrowStep" mnemonicParsing="false" onAction="#downArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-background-color: #80cee1;" text="v">
+                    <Button fx:id="downArrowStep" mnemonicParsing="false" onAction="#downArrowStepClicked" prefHeight="22.0" prefWidth="25.0" style="-fx-border-width: 2px; -fx-border-radius: 0.5em; -fx-background-radius: 0.5em; -fx-border-color: #000000; -fx-font-weight: bold; -fx-underline: true;" text="v">
                         <font>
                             <Font size="10.0" />
                         </font>
                     </Button>
                 </children>
             </VBox>
-            <TextField fx:id="stepText" prefHeight="47.0" prefWidth="434.0" promptText="Step...">
+            <TextField fx:id="stepText" prefHeight="58.0" prefWidth="434.0" promptText="Step...">
                 <font>
                     <Font size="19.0" />
                 </font>
@@ -45,7 +48,7 @@
                     <Insets right="5.0" />
                 </HBox.margin>
             </TextField>
-            <Button fx:id="deleteStepButton" mnemonicParsing="false" onAction="#deleteStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #FF6961;" text="x">
+            <Button fx:id="deleteStepButton" mnemonicParsing="false" onAction="#deleteStep" prefHeight="50.0" prefWidth="50.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000; -fx-font-weight: bold; -fx-underline: true;" text="x">
                 <HBox.margin>
                     <Insets right="5.0" />
                 </HBox.margin>
@@ -53,7 +56,7 @@
                     <Font size="22.0" />
                 </font>
             </Button>
-            <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#addStep" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #77dd77;" text="+">
+            <Button fx:id="addStepButton" mnemonicParsing="false" onAction="#addStep" prefHeight="50.0" prefWidth="50.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000; -fx-font-weight: bold; -fx-underline: true;" text="+">
                 <font>
                     <Font size="22.0" />
                 </font>

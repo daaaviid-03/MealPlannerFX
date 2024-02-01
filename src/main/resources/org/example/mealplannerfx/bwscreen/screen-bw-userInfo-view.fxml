@@ -13,28 +13,18 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.coloredscreen.ScreenColoredUserInfoController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWUserInfoController">
    <children>
-      <Button fx:id="avatarButton" layoutX="948.0" layoutY="167.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
+      <Button fx:id="avatarButton" layoutX="912.0" layoutY="137.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" scaleX="3.0" scaleY="3.0" scaleZ="3.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: false;" text="D">
          <font>
             <Font size="40.0" />
          </font>
       </Button>
-      <Label fx:id="nicknameText" alignment="CENTER" contentDisplay="CENTER" layoutX="785.0" layoutY="407.0" prefHeight="46.0" prefWidth="454.0" scaleX="2.0" scaleY="2.0" text="daaaviid_03" textAlignment="CENTER">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Button>
-      <VBox alignment="CENTER" layoutX="546.0" layoutY="504.0" prefHeight="374.0" prefWidth="914.0">
+      <VBox alignment="CENTER" layoutX="445.0" layoutY="446.0" prefHeight="374.0" prefWidth="914.0">
          <children>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="36.0" prefWidth="1880.0">
                <children>
-                  <Label text="Email:                   ">
+                  <Label prefHeight="66.0" prefWidth="250.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Email:">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -45,20 +35,26 @@
                      </font>
                   </TextField>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="33.0" prefWidth="1880.0">
                <children>
-                  <Label text="Birth:                     ">
+                  <Label prefHeight="66.0" prefWidth="250.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Birth:">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
                   <DatePicker fx:id="birthDate" prefHeight="75.0" prefWidth="413.0" promptText="dd/mm/yyyy" />
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="39.0" prefWidth="1880.0">
                <children>
-                  <Label text="Height:     ">
+                  <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Height:     ">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -68,7 +64,7 @@
                         <Font size="30.0" />
                      </font>
                   </TextField>
-                  <Label text="      Weight:     ">
+                  <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="      Weight:     ">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -79,10 +75,13 @@
                      </font>
                   </TextField>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="65.0" prefWidth="1880.0">
                <children>
-                  <Label prefHeight="46.0" text="Old Password:              ">
+                  <Label prefHeight="66.0" prefWidth="489.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Old Password:   ">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -93,10 +92,13 @@
                      </font>
                   </PasswordField>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="65.0" prefWidth="1880.0">
                <children>
-                  <Label prefHeight="46.0" text="New Password:             ">
+                  <Label prefHeight="66.0" prefWidth="486.0" style="-fx-font-size: 45px; -fx-font-weight: bold;" text="New Password: ">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -107,10 +109,13 @@
                      </font>
                   </PasswordField>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <FlowPane alignment="TOP_CENTER" columnHalignment="CENTER" prefHeight="5.0" prefWidth="1880.0">
                <children>
-                  <Label text="Repeat new password: ">
+                  <Label style="-fx-font-size: 45px; -fx-font-weight: bold;" text="Repeat new password: ">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -121,6 +126,9 @@
                      </font>
                   </PasswordField>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </FlowPane>
             <Label fx:id="errorText" alignment="TOP_CENTER" contentDisplay="RIGHT" prefHeight="8.0" textAlignment="CENTER" textFill="#ff0000c6">
                <font>
@@ -129,22 +137,17 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="660.0" layoutY="965.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="72.0" prefWidth="258.0" style="-fx-background-color: #ff9688;" text="Cancel" textAlignment="CENTER">
+      <Button layoutX="695.0" layoutY="920.0" mnemonicParsing="false" onAction="#applyChangesButtonClicked" prefHeight="113.0" prefWidth="414.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Apply changes" textAlignment="CENTER">
          <font>
             <Font size="33.0" />
          </font>
       </Button>
-      <Button layoutX="1078.0" layoutY="965.0" mnemonicParsing="false" onAction="#applyChangesButtonClicked" prefHeight="72.0" prefWidth="258.0" style="-fx-background-color: #a5eea0;" text="Apply" textAlignment="CENTER">
+      <Button layoutX="1383.0" layoutY="113.0" mnemonicParsing="false" onAction="#logOutButtonClicked" prefHeight="144.0" prefWidth="374.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Log out" textAlignment="CENTER">
          <font>
             <Font size="33.0" />
          </font>
       </Button>
-      <Button layoutX="1233.0" layoutY="394.0" mnemonicParsing="false" onAction="#logOutButtonClicked" prefHeight="72.0" prefWidth="258.0" style="-fx-background-color: #ff842b;" text="Log out" textAlignment="CENTER">
-         <font>
-            <Font size="33.0" />
-         </font>
-      </Button>
-      <VBox alignment="CENTER" layoutX="1432.0" layoutY="504.0" prefHeight="510.0" prefWidth="450.0" style="-fx-background-color: #ffeff2; -fx-border-width: 5px; -fx-border-color: #000000;">
+      <VBox alignment="CENTER" layoutX="1396.0" layoutY="474.0" prefHeight="400.0" prefWidth="450.0" style="-fx-background-color: #ffeff2; -fx-border-width: 5px; -fx-border-color: #000000;">
          <children>
             <Label text="GLOBAL SETTINGS:" underline="true">
                <font>
@@ -194,15 +197,22 @@
                </VBox.margin>
             </Button>
             <Button mnemonicParsing="false" onAction="#appODBUsers" text="Append Original DB of Users to the actual DBMS" />
-            <Button mnemonicParsing="false" onAction="#deleteAccountButtonClicked" prefHeight="33.0" prefWidth="194.0" style="-fx-background-color: #e83b31;" text="Delete account" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-            </Button>
          </children>
       </VBox>
+      <Label fx:id="nicknameText" alignment="CENTER" contentDisplay="RIGHT" layoutX="747.0" layoutY="366.0" prefHeight="66.0" prefWidth="429.0" text="daaaviid_03" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="123.0" prefWidth="282.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Return">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
+      <Button layoutX="1424.0" layoutY="903.0" mnemonicParsing="false" onAction="#deleteAccountButtonClicked" prefHeight="113.0" prefWidth="423.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Delete account" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
