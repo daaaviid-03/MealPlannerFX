@@ -107,7 +107,7 @@ public class FileRW <T> {
                 fileOutStream.writeObject(typeClass);
             }
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            // No action
         }
     }
 

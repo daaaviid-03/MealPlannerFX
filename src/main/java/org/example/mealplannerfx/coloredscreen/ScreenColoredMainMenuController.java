@@ -118,7 +118,7 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
         int posX = Integer.parseInt(values[2]);
         long dayNumber = epochFirstDayMonth + posX + posY * 7L + initialDayOfWeek - 1;
         getGraphicCC().setDayToExplore(dayNumber);
-        getGraphicCC().startScreenColored("oneDay", "mainMenu");
+        getGraphicCC().startScreenColored("oneDay", THIS_SCREEN_NAME);
     }
 
     public void makeShoppingListButtonClicked() {

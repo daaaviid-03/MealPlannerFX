@@ -1,7 +1,5 @@
 package org.example.mealplannerfx.control;
 
-import org.example.mealplannerfx.dao.*;
-import org.example.mealplannerfx.dao.fs.*;
 import org.example.mealplannerfx.entity.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,12 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class DBControllerTest {
     @BeforeEach
     public void setUp(){
-        DAODayData daoDayData = new DAODayDataFS();
-        DAOIngredient daoIngredient = new DAOIngredientFS();
-        DAORecipe daoRecipe = new DAORecipeFS();
-        DAORecipeMaxId daoRecipeMaxId = new DAORecipeMaxIdFS();
-        DAOUser daoUser = new DAOUserFS();
-
         DBController.createUser("testUser1", "password1", 180, 70,
                 "example@gmail.com", 12345);
         DBController.createUser("testUser2", "password2", 180, 70,
@@ -36,38 +28,14 @@ class DBControllerTest {
         assertFalse(DBController.checkUserInDB("sDFsdsS"));
         assertFalse(DBController.checkUserInDB("sdfSDFSdfa"));
         // Test check by nickname and password to success
-        try {
-            DBController.checkUserInDB("testUser1", "password1");
-        } catch (WrongArgException wrongArgException){
-            fail();
-        }
-        try {
-            DBController.checkUserInDB("testUser2", "password2");
-        } catch (WrongArgException wrongArgException){
-            fail();
-        }
-        try {
-            DBController.checkUserInDB("testUser3", "password3");
-        } catch (WrongArgException wrongArgException){
-            fail();
-        }
+        nickAndPasCorrect();
         // Test check by nickname and password to fail by password
-        try {
-            DBController.checkUserInDB("testUser1", "passwordWrong");
-        } catch (WrongArgException wrongArgException){
-            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
-        }
-        try {
-            DBController.checkUserInDB("testUser2", "passwordWrong");
-        } catch (WrongArgException wrongArgException){
-            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
-        }
-        try {
-            DBController.checkUserInDB("testUser3", "passwordWrong");
-        } catch (WrongArgException wrongArgException){
-            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
-        }
+        nickCorrectPasFail();
         // Test check by nickname and password to fail by nickname
+        nickFailPasUnknow();
+    }
+
+    private static void nickFailPasUnknow() {
         try {
             DBController.checkUserInDB("testUserN", "password1");
         } catch (WrongArgException wrongArgException){
@@ -85,32 +53,68 @@ class DBControllerTest {
         }
     }
 
+    private static void nickCorrectPasFail() {
+        try {
+            DBController.checkUserInDB("testUser1", "passwordWrong");
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
+        }
+        try {
+            DBController.checkUserInDB("testUser2", "passwordWrong");
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
+        }
+        try {
+            DBController.checkUserInDB("testUser3", "passwordWrong");
+        } catch (WrongArgException wrongArgException){
+            assertEquals("Incorrect password", wrongArgException.getWrongArgumentDescription());
+        }
+    }
+
+    private static void nickAndPasCorrect() {
+        try {
+            DBController.checkUserInDB("testUser1", "password1");
+        } catch (WrongArgException wrongArgException){
+            fail();
+        }
+        try {
+            DBController.checkUserInDB("testUser2", "password2");
+        } catch (WrongArgException wrongArgException){
+            fail();
+        }
+        try {
+            DBController.checkUserInDB("testUser3", "password3");
+        } catch (WrongArgException wrongArgException){
+            fail();
+        }
+    }
+
     @Test
     void getUserInfo() {
         // Test get the users objects
         User user1 = DBController.getUserInfo("testUser1");
-        assertEquals(user1.getNickname(), "testUser1");
-        assertEquals(user1.getPassword(), "password1");
-        assertEquals(user1.getBirth(), 12345);
-        assertEquals(user1.getEmail(), "example@gmail.com");
-        assertEquals(user1.getWeight(), 70);
-        assertEquals(user1.getHeight(), 180);
+        assertEquals("testUser1", user1.getNickname());
+        assertEquals("password1", user1.getPassword());
+        assertEquals(12345, user1.getBirth());
+        assertEquals("example@gmail.com", user1.getEmail());
+        assertEquals(70, user1.getWeight());
+        assertEquals(180, user1.getHeight());
 
         User user2 = DBController.getUserInfo("testUser2");
-        assertEquals(user2.getNickname(), "testUser2");
-        assertEquals(user2.getPassword(), "password2");
-        assertEquals(user2.getBirth(), 12345);
-        assertEquals(user2.getEmail(), "example@gmail.com");
-        assertEquals(user2.getWeight(), 70);
-        assertEquals(user2.getHeight(), 180);
+        assertEquals("testUser2", user2.getNickname());
+        assertEquals("password2", user2.getPassword());
+        assertEquals(12345, user2.getBirth());
+        assertEquals("example@gmail.com", user2.getEmail());
+        assertEquals(70, user2.getWeight());
+        assertEquals(180, user2.getHeight());
 
         User user3 = DBController.getUserInfo("testUser3");
-        assertEquals(user3.getNickname(), "testUser3");
-        assertEquals(user3.getPassword(), "password3");
-        assertEquals(user3.getBirth(), 12345);
-        assertEquals(user3.getEmail(), "example@gmail.com");
-        assertEquals(user3.getWeight(), 70);
-        assertEquals(user3.getHeight(), 180);
+        assertEquals("testUser3", user3.getNickname());
+        assertEquals("password3", user3.getPassword());
+        assertEquals(12345, user3.getBirth());
+        assertEquals("example@gmail.com", user3.getEmail());
+        assertEquals(70, user3.getWeight());
+        assertEquals(180, user3.getHeight());
 
     }
 

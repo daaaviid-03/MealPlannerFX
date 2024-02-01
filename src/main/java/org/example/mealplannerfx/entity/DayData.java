@@ -38,22 +38,34 @@ public class DayData implements Serializable {
     }
     public void setMealByName(String mealName, Recipe recipe){
         switch (mealName){
-            case "breakfast" -> setBreakfast(recipe);
             case "lunch" -> setLunch(recipe);
             case "dinner" -> setDinner(recipe);
+            default -> setBreakfast(recipe);
         }
     }
 
     public void setBreakfast(Recipe breakfast) {
-        this.breakfast = breakfast.getId();
+        if (breakfast != null) {
+            this.breakfast = breakfast.getId();
+        } else {
+            this.breakfast = null;
+        }
     }
 
     public void setLunch(Recipe lunch) {
-        this.lunch = lunch.getId();
+        if (lunch != null) {
+            this.lunch = lunch.getId();
+        } else {
+            this.lunch = null;
+        }
     }
 
     public void setDinner(Recipe dinner) {
-        this.dinner = dinner.getId();
+        if (dinner != null) {
+            this.dinner = dinner.getId();
+        } else {
+            this.dinner = null;
+        }
     }
 
     public String getUserNickname() {
