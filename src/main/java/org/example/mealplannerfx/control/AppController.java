@@ -1,6 +1,6 @@
 package org.example.mealplannerfx.control;
 
-import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
+import org.example.mealplannerfx.bwscreen.GraphicBWColored;
 import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
 
 public class AppController{
@@ -13,13 +13,14 @@ public class AppController{
     private AppController(){}
 
     public void startView(){
+        GraphicController graphicController;
         if (actualViewMS.equals("B/W Screens")) {
-            GraphicController graphicControllerBW = new GraphicControllerBW();
-            graphicControllerBW.startView();
+            graphicController = GraphicBWColored.getGBWCInstance();
+
         } else {
-            GraphicController graphicControllerColored = GraphicControllerColored.getGCCInstance();
-            graphicControllerColored.startView();
+            graphicController = GraphicControllerColored.getGCCInstance();
         }
+        graphicController.startView();
     }
 
     public static AppController getAppControllerInstance() {

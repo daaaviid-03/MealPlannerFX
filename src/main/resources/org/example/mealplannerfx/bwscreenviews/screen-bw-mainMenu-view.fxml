@@ -1,0 +1,2008 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWMainMenuController">
+   <children>
+      <VBox alignment="TOP_CENTER" layoutX="203.0" layoutY="175.0" prefHeight="750.0" prefWidth="840.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="840.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#previousMonthButtonClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #d4e6e6;" text="&lt;">
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="monthText" text="December" textFill="#000000a8">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Button mnemonicParsing="false" onAction="#nextMonthButtonClicked" prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #d4e6e6;" text="&gt;">
+                     <font>
+                        <Font size="26.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
+            <HBox prefHeight="50.0" prefWidth="840.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Monday">
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Tuesday">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Wednesday">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Thursday">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Friday">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Satudary" textFill="RED">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="40.0" prefWidth="110.0" text="Sunday" textFill="RED">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_0_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_0_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_0_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_0_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_0_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_0_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+
+
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_1_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_1_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_1_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_1_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_1_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_1_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+
+
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_2_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_2_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_2_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_2_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_2_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_2_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_3_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_3_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_3_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_3_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_3_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_3_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+
+
+
+
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_4_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_4_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_4_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_4_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_4_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_4_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+
+
+            <HBox prefHeight="120.0" prefWidth="600.0">
+               <children>
+                  <Button fx:id="DayButton_5_0" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_0" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_0" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_1" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_1" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_1" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_2" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_2" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_2" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_3" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_3" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_3" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_4" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #d4e6e6;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_4" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #bfdad9;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #aacdcd;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_4" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #95c1c1;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_5" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_5" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_5" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="DayButton_5_6" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="110.0" prefWidth="110.0" style="-fx-background-color: #8ac0c0;" textAlignment="CENTER">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <VBox prefHeight="110.0" prefWidth="110.0">
+                           <children>
+                              <Label fx:id="dayToShowText_5_6" alignment="TOP_RIGHT" prefHeight="18.0" prefWidth="93.0" text="12" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="DayButton_Breakfast_5_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #7fb5b5;" text="Breakfast">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Launch_5_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #74aaaa;" text="Launch">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="DayButton_Dinner_5_6" mnemonicParsing="false" onAction="#calendarDayButtonClicked" prefHeight="19.0" prefWidth="88.0" style="-fx-background-color: #699f9f;" text="Dinner">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+
+
+
+
+
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="1193.0" layoutY="205.0" prefHeight="786.0" prefWidth="679.0">
+         <children>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#makeShoppingListButtonClicked" prefHeight="66.0" prefWidth="550.0" style="-fx-background-color: #83b19f;" text="Make shopping list">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#viewStatisticsButtonClicked" prefHeight="66.0" prefWidth="550.0" style="-fx-background-color: #83b19f;" text="View statistics">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+            <Button contentDisplay="TOP" mnemonicParsing="false" onAction="#addNewRecipeButtonClicked" prefHeight="66.0" prefWidth="550.0" style="-fx-background-color: #83b19f;" text="Add new recipe">
+               <font>
+                  <Font size="30.0" />
+               </font>
+               <VBox.margin>
+                  <Insets bottom="50.0" top="50.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <HBox alignment="TOP_CENTER" layoutX="537.0" layoutY="25.0" prefHeight="150.0" prefWidth="846.0">
+         <children>
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Calendar" textFill="#000000a4">
+               <font>
+                  <Font size="100.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

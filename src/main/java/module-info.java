@@ -21,8 +21,8 @@ module org.example.mealplannerfx {
     opens org.example.mealplannerfx.bwscreen to javafx.fxml;
     exports org.example.mealplannerfx.dao;
     opens org.example.mealplannerfx.dao to javafx.fxml;
-    opens org.example.mealplannerfx.entity to javafx.fxml;
     exports org.example.mealplannerfx.entity;
+    opens org.example.mealplannerfx.entity to javafx.fxml;
     exports org.example.mealplannerfx.dao.fs;
     opens org.example.mealplannerfx.dao.fs to javafx.fxml;
     exports org.example.mealplannerfx.dao.db;

@@ -1,16 +1,19 @@
-package org.example.mealplannerfx.coloredscreen;
+package org.example.mealplannerfx.bwscreen;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import org.example.mealplannerfx.control.DBController;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
 import org.example.mealplannerfx.entity.Recipe;
-import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.User;
 
 import java.net.URL;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredSearchController extends ScreenColoredDefWithElements implements Initializable {
+public class ScreenBWSearchController extends ScreenBWDefWithElements implements Initializable {
     @FXML
     private CheckBox onlyMinesCheckBox;
     @FXML

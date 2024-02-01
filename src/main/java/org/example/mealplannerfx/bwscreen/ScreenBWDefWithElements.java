@@ -1,27 +1,30 @@
-package org.example.mealplannerfx.coloredscreen;
+package org.example.mealplannerfx.bwscreen;
 
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
+import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
+import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewStepController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ScreenColoredDefWithElements extends ScreenColoredDef implements Initializable {
-    private final List<ScreenColoredDefWithList> ingredientsList = new ArrayList<>();
-    private final List<ScreenColoredDefWithList> stepsList = new ArrayList<>();
+public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Initializable {
+    private final List<ScreenBWDefWithList> ingredientsList = new ArrayList<>();
+    private final List<ScreenBWDefWithList> stepsList = new ArrayList<>();
     private boolean ingredientsWithUnits = true;
-    private ScreenColoredDefWithList createNewElementInListMask(int position, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox, String sourceFile, ScreenColoredDefWithElements thisClass){
+    private ScreenBWDefWithList createNewElementInListMask(int position, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox, String sourceFile, ScreenBWDefWithElements thisClass){
         try {
             // Load fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(sourceFile));
+            FXMLLoader fxmlLoader = new FXMLLoader(GraphicBWColored.class.getResource(sourceFile));
             // Add element to list in the fxml
             elementsInVBox.getChildren().add(position, fxmlLoader.load());
             // Set super controller of element to this controller
-            ScreenColoredDefWithList screenWithList = fxmlLoader.getController();
+            ScreenBWDefWithList screenWithList = fxmlLoader.getController();
             screenWithList.setControllerSup(thisClass);
             screenWithList.setThisVBox(elementsInVBox);
             screenWithList.setThisPosition(position);
@@ -37,7 +40,7 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
         }
     }
 
-    private void deleteElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
+    private void deleteElementInListMask(int pos, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox){
         if (elementsInList.size() > 1) {
             try {
                 // Remove item from list
@@ -54,11 +57,11 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
         }
     }
 
-    private void upArrowElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
+    private void upArrowElementInListMask(int pos, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox){
         if (pos >= 1) {
             try {
                 // Change item from list
-                ScreenColoredDefWithList elementUp = elementsInList.get(pos - 1);
+                ScreenBWDefWithList elementUp = elementsInList.get(pos - 1);
                 elementsInList.remove(pos - 1);
                 elementsInList.add(pos, elementUp);
                 // Change indexes
@@ -74,11 +77,11 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
         }
     }
 
-    private void downArrowElementInListMask(int pos, List<ScreenColoredDefWithList> elementsInList, VBox elementsInVBox){
+    private void downArrowElementInListMask(int pos, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox){
         if (pos < elementsInList.size() - 1) {
             try {
                 // Change item from list
-                ScreenColoredDefWithList elementUp = elementsInList.get(pos);
+                ScreenBWDefWithList elementUp = elementsInList.get(pos);
                 elementsInList.remove(pos);
                 elementsInList.add(pos + 1, elementUp);
                 // Change indexes
@@ -99,9 +102,9 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
     }
 
     public void addIngredient(int pos, VBox ingredientsVBox) {
-        ScreenColoredDefWithList screenWithList = createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
+        ScreenBWDefWithList screenWithList = createNewElementInListMask(pos, ingredientsList, ingredientsVBox, "screen-colored-zz-newIngredient-mask.fxml", this);
         if (screenWithList != null && !ingredientsWithUnits){
-            ScreenColoredInListNewIngredientController screenIngredient = (ScreenColoredInListNewIngredientController) screenWithList;
+            ScreenBWInListNewIngredientController screenIngredient = (ScreenBWInListNewIngredientController) screenWithList;
             screenIngredient.deletePortions();
         }
     }
@@ -122,14 +125,14 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
         downArrowElementInListMask(pos, stepsList, stepsVBox);
     }
 
-    public List<ScreenColoredDefWithList> getIngredientsList() {
+    public List<ScreenBWDefWithList> getIngredientsList() {
         return ingredientsList;
     }
 
     public Map<Integer, String> getIngredientsListPosName() {
         Map<Integer, String> thisMap = new HashMap<>();
-        for (ScreenColoredDefWithList l: ingredientsList){
-            ScreenColoredInListNewIngredientController l1 = (ScreenColoredInListNewIngredientController) l;
+        for (ScreenBWDefWithList l: ingredientsList){
+            ScreenBWInListNewIngredientController l1 = (ScreenBWInListNewIngredientController) l;
             thisMap.put(l1.getThisPosition(), l1.getIngredientName());
         }
         return thisMap;
@@ -137,8 +140,8 @@ public abstract class ScreenColoredDefWithElements extends ScreenColoredDef impl
 
     public Map<Integer, String> getStepsList() {
         Map<Integer, String> steps = new HashMap<>();
-        for (ScreenColoredDefWithList stepCon : this.stepsList){
-            ScreenColoredInListNewStepController stepCon2 = (ScreenColoredInListNewStepController) stepCon;
+        for (ScreenBWDefWithList stepCon : this.stepsList){
+            ScreenBWInListNewStepController stepCon2 = (ScreenBWInListNewStepController) stepCon;
             steps.put(stepCon.getThisPosition(), stepCon2.getStepString());
         }
         return steps;

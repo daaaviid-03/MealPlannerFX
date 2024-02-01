@@ -8,11 +8,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="Fixing smels">
+      <change afterPath="$PROJECT_DIR$/ConnectionMySQL/mysql-connector-j-8.3.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicBWColored.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithElements.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewIngredientController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewStepController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWRegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-login-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-mainMenu-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-newRecipe-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-oneDay-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-register-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-search-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-shoppingList-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-stats-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-userInfo-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newIngredient-mask.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-newStep-mask.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/org/example/mealplannerfx/bwscreen/screen-bw-zz-viewRecipe-mask.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredMainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/fs/FileRW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/DayData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/entity/DayData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/mealplannerfx/control/DBControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/mealplannerfx/control/DBControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicControllerBW.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredDefWithElements.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredNewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredNewRecipeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredSearchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/control/AppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/DBDataBoundary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,38 +84,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.GraphicControllerColored.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MealPlannerApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DAOUserTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DBControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DBDataBoundaryTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/fileData/originalDataToDB&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.GraphicControllerColored.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.MealPlannerApp.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "JUnit.DAOUserTest.executor": "Run",
+    "JUnit.DBControllerTest.executor": "Run",
+    "JUnit.DBDataBoundaryTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/ConnectionMySQL/mysql-connector-j-8.3.0.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.42413792",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.build"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\java\org\example\mealplannerfx\bwscreen" />
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\originalDataToDB" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\settingsScreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\java\org\example\mealplannerfx\settingsScreen" />
-      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\mySQLConector" />
-      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\usersFileData" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\ConnectionMySQL" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredScreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\fileData\originalDataToDB" />
     </key>
@@ -406,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706745496710</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Fixing smels">
+      <option name="closed" value="true" />
+      <created>1706746238171</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1706746238171</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

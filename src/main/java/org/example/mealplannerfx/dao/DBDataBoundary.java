@@ -1,8 +1,9 @@
 package org.example.mealplannerfx.dao;
 
+import org.example.mealplannerfx.bwscreen.ScreenBWDefWithList;
+import org.example.mealplannerfx.bwscreen.ScreenBWInListNewIngredientController;
 import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
 import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewStepController;
 import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.Ingredient;
@@ -11,6 +12,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DBDataBoundary {
     private static final int MIN_NUM_OF_CHARS_IN_RECIPE_NAME = 3;
@@ -141,39 +143,12 @@ public class DBDataBoundary {
         return correctNormalStringLength(desc, "Description", 0,
                 MAX_NUMBER_OF_CHARS_IN_RECIPE_DESCRIPTION, "(No description)");
     }
-    public static void correctIngredients(List<ScreenColoredDefWithList> ingredientsList,
-                                          List<Ingredient> ingredients, List<Float> ingredientsQuantities,
-                                          List<String> ingredientsPortionsNames) throws WrongArgException {
-        for (ScreenColoredDefWithList elemController : ingredientsList) {
-            ScreenColoredInListNewIngredientController mCont = (ScreenColoredInListNewIngredientController) elemController;
-            String ingredientName = mCont.getIngredientName();
+    public static void correctIngredients(Map<Integer, String> ingredientsList,
+                                          List<Ingredient> ingredients) throws WrongArgException {
+        for (Map.Entry<Integer, String> elem : ingredientsList.entrySet()) {
+            String ingredientName = elem.getValue();
             if(!ingredientName.isEmpty()){
-                String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
-                try {
-                    ingredients.add(DBController.getIngredientByName(ingredientName));
-                } catch (Exception e) {
-                    throw new WrongArgException(errorIntro + " doesn't exist in Data Base, please use the provided ones.");
-                }
-                try {
-                    ingredientsQuantities.add(mCont.getQuantityText());
-                } catch (Exception e){
-                    throw new WrongArgException(errorIntro + " quantity's should be a valid number.");
-                }
-                try {
-                    ingredientsPortionsNames.add(mCont.getPortionName());
-                } catch (Exception e){
-                    ingredientsPortionsNames.add("g");
-                }
-            }
-        }
-    }
-
-    public static void correctIngredients(List<ScreenColoredDefWithList> ingredientsList, List<Ingredient> ingredients) throws WrongArgException {
-        for (ScreenColoredDefWithList elemController : ingredientsList) {
-            ScreenColoredInListNewIngredientController mCont = (ScreenColoredInListNewIngredientController) elemController;
-            String ingredientName = mCont.getIngredientName();
-            if(!ingredientName.isEmpty()){
-                String errorIntro = "Ingredient in position " + (mCont.getThisPosition() + 1);
+                String errorIntro = "Ingredient in position " + (elem.getKey() + 1);
                 try {
                     ingredients.add(DBController.getIngredientByName(ingredientName));
                 } catch (Exception e) {
@@ -183,12 +158,11 @@ public class DBDataBoundary {
         }
     }
 
-    public static List<String> correctSteps(List<ScreenColoredDefWithList> stepsList) throws WrongArgException {
+    public static List<String> correctSteps(Map<Integer, String> stepsList) throws WrongArgException {
         List<String> steps = new ArrayList<>();
-        for (ScreenColoredDefWithList elemController : stepsList) {
-            ScreenColoredInListNewStepController mCont = (ScreenColoredInListNewStepController) elemController;
-            String stepInfo = mCont.getStepString();
-            correctNormalStringLength(stepInfo, "Step in position " + (mCont.getThisPosition() + 1), 0, MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP, "");
+        for (Map.Entry<Integer, String> elem : stepsList.entrySet()) {
+            String stepInfo = elem.getValue();
+            correctNormalStringLength(stepInfo, "Step in position " + (elem.getKey() + 1), 0, MAX_NUMBER_OF_CHARS_IN_RECIPE_STEP, "");
             if(!stepInfo.isEmpty()){
                 steps.add(stepInfo);
             }

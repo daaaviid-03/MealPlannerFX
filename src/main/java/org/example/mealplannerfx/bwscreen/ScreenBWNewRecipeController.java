@@ -1,20 +1,24 @@
-package org.example.mealplannerfx.coloredscreen;
+package org.example.mealplannerfx.bwscreen;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
+import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
 import org.example.mealplannerfx.control.DBController;
+import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.Ingredient;
-import org.example.mealplannerfx.control.WrongArgException;
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElements implements Initializable {
+public class ScreenBWNewRecipeController extends ScreenBWDefWithElements implements Initializable {
 
     @FXML
     private TextField durationText;
@@ -42,8 +46,6 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElemen
             List<Ingredient> ingredients = new ArrayList<>();
             List<Float> ingredientsQuantity = new ArrayList<>();
             List<String> ingredientsPortionsNames = new ArrayList<>();
-
-
             getQuantityAndPortions(getIngredientsList(), ingredientsQuantity, ingredientsPortionsNames);
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
@@ -57,10 +59,10 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElemen
         }
     }
 
-    private static void getQuantityAndPortions(List<ScreenColoredDefWithList> listIngCon,
+    private static void getQuantityAndPortions(List<ScreenBWDefWithList> listIngCon,
                                                List<Float> ingredientsQuantity, List<String> ingredientsPortionsNames) throws WrongArgException {
-        for (ScreenColoredDefWithList l : listIngCon){
-            ScreenColoredInListNewIngredientController l1 = (ScreenColoredInListNewIngredientController) l;
+        for (ScreenBWDefWithList l : listIngCon){
+            ScreenBWInListNewIngredientController l1 = (ScreenBWInListNewIngredientController) l;
             String errorIntro = "Ingredient in position " + (l1.getThisPosition() + 1);
             try {
                 ingredientsQuantity.add(l1.getQuantityText());
@@ -74,6 +76,4 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElemen
             }
         }
     }
-
-
 }
