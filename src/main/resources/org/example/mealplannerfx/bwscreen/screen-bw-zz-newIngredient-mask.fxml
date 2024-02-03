@@ -54,7 +54,7 @@
                <Insets right="5.0" />
            </HBox.margin>
         </ComboBox>
-        <Button mnemonicParsing="false" onAction="#deleteIngredient" prefHeight="50.0" prefWidth="50.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000;" text="x" underline="true">
+        <Button mnemonicParsing="false" onAction="#deleteIngredients" prefHeight="50.0" prefWidth="50.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000;" text="x" underline="true">
             <HBox.margin>
                 <Insets right="5.0" />
             </HBox.margin>
@@ -62,7 +62,7 @@
                 <Font size="22.0" />
             </font>
         </Button>
-        <Button mnemonicParsing="false" onAction="#addIngredient" prefHeight="53.0" prefWidth="54.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000;" text="+" underline="true">
+        <Button mnemonicParsing="false" onAction="#addIngredients" prefHeight="53.0" prefWidth="54.0" style="-fx-border-width: 3px; -fx-border-radius: 1em; -fx-background-radius: 1em; -fx-border-color: #000000;" text="+" underline="true">
             <font>
                 <Font size="22.0" />
             </font>

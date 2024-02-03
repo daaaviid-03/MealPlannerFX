@@ -44,9 +44,9 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
 
     private void hideListOfElements(){
         ingredientListText.setVisible(false);
-        ingredientListText.setMinHeight(0);
         ingredientListText.setPrefHeight(0);
         ingredientListText.setMaxHeight(0);
+        ingredientListText.setMinHeight(0);
     }
 
     public void showFilteredElements(String newValue) {
@@ -58,9 +58,9 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
         }
         // Set View size
         double size = Math.min(MAX_INGREDIENTS_IN_VIEW, foundedElements.size()) * ingredientListText.getFixedCellSize();
-        ingredientListText.setMinHeight(size);
         ingredientListText.setPrefHeight(size);
         ingredientListText.setMaxHeight(size);
+        ingredientListText.setMinHeight(size);
         ingredientListText.getItems().setAll(FXCollections.observableArrayList(foundedElements));
     }
 
@@ -73,11 +73,11 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
         }
     }
 
-    public void deleteIngredient() {
+    public void deleteIngredients() {
         getControllerSup().deleteIngredient(getThisPosition(), getThisVBox());
     }
 
-    public void addIngredient() {
+    public void addIngredients() {
         getControllerSup().addIngredient(getThisPosition() + 1, getThisVBox());
     }
 
