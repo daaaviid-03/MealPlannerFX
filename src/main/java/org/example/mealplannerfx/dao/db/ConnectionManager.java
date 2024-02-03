@@ -12,6 +12,8 @@ public class ConnectionManager {
     private static Connection connection;
     private static Statement statement;
 
+    private ConnectionManager(){}
+
     /**
      * Starts the connection with the JDBC
      */

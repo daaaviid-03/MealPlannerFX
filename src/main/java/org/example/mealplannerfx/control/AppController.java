@@ -10,6 +10,8 @@ public class AppController{
     private static String nextDBMS;
     private static String nextViewMS;
 
+    private AppController(){}
+
     public static void startBD(){
         if(actualDBMS.equals("DBMS (SQL)")){
             ConnectionManager.startConnection();
