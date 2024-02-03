@@ -48,8 +48,8 @@ public class ScreenBWNewRecipeController extends ScreenBWDefWithElements impleme
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
             int duration = DBDataBoundary.correctDuration(durationText.getText());
-            DBController.createNewRecipeDB(name, desc, getGbwcInstance().getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-            getGbwcInstance().startScreenBW("mainMenu");
+            DBController.createNewRecipeDB(name, desc, GraphicControllerBW.getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            GraphicControllerBW.startScreenBW("mainMenu");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){

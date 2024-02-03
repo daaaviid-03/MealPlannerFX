@@ -13,73 +13,58 @@
 
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.mealplannerfx.bwscreen.ScreenBWSearchController">
    <children>
-      <HBox alignment="TOP_CENTER" layoutX="536.0" layoutY="12.0" prefHeight="150.0" prefWidth="846.0">
+      <HBox alignment="TOP_CENTER" layoutX="365.0" layoutY="14.0" prefHeight="150.0" prefWidth="846.0">
          <children>
-            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Recipe Searcher" textFill="#000000a4">
+            <Label alignment="TOP_CENTER" prefHeight="146.0" prefWidth="858.0" text="Recipe Searcher">
                <font>
-                  <Font size="100.0" />
+                  <Font name="System Bold" size="80.0" />
                </font>
             </Label>
          </children>
       </HBox>
-      <Button fx:id="avatarButton" layoutX="1798.0" layoutY="37.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-radius: 5em; -fx-background-color: #b3cece;" text="D">
-         <font>
-            <Font size="40.0" />
-         </font>
-      </Button>
-      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1315.0" layoutY="64.0" prefHeight="46.0" prefWidth="454.0" text="daaaviid_03" textAlignment="RIGHT">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button cancelButton="true" layoutX="36.0" layoutY="37.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #ffb347;" text="&lt;">
-         <font>
-            <Font size="45.0" />
-         </font>
-      </Button>
-      <Label layoutX="148.0" layoutY="211.0" text="Name:">
+      <Label layoutX="148.0" layoutY="211.0" style="-fx-font-weight: bold;" text="Name:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="nameToSearch" layoutX="218.0" layoutY="204.0" prefHeight="30.0" prefWidth="447.0" promptText="(Name of the recipe)">
+      <TextField fx:id="nameToSearch" layoutX="218.0" layoutY="204.0" prefHeight="30.0" prefWidth="447.0" promptText="RECIPE">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <CheckBox fx:id="exactNameCheckBox" layoutX="681.0" layoutY="210.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="214.0" text="Exact name">
+      <CheckBox fx:id="exactNameCheckBox" layoutX="681.0" layoutY="210.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="214.0" style="-fx-font-weight: bold;" text="Exact name">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <Label layoutX="125.0" layoutY="264.0" text="Duration:">
+      <Label layoutX="125.0" layoutY="264.0" style="-fx-font-weight: bold;" text="Duration:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField fx:id="durationToSearch" layoutX="219.0" layoutY="257.0" prefHeight="15.0" prefWidth="82.0" promptText="(min)">
+      <TextField fx:id="durationToSearch" layoutX="219.0" layoutY="257.0" prefHeight="15.0" prefWidth="82.0" promptText="MIN">
          <font>
             <Font size="20.0" />
          </font>
       </TextField>
-      <Label layoutX="316.0" layoutY="263.0" text="(min)">
+      <Label layoutX="316.0" layoutY="263.0" style="-fx-font-weight: bold;" text="(min)">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <CheckBox fx:id="greaterEqualCheckBox" layoutX="391.0" layoutY="253.0" mnemonicParsing="false" prefHeight="7.0" prefWidth="331.0" selected="true" text="Greater-equal (X &gt;= duration)">
+      <CheckBox fx:id="greaterEqualCheckBox" layoutX="391.0" layoutY="253.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="334.0" selected="true" style="-fx-font-weight: bold;" text="Greater-equal (X &gt;= duration)">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="lowerEqualCheckBox" layoutX="391.0" layoutY="282.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="312.0" text="Lower-equal (X &lt;= duration)">
+      <CheckBox fx:id="lowerEqualCheckBox" layoutX="391.0" layoutY="282.0" mnemonicParsing="false" prefHeight="8.0" prefWidth="312.0" style="-fx-font-weight: bold;" text="Lower-equal (X &lt;= duration)">
          <font>
             <Font size="15.0" />
          </font>
       </CheckBox>
       <HBox layoutX="100.0" layoutY="309.0" prefHeight="194.0" prefWidth="722.0">
          <children>
-            <Label prefHeight="30.0" prefWidth="118.0" text="Ingredients:  ">
+            <Label prefHeight="30.0" prefWidth="126.0" style="-fx-font-weight: bold;" text="Ingredients:  ">
                <font>
                   <Font size="20.0" />
                </font>
@@ -95,23 +80,18 @@
             </ScrollPane>
          </children>
       </HBox>
-      <CheckBox fx:id="allIngredInComoCheckBox" layoutX="96.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All ingredients in common">
+      <CheckBox fx:id="allIngredInComoCheckBox" layoutX="96.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="290.0" style="-fx-font-weight: bold;" text="All ingredients in common">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="allRestrictionInCommonCheckBox" layoutX="386.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="278.0" text="All restrictions in common">
+      <CheckBox fx:id="allRestrictionInCommonCheckBox" layoutX="402.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="289.0" style="-fx-font-weight: bold;" text="All restrictions in common">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
       <ListView fx:id="listOfFoundedRecipes" fixedCellSize="25.0" layoutX="277.0" layoutY="705.0" prefHeight="215.0" prefWidth="361.0" scaleX="2.0" scaleY="2.0" scaleZ="2.0" />
-      <Button layoutX="1269.0" layoutY="930.0" mnemonicParsing="false" onAction="#continueWithSelection" prefHeight="98.0" prefWidth="578.0" style="-fx-background-color: #a5eea0;" text="Continue whith selection">
-         <font>
-            <Font size="46.0" />
-         </font>
-      </Button>
-      <Button layoutX="1025.0" layoutY="930.0" mnemonicParsing="false" onAction="#returnButtonClicked" style="-fx-background-color: #ff9688;" text="Cancel">
+      <Button layoutX="1125.0" layoutY="926.0" mnemonicParsing="false" onAction="#continueWithSelection" prefHeight="113.0" prefWidth="630.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Continue whith selection">
          <font>
             <Font size="46.0" />
          </font>
@@ -121,7 +101,7 @@
           <AnchorPane fx:id="recipeViewerPlane" minHeight="0.0" minWidth="0.0" />
         </content>
       </ScrollPane>
-      <Button layoutX="826.0" layoutY="597.0" mnemonicParsing="false" onAction="#searchRecipes" style="-fx-background-color: #98c0f6;" text="🔍">
+      <Button layoutX="849.0" layoutY="597.0" mnemonicParsing="false" onAction="#searchRecipes" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="🔍">
          <font>
             <Font size="46.0" />
          </font>
@@ -131,10 +111,25 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <CheckBox fx:id="onlyMinesCheckBox" layoutX="671.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" text="Mines">
+      <CheckBox fx:id="onlyMinesCheckBox" layoutX="703.0" layoutY="509.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="145.0" style="-fx-font-weight: bold;" text="Mines">
          <font>
             <Font size="20.0" />
          </font>
       </CheckBox>
+      <Button fx:id="avatarButton" layoutX="1561.0" layoutY="47.0" mnemonicParsing="false" onAction="#userInfoButtonClicked" prefHeight="113.0" prefWidth="361.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="User Settings">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Button>
+      <Label fx:id="nicknameText" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1157.0" layoutY="70.0" prefHeight="66.0" prefWidth="385.0" text="daaaviid_03" textAlignment="RIGHT">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button cancelButton="true" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#returnButtonClicked" prefHeight="123.0" prefWidth="282.0" style="-fx-border-width: 8px; -fx-border-radius: 5em; -fx-background-radius: 5em; -fx-border-color: #000000; -fx-font-size: 45px; -fx-font-weight: bold; -fx-underline: true;" text="Return">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -12,7 +12,6 @@ import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
 public class ScreenBWRegisterController {
-    private final GraphicBWColored graphicCC = GraphicBWColored.getGBWCInstance();
     @FXML
     private Label errorText;
     @FXML
@@ -40,8 +39,8 @@ public class ScreenBWRegisterController {
             String correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
 
             User thisUser = DBController.createUser(nick,correctRepPass,correctHeight, correctWeight, email, birth);
-            graphicCC.setThisUser(thisUser);
-            graphicCC.startScreenBW("mainMenu", "init");
+            GraphicControllerBW.setThisUser(thisUser);
+            GraphicControllerBW.startScreenBW("mainMenu", "init");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
@@ -50,6 +49,6 @@ public class ScreenBWRegisterController {
     }
 
     public void returnButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenBW("init");
+        GraphicControllerBW.startScreenBW("init");
     }
 }

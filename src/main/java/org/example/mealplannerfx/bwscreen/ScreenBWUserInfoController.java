@@ -45,7 +45,7 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel("userInfo", false);
-        thisUser = getGbwcInstance().getThisUser();
+        thisUser = GraphicControllerBW.getThisUser();
         emailText.setText(thisUser.getEmail());
         birthDate.setValue(LocalDate.ofEpochDay(thisUser.getBirth()));
         heightText.setText(String.valueOf(thisUser.getHeight()));
@@ -82,7 +82,7 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
                 throw new WrongArgException("Old password isn't correct.");
             }
             User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
-            getGbwcInstance().setThisUser(newUser);
+            GraphicControllerBW.setThisUser(newUser);
             returnScreen();
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
@@ -93,8 +93,8 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
 
     public void logOutButtonClicked() {
         if (showConfirmationScreen("Log out.", "Cancel", "Log out")){
-            getGbwcInstance().setThisUser(null);
-            getGbwcInstance().startScreenBW("login");
+            GraphicControllerBW.setThisUser(null);
+            GraphicControllerBW.startScreenBW("login");
         }
     }
 
@@ -103,8 +103,8 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
                 "Cancel", "DELETE ACCOUNT")){
             try {
                 DBController.deleteUserFromDB(thisUser.getNickname());
-                getGbwcInstance().setThisUser(null);
-                getGbwcInstance().startScreenBW("login");
+                GraphicControllerBW.setThisUser(null);
+                GraphicControllerBW.startScreenBW("login");
             } catch (Exception e) {
                 errorText.setText("Can't DELETE this account.");
             }

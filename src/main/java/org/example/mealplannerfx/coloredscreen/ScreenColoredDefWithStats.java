@@ -36,7 +36,7 @@ public abstract class ScreenColoredDefWithStats extends ScreenColoredDef impleme
         // It's the map of all ingredients in between that days that ar used in recipes, and a map of portions
         // of each ingredient.
         Map<String, Map<String, Float>> portionsOfIngredients = new HashMap<>();
-        for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), fromDateLong, toDateLong)){
+        for (DayData dayData : DBController.getDaysData(GraphicControllerColored.getThisUser().getNickname(), fromDateLong, toDateLong)){
             getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
             getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getLunchId()), portionsOfIngredients);
             getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getDinnerId()), portionsOfIngredients);

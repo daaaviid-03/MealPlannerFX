@@ -21,48 +21,46 @@ public class GraphicControllerColored extends Application implements GraphicCont
     private static final double WINDOW_HEIGHT = 720;
     private static final double WINDOW_WIDTH = 1280;
     private static final String FIRST_SCREEN_TO_SHOW_NAME = "login";
-    private static GraphicControllerColored graphicControllerColoredInstance = null;
-    private final HashMap<String, String> screensFXML = new HashMap<>();
+    private static final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
     /**
      * The anchorPane that surrounds the scene to be able to resize the screen
      */
-    private final AnchorPane anchorPaneResize = new AnchorPane();
-    private Map<String, Object> namespace;
-    private FXMLLoader thisFxmlLoader;
+    private static final AnchorPane anchorPaneResize = new AnchorPane();
+    private static Map<String, Object> namespace;
+    private static FXMLLoader thisFxmlLoader;
     // Objects of saved messages
     /**
      * Active user in the system
      */
-    private User thisUser;
+    private static User thisUser;
     /**
      * Active day to explore in the system
      */
-    private long dayToExplore;
+    private static long dayToExplore;
     /**
      * Last selected recipe from the screen of searching recipes to the one-day screen.
      */
-    private Recipe lastRecipeSelected;
+    private static Recipe lastRecipeSelected;
     /**
      * The recipe to show, if there is any
      */
-    private Recipe recipeToShow;
+    private static Recipe recipeToShow;
     /**
      * Whether is breakfast, launch or dinner.
      */
-    private String mealNameOfLastSelected;
-
-    public GraphicControllerColored(){
-        graphicControllerColoredInstance = this;
-        this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-colored-login-view.fxml");
-        this.screensFXML.put("register", "screen-colored-register-view.fxml");
-        this.screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
-        this.screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml");
-        this.screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml");
-        this.screensFXML.put("searchNewFood", "screen-colored-search-view.fxml");
-        this.screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml");
-        this.screensFXML.put("stats", "screen-colored-stats-view.fxml");
-        this.screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml");
+    private static String mealNameOfLastSelected;
+    @Override
+    public void init(){
+        screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-colored-login-view.fxml");
+        screensFXML.put("register", "screen-colored-register-view.fxml");
+        screensFXML.put("mainMenu", "screen-colored-mainMenu-view.fxml");
+        screensFXML.put("newRecipe", "screen-colored-newRecipe-view.fxml");
+        screensFXML.put("oneDay", "screen-colored-oneDay-view.fxml");
+        screensFXML.put("searchNewFood", "screen-colored-search-view.fxml");
+        screensFXML.put("shoppingList", "screen-colored-shoppingList-view.fxml");
+        screensFXML.put("stats", "screen-colored-stats-view.fxml");
+        screensFXML.put("userInfo", "screen-colored-userInfo-view.fxml");
     }
 
     public static void main(String[] args){
@@ -101,8 +99,8 @@ public class GraphicControllerColored extends Application implements GraphicCont
      * Starts a new screen in the stage
      * @param screenName the key name of the screen
      */
-    public void startScreenColored(String screenName){
-        thisFxmlLoader = new FXMLLoader(getClass().getResource(this.screensFXML.get(screenName)));
+    public static void startScreenColored(String screenName){
+        thisFxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
             Node parent = thisFxmlLoader.load();
@@ -112,49 +110,43 @@ public class GraphicControllerColored extends Application implements GraphicCont
             throw new RuntimeException(e);
         }
     }
-    public void startScreenColored(String screenName, String previousScreen){
+    public static void startScreenColored(String screenName, String previousScreen){
         startScreenColored(screenName);
         if (previousScreen != null){
             ((ScreenColoredDef)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
         }
     }
-    public static GraphicControllerColored getGCCInstance(){
-        if (graphicControllerColoredInstance == null){
-            graphicControllerColoredInstance = new GraphicControllerColored();
-        }
-        return graphicControllerColoredInstance;
-    }
-    public User getThisUser() {
+    public static User getThisUser() {
         return thisUser;
     }
-    public void setThisUser(User thisUser) {
-        this.thisUser = thisUser;
+    public static void setThisUser(User thisUser1) {
+        thisUser = thisUser1;
     }
-    public long getDayToExplore() {
+    public static long getDayToExplore() {
         return dayToExplore;
     }
-    public void setDayToExplore(long dayToExplore) {
-        this.dayToExplore = dayToExplore;
+    public static void setDayToExplore(long dayToExplore1) {
+        dayToExplore = dayToExplore1;
     }
-    public Object searchForObjInScene(String name){
+    public static Object searchForObjInScene(String name){
         return namespace.get(name);
     }
-    public Recipe getLastRecipeSelected() {
+    public static Recipe getLastRecipeSelected() {
         return lastRecipeSelected;
     }
-    public void setLastRecipeSelected(Recipe lastRecipeSelected) {
-        this.lastRecipeSelected = lastRecipeSelected;
+    public static void setLastRecipeSelected(Recipe lastRecipeSelected1) {
+        lastRecipeSelected = lastRecipeSelected1;
     }
-    public void setRecipeToShow(Recipe recipeToShow) {
-        this.recipeToShow = recipeToShow;
+    public static void setRecipeToShow(Recipe recipeToShow1) {
+        recipeToShow = recipeToShow1;
     }
-    public Recipe getRecipeToShow() {
+    public static Recipe getRecipeToShow() {
         return recipeToShow;
     }
-    public String getMealNameOfLastSelected() {
+    public static String getMealNameOfLastSelected() {
         return mealNameOfLastSelected;
     }
-    public void setMealNameOfLastSelected(String mealNameOfLastSelected) {
-        this.mealNameOfLastSelected = mealNameOfLastSelected;
+    public static void setMealNameOfLastSelected(String mealNameOfLastSelected1) {
+        mealNameOfLastSelected = mealNameOfLastSelected1;
     }
 }

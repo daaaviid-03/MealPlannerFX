@@ -5,13 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.example.mealplannerfx.entity.Recipe;
 
 public abstract class ScreenBWDef implements Initializable {
-    private final GraphicBWColored gbwcInstance = GraphicBWColored.getGBWCInstance();
     @FXML
     private Label nicknameText;
     private boolean confirmExit;
@@ -22,11 +21,11 @@ public abstract class ScreenBWDef implements Initializable {
     public void initializeDefaultModel(String nameThisScreen, boolean confirmExit) {
         this.nameThisScreen = nameThisScreen;
         this.confirmExit = confirmExit;
-        String nickname = gbwcInstance.getThisUser().getNickname();
+        String nickname = GraphicControllerBW.getThisUser().getNickname();
         nicknameText.setText(nickname);
     }
     public void userInfoButtonClicked() {
-        gbwcInstance.startScreenBW("userInfo", nameThisScreen);
+        GraphicControllerBW.startScreenBW("userInfo", nameThisScreen);
     }
     public void returnButtonClicked() {
         if(!confirmExit || showConfirmationScreen("Exit this screen.", "Cancel", "Exit")){
@@ -37,7 +36,7 @@ public abstract class ScreenBWDef implements Initializable {
         if (previousScreen.equals(nameThisScreen)){
             previousScreen = "init";
         }
-        gbwcInstance.startScreenBW(previousScreen);
+        GraphicControllerBW.startScreenBW(previousScreen);
     }
     public boolean showConfirmationScreen(String message, String noActionText, String actionText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -49,16 +48,14 @@ public abstract class ScreenBWDef implements Initializable {
         alert.showAndWait().ifPresent(response -> alertResponse = response == actionOption);
         return alertResponse;
     }
-    public GraphicBWColored getGbwcInstance() {
-        return gbwcInstance;
-    }
     public void setPreviousScreen(String previousScreenName){
         previousScreen = previousScreenName;
     }
-    public void visualizeRecipeInPlane(AnchorPane anchorPane){
+    public void visualizeRecipeInPlane(AnchorPane anchorPane, Recipe recipe){
         try {
+            GraphicControllerBW.setRecipeToShow(recipe);
             // Load fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(GraphicBWColored.class.getResource(RECIPE_VIEW_SCENE_FXML_FILE_NAME));
+            FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerBW.class.getResource(RECIPE_VIEW_SCENE_FXML_FILE_NAME));
             // Set element in the fxml
             anchorPane.getChildren().setAll((Node)fxmlLoader.load());
         } catch (Exception e) {

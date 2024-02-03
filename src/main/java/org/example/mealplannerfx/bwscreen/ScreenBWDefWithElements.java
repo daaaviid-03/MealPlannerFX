@@ -4,9 +4,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewStepController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +17,7 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
     private ScreenBWDefWithList createNewElementInListMask(int position, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox, String sourceFile, ScreenBWDefWithElements thisClass){
         try {
             // Load fxml
-            FXMLLoader fxmlLoader = new FXMLLoader(GraphicBWColored.class.getResource(sourceFile));
+            FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerBW.class.getResource(sourceFile));
             // Add element to list in the fxml
             elementsInVBox.getChildren().add(position, fxmlLoader.load());
             // Set super controller of element to this controller

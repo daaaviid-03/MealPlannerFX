@@ -10,7 +10,6 @@ import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.User;
 
 public class ScreenBWLoginController {
-    private final GraphicBWColored graphicCC = GraphicBWColored.getGBWCInstance();
     @FXML
     private Label errorText;
     @FXML
@@ -24,8 +23,8 @@ public class ScreenBWLoginController {
         try {
             DBController.checkUserInDB(nick, pass);
             User thisUser = DBController.getUserInfo(nick);
-            graphicCC.setThisUser(thisUser);
-            graphicCC.startScreenBW("mainMenu", "init");
+            GraphicControllerBW.setThisUser(thisUser);
+            GraphicControllerBW.startScreenBW("mainMenu", "init");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
@@ -34,6 +33,6 @@ public class ScreenBWLoginController {
     }
 
     public void returnButtonClicked(ActionEvent actionEvent) {
-        graphicCC.startScreenBW("init");
+        GraphicControllerBW.startScreenBW("init");
     }
 }

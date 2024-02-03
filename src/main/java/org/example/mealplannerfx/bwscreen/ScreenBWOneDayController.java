@@ -40,17 +40,17 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel("oneDay", false);
-        dayNumber = getGbwcInstance().getDayToExplore();
+        dayNumber = GraphicControllerBW.getDayToExplore();
         setRecipeSelected();
     }
 
     private void setRecipeSelected(){
-        Recipe recipe = getGbwcInstance().getLastRecipeSelected();
+        Recipe recipe = GraphicControllerBW.getLastRecipeSelected();
         setDayDataFromDayNumber();
         if (recipe != null){
-            thisDayData.setMealByName(getGbwcInstance().getMealNameOfLastSelected(), recipe);
-            getGbwcInstance().setLastRecipeSelected(null);
-            getGbwcInstance().setMealNameOfLastSelected(null);
+            thisDayData.setMealByName(GraphicControllerBW.getMealNameOfLastSelected(), recipe);
+            GraphicControllerBW.setLastRecipeSelected(null);
+            GraphicControllerBW.setMealNameOfLastSelected(null);
             DBController.saveDayData(thisDayData);
         }
         setDayDataFromCalendar();
@@ -59,7 +59,7 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
 
     private void setDayDataFromCalendar() {
         // Set date info
-        getGbwcInstance().setDayToExplore(dayNumber);
+        GraphicControllerBW.setDayToExplore(dayNumber);
         LocalDate date = LocalDate.ofEpochDay(dayNumber);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
@@ -70,7 +70,7 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
     }
 
     private void setDayDataFromDayNumber() {
-        thisDayData = DBController.getSpecificDayData(getGbwcInstance().getThisUser().getNickname(), dayNumber);
+        thisDayData = DBController.getSpecificDayData(GraphicControllerBW.getThisUser().getNickname(), dayNumber);
     }
 
     private void setButtonToInfo(Button button, Recipe recipe){
@@ -95,8 +95,8 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
     }
 
     public void recipeEditButton(ActionEvent actionEvent) {
-        getGbwcInstance().setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
-        getGbwcInstance().startScreenBW("searchNewFood", "oneDay");
+        GraphicControllerBW.setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
+        GraphicControllerBW.startScreenBW("searchNewFood", "oneDay");
     }
 
     public void deleteRecipe(ActionEvent actionEvent) {
@@ -114,6 +114,6 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
             recipeEditButton(actionEvent);
             return;
         }
-        visualizeRecipeInPlane(recipeViewerPlane);
+        visualizeRecipeInPlane(recipeViewerPlane, thisRecipe);
     }
 }

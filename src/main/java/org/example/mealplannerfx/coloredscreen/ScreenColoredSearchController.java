@@ -56,18 +56,13 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
         searchRecipes();
     }
 
-    private void selectedElement(Object recipe) {
-        if (recipe.toString().equals(NO_ELEMENTS_FOUND_TEXT)){
-            return;
-        }
-        lastRecipeSelected = (Recipe) recipe;
-        getGraphicCC().setRecipeToShow(lastRecipeSelected);
-        visualizeRecipeInPlane(recipeViewerPlane);
+    private void selectedElement(Recipe recipe) {
+        visualizeRecipeInPlane(recipeViewerPlane, recipe);
     }
 
     public void continueWithSelection() {
         if (lastRecipeSelected != null) {
-            getGraphicCC().setLastRecipeSelected(lastRecipeSelected);
+            GraphicControllerColored.setLastRecipeSelected(lastRecipeSelected);
             returnScreen();
         } else {
             returnButtonClicked();
@@ -85,7 +80,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             User thisUser = null;
             if (onlyMinesCheckBox.isSelected()){
-                thisUser = getGraphicCC().getThisUser();
+                thisUser = GraphicControllerColored.getThisUser();
             }
             List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,

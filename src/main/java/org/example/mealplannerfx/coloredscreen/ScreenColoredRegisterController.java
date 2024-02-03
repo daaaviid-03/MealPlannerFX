@@ -11,7 +11,6 @@ import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
 public class ScreenColoredRegisterController {
-    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
     private Label errorText;
     @FXML
@@ -30,7 +29,7 @@ public class ScreenColoredRegisterController {
     private TextField nicknameText;
 
     public void onLoginButtonClicked() {
-        this.graphicCC.startScreenColored("login");
+        GraphicControllerColored.startScreenColored("login");
     }
 
     public void onRegisterButtonClicked() {
@@ -43,8 +42,8 @@ public class ScreenColoredRegisterController {
             String correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
 
             User thisUser = DBController.createUser(nick,correctRepPass,correctHeight, correctWeight, email, birth);
-            graphicCC.setThisUser(thisUser);
-            graphicCC.startScreenColored("mainMenu");
+            GraphicControllerColored.setThisUser(thisUser);
+            GraphicControllerColored.startScreenColored("mainMenu");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){

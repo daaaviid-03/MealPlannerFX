@@ -28,11 +28,9 @@ public class ScreenBWViewRecipeController implements Initializable {
     @FXML
     private TextField durationText;
 
-    private final GraphicBWColored graphicCC = GraphicBWColored.getGBWCInstance();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        establishRecipeToShow(graphicCC.getRecipeToShow());
+        establishRecipeToShow(GraphicControllerBW.getRecipeToShow());
     }
 
     public void establishRecipeToShow(Recipe recipe) {

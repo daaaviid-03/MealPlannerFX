@@ -25,8 +25,8 @@ public class ScreenBWDaySelectController extends ScreenBWDef implements Initiali
 
     public void exploreThatDayButton(ActionEvent actionEvent) {
         if (dayToExplore.getValue() != null) {
-            getGbwcInstance().setDayToExplore(dayToExplore.getValue().toEpochDay());
-            getGbwcInstance().startScreenBW("oneDay", "daySelect");
+            GraphicControllerBW.setDayToExplore(dayToExplore.getValue().toEpochDay());
+            GraphicControllerBW.startScreenBW("oneDay", "daySelect");
         }
     }
 }

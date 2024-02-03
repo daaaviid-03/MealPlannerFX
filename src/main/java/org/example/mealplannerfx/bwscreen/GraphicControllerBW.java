@@ -14,60 +14,59 @@ import org.example.mealplannerfx.entity.User;
 import java.util.HashMap;
 import java.util.Map;
 
-public class GraphicBWColored extends Application implements GraphicController {
+public class GraphicControllerBW extends Application implements GraphicController {
     private static final double WINDOW_HEIGHT_DEFAULT = 1080;
     private static final double WINDOW_WIDTH_DEFAULT = 1920;
     private static final double WINDOW_HEIGHT = 720;
     private static final double WINDOW_WIDTH = 1280;
     private static final String FIRST_SCREEN_TO_SHOW_NAME = "init";
-    private static GraphicBWColored graphicBWColoredInstance;
-    private final HashMap<String, String> screensFXML = new HashMap<>();
+    private static final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
     /**
      * The anchorPane that surrounds the scene to be able to resize the screen
      */
-    private final AnchorPane anchorPaneResize = new AnchorPane();
-    private Map<String, Object> namespace;
-    private FXMLLoader thisFxmlLoader;
+    private static final AnchorPane anchorPaneResize = new AnchorPane();
+    private static Map<String, Object> namespace;
+    private static FXMLLoader thisFxmlLoader;
     // Objects of saved messages
     /**
      * Active user in the system
      */
-    private User thisUser;
+    private static User thisUser;
     /**
      * Active day to explore in the system
      */
-    private long dayToExplore;
+    private static long dayToExplore;
     /**
      * Last selected recipe from the screen of searching recipes to the one-day screen.
      */
-    private Recipe lastRecipeSelected;
+    private static Recipe lastRecipeSelected;
     /**
      * The recipe to show, if there is any
      */
-    private Recipe recipeToShow;
+    private static Recipe recipeToShow;
     /**
      * Whether is breakfast, launch or dinner.
      */
-    private String mealNameOfLastSelected;
+    private static String mealNameOfLastSelected;
 
-    public GraphicBWColored(){
-        graphicBWColoredInstance = this;
-        this.screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-bw-init-view.fxml");
-        this.screensFXML.put("login", "screen-bw-login-view.fxml");
-        this.screensFXML.put("register", "screen-bw-register-view.fxml");
-        this.screensFXML.put("mainMenu", "screen-bw-mainMenu-view.fxml");
-        this.screensFXML.put("newRecipe", "screen-bw-newRecipe-view.fxml");
-        this.screensFXML.put("daySelect", "screen-bw-day-select-view.fxml");
-        this.screensFXML.put("oneDay", "screen-bw-oneDay-view.fxml");
-        this.screensFXML.put("searchNewFood", "screen-bw-search-view.fxml");
-        this.screensFXML.put("shoppingList", "screen-bw-shoppingList-view.fxml");
-        this.screensFXML.put("stats", "screen-bw-stats-view.fxml");
-        this.screensFXML.put("userInfo", "screen-bw-userInfo-view.fxml");
+    @Override
+    public void init(){
+        screensFXML.put(FIRST_SCREEN_TO_SHOW_NAME, "screen-bw-init-view.fxml");
+        screensFXML.put("login", "screen-bw-login-view.fxml");
+        screensFXML.put("register", "screen-bw-register-view.fxml");
+        screensFXML.put("mainMenu", "screen-bw-mainMenu-view.fxml");
+        screensFXML.put("newRecipe", "screen-bw-newRecipe-view.fxml");
+        screensFXML.put("daySelect", "screen-bw-day-select-view.fxml");
+        screensFXML.put("oneDay", "screen-bw-oneDay-view.fxml");
+        screensFXML.put("searchNewFood", "screen-bw-search-view.fxml");
+        screensFXML.put("shoppingList", "screen-bw-shoppingList-view.fxml");
+        screensFXML.put("stats", "screen-bw-stats-view.fxml");
+        screensFXML.put("userInfo", "screen-bw-userInfo-view.fxml");
     }
 
     public static void main(String[] args){
-        launch(GraphicBWColored.class);
+        launch(GraphicControllerBW.class);
     }
     @Override
     public void start(Stage stage) throws Exception {
@@ -94,15 +93,15 @@ public class GraphicBWColored extends Application implements GraphicController {
     }
     @Override
     public void startView(){
-        GraphicBWColored.main(null);
+        main(null);
     }
 
     /**
      * Starts a new screen in the stage
      * @param screenName the key name of the screen
      */
-    public void startScreenBW(String screenName){
-        thisFxmlLoader = new FXMLLoader(GraphicBWColored.class.getResource(this.screensFXML.get(screenName)));
+    public static void startScreenBW(String screenName){
+        thisFxmlLoader = new FXMLLoader(GraphicControllerBW.class.getResource(screensFXML.get(screenName)));
         namespace = thisFxmlLoader.getNamespace();
         try {
             Parent parent = thisFxmlLoader.load();
@@ -112,49 +111,43 @@ public class GraphicBWColored extends Application implements GraphicController {
             throw new RuntimeException(e);
         }
     }
-    public void startScreenBW(String screenName, String previousScreen){
+    public static void startScreenBW(String screenName, String previousScreen){
         startScreenBW(screenName);
         if (previousScreen != null){
             ((ScreenBWDef)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
         }
     }
-    public static GraphicBWColored getGBWCInstance(){
-        if (graphicBWColoredInstance == null){
-            graphicBWColoredInstance = new GraphicBWColored();
-        }
-        return graphicBWColoredInstance;
-    }
-    public User getThisUser() {
+    public static User getThisUser() {
         return thisUser;
     }
-    public void setThisUser(User thisUser) {
-        this.thisUser = thisUser;
+    public static void setThisUser(User thisUser1) {
+        thisUser = thisUser1;
     }
-    public long getDayToExplore() {
+    public static long getDayToExplore() {
         return dayToExplore;
     }
-    public void setDayToExplore(long dayToExplore) {
-        this.dayToExplore = dayToExplore;
+    public static void setDayToExplore(long dayToExplore1) {
+        dayToExplore = dayToExplore1;
     }
-    public Object searchForObjInScene(String name){
+    public static Object searchForObjInScene(String name){
         return namespace.get(name);
     }
-    public Recipe getLastRecipeSelected() {
+    public static Recipe getLastRecipeSelected() {
         return lastRecipeSelected;
     }
-    public void setLastRecipeSelected(Recipe lastRecipeSelected) {
-        this.lastRecipeSelected = lastRecipeSelected;
+    public static void setLastRecipeSelected(Recipe lastRecipeSelected1) {
+        lastRecipeSelected = lastRecipeSelected1;
     }
-    public void setRecipeToShow(Recipe recipeToShow) {
-        this.recipeToShow = recipeToShow;
+    public static void setRecipeToShow(Recipe recipeToShow1) {
+        recipeToShow = recipeToShow1;
     }
-    public Recipe getRecipeToShow() {
+    public static Recipe getRecipeToShow() {
         return recipeToShow;
     }
-    public String getMealNameOfLastSelected() {
+    public static String getMealNameOfLastSelected() {
         return mealNameOfLastSelected;
     }
-    public void setMealNameOfLastSelected(String mealNameOfLastSelected) {
-        this.mealNameOfLastSelected = mealNameOfLastSelected;
+    public static void setMealNameOfLastSelected(String mealNameOfLastSelected1) {
+        mealNameOfLastSelected = mealNameOfLastSelected1;
     }
 }

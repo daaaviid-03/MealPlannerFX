@@ -53,10 +53,10 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
         initialDayOfWeek = actualDay;
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 7; j++) {
-                Button thisButton = (Button)getGraphicCC().searchForObjInScene("DayButton_" + i + "_" + j);
+                Button thisButton = (Button)GraphicControllerColored.searchForObjInScene("DayButton_" + i + "_" + j);
                 thisButton.setVisible(!(actualDay <= 0 || actualDay > lenOfMonth));
                 if (!(actualDay <= 0 || actualDay > lenOfMonth)){
-                    Label thisLabel = (Label)getGraphicCC().searchForObjInScene("dayToShowText_" + i + "_" + j);
+                    Label thisLabel = (Label)GraphicControllerColored.searchForObjInScene("dayToShowText_" + i + "_" + j);
                     thisLabel.setText(String.valueOf(actualDay));
                     setDayDataOfCalendar(i, j, actualDay, epochFirstDayMonth);
                     setStyle(todayDay, actualDay, thisButton, j);
@@ -77,11 +77,11 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
     }
 
     private void setDayDataOfCalendar(int i, int j, int actualDay, long epochFirstDayMonth){
-        DayData dayData = DBController.getSpecificDayData(getGraphicCC().getThisUser().getNickname(),
+        DayData dayData = DBController.getSpecificDayData(GraphicControllerColored.getThisUser().getNickname(),
                 epochFirstDayMonth + actualDay - 1);
-        Button breakfast = (Button)getGraphicCC().searchForObjInScene("DayButton_Breakfast_" + i + "_" + j);
-        Button launch = (Button)getGraphicCC().searchForObjInScene("DayButton_Launch_" + i + "_" + j);
-        Button dinner = (Button)getGraphicCC().searchForObjInScene("DayButton_Dinner_" + i + "_" + j);
+        Button breakfast = (Button)GraphicControllerColored.searchForObjInScene("DayButton_Breakfast_" + i + "_" + j);
+        Button launch = (Button)GraphicControllerColored.searchForObjInScene("DayButton_Launch_" + i + "_" + j);
+        Button dinner = (Button)GraphicControllerColored.searchForObjInScene("DayButton_Dinner_" + i + "_" + j);
         if (dayData == null || dayData.getBreakfastId() == null) {
             breakfast.setVisible(false);
         } else {
@@ -114,22 +114,22 @@ public class ScreenColoredMainMenuController extends ScreenColoredDef implements
 
     public void calendarDayButtonClicked(ActionEvent actionEvent) {
         String[] values = ((Button)actionEvent.getSource()).getId().split("_");
-        int posY = Integer.parseInt(values[1]);
-        int posX = Integer.parseInt(values[2]);
+        int posY = Integer.parseInt(values[values.length - 2]);
+        int posX = Integer.parseInt(values[values.length - 1]);
         long dayNumber = epochFirstDayMonth + posX + posY * 7L + initialDayOfWeek - 1;
-        getGraphicCC().setDayToExplore(dayNumber);
-        getGraphicCC().startScreenColored("oneDay", THIS_SCREEN_NAME);
+        GraphicControllerColored.setDayToExplore(dayNumber);
+        GraphicControllerColored.startScreenColored("oneDay", THIS_SCREEN_NAME);
     }
 
     public void makeShoppingListButtonClicked() {
-        getGraphicCC().startScreenColored("shoppingList", THIS_SCREEN_NAME);
+        GraphicControllerColored.startScreenColored("shoppingList", THIS_SCREEN_NAME);
     }
 
     public void viewStatisticsButtonClicked() {
-        getGraphicCC().startScreenColored("stats", THIS_SCREEN_NAME);
+        GraphicControllerColored.startScreenColored("stats", THIS_SCREEN_NAME);
     }
 
     public void addNewRecipeButtonClicked() {
-        getGraphicCC().startScreenColored("newRecipe", THIS_SCREEN_NAME);
+        GraphicControllerColored.startScreenColored("newRecipe", THIS_SCREEN_NAME);
     }
 }

@@ -62,7 +62,7 @@ public class ScreenColoredStatsController extends ScreenColoredDefWithStats impl
     }
     private int getNumberOfMealsInDates() {
         int count = 0;
-        for (DayData dayData : DBController.getDaysData(getGraphicCC().getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
+        for (DayData dayData : DBController.getDaysData(GraphicControllerColored.getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
             if (dayData.getBreakfastId() != null){
                 count++;
             }

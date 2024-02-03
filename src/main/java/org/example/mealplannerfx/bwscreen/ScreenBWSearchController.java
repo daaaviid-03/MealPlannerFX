@@ -59,18 +59,13 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
         searchRecipes();
     }
 
-    private void selectedElement(Object recipe) {
-        if (recipe.toString().equals(NO_ELEMENTS_FOUND_TEXT)){
-            return;
-        }
-        lastRecipeSelected = (Recipe) recipe;
-        getGbwcInstance().setRecipeToShow(lastRecipeSelected);
-        visualizeRecipeInPlane(recipeViewerPlane);
+    private void selectedElement(Recipe recipe) {
+        visualizeRecipeInPlane(recipeViewerPlane, recipe);
     }
 
     public void continueWithSelection() {
         if (lastRecipeSelected != null) {
-            getGbwcInstance().setLastRecipeSelected(lastRecipeSelected);
+            GraphicControllerBW.setLastRecipeSelected(lastRecipeSelected);
             returnScreen();
         } else {
             returnButtonClicked();
@@ -88,7 +83,7 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             User thisUser = null;
             if (onlyMinesCheckBox.isSelected()){
-                thisUser = getGbwcInstance().getThisUser();
+                thisUser = GraphicControllerBW.getThisUser();
             }
             List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
                     greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,

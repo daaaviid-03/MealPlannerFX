@@ -48,8 +48,8 @@ public class ScreenColoredNewRecipeController extends ScreenColoredDefWithElemen
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
             int duration = DBDataBoundary.correctDuration(durationText.getText());
-            DBController.createNewRecipeDB(name, desc, getGraphicCC().getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
-            getGraphicCC().startScreenColored("mainMenu");
+            DBController.createNewRecipeDB(name, desc, GraphicControllerColored.getThisUser().getNickname(), steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            GraphicControllerColored.startScreenColored("mainMenu");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){

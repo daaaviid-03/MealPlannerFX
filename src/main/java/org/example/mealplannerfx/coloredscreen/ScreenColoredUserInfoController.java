@@ -43,7 +43,7 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel(false);
-        thisUser = getGraphicCC().getThisUser();
+        thisUser = GraphicControllerColored.getThisUser();
         emailText.setText(thisUser.getEmail());
         birthDate.setValue(LocalDate.ofEpochDay(thisUser.getBirth()));
         heightText.setText(String.valueOf(thisUser.getHeight()));
@@ -79,7 +79,7 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
                 throw new WrongArgException("Old password isn't correct.");
             }
             User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
-            getGraphicCC().setThisUser(newUser);
+            GraphicControllerColored.setThisUser(newUser);
             returnScreen();
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
@@ -90,8 +90,8 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
 
     public void logOutButtonClicked() {
         if (showConfirmationScreen("Log out.", "Cancel", "Log out")){
-            getGraphicCC().setThisUser(null);
-            getGraphicCC().startScreenColored("login");
+            GraphicControllerColored.setThisUser(null);
+            GraphicControllerColored.startScreenColored("login");
         }
     }
 
@@ -100,8 +100,8 @@ public class ScreenColoredUserInfoController extends ScreenColoredDef implements
                 "Cancel", "DELETE ACCOUNT")){
             try {
                 DBController.deleteUserFromDB(thisUser.getNickname());
-                getGraphicCC().setThisUser(null);
-                getGraphicCC().startScreenColored("login");
+                GraphicControllerColored.setThisUser(null);
+                GraphicControllerColored.startScreenColored("login");
             } catch (Exception e) {
                 errorText.setText("Can't DELETE this account.");
             }

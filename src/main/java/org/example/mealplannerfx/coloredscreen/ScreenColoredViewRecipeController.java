@@ -28,11 +28,9 @@ public class ScreenColoredViewRecipeController implements Initializable {
     @FXML
     private TextField durationText;
 
-    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        establishRecipeToShow(graphicCC.getRecipeToShow());
+        establishRecipeToShow(GraphicControllerColored.getRecipeToShow());
     }
 
     public void establishRecipeToShow(Recipe recipe) {

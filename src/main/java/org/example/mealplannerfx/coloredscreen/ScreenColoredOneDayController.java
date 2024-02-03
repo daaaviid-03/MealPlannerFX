@@ -21,11 +21,11 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     @FXML
     private AnchorPane recipeViewerPlane;
     @FXML
-    private Button lunchButton;
+    private Button lunch_button;
     @FXML
-    private Button breakfastButton;
+    private Button breakfast_button;
     @FXML
-    private Button dinnerButton;
+    private Button dinner_button;
     @FXML
     private Label dayText;
     private long dayNumber;
@@ -40,17 +40,17 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initializeDefaultModel(false);
-        dayNumber = getGraphicCC().getDayToExplore();
+        dayNumber = GraphicControllerColored.getDayToExplore();
         setRecipeSelected();
     }
 
     private void setRecipeSelected(){
-        Recipe recipe = getGraphicCC().getLastRecipeSelected();
+        Recipe recipe = GraphicControllerColored.getLastRecipeSelected();
         setDayDataFromDayNumber();
         if (recipe != null){
-            thisDayData.setMealByName(getGraphicCC().getMealNameOfLastSelected(), recipe);
-            getGraphicCC().setLastRecipeSelected(null);
-            getGraphicCC().setMealNameOfLastSelected(null);
+            thisDayData.setMealByName(GraphicControllerColored.getMealNameOfLastSelected(), recipe);
+            GraphicControllerColored.setLastRecipeSelected(null);
+            GraphicControllerColored.setMealNameOfLastSelected(null);
             DBController.saveDayData(thisDayData);
         }
         setDayDataFromCalendar();
@@ -59,18 +59,18 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
 
     private void setDayDataFromCalendar() {
         // Set date info
-        getGraphicCC().setDayToExplore(dayNumber);
+        GraphicControllerColored.setDayToExplore(dayNumber);
         LocalDate date = LocalDate.ofEpochDay(dayNumber);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
         // Set day data info
-        setButtonToInfo(breakfastButton, DBController.getRecipe(thisDayData.getBreakfastId()));
-        setButtonToInfo(lunchButton, DBController.getRecipe(thisDayData.getLunchId()));
-        setButtonToInfo(dinnerButton, DBController.getRecipe(thisDayData.getDinnerId()));
+        setButtonToInfo(breakfast_button, DBController.getRecipe(thisDayData.getBreakfastId()));
+        setButtonToInfo(lunch_button, DBController.getRecipe(thisDayData.getLunchId()));
+        setButtonToInfo(dinner_button, DBController.getRecipe(thisDayData.getDinnerId()));
     }
 
     private void setDayDataFromDayNumber() {
-        thisDayData = DBController.getSpecificDayData(getGraphicCC().getThisUser().getNickname(), dayNumber);
+        thisDayData = DBController.getSpecificDayData(GraphicControllerColored.getThisUser().getNickname(), dayNumber);
     }
 
     private void setButtonToInfo(Button button, Recipe recipe){
@@ -95,8 +95,8 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     }
 
     public void recipeEditButton(ActionEvent actionEvent) {
-        getGraphicCC().setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
-        getGraphicCC().startScreenColored("searchNewFood", "oneDay");
+        GraphicControllerColored.setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
+        GraphicControllerColored.startScreenColored("searchNewFood", "oneDay");
     }
 
     public void deleteRecipe(ActionEvent actionEvent) {
@@ -114,6 +114,6 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
             recipeEditButton(actionEvent);
             return;
         }
-        visualizeRecipeInPlane(recipeViewerPlane);
+        visualizeRecipeInPlane(recipeViewerPlane, thisRecipe);
     }
 }

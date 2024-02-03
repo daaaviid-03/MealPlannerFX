@@ -21,18 +21,18 @@ public class ScreenBWMainMenuController extends ScreenBWDef implements Initializ
     }
 
     public void makeShoppingListButtonClicked() {
-        getGbwcInstance().startScreenBW("shoppingList", THIS_SCREEN_NAME);
+        GraphicControllerBW.startScreenBW("shoppingList", THIS_SCREEN_NAME);
     }
 
     public void viewStatisticsButtonClicked() {
-        getGbwcInstance().startScreenBW("stats", THIS_SCREEN_NAME);
+        GraphicControllerBW.startScreenBW("stats", THIS_SCREEN_NAME);
     }
 
     public void addNewRecipeButtonClicked() {
-        getGbwcInstance().startScreenBW("newRecipe", THIS_SCREEN_NAME);
+        GraphicControllerBW.startScreenBW("newRecipe", THIS_SCREEN_NAME);
     }
 
     public void viewOneDayButtonClicked() {
-        getGbwcInstance().startScreenBW("daySelect", THIS_SCREEN_NAME);
+        GraphicControllerBW.startScreenBW("daySelect", THIS_SCREEN_NAME);
     }
 }

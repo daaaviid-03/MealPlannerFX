@@ -9,9 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import org.example.mealplannerfx.entity.Recipe;
 
 public abstract class ScreenColoredDef implements Initializable {
-    private final GraphicControllerColored graphicCC = GraphicControllerColored.getGCCInstance();
     @FXML
     private Button avatarButton;
     @FXML
@@ -22,12 +22,12 @@ public abstract class ScreenColoredDef implements Initializable {
     private static final String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-colored-zz-viewRecipe-mask.fxml";
     public void initializeDefaultModel(boolean confirmExit) {
         this.confirmExit = confirmExit;
-        String nickname = graphicCC.getThisUser().getNickname();
+        String nickname = GraphicControllerColored.getThisUser().getNickname();
         nicknameText.setText(nickname);
         avatarButton.setText(String.valueOf(nickname.toUpperCase().charAt(0)));
     }
     public void userInfoButtonClicked() {
-        graphicCC.startScreenColored("userInfo");
+        GraphicControllerColored.startScreenColored("userInfo");
     }
     public void returnButtonClicked() {
         if(!confirmExit || showConfirmationScreen("Exit this screen.", "Cancel", "Exit")){
@@ -35,7 +35,7 @@ public abstract class ScreenColoredDef implements Initializable {
         }
     }
     public void returnScreen() {
-        graphicCC.startScreenColored(previousScreen);
+        GraphicControllerColored.startScreenColored(previousScreen);
     }
     public boolean showConfirmationScreen(String message, String noActionText, String actionText){
         Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -47,14 +47,12 @@ public abstract class ScreenColoredDef implements Initializable {
         alert.showAndWait().ifPresent(response -> alertResponse = response == actionOption);
         return alertResponse;
     }
-    public GraphicControllerColored getGraphicCC() {
-        return graphicCC;
-    }
     public void setPreviousScreen(String previousScreenName){
         previousScreen = previousScreenName;
     }
-    public void visualizeRecipeInPlane(AnchorPane anchorPane){
+    public void visualizeRecipeInPlane(AnchorPane anchorPane, Recipe recipe){
         try {
+            GraphicControllerColored.setRecipeToShow(recipe);
             // Load fxml
             FXMLLoader fxmlLoader = new FXMLLoader(GraphicControllerColored.class.getResource(RECIPE_VIEW_SCENE_FXML_FILE_NAME));
             // Set element in the fxml

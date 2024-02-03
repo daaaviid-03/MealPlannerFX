@@ -4,12 +4,11 @@ import javafx.event.ActionEvent;
 
 public class ScreenBWInitController {
 
-    private final GraphicBWColored graphicCBW = GraphicBWColored.getGBWCInstance();
     public void logInButton(ActionEvent actionEvent) {
-        graphicCBW.startScreenBW("login");
+        GraphicControllerBW.startScreenBW("login");
     }
 
     public void registerButton(ActionEvent actionEvent) {
-        graphicCBW.startScreenBW("register");
+        GraphicControllerBW.startScreenBW("register");
     }
 }
