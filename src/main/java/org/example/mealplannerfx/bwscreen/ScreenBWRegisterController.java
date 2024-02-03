@@ -48,7 +48,7 @@ public class ScreenBWRegisterController {
         }
     }
 
-    public void returnButtonClicked(ActionEvent actionEvent) {
+    public void returnButtonClicked() {
         GraphicControllerBW.startScreenBW("init");
     }
 }

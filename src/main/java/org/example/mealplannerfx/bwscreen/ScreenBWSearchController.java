@@ -60,6 +60,7 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
     }
 
     private void selectedElement(Recipe recipe) {
+        lastRecipeSelected = recipe;
         visualizeRecipeInPlane(recipeViewerPlane, recipe);
     }
 
@@ -85,9 +86,10 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
             if (onlyMinesCheckBox.isSelected()){
                 thisUser = GraphicControllerBW.getThisUser();
             }
-            List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
-                    greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,
-                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser);
+            boolean[] checkers = {allIngredInComoCheckBox.isSelected(),
+                    allRestrictionInCommonCheckBox.isSelected(), greaterEqualCheckBox.isSelected(),
+                    lowerEqualCheckBox.isSelected()};
+            List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration, ingredients, thisUser, checkers);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));
             errorText.setText("");
         } catch (WrongArgException e) {

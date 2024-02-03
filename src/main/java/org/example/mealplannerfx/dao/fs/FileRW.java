@@ -84,6 +84,7 @@ public class FileRW <T> {
                 try {
                     T typeClass = (T) fileStream.readObject();
                     if(toCertificate.test(typeClass)) {
+                        fileStream.close();
                         return typeClass;
                     }
                 } catch (ClassNotFoundException | IOException e) {

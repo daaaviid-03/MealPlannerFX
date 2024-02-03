@@ -4,11 +4,11 @@ import javafx.event.ActionEvent;
 
 public class ScreenBWInitController {
 
-    public void logInButton(ActionEvent actionEvent) {
+    public void logInButton() {
         GraphicControllerBW.startScreenBW("login");
     }
 
-    public void registerButton(ActionEvent actionEvent) {
+    public void registerButton() {
         GraphicControllerBW.startScreenBW("register");
     }
 }

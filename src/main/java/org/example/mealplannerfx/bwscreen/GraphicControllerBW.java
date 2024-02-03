@@ -108,7 +108,7 @@ public class GraphicControllerBW extends Application implements GraphicControlle
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            throw new RuntimeException(e);
+            // No action
         }
     }
     public static void startScreenBW(String screenName, String previousScreen){

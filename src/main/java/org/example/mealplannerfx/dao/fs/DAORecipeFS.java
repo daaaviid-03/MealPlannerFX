@@ -20,11 +20,9 @@ public class DAORecipeFS extends DAORecipe {
     }
 
     @Override
-    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, boolean toBeGraterEqualDuration,
-                                        boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                        boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser) throws WrongArgException {
+    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, List<Ingredient> ingredients, User thisUser, boolean[] checkers) throws WrongArgException {
 
-        List<Recipe> correctRecipes = fileRW.getAllObjectsAs(recipe -> matchRecipe(regexName, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients, allOfThoseIngredients, allFieldsInCommon, thisUser, recipe));
+        List<Recipe> correctRecipes = fileRW.getAllObjectsAs(recipe -> matchRecipe(regexName, duration, ingredients, thisUser, checkers, recipe));
         if (correctRecipes.isEmpty()){
             throw new WrongArgException("No recipe matches with that filters.");
         }
@@ -32,21 +30,30 @@ public class DAORecipeFS extends DAORecipe {
         return correctRecipes;
     }
 
-    private static boolean matchRecipe(String regexName, Integer duration, boolean toBeGraterEqualDuration, boolean toBeLowerEqualDuration, List<Ingredient> ingredients, boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser, Recipe recipe) {
-        boolean isCandidateForIngredients = allFieldsInCommon;
-        boolean isCandidateForUser = true;
+    private static boolean matchRecipe(String regexName, Integer duration, List<Ingredient> ingredients, User thisUser,
+                                       boolean[] checkers, Recipe recipe) {
         // Obtain this recipe info
         String thisName = recipe.getName();
         int thisDuration = recipe.getDuration();
         List<Ingredient> thisIngredients = recipe.getIngredients();
-        // Compare recipe with filter
+        // User
+        boolean isCandidateForUser = true;
+        if (thisUser != null) {
+            isCandidateForUser = recipe.getOwner().equals(thisUser.getNickname());
+        }
+        // Name
         boolean isCandidateForName = thisName.matches(regexName);
-        boolean isCandidateForDuration = (duration == null) || ((toBeGraterEqualDuration && !toBeLowerEqualDuration && thisDuration >= duration) ||
-                (!toBeGraterEqualDuration && toBeLowerEqualDuration && thisDuration <= duration) ||
-                (toBeGraterEqualDuration && toBeLowerEqualDuration && thisDuration == duration));
+        // Duration
+        boolean isCandidateForDuration = (duration == null) ||
+                ((checkers[2] && !checkers[3] && thisDuration >= duration) ||
+                (!checkers[2] && checkers[3] && thisDuration <= duration) ||
+                (checkers[2] && checkers[3] && thisDuration == duration) ||
+                (!checkers[2] && !checkers[3] && thisDuration != duration));
+
+        boolean isCandidateForIngredients = checkers[0];
         if (ingredients != null) {
             for (Ingredient ingredient : ingredients) {
-                if (allOfThoseIngredients) {
+                if (checkers[0]) {
                     isCandidateForIngredients &= thisIngredients.contains(ingredient);
                 } else {
                     isCandidateForIngredients |= thisIngredients.contains(ingredient);
@@ -55,12 +62,9 @@ public class DAORecipeFS extends DAORecipe {
         } else {
             isCandidateForIngredients = true;
         }
-        if (thisUser != null) {
-            isCandidateForUser = recipe.getOwner().equals(thisUser.getNickname());
-        }
         // Last filter of fields
-        return (isCandidateForUser && ((allFieldsInCommon && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
-                (!allFieldsInCommon && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
+        return (isCandidateForUser && ((checkers[1] && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
+                (!checkers[1] && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
     }
 
     @Override

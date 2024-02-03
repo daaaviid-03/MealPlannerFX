@@ -17,31 +17,28 @@ public class GetGlobalSettings {
         try (ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME)))) {
             String dBMS = AppController.getAppControllerInstance().getNextDBMS();
             String viewMS = AppController.getAppControllerInstance().getNextViewMS();
-            if (dBMS != null){
-                stateFileObj.writeObject(dBMS);
-            } else {
-                stateFileObj.writeObject(DEFAULT_DBMS_SYSTEM);
-                AppController.getAppControllerInstance().setActualDBMS(DEFAULT_DBMS_SYSTEM);
-            }
-            if (viewMS != null){
-                stateFileObj.writeObject(viewMS);
-            } else {
-                stateFileObj.writeObject(DEFAULT_VIEW_SYSTEM);
-                AppController.getAppControllerInstance().setActualViewMS(DEFAULT_VIEW_SYSTEM);
-            }
+            stateFileObj.writeObject(dBMS);
+            stateFileObj.writeObject(viewMS);
         } catch (Exception e) {
             // No action
         }
     }
 
     public static void loadGlobalSettings(){
+        String dBMS = null;
+        String viewMS = null;
         try (ObjectInputStream stateFileObj = new ObjectInputStream(new FileInputStream(GLOBAL_SETTINGS_FILE_NAME))) {
-            String dBMS = (String) stateFileObj.readObject();
-            String viewMS = (String) stateFileObj.readObject();
-            AppController.getAppControllerInstance().setActualDBMS(dBMS);
-            AppController.getAppControllerInstance().setActualViewMS(viewMS);
+            dBMS = (String) stateFileObj.readObject();
+            viewMS = (String) stateFileObj.readObject();
         } catch (Exception e) {
             // If the file doesn't exist
+            dBMS = DEFAULT_DBMS_SYSTEM;
+            viewMS = DEFAULT_VIEW_SYSTEM;
+        } finally {
+            AppController.getAppControllerInstance().setActualDBMS(dBMS);
+            AppController.getAppControllerInstance().setActualViewMS(viewMS);
+            AppController.getAppControllerInstance().setNextDBMS(dBMS);
+            AppController.getAppControllerInstance().setNextViewMS(viewMS);
             saveGlobalSettings();
         }
     }

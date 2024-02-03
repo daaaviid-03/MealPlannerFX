@@ -27,7 +27,9 @@ public class ScreenColoredLoginController {
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());
         } catch (Exception e){
-            errorText.setText(e.getMessage());
+
+            errorText.setText("Error: " + e.getMessage().replace("\n", "//"));
+            throw new RuntimeException(e);
         }
     }
     @FXML

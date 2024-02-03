@@ -21,11 +21,11 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
     @FXML
     private AnchorPane recipeViewerPlane;
     @FXML
-    private Button lunchButton;
+    private Button lunch;
     @FXML
-    private Button breakfastButton;
+    private Button breakfast;
     @FXML
-    private Button dinnerButton;
+    private Button dinner;
     @FXML
     private Label dayText;
     private long dayNumber;
@@ -64,9 +64,9 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
         // Set day data info
-        setButtonToInfo(breakfastButton, DBController.getRecipe(thisDayData.getBreakfastId()));
-        setButtonToInfo(lunchButton, DBController.getRecipe(thisDayData.getLunchId()));
-        setButtonToInfo(dinnerButton, DBController.getRecipe(thisDayData.getDinnerId()));
+        setButtonToInfo(breakfast, DBController.getRecipe(thisDayData.getBreakfastId()));
+        setButtonToInfo(lunch, DBController.getRecipe(thisDayData.getLunchId()));
+        setButtonToInfo(dinner, DBController.getRecipe(thisDayData.getDinnerId()));
     }
 
     private void setDayDataFromDayNumber() {

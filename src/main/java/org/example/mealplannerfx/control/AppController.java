@@ -3,6 +3,8 @@ package org.example.mealplannerfx.control;
 import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
 import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
 
+import java.util.Objects;
+
 public class AppController{
     private static AppController appControllerInstance;
     private String actualDBMS;
@@ -25,7 +27,6 @@ public class AppController{
     public static AppController getAppControllerInstance() {
         if (appControllerInstance == null){
             appControllerInstance = new AppController();
-            GetGlobalSettings.loadGlobalSettings();
         }
         return appControllerInstance;
     }
@@ -40,12 +41,16 @@ public class AppController{
 
     public void setNextDBMS(String dBMS) {
         this.nextDBMS = dBMS;
-        GetGlobalSettings.saveGlobalSettings();
+        if (!this.nextDBMS.equals(this.actualDBMS)) {
+            GetGlobalSettings.saveGlobalSettings();
+        }
     }
 
     public void setNextViewMS(String viewMS) {
         this.nextViewMS = viewMS;
-        GetGlobalSettings.saveGlobalSettings();
+        if (!this.nextViewMS.equals(this.actualViewMS)) {
+            GetGlobalSettings.saveGlobalSettings();
+        }
     }
 
     public String getActualDBMS() {

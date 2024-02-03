@@ -37,11 +37,8 @@ public class DAORecipeDB extends DAORecipe {
     }
 
     @Override
-    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, boolean toBeGraterEqualDuration,
-                                        boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                        boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser) throws WrongArgException {
-        String query = getQuery(regexName, duration, toBeGraterEqualDuration, toBeLowerEqualDuration, ingredients,
-                allOfThoseIngredients, allFieldsInCommon, thisUser);
+    public List<Recipe> getAllRecipesAs(String regexName, Integer duration, List<Ingredient> ingredients, User thisUser, boolean[] checkers) throws WrongArgException {
+        String query = getQuery(regexName, duration, ingredients, thisUser, checkers);
         List<Recipe> recipes = new ArrayList<>();
         try (ResultSet resultSet = connectionManager.newQuery(query)){
             while (resultSet.next()){
@@ -57,29 +54,28 @@ public class DAORecipeDB extends DAORecipe {
         return recipes;
     }
 
-    private static String getQuery(String regexName, Integer duration, boolean toBeGraterEqualDuration,
-                                   boolean toBeLowerEqualDuration, List<Ingredient> ingredients,
-                                   boolean allOfThoseIngredients, boolean allFieldsInCommon, User thisUser) {
+    private static String getQuery(String regexName, Integer duration, List<Ingredient> ingredients, User thisUser,
+                                   boolean[] checkers) {
         StringBuilder query = new StringBuilder("SELECT recipeName FROM Recipe WHERE ((");
         if (thisUser != null){
             query.append("ownerNickname = '").append(thisUser.getNickname()).append("') AND (");
         }
         query.append("recipeName RLIKE '").append(regexName).append("'");
         String conjunctionAll = " OR ";
-        if (allFieldsInCommon){
+        if (checkers[0]){
             conjunctionAll = " AND ";
         }
         String conjunctionIngredients = " OR ";
-        if (allOfThoseIngredients){
+        if (checkers[1]){
             conjunctionIngredients = " AND ";
         }
         if (duration != null){
-            if (toBeGraterEqualDuration){
+            if (checkers[2]){
                 query.append(conjunctionAll).append("duration >= ").append(duration);
             } else {
                 query.append(conjunctionAll).append("duration < ").append(duration);
             }
-            if (toBeLowerEqualDuration){
+            if (checkers[3]){
                 query.append(conjunctionAll).append("duration <= ").append(duration);
             } else {
                 query.append(conjunctionAll).append("duration > ").append(duration);
@@ -116,7 +112,8 @@ public class DAORecipeDB extends DAORecipe {
         String owner = resultSet.getString("ownerNickname");
         int durationVal = resultSet.getInt("duration");
         List<String> steps = getStepsFromRecipe(recipeId);
-        Recipe thisRecipe = new Recipe(recipeId, name, description, owner, steps, durationVal);
+        String[] nameDescOwn = {name, description, owner};
+        Recipe thisRecipe = new Recipe(recipeId, nameDescOwn, steps, durationVal);
         loadIngredientsInRecipe(thisRecipe);
         return thisRecipe;
     }

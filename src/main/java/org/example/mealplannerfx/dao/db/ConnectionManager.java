@@ -23,10 +23,8 @@ public class ConnectionManager {
     public void startConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println(PASSWORD);
             connection = DriverManager.getConnection(URL_RUTE, USER_NAME, PASSWORD);
             statement = connection.createStatement();
-            System.out.println("Conection");
         } catch (Exception e) {
             // No action
         }

@@ -13,18 +13,18 @@ public class Recipe implements Serializable {
     private List<Ingredient> ingredients;
     private List<Float> ingredientsQuantity;
     private List<String> ingredientsPortionsNames;
-    public Recipe(long id, String name, String description, String owner, List<String> steps, int duration) {
+    public Recipe(long id, String[] nameDescOwn, List<String> steps, int duration) {
         this.id = id;
-        this.name = name;
-        this.description = description;
-        this.owner = owner;
+        this.name = nameDescOwn[0];
+        this.description = nameDescOwn[1];
+        this.owner = nameDescOwn[2];
         this.steps = steps;
         this.duration = duration;
     }
 
-    public Recipe(long id, String name, String description, String owner, List<String> steps, int duration,
+    public Recipe(long id, String[] nameDescOwn, List<String> steps, int duration,
                   List<Ingredient> ingredients, List<Float> ingredientsQuantity, List<String> ingredientsPortionsNames) {
-        this(id, name, description, owner, steps, duration);
+        this(id, nameDescOwn, steps, duration);
         this.ingredients = ingredients;
         this.ingredientsQuantity = ingredientsQuantity;
         this.ingredientsPortionsNames = ingredientsPortionsNames;

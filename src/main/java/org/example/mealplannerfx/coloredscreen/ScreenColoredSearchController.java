@@ -57,6 +57,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
     }
 
     private void selectedElement(Recipe recipe) {
+        lastRecipeSelected = recipe;
         visualizeRecipeInPlane(recipeViewerPlane, recipe);
     }
 
@@ -72,7 +73,7 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
     public void searchRecipes() {
         try {
             String name = nameToSearch.getText();
-            int duration = 0;
+            Integer duration = null;
             if (!durationToSearch.getText().isEmpty()){
                 duration = DBDataBoundary.correctDuration(durationToSearch.getText());
             }
@@ -82,9 +83,9 @@ public class ScreenColoredSearchController extends ScreenColoredDefWithElements 
             if (onlyMinesCheckBox.isSelected()){
                 thisUser = GraphicControllerColored.getThisUser();
             }
-            List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration,
-                    greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected(), ingredients,
-                    allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(), thisUser);
+            boolean[] checkers = {allIngredInComoCheckBox.isSelected(), allRestrictionInCommonCheckBox.isSelected(),
+                    greaterEqualCheckBox.isSelected(), lowerEqualCheckBox.isSelected()};
+            List<Recipe> recipes = DBController.getRecipesSortedBy(name, exactNameCheckBox.isSelected(), duration, ingredients, thisUser, checkers);
             listOfFoundedRecipes.getItems().setAll(FXCollections.observableArrayList(recipes));
             errorText.setText("");
         } catch (WrongArgException e) {

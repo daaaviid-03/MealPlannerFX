@@ -21,11 +21,11 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
     @FXML
     private AnchorPane recipeViewerPlane;
     @FXML
-    private Button lunch_button;
+    private Button lunch;
     @FXML
-    private Button breakfast_button;
+    private Button breakfast;
     @FXML
-    private Button dinner_button;
+    private Button dinner;
     @FXML
     private Label dayText;
     private long dayNumber;
@@ -64,9 +64,9 @@ public class ScreenColoredOneDayController extends ScreenColoredDef implements I
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d 'of' MMMM").withLocale(Locale.ENGLISH);
         dayText.setText(date.format(formatter));
         // Set day data info
-        setButtonToInfo(breakfast_button, DBController.getRecipe(thisDayData.getBreakfastId()));
-        setButtonToInfo(lunch_button, DBController.getRecipe(thisDayData.getLunchId()));
-        setButtonToInfo(dinner_button, DBController.getRecipe(thisDayData.getDinnerId()));
+        setButtonToInfo(breakfast, DBController.getRecipe(thisDayData.getBreakfastId()));
+        setButtonToInfo(lunch, DBController.getRecipe(thisDayData.getLunchId()));
+        setButtonToInfo(dinner, DBController.getRecipe(thisDayData.getDinnerId()));
     }
 
     private void setDayDataFromDayNumber() {

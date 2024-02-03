@@ -75,7 +75,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="breakfast_button" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: #98c0f6; -fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: #74a7e4; -fx-border-width: 6px; -fx-text-fill: #336ca5; -fx-font-size: 30;" text="Cereal" textAlignment="CENTER">
+                  <Button fx:id="breakfast" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: #98c0f6; -fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: #74a7e4; -fx-border-width: 6px; -fx-text-fill: #336ca5; -fx-font-size: 30;" text="Cereal" textAlignment="CENTER">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -115,7 +115,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="lunch_button" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: dbdcdb; -fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: a9a9a9; -fx-border-width: 6px; -fx-border-style: dashed; -fx-text-fill: a9a9a9; -fx-font-size: 65;" text="+  Recipe">
+                  <Button fx:id="lunch" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: dbdcdb; -fx-background-radius: 40px; -fx-border-radius: 40px; -fx-border-color: a9a9a9; -fx-border-width: 6px; -fx-border-style: dashed; -fx-text-fill: a9a9a9; -fx-font-size: 65;" text="+  Recipe">
                      <font>
                         <Font size="65.0" />
                      </font>
@@ -155,7 +155,7 @@
                         <Insets right="50.0" />
                      </HBox.margin>
                   </Label>
-                  <Button fx:id="dinner_button" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: #98c0f6; -fx-background-radius: 1.5em; -fx-border-radius: 1.5em; -fx-border-color: #74a7e4; -fx-border-width: 6px;" text="Cereals">
+                  <Button fx:id="dinner" mnemonicParsing="false" onAction="#recipeViewButton" prefHeight="240.0" prefWidth="500.0" style="-fx-background-color: #98c0f6; -fx-background-radius: 1.5em; -fx-border-radius: 1.5em; -fx-border-color: #74a7e4; -fx-border-width: 6px;" text="Cereals">
                      <font>
                         <Font size="30.0" />
                      </font>

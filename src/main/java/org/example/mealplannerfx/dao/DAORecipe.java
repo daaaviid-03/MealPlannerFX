@@ -30,18 +30,19 @@ public abstract class DAORecipe {
      * Obtain all the recipes that matches the restrictions
      * @param regexName regex to match with the name of the recipe (if NULL then there isn't restriction)
      * @param duration duration of the recipe to search (if NULL then there isn't restriction)
-     * @param toBeGraterEqualDuration if the recipe duration should be grater-equal to the duration
-     * @param toBeLowerEqualDuration if the recipe duration should be lower-equal to the duration
      * @param ingredients list of ingredients to match in the recipe (if NULL then there isn't restriction)
-     * @param allOfThoseIngredients if there should be a total match of the ingredients
-     * @param allFieldsInCommon if there should be a total match with all restrictions or can be any of them
      * @param thisUser the restriction to be only the user's recipes (if NULL then there isn't restriction)
+     * @param checkers is a boolean array with {toBeGraterEqualDuration, toBeLowerEqualDuration,
+     *                 allOfThoseIngredients, allFieldsInCommon}.
+     *                 so that:
+     *                 allOfThoseIngredients -> if there should be a total match of the ingredients
+     *                 allFieldsInCommon -> if there should be a total match with all restrictions or can be any of them
+     *                 toBeGraterEqualDuration -> if the recipe duration should be grater-equal to the duration
+     *                 toBeLowerEqualDuration -> if the recipe duration should be lower-equal to the duration
      * @return a list of recipes that matches the restrictions
      */
-    public abstract List<Recipe> getAllRecipesAs(String regexName, Integer duration,
-                                                 boolean toBeGraterEqualDuration, boolean toBeLowerEqualDuration,
-                                                 List<Ingredient> ingredients, boolean allOfThoseIngredients,
-                                                 boolean allFieldsInCommon, User thisUser) throws WrongArgException;
+    public abstract List<Recipe> getAllRecipesAs(String regexName, Integer duration, List<Ingredient> ingredients,
+                                                 User thisUser, boolean[] checkers) throws WrongArgException;
 
     /**
      * Obtain all the recipes in the file
@@ -49,8 +50,8 @@ public abstract class DAORecipe {
      */
     public List<Recipe> getAllRecipes(){
         try {
-            return getAllRecipesAs(".*", null, false, false, null,
-                    false, false, null);
+            boolean[] checkers = {false, false, false, false};
+            return getAllRecipesAs(".*", null, null, null, checkers);
         } catch (WrongArgException wrongArgException){
             return new ArrayList<>();
         }

@@ -108,6 +108,7 @@ public class GraphicControllerColored extends Application implements GraphicCont
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
             throw new RuntimeException(e);
+            // No action
         }
     }
     public static void startScreenColored(String screenName, String previousScreen){
