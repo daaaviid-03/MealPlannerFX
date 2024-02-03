@@ -107,7 +107,6 @@ public class GraphicControllerColored extends Application implements GraphicCont
             // Surround the scene with the anchor plane that resize
             anchorPaneResize.getChildren().setAll(parent);
         } catch (Exception e){
-            throw new RuntimeException(e);
             // No action
         }
     }

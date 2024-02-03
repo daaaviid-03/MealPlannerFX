@@ -46,7 +46,6 @@ public class FileRW <T> {
      * @param maxLength max length of the resulting list
      * @return the list of objects that certificates the lambda function
      */
-    @SuppressWarnings("unchecked")
     public List<T> getAllObjectsAs(Predicate<T> toCertificate, Integer maxLength){
         if (maxLength == null){
             maxLength = Integer.MAX_VALUE;
@@ -55,14 +54,11 @@ public class FileRW <T> {
         try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
-                try {
-                    T typeClass = (T) fileStream.readObject();
-                    if(toCertificate.test(typeClass) && maxLength-- > 0) {
-                        ts.add(typeClass);
-                    }
-                } catch (ClassNotFoundException | IOException e) {
-                    // End Of File
+                T typeClass = getTypeClassFromFileStream(fileStream);
+                if (typeClass == null){
                     fileEnded = true;
+                } else if(toCertificate.test(typeClass) && maxLength-- > 0) {
+                    ts.add(typeClass);
                 }
             }
         } catch (Exception e) {
@@ -76,20 +72,15 @@ public class FileRW <T> {
      * @param toCertificate the lambda function to check
      * @return the object that certificate the lambda function
      */
-    @SuppressWarnings("unchecked")
     public T getObjectAs(Predicate<T> toCertificate){
         try (ObjectInputStream fileStream = new ObjectInputStream(new FileInputStream(fileName))){
             boolean fileEnded = false;
             while(!fileEnded){
-                try {
-                    T typeClass = (T) fileStream.readObject();
-                    if(toCertificate.test(typeClass)) {
-                        fileStream.close();
-                        return typeClass;
-                    }
-                } catch (ClassNotFoundException | IOException e) {
-                    // End Of File
+                T typeClass = getTypeClassFromFileStream(fileStream);
+                if (typeClass == null){
                     fileEnded = true;
+                } else if(toCertificate.test(typeClass)) {
+                    return typeClass;
                 }
             }
         } catch (Exception e) {
@@ -97,6 +88,21 @@ public class FileRW <T> {
         }
         return null;
     }
+
+    /**
+     * Get the object cast if there is one, if end of line, then returns null
+     * @param fileStream the file stream to search the object
+     * @return the object cast if there is one, if end of line, then returns null
+     */
+    @SuppressWarnings("unchecked")
+    private T getTypeClassFromFileStream(ObjectInputStream fileStream){
+        try{
+            return (T) fileStream.readObject();
+        } catch (Exception e){
+            return null;
+        }
+    }
+
 
     /**
      * Save all the objects in the list in the file erasing their actual values

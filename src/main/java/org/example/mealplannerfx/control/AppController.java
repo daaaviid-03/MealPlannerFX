@@ -3,8 +3,6 @@ package org.example.mealplannerfx.control;
 import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
 import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
 
-import java.util.Objects;
-
 public class AppController{
     private static AppController appControllerInstance;
     private String actualDBMS;

@@ -1,9 +1,5 @@
 package org.example.mealplannerfx.dao;
 
-import org.example.mealplannerfx.bwscreen.ScreenBWDefWithList;
-import org.example.mealplannerfx.bwscreen.ScreenBWInListNewIngredientController;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredDefWithList;
-import org.example.mealplannerfx.coloredscreen.ScreenColoredInListNewIngredientController;
 import org.example.mealplannerfx.control.DBController;
 import org.example.mealplannerfx.control.WrongArgException;
 import org.example.mealplannerfx.entity.Ingredient;
