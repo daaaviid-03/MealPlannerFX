@@ -64,12 +64,12 @@ public class ScreenBWNewRecipeController extends ScreenBWDefWithElements impleme
             ScreenBWInListNewIngredientController l1 = (ScreenBWInListNewIngredientController) l;
             String errorIntro = "Ingredient in position " + (l1.getThisPosition() + 1);
             try {
-                ingredientsQuantity.add(l1.getQuantityText());
+                ingredientsQuantity.add(l1.getQuantityTextValue());
             } catch (Exception e){
                 throw new WrongArgException(errorIntro + " quantity's should be a valid number.");
             }
             try {
-                ingredientsPortionsNames.add(l1.getPortionName());
+                ingredientsPortionsNames.add(l1.getPortionNameValue());
             } catch (Exception e){
                 ingredientsPortionsNames.add("g");
             }

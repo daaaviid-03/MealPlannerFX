@@ -130,7 +130,7 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
         Map<Integer, String> thisMap = new HashMap<>();
         for (ScreenBWDefWithList l: ingredientsList){
             ScreenBWInListNewIngredientController l1 = (ScreenBWInListNewIngredientController) l;
-            thisMap.put(l1.getThisPosition(), l1.getIngredientName());
+            thisMap.put(l1.getThisPosition(), l1.getIngredientNameValue());
         }
         return thisMap;
     }

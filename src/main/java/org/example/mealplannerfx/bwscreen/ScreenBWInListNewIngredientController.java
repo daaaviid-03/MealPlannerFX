@@ -17,26 +17,26 @@ import java.util.ResourceBundle;
 public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
     private static final int MAX_INGREDIENTS_IN_VIEW = 4;
     @FXML
-    private TextField ingredientText;
+    private ComboBox<String> unitComboBox;
     @FXML
     private ListView<Ingredient> ingredientListText;
     @FXML
-    private ComboBox<String> unitComboBox;
+    private TextField ingredientText;
     @FXML
     private TextField quantityBoxTextIngredient;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         hideListOfElements();
 
-        ingredientText.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue){
+        ingredientListText.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValueObj, newValueObj) -> {
+            if (newValueObj != null){
+                selectElement(newValueObj.toString());
                 hideListOfElements();
             }
         });
 
-        ingredientListText.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValueObj, newValueObj) -> {
-            if (newValueObj != null){
-                selectedElement(newValueObj.toString());
+        ingredientText.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue){
                 hideListOfElements();
             }
         });
@@ -64,7 +64,7 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
         ingredientListText.getItems().setAll(FXCollections.observableArrayList(foundedElements));
     }
 
-    private void selectedElement(String newValue){
+    private void selectElement(String newValue){
         ingredientText.setText(newValue);
         try {
             unitComboBox.setItems(FXCollections.observableArrayList(DBController.getIngredientPortionsNames(newValue)));
@@ -81,15 +81,15 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
         getControllerSup().addIngredient(getThisPosition() + 1, getThisVBox());
     }
 
-    public float getQuantityText(){
+    public float getQuantityTextValue(){
         return Float.parseFloat(quantityBoxTextIngredient.getText());
     }
 
-    public String getIngredientName(){
+    public String getIngredientNameValue(){
         return ingredientText.getText();
     }
 
-    public String getPortionName() {
+    public String getPortionNameValue() {
         String text = unitComboBox.getValue();
         if (text.equals(unitComboBox.getPromptText())){
             throw new EmptyStackException();
@@ -99,10 +99,10 @@ public class ScreenBWInListNewIngredientController extends ScreenBWDefWithList {
     }
 
     public void deletePortions(){
-        unitComboBox.setPrefWidth(0d);
-        unitComboBox.setVisible(false);
         quantityBoxTextIngredient.setPrefWidth(0d);
         quantityBoxTextIngredient.setVisible(false);
+        unitComboBox.setPrefWidth(0d);
+        unitComboBox.setVisible(false);
     }
 
     public void searchIngredientsButtonClicked() {
