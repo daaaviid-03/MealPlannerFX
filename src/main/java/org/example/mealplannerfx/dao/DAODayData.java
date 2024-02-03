@@ -56,7 +56,7 @@ public abstract class DAODayData {
 
     public static DAODayData getDaoDayDataInstance() {
         if (daoDayDataInstance == null){
-            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+            if (AppController.getActualDBMS().equals("DBMS (SQL)")) {
                 daoDayDataInstance = new DAODayDataDB();
             } else {
                 daoDayDataInstance = new DAODayDataFS();

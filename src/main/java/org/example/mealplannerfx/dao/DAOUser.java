@@ -73,7 +73,7 @@ public abstract class DAOUser {
 
     public static DAOUser getDaoUserInstance() {
         if (daoUserInstance == null){
-            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+            if (AppController.getActualDBMS().equals("DBMS (SQL)")) {
                 daoUserInstance = new DAOUserDB();
             } else {
                 daoUserInstance = new DAOUserFS();

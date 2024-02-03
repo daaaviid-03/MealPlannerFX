@@ -74,7 +74,7 @@ public abstract class DAOIngredient {
 
     public static DAOIngredient getDaoIngredientInstance() {
         if (daoIngredientInstance == null){
-            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+            if (AppController.getActualDBMS().equals("DBMS (SQL)")) {
                 daoIngredientInstance = new DAOIngredientDB();
             } else {
                 daoIngredientInstance = new DAOIngredientFS();

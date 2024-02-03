@@ -7,22 +7,18 @@ import java.sql.ResultSet;
 import java.util.List;
 
 public class DAOUserDB extends DAOUser {
-    /**
-     * The connection to the server of the db
-     */
-    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public User getUser(String nick) {
         String query = "SELECT * FROM UserT WHERE nickname = '" + nick + "';";
-        try (ResultSet resultSet = connectionManager.newQuery(query)){
+        try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             if (resultSet.next()){
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("pass");
                 long birth = resultSet.getLong("birth");
                 float height = resultSet.getFloat("heightVal");
                 float weight = resultSet.getFloat("weightVal");
-                connectionManager.endQuery(resultSet);
+                ConnectionManager.endQuery(resultSet);
                 return new User(nick, height, weight, birth, email, password);
             } else {
                 return null;
@@ -34,7 +30,7 @@ public class DAOUserDB extends DAOUser {
 
     @Override
     public void saveUser(User user) {
-        connectionManager.newQueryNoResult("INSERT INTO UserT (nickname, pass, email, heightVal, weightVal, birth) VALUES ('" +
+        ConnectionManager.newQueryNoResult("INSERT INTO UserT (nickname, pass, email, heightVal, weightVal, birth) VALUES ('" +
                 user.getNickname() + "', '" + user.getPassword() + "', '" + user.getEmail() + "', " +
                 user.getHeight() + ", " + user.getWeight() + ", " + user.getBirth() + ") ON DUPLICATE KEY UPDATE pass = '" +
                 user.getPassword() + "', email = '" + user.getEmail() + "', heightVal = " + user.getHeight() +
@@ -50,6 +46,6 @@ public class DAOUserDB extends DAOUser {
 
     @Override
     public void deleteUser(String nick) {
-        connectionManager.newQueryNoResult("DELETE FROM UserT WHERE (nickname = '" + nick + "');");
+        ConnectionManager.newQueryNoResult("DELETE FROM UserT WHERE (nickname = '" + nick + "');");
     }
 }

@@ -9,18 +9,13 @@ public class ConnectionManager {
     private static final String URL_RUTE = "jdbc:mysql://localhost:3306/mealplannerschema";
     private static final String USER_NAME = "root";
     private static final String PASSWORD = System.getenv("PASSWORD");
-    private Connection connection;
-    private Statement statement;
-    private static ConnectionManager connectionManagerInstance;
-
-    private ConnectionManager(){
-        startConnection();
-    }
+    private static Connection connection;
+    private static Statement statement;
 
     /**
      * Starts the connection with the JDBC
      */
-    public void startConnection(){
+    public static void startConnection(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL_RUTE, USER_NAME, PASSWORD);
@@ -34,7 +29,7 @@ public class ConnectionManager {
      * Execute a query that has no result set in the DB
      * @param query the query to execute
      */
-    public void newQueryNoResult(String query){
+    public static void newQueryNoResult(String query){
         try {
             statement.execute(query);
         } catch (SQLException e) {
@@ -46,7 +41,7 @@ public class ConnectionManager {
      * Execute a query that has a result set in the DB
      * @param query the query to execute
      */
-    public ResultSet newQuery(String query) throws SQLException{
+    public static ResultSet newQuery(String query) throws SQLException{
         try {
             return statement.executeQuery(query);
         } catch (SQLException e) {
@@ -58,7 +53,7 @@ public class ConnectionManager {
      * End the result set of a query from the DB
      * @param resultSet the result set to end
      */
-    public void endQuery(ResultSet resultSet) {
+    public static void endQuery(ResultSet resultSet) {
         try {
             resultSet.close();
         } catch (SQLException e) {
@@ -69,23 +64,12 @@ public class ConnectionManager {
     /**
      * End the connection with the JDBC
      */
-    public void endConnection(){
+    public static void endConnection(){
         try {
             statement.close();
             connection.close();
         } catch (SQLException e) {
             // No action
         }
-    }
-
-    /**
-     * Get the instance of the Singleton object and creates it if there isn't one and starts connection
-     * @return the instance of the Singleton object
-     */
-    public static ConnectionManager getConnectionManagerInstance() {
-        if (connectionManagerInstance == null){
-            connectionManagerInstance = new ConnectionManager();
-        }
-        return connectionManagerInstance;
     }
 }

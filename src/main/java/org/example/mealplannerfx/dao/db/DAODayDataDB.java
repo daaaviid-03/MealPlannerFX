@@ -10,17 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DAODayDataDB extends DAODayData {
-    /**
-     * The connection to the server of the db
-     */
-    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public List<DayData> getDayDataFromUserBetween(String nick, long fromDate, long toDate) {
         List<DayData> dayData = new ArrayList<>();
         String query = "SELECT * FROM DayData WHERE (userNickname = '" + nick + "' AND " +
                 fromDate + " <= dayNumber <= " + toDate + ");";
-        try (ResultSet resultSet = connectionManager.newQuery(query)){
+        try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             while (resultSet.next()){
                 long dayNumber = resultSet.getLong("dayNumber");
                 Long breakfastRecipeId = resultSet.getLong("breakfastRecipe");
@@ -40,7 +36,7 @@ public class DAODayDataDB extends DAODayData {
                 }
                 dayData.add(new DayData(nick, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe));
             }
-            connectionManager.endQuery(resultSet);
+            ConnectionManager.endQuery(resultSet);
         } catch (Exception e){
             return dayData;
         }
@@ -49,7 +45,7 @@ public class DAODayDataDB extends DAODayData {
 
     @Override
     public void saveDayData(DayData dayData) {
-        connectionManager.newQueryNoResult("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
+        ConnectionManager.newQueryNoResult("INSERT INTO DayData (userNickname, dayNumber, breakfastRecipe, lunchRecipe, dinnerRecipe) VALUES ('" +
                 dayData.getUserNickname() + "', " + dayData.getDayNumber() + ", " + dayData.getBreakfastId() + ", " +
                 dayData.getLunchId() + ", " + dayData.getDinnerId() + ") ON DUPLICATE KEY UPDATE " +
                 "breakfastRecipe = " + dayData.getBreakfastId()+ ", lunchRecipe = " + dayData.getLunchId() +
@@ -62,6 +58,6 @@ public class DAODayDataDB extends DAODayData {
         if (dayDataNumber != null){
             query += " AND dayNumber = " + dayDataNumber;
         }
-        connectionManager.newQueryNoResult(query + ");");
+        ConnectionManager.newQueryNoResult(query + ");");
     }
 }

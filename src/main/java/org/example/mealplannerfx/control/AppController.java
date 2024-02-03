@@ -2,17 +2,21 @@ package org.example.mealplannerfx.control;
 
 import org.example.mealplannerfx.bwscreen.GraphicControllerBW;
 import org.example.mealplannerfx.coloredscreen.GraphicControllerColored;
+import org.example.mealplannerfx.dao.db.ConnectionManager;
 
 public class AppController{
-    private static AppController appControllerInstance;
-    private String actualDBMS;
-    private String actualViewMS;
-    private String nextDBMS;
-    private String nextViewMS;
+    private static String actualDBMS;
+    private static String actualViewMS;
+    private static String nextDBMS;
+    private static String nextViewMS;
 
-    private AppController(){}
+    public static void startBD(){
+        if(actualDBMS.equals("DBMS (SQL)")){
+            ConnectionManager.startConnection();
+        }
+    }
 
-    public void startView(){
+    public static void startView(){
         GraphicController graphicController;
         if (actualViewMS.equals("B/W Screens")) {
             graphicController = new GraphicControllerBW();
@@ -22,48 +26,41 @@ public class AppController{
         graphicController.startView();
     }
 
-    public static AppController getAppControllerInstance() {
-        if (appControllerInstance == null){
-            appControllerInstance = new AppController();
-        }
-        return appControllerInstance;
+    public static void setActualDBMS(String actualDBMS1) {
+        actualDBMS = actualDBMS1;
     }
 
-    public void setActualDBMS(String actualDBMS) {
-        this.actualDBMS = actualDBMS;
+    public static void setActualViewMS(String actualViewMS1) {
+        actualViewMS = actualViewMS1;
     }
 
-    public void setActualViewMS(String actualViewMS) {
-        this.actualViewMS = actualViewMS;
-    }
-
-    public void setNextDBMS(String dBMS) {
-        this.nextDBMS = dBMS;
-        if (!this.nextDBMS.equals(this.actualDBMS)) {
+    public static void setNextDBMS(String dBMS) {
+        nextDBMS = dBMS;
+        if (!nextDBMS.equals(actualDBMS)) {
             GetGlobalSettings.saveGlobalSettings();
         }
     }
 
-    public void setNextViewMS(String viewMS) {
-        this.nextViewMS = viewMS;
-        if (!this.nextViewMS.equals(this.actualViewMS)) {
+    public static void setNextViewMS(String viewMS) {
+        nextViewMS = viewMS;
+        if (!nextViewMS.equals(actualViewMS)) {
             GetGlobalSettings.saveGlobalSettings();
         }
     }
 
-    public String getActualDBMS() {
+    public static String getActualDBMS() {
         return actualDBMS;
     }
 
-    public String getActualViewMS() {
+    public static String getActualViewMS() {
         return actualViewMS;
     }
 
-    public String getNextDBMS() {
+    public static String getNextDBMS() {
         return nextDBMS;
     }
 
-    public String getNextViewMS() {
+    public static String getNextViewMS() {
         return nextViewMS;
     }
 }

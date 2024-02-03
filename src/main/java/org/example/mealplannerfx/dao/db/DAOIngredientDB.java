@@ -10,16 +10,12 @@ import java.util.List;
 import java.util.Map;
 
 public class DAOIngredientDB extends DAOIngredient {
-    /**
-     * The connection to the server of the db
-     */
-    private final ConnectionManager connectionManager = ConnectionManager.getConnectionManagerInstance();
 
     @Override
     public List<Ingredient> getAllIngredientsAsRegex(String regex, Integer numberOfElements) {
         List<Ingredient> ingredients = new ArrayList<>();
         String query = "SELECT * FROM Ingredient WHERE ingredientName RLIKE '" + regex + "' ORDER BY ingredientName;";
-        try (ResultSet resultSet = connectionManager.newQuery(query)){
+        try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             while (resultSet.next() && (numberOfElements == null || --numberOfElements >= 0)){
                 String name = resultSet.getString("ingredientName");
                 float calories = resultSet.getFloat("calories");
@@ -31,7 +27,7 @@ public class DAOIngredientDB extends DAOIngredient {
                 Ingredient ingredient = new Ingredient(name,calories,carbohydrates,proteins,fats,category,portions);
                 ingredients.add(ingredient);
             }
-            connectionManager.endQuery(resultSet);
+            ConnectionManager.endQuery(resultSet);
         } catch (Exception e){
             return ingredients;
         }
@@ -41,7 +37,7 @@ public class DAOIngredientDB extends DAOIngredient {
     @Override
     public void saveIngredient(Ingredient ingredient) {
         // Save the tuple into the table
-        connectionManager.newQueryNoResult("INSERT INTO Ingredient (ingredientName, calories, carb, prot, fats, " +
+        ConnectionManager.newQueryNoResult("INSERT INTO Ingredient (ingredientName, calories, carb, prot, fats, " +
                 "category) VALUES ('" + ingredient.getName() + "', " + ingredient.getCalories() + ", " +
                 ingredient.getCarbohydrates() + ", " + ingredient.getProteins() + ", " + ingredient.getFats() +
                 ", '" + ingredient.getCategory() + "') ON DUPLICATE KEY UPDATE calories = " +
@@ -51,7 +47,7 @@ public class DAOIngredientDB extends DAOIngredient {
         // Save all the food portions into the table
         for (String portionName : ingredient.getFoodPortionsNamesList()){
             float portionInGrams = ingredient.getFoodPortionInGrams(portionName);
-            connectionManager.newQueryNoResult("INSERT INTO FoodPortions (ingredientName, portionName, quantity) " +
+            ConnectionManager.newQueryNoResult("INSERT INTO FoodPortions (ingredientName, portionName, quantity) " +
                     "VALUES ('" + ingredient.getName() + "', '" + portionName + "', " + portionInGrams +
                     ") ON DUPLICATE KEY UPDATE quantity = " + portionInGrams + ";");
         }
@@ -67,13 +63,13 @@ public class DAOIngredientDB extends DAOIngredient {
     private Map<String, Float> getPortionsFromIngredient(String name){
         Map<String, Float> portions = new HashMap<>();
         String query = "SELECT * FROM FoodPortions WHERE (ingredientName = '" + name + "');";
-        try (ResultSet resultSet = connectionManager.newQuery(query)){
+        try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             while (resultSet.next()){
                 String portionName = resultSet.getString("portionName");
                 float quantity = resultSet.getFloat("quantity");
                 portions.put(portionName, quantity);
             }
-            connectionManager.endQuery(resultSet);
+            ConnectionManager.endQuery(resultSet);
         } catch (Exception e){
             return portions;
         }

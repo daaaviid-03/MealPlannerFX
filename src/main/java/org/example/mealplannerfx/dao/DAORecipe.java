@@ -88,7 +88,7 @@ public abstract class DAORecipe {
 
     public static DAORecipe getDaoRecipeInstance() {
         if (daoRecipeInstance == null){
-            if (AppController.getAppControllerInstance().getActualDBMS().equals("DBMS (SQL)")) {
+            if (AppController.getActualDBMS().equals("DBMS (SQL)")) {
                 daoRecipeInstance = new DAORecipeDB();
             } else {
                 daoRecipeInstance = new DAORecipeFS();

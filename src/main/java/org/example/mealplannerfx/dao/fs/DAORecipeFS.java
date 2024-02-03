@@ -44,12 +44,14 @@ public class DAORecipeFS extends DAORecipe {
         // Name
         boolean isCandidateForName = thisName.matches(regexName);
         // Duration
-        boolean isCandidateForDuration = (duration == null) ||
-                ((checkers[2] && !checkers[3] && thisDuration >= duration) ||
-                (!checkers[2] && checkers[3] && thisDuration <= duration) ||
-                (checkers[2] && checkers[3] && thisDuration == duration) ||
-                (!checkers[2] && !checkers[3] && thisDuration != duration));
+        boolean isCandidateForDuration = isCandidateForDurationCheck(duration, checkers, thisDuration);
+        boolean isCandidateForIngredients = isCandidateForIngredientsCheck(ingredients, checkers, thisIngredients);
+        // Last filter of fields
+        return (isCandidateForUser && ((checkers[1] && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
+                (!checkers[1] && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
+    }
 
+    private static boolean isCandidateForIngredientsCheck(List<Ingredient> ingredients, boolean[] checkers, List<Ingredient> thisIngredients) {
         boolean isCandidateForIngredients = checkers[0];
         if (ingredients != null) {
             for (Ingredient ingredient : ingredients) {
@@ -62,9 +64,15 @@ public class DAORecipeFS extends DAORecipe {
         } else {
             isCandidateForIngredients = true;
         }
-        // Last filter of fields
-        return (isCandidateForUser && ((checkers[1] && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
-                (!checkers[1] && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
+        return isCandidateForIngredients;
+    }
+
+    private static boolean isCandidateForDurationCheck(Integer duration, boolean[] checkers, int thisDuration) {
+        return (duration == null) ||
+                ((checkers[2] && !checkers[3] && thisDuration >= duration) ||
+                        (!checkers[2] && checkers[3] && thisDuration <= duration) ||
+                        (checkers[2] && checkers[3] && thisDuration == duration) ||
+                        (!checkers[2] && !checkers[3] && thisDuration != duration));
     }
 
     @Override

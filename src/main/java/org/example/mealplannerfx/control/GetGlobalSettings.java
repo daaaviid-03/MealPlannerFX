@@ -15,8 +15,8 @@ public class GetGlobalSettings {
 
     public static void saveGlobalSettings(){
         try (ObjectOutputStream stateFileObj = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(GLOBAL_SETTINGS_FILE_NAME)))) {
-            String dBMS = AppController.getAppControllerInstance().getNextDBMS();
-            String viewMS = AppController.getAppControllerInstance().getNextViewMS();
+            String dBMS = AppController.getNextDBMS();
+            String viewMS = AppController.getNextViewMS();
             stateFileObj.writeObject(dBMS);
             stateFileObj.writeObject(viewMS);
         } catch (Exception e) {
@@ -35,10 +35,10 @@ public class GetGlobalSettings {
             dBMS = DEFAULT_DBMS_SYSTEM;
             viewMS = DEFAULT_VIEW_SYSTEM;
         } finally {
-            AppController.getAppControllerInstance().setActualDBMS(dBMS);
-            AppController.getAppControllerInstance().setActualViewMS(viewMS);
-            AppController.getAppControllerInstance().setNextDBMS(dBMS);
-            AppController.getAppControllerInstance().setNextViewMS(viewMS);
+            AppController.setActualDBMS(dBMS);
+            AppController.setActualViewMS(viewMS);
+            AppController.setNextDBMS(dBMS);
+            AppController.setNextViewMS(viewMS);
             saveGlobalSettings();
         }
     }
