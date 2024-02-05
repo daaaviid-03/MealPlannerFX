@@ -23,11 +23,15 @@ import java.util.ResourceBundle;
 
 public class ScreenBWSearchController extends ScreenBWDefWithElements implements Initializable {
     @FXML
+    private CheckBox greaterEqualCheckBox;
+    @FXML
     private CheckBox onlyMinesCheckBox;
     @FXML
     private VBox ingredientsVBox;
     @FXML
     private AnchorPane recipeViewerPlane;
+    @FXML
+    private TextField nameToSearch;
     @FXML
     private ListView<Recipe> listOfFoundedRecipes;
     @FXML
@@ -37,13 +41,9 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
     @FXML
     private CheckBox allIngredInComoCheckBox;
     @FXML
-    private CheckBox greaterEqualCheckBox;
-    @FXML
     private TextField durationToSearch;
     @FXML
     private CheckBox exactNameCheckBox;
-    @FXML
-    private TextField nameToSearch;
     @FXML
     private Label errorText;
     private Recipe lastRecipeSelected;

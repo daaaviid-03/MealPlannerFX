@@ -16,15 +16,15 @@ import java.util.ResourceBundle;
 
 public class ScreenColoredViewRecipeController implements Initializable {
     @FXML
+    private ListView<String> ingredientsList;
+    @FXML
     private TextField ownerName;
+    @FXML
+    private ListView<String> stepsList;
     @FXML
     private Label recipeName;
     @FXML
     private TextArea descriptionTextArea;
-    @FXML
-    private ListView<String> ingredientsList;
-    @FXML
-    private ListView<String> stepsList;
     @FXML
     private TextField durationText;
 

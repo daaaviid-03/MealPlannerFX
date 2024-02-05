@@ -81,13 +81,13 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
                 ScreenBWDefWithList elementUp = elementsInList.get(pos);
                 elementsInList.remove(pos);
                 elementsInList.add(pos + 1, elementUp);
-                // Change indexes
+                // Change the indexes
                 elementsInList.get(pos).setThisPositionMinusOne();
-                elementsInList.get(pos + 1).setThisPositionPlusOne();
-                // Change item from list in the fxml
+                elementsInList.get(pos+1).setThisPositionPlusOne();
+                // Change the item from list in the fxml
                 Node nodeUp = elementsInVBox.getChildren().get(pos);
                 elementsInVBox.getChildren().remove(pos);
-                elementsInVBox.getChildren().add(pos + 1, nodeUp);
+                elementsInVBox.getChildren().add(pos+1, nodeUp);
             } catch (Exception e) {
                 // No action
             }

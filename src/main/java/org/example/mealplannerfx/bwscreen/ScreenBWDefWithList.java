@@ -15,16 +15,16 @@ public abstract class ScreenBWDefWithList implements Initializable {
     public void setControllerSup(ScreenBWDefWithElements controllerSup) {
         this.controllerSup = controllerSup;
     }
-    public void setThisPosition(int thisPosition) {
-        this.thisPosition = thisPosition;
+    public void setThisPositionMinusOne() {
+        this.thisPosition--;
         updateNumberText();
     }
     public void setThisPositionPlusOne() {
         this.thisPosition++;
         updateNumberText();
     }
-    public void setThisPositionMinusOne() {
-        this.thisPosition--;
+    public void setThisPosition(int thisPosition) {
+        this.thisPosition = thisPosition;
         updateNumberText();
     }
     private void updateNumberText(){

@@ -10,19 +10,15 @@
     <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="solving smels">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicControllerBW.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/GraphicControllerBW.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDaySelectController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDaySelectController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDef.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWDefWithStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewStepController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWInListNewStepController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWMainMenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWNewRecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWOneDayController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWSearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWShoppingListController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWStatsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWUserInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/bwscreen/ScreenBWViewRecipeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/mealplannerfx/dao/DBDataBoundaryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/mealplannerfx/dao/DBDataBoundaryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredViewRecipeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/coloredscreen/ScreenColoredViewRecipeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,30 +70,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.GraphicControllerColored.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MealPlannerApp.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DAOUserTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DBControllerTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.DBDataBoundaryTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/bwscreen&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.42413792&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.GraphicControllerColored.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "Application.MealPlannerApp.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "JUnit.DAOUserTest.executor": "Run",
+    "JUnit.DBControllerTest.executor": "Run",
+    "JUnit.DBDataBoundaryTest.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/bwscreen",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.42413792",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.fileTypes"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\bwscreen" />
@@ -520,7 +516,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706992991135</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="solving smels">
+      <option name="closed" value="true" />
+      <created>1707132250652</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1707132250652</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">

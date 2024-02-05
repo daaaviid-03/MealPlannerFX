@@ -73,12 +73,6 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
         GraphicControllerBW.setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
         GraphicControllerBW.startScreenBW("searchNewFood", "oneDay");
     }
-
-    public void deleteRecipe(ActionEvent actionEvent) {
-        thisDayData.setMealByName(getNameOfMealFromActionEvent(actionEvent), null);
-        setDayDataFromCalendar();
-    }
-
     private String getNameOfMealFromActionEvent(ActionEvent actionEvent){
         return ((Button)actionEvent.getSource()).getId().split("_")[0];
     }
@@ -90,6 +84,10 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
             return;
         }
         visualizeRecipeInPlane(recipeViewerPlane, thisRecipe);
+    }
+    public void deleteRecipe(ActionEvent actionEvent) {
+        thisDayData.setMealByName(getNameOfMealFromActionEvent(actionEvent), null);
+        setDayDataFromCalendar();
     }
     private void setRecipeSelected(){
         Recipe recipe = GraphicControllerBW.getLastRecipeSelected();

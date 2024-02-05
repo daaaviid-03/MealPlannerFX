@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class ScreenBWUserInfoController extends ScreenBWDef implements Initializable {
     @FXML
+    private TextField emailText;
+    @FXML
     private Label errorText;
     @FXML
     private Button avatarButton;
@@ -27,15 +29,13 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
     @FXML
     private ComboBox<String> gUIComboBox;
     @FXML
-    private TextField emailText;
-    @FXML
     private DatePicker birthDate;
     @FXML
     private TextField heightText;
     @FXML
-    private TextField weightText;
-    @FXML
     private PasswordField oldPasswordText;
+    @FXML
+    private TextField weightText;
     @FXML
     private PasswordField passwordText;
     @FXML
@@ -80,11 +80,13 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
                     throw new WrongArgException("You should write the old password to change it.");
                 }
             } else if (thisUser.getPassword().equals(oldPasswordText.getText())){
-                correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
+                correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(),
+                        repeatPasswordText.getText());
             } else {
                 throw new WrongArgException("Old password isn't correct.");
             }
-            User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight, correctWeight, email, birth);
+            User newUser = DBController.modifyUser(thisUser.getNickname(), correctRepPass,correctHeight,
+                    correctWeight, email, birth);
             GraphicControllerBW.setThisUser(newUser);
             returnScreen();
         } catch (WrongArgException wrongArgument) {

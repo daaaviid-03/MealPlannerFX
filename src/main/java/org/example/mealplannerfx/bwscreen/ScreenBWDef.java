@@ -42,10 +42,10 @@ public abstract class ScreenBWDef implements Initializable {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Are you sure you want to do the following action?");
         alert.setHeaderText(message);
-        ButtonType noActionOption = new ButtonType(noActionText);
         ButtonType actionOption = new ButtonType(actionText);
+        ButtonType noActionOption = new ButtonType(noActionText);
         alert.getButtonTypes().setAll(noActionOption, actionOption);
-        alert.showAndWait().ifPresent(response -> alertResponse = response == actionOption);
+        alert.showAndWait().ifPresent(response1 -> alertResponse = response1 == actionOption);
         return alertResponse;
     }
     public void setPreviousScreen(String previousScreenName){

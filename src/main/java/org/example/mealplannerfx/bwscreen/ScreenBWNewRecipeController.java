@@ -18,13 +18,13 @@ import java.util.ResourceBundle;
 
 public class ScreenBWNewRecipeController extends ScreenBWDefWithElements implements Initializable {
     @FXML
+    private TextArea descriptionText;
+    @FXML
     private Label errorText;
     @FXML
     private TextField durationText;
     @FXML
     private TextField nameText;
-    @FXML
-    private TextArea descriptionText;
     @FXML
     private VBox ingredientsVBox;
     @FXML
@@ -58,15 +58,16 @@ public class ScreenBWNewRecipeController extends ScreenBWDefWithElements impleme
         try {
             String name = DBDataBoundary.correctRecipeNameString(nameText.getText());
             String desc = DBDataBoundary.correctRecipeDescriptionString(descriptionText.getText());
+            List<String> ingredientsPortionsNames = new ArrayList<>();
             List<Ingredient> ingredients = new ArrayList<>();
             List<Float> ingredientsQuantity = new ArrayList<>();
-            List<String> ingredientsPortionsNames = new ArrayList<>();
             getQuantityAndPortions(getIngredientsList(), ingredientsQuantity, ingredientsPortionsNames);
             DBDataBoundary.correctIngredients(getIngredientsListPosName(), ingredients);
             List<String> steps = DBDataBoundary.correctSteps(getStepsList());
             int duration = DBDataBoundary.correctDuration(durationText.getText());
-            String[] nameDescOwn = {name, desc, GraphicControllerBW.getThisUser().getNickname()};
-            DBController.createNewRecipeDB(nameDescOwn, steps, duration, ingredients, ingredientsQuantity, ingredientsPortionsNames);
+            String[] nameDescOwn = {name,desc,GraphicControllerBW.getThisUser().getNickname()};
+            DBController.createNewRecipeDB(nameDescOwn, steps, duration, ingredients, ingredientsQuantity,
+                    ingredientsPortionsNames);
             GraphicControllerBW.startScreenBW("mainMenu");
         } catch (WrongArgException wrongArgument) {
             errorText.setText(wrongArgument.getWrongArgumentDescription());

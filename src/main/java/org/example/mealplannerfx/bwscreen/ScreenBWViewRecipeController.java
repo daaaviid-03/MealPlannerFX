@@ -38,6 +38,11 @@ public class ScreenBWViewRecipeController implements Initializable {
             descriptionTextArea.setText(recipe.getDescription());
             recipeName.setText(recipe.getName());
             ownerName.setText(recipe.getOwner());
+            List<String> stepsListStr = new ArrayList<>();
+            for (int i = 0; i < recipe.getSteps().size(); i++) {
+                stepsListStr.add(i + ". " + recipe.getStepInPos(i));
+            }
+            stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
             List<String> ingredientListStr = new ArrayList<>();
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 String ingTxt = i + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
@@ -46,11 +51,6 @@ public class ScreenBWViewRecipeController implements Initializable {
                 ingredientListStr.add(ingTxt);
             }
             ingredientsList.getItems().setAll(FXCollections.observableArrayList(ingredientListStr));
-            List<String> stepsListStr = new ArrayList<>();
-            for (int i = 0; i < recipe.getSteps().size(); i++) {
-                stepsListStr.add(i + ". " + recipe.getStepInPos(i));
-            }
-            stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
             durationText.setText(String.valueOf(recipe.getDuration()));
         }
     }

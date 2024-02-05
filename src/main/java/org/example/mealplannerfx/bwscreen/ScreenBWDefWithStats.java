@@ -45,12 +45,13 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
         return portionsOfIngredients;
     }
 
-    private static void getIngredientsPortionsFromRecipes(Recipe recipe, Map<String, Map<String, Float>> portionsOfIngredients) {
+    private static void getIngredientsPortionsFromRecipes(Recipe recipe, Map<String, Map<String,
+            Float>> portionsOfIngredients) {
         if (recipe != null){
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 String ingredientName = recipe.getIngredientInPos(i).getName();
-                String portionName = recipe.getIngredientPortionNameInPos(i);
                 Float portionQuantity = recipe.getIngredientQuantityInPos(i);
+                String portionName = recipe.getIngredientPortionNameInPos(i);
                 if (!portionsOfIngredients.containsKey(ingredientName)){
                     portionsOfIngredients.put(ingredientName, new HashMap<>());
                     portionsOfIngredients.get(ingredientName).put(portionName, portionQuantity);
@@ -58,6 +59,7 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
                     if (portionsOfIngredients.get(ingredientName).containsKey(portionName)){
                         portionsOfIngredients.get(ingredientName).put(portionName,
                                 portionsOfIngredients.get(ingredientName).get(portionName) + portionQuantity);
+
                     } else {
                         portionsOfIngredients.get(ingredientName).put(portionName, portionQuantity);
                     }
@@ -65,15 +67,13 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
             }
         }
     }
-
-    public long getFromDateLong() {
-        return fromDate.getValue().toEpochDay();
-    }
-
     public long getToDateLong() {
         return toDate.getValue().toEpochDay();
     }
 
+    public long getFromDateLong() {
+        return fromDate.getValue().toEpochDay();
+    }
     public abstract void onDatesChangedBW();
 
 }

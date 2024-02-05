@@ -15,13 +15,13 @@ import java.util.ResourceBundle;
 
 public class ScreenBWStatsController extends ScreenBWDefWithStats implements Initializable {
     @FXML
-    private Label errorText;
-    @FXML
-    private TextField numOfMeals;
-    @FXML
     private TextField calTot;
     @FXML
     private TextField carbTot;
+    @FXML
+    private Label errorText;
+    @FXML
+    private TextField numOfMeals;
     @FXML
     private TextField proteinTot;
     @FXML

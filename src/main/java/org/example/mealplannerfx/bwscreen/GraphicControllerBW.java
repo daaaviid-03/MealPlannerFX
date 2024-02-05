@@ -129,20 +129,20 @@ public class GraphicControllerBW extends Application implements GraphicControlle
     public static long getDayToExplore() {
         return dayToExplore;
     }
-    public static void setDayToExplore(long dayToExplore1) {
-        dayToExplore = dayToExplore1;
+    public static Recipe getLastRecipeSelected() {
+        return lastRecipeSelected;
+    }
+    public static void setRecipeToShow(Recipe recipeToShow1) {
+        recipeToShow = recipeToShow1;
     }
     public static Object searchForObjInScene(String name){
         return namespace.get(name);
     }
-    public static Recipe getLastRecipeSelected() {
-        return lastRecipeSelected;
-    }
     public static void setLastRecipeSelected(Recipe lastRecipeSelected1) {
         lastRecipeSelected = lastRecipeSelected1;
     }
-    public static void setRecipeToShow(Recipe recipeToShow1) {
-        recipeToShow = recipeToShow1;
+    public static void setDayToExplore(long dayToExplore1) {
+        dayToExplore = dayToExplore1;
     }
     public static Recipe getRecipeToShow() {
         return recipeToShow;
