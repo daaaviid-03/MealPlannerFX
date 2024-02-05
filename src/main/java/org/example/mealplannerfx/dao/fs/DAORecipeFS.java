@@ -47,13 +47,12 @@ public class DAORecipeFS extends DAORecipe {
         boolean isCandidateForDuration = isCandidateForDurationCheck(duration, checkers, thisDuration);
         boolean isCandidateForIngredients = isCandidateForIngredientsCheck(ingredients, checkers, thisIngredients);
         // Last filter of fields
-        return (isCandidateForUser && ((checkers[1] && isCandidateForName && isCandidateForDuration && isCandidateForIngredients) ||
-                (!checkers[1] && (isCandidateForName || isCandidateForDuration || isCandidateForIngredients))));
+        return (isCandidateForUser && isCandidateForName && isCandidateForDuration && isCandidateForIngredients);
     }
 
     private static boolean isCandidateForIngredientsCheck(List<Ingredient> ingredients, boolean[] checkers, List<Ingredient> thisIngredients) {
         boolean isCandidateForIngredients = checkers[0];
-        if (ingredients != null) {
+        if (ingredients != null && !ingredients.isEmpty()) {
             for (Ingredient ingredient : ingredients) {
                 if (checkers[0]) {
                     isCandidateForIngredients &= thisIngredients.contains(ingredient);
