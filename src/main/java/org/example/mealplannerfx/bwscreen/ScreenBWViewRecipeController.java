@@ -40,12 +40,12 @@ public class ScreenBWViewRecipeController implements Initializable {
             ownerName.setText(recipe.getOwner());
             List<String> stepsListStr = new ArrayList<>();
             for (int i = 0; i < recipe.getSteps().size(); i++) {
-                stepsListStr.add(i + ". " + recipe.getStepInPos(i));
+                stepsListStr.add((i + 1) + ". " + recipe.getStepInPos(i));
             }
             stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
             List<String> ingredientListStr = new ArrayList<>();
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
-                String ingTxt = i + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
+                String ingTxt = (i + 1) + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
                         recipe.getIngredientQuantityInPos(i) + ") units of (" +
                         recipe.getIngredientPortionNameInPos(i) + ").";
                 ingredientListStr.add(ingTxt);

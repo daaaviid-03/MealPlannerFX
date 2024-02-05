@@ -8,7 +8,7 @@ public class DAORecipeMaxIdDB extends DAORecipeMaxId {
 
     @Override
     public long getNextAndAddRecipeMaxId() {
-        long nextRecipeId = -1L;
+        long nextRecipeId = 0L;
         String query = "SELECT * FROM MaxRecipeId;";
         try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             if (resultSet.next()){

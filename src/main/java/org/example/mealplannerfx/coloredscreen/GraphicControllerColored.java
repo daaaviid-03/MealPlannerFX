@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.mealplannerfx.control.AppController;
+import org.example.mealplannerfx.dao.db.ConnectionManager;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 import org.example.mealplannerfx.control.GraphicController;
@@ -89,6 +91,12 @@ public class GraphicControllerColored extends Application implements GraphicCont
         stage.setScene(scene);
         // Show stage
         stage.show();
+    }
+    @Override
+    public void stop(){
+        if(AppController.getActualDBMS().equals("DBMS (SQL)")){
+            ConnectionManager.endConnection();
+        }
     }
     @Override
     public void startView(){

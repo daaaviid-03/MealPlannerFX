@@ -35,23 +35,27 @@ public class ScreenColoredViewRecipeController implements Initializable {
 
     public void establishRecipeToShow(Recipe recipe) {
         if (recipe != null){
-            recipeName.setText(recipe.getName());
-            descriptionTextArea.setText(recipe.getDescription());
-            List<String> ingredientListStr = new ArrayList<>();
-            for (int i = 0; i < recipe.getIngredients().size(); i++) {
-                String ingTxt = i + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
-                        recipe.getIngredientQuantityInPos(i) + ") units of (" +
-                        recipe.getIngredientPortionNameInPos(i) + ").";
-                ingredientListStr.add(ingTxt);
+            try {
+                recipeName.setText(recipe.getName());
+                descriptionTextArea.setText(recipe.getDescription());
+                List<String> ingredientListStr = new ArrayList<>();
+                for (int i = 0; i < recipe.getIngredients().size(); i++) {
+                    String ingTxt = (i + 1) + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
+                            recipe.getIngredientQuantityInPos(i) + ") units of (" +
+                            recipe.getIngredientPortionNameInPos(i) + ").";
+                    ingredientListStr.add(ingTxt);
+                }
+                ingredientsList.getItems().setAll(FXCollections.observableArrayList(ingredientListStr));
+                List<String> stepsListStr = new ArrayList<>();
+                for (int i = 0; i < recipe.getSteps().size(); i++) {
+                    stepsListStr.add((i + 1) + ". " + recipe.getStepInPos(i));
+                }
+                stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
+                durationText.setText(String.valueOf(recipe.getDuration()));
+                ownerName.setText(recipe.getOwner());
+            } catch (Exception e) {
+                // No action
             }
-            ingredientsList.getItems().setAll(FXCollections.observableArrayList(ingredientListStr));
-            List<String> stepsListStr = new ArrayList<>();
-            for (int i = 0; i < recipe.getSteps().size(); i++) {
-                stepsListStr.add(i + ". " + recipe.getStepInPos(i));
-            }
-            stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
-            durationText.setText(String.valueOf(recipe.getDuration()));
-            ownerName.setText(recipe.getOwner());
         }
     }
 }

@@ -38,9 +38,13 @@ public class DAORecipeDB extends DAORecipe {
         List<Recipe> recipes = new ArrayList<>();
         try (ResultSet resultSet = ConnectionManager.newQuery(query)){
             while (resultSet.next()){
-                recipes.add(getRecipeFromResultSet(resultSet));
+                Recipe thisRecipe = getRecipeFromResultSet(resultSet);
+                if (thisRecipe != null){
+                    recipes.add(thisRecipe);
+                } else {
+                    ConnectionManager.endQuery(resultSet);
+                }
             }
-            ConnectionManager.endQuery(resultSet);
         } catch (Exception e){
             return recipes;
         }
@@ -52,17 +56,17 @@ public class DAORecipeDB extends DAORecipe {
 
     private static String getQuery(String regexName, Integer duration, List<Ingredient> ingredients, User thisUser,
                                    boolean[] checkers) {
-        StringBuilder query = new StringBuilder("SELECT recipeName FROM Recipe WHERE ((");
+        StringBuilder query = new StringBuilder("SELECT * FROM Recipe WHERE ((");
         if (thisUser != null){
             query.append("ownerNickname = '").append(thisUser.getNickname()).append("') AND (");
         }
         query.append("recipeName RLIKE '").append(regexName).append("'");
         String conjunctionAll = " OR ";
-        if (checkers[0]){
+        if (checkers[1]){
             conjunctionAll = " AND ";
         }
         String conjunctionIngredients = " OR ";
-        if (checkers[1]){
+        if (checkers[0]){
             conjunctionIngredients = " AND ";
         }
         addDurationRestrings(duration, checkers, query, conjunctionAll);
@@ -76,7 +80,7 @@ public class DAORecipeDB extends DAORecipe {
             if (i == 0){
                 query.append(conjunctionAll).append("(");
             }
-            query.append("recipeId IN (SELECT recipeId FROM IngredientInRecipe WHERE ingredientName = '").append(ingredients.get(i).getName()).append("')");
+            query.append(" recipeId IN (SELECT recipeId FROM IngredientInRecipe WHERE ingredientName = '").append(ingredients.get(i).getName()).append("' )");
             if (i < ingredients.size() - 1){
                 query.append(conjunctionIngredients);
             } else {
@@ -109,17 +113,21 @@ public class DAORecipeDB extends DAORecipe {
         }
     }
 
-    private Recipe getRecipeFromResultSet(ResultSet resultSet) throws SQLException {
-        long recipeId = resultSet.getLong("recipeId");
-        String name = resultSet.getString("recipeName");
-        String description = resultSet.getString("descr");
-        String owner = resultSet.getString("ownerNickname");
-        int durationVal = resultSet.getInt("duration");
-        List<String> steps = getStepsFromRecipe(recipeId);
-        String[] nameDescOwn = {name, description, owner};
-        Recipe thisRecipe = new Recipe(recipeId, nameDescOwn, steps, durationVal);
-        loadIngredientsInRecipe(thisRecipe);
-        return thisRecipe;
+    private Recipe getRecipeFromResultSet(ResultSet resultSet) {
+        try {
+            String name = resultSet.getString("recipeName");
+            String description = resultSet.getString("descr");
+            long recipeId = resultSet.getLong("recipeId");
+            String owner = resultSet.getString("ownerNickname");
+            int durationVal = resultSet.getInt("duration");
+            List<String> steps = getStepsFromRecipe(recipeId);
+            String[] nameDescOwn = {name, description, owner};
+            Recipe thisRecipe = new Recipe(recipeId, nameDescOwn, steps, durationVal);
+            loadIngredientsInRecipe(thisRecipe);
+            return thisRecipe;
+        } catch (Exception e){
+            return null;
+        }
     }
     private void loadIngredientsInRecipe(Recipe recipe) {
         String query = "SELECT * FROM IngredientInRecipe WHERE (recipeId = " + recipe.getId() + ");";

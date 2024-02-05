@@ -7,7 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.example.mealplannerfx.control.AppController;
 import org.example.mealplannerfx.control.GraphicController;
+import org.example.mealplannerfx.dao.db.ConnectionManager;
 import org.example.mealplannerfx.entity.Recipe;
 import org.example.mealplannerfx.entity.User;
 
@@ -149,5 +151,11 @@ public class GraphicControllerBW extends Application implements GraphicControlle
     }
     public static String getMealNameOfLastSelected() {
         return mealNameOfLastSelected;
+    }
+    @Override
+    public void stop(){
+        if(AppController.getActualDBMS().equals("DBMS (SQL)")){
+            ConnectionManager.endConnection();
+        }
     }
 }

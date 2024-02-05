@@ -10,7 +10,6 @@ public class ConnectionManager {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = System.getenv("PASSWORD");
     private static Connection connection;
-    private static Statement statement;
 
     private ConnectionManager(){}
 
@@ -21,7 +20,6 @@ public class ConnectionManager {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(URL_RUTE, USER_NAME, PASSWORD);
-            statement = connection.createStatement();
         } catch (Exception e) {
             // No action
         }
@@ -33,7 +31,9 @@ public class ConnectionManager {
      */
     public static void newQueryNoResult(String query){
         try {
+            Statement statement = connection.createStatement();
             statement.execute(query);
+            statement.close();
         } catch (SQLException e) {
             // No action
         }
@@ -45,6 +45,7 @@ public class ConnectionManager {
      */
     public static ResultSet newQuery(String query) throws SQLException{
         try {
+            Statement statement = connection.createStatement();
             return statement.executeQuery(query);
         } catch (SQLException e) {
             throw new SQLException(e);
@@ -57,7 +58,9 @@ public class ConnectionManager {
      */
     public static void endQuery(ResultSet resultSet) {
         try {
+            Statement statement = resultSet.getStatement();
             resultSet.close();
+            statement.close();
         } catch (SQLException e) {
             // No action
         }
@@ -68,7 +71,6 @@ public class ConnectionManager {
      */
     public static void endConnection(){
         try {
-            statement.close();
             connection.close();
         } catch (SQLException e) {
             // No action

@@ -32,8 +32,8 @@ public abstract class DAORecipe {
      * @param duration duration of the recipe to search (if NULL then there isn't restriction)
      * @param ingredients list of ingredients to match in the recipe (if NULL then there isn't restriction)
      * @param thisUser the restriction to be only the user's recipes (if NULL then there isn't restriction)
-     * @param checkers is a boolean array with {toBeGraterEqualDuration, toBeLowerEqualDuration,
-     *                 allOfThoseIngredients, allFieldsInCommon}.
+     * @param checkers is a boolean array with {allOfThoseIngredients, allFieldsInCommon, toBeGraterEqualDuration,
+     *                 toBeLowerEqualDuration}.
      *                 so that:
      *                 allOfThoseIngredients -> if there should be a total match of the ingredients
      *                 allFieldsInCommon -> if there should be a total match with all restrictions or can be any of them
