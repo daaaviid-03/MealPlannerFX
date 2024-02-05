@@ -71,7 +71,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <TextField id="nicknameTextField" fx:id="heightText" prefHeight="66.0" prefWidth="165.0" promptText="cm">
+                  <TextField id="nicknameTextField" fx:id="heightTxt" prefHeight="66.0" prefWidth="165.0" promptText="cm">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -81,7 +81,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <TextField id="nicknameTextField" fx:id="weightText" prefHeight="66.0" prefWidth="165.0" promptText="Kg">
+                  <TextField id="nicknameTextField" fx:id="weightTxt" prefHeight="66.0" prefWidth="165.0" promptText="Kg">
                      <font>
                         <Font size="30.0" />
                      </font>
@@ -109,7 +109,7 @@
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="repeatPasswordText" prefHeight="66.0" prefWidth="408.0" promptText="*****">
+                  <PasswordField fx:id="repeatedPasswordText" prefHeight="66.0" prefWidth="408.0" promptText="*****">
                      <font>
                         <Font size="30.0" />
                      </font>

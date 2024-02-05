@@ -16,13 +16,13 @@ public class ScreenBWRegisterController {
     @FXML
     private Label errorText;
     @FXML
-    private PasswordField repeatPasswordText;
+    private PasswordField repeatedPasswordText;
     @FXML
     private PasswordField passwordText;
     @FXML
-    private TextField weightText;
+    private TextField weightTxt;
     @FXML
-    private TextField heightText;
+    private TextField heightTxt;
     @FXML
     private DatePicker birthDate;
     @FXML
@@ -33,9 +33,9 @@ public class ScreenBWRegisterController {
             String nick = DBDataBoundary.correctUserNicknameRegisterString(nicknameText.getText());
             String email = DBDataBoundary.correctEmailString(emailText.getText());
             long birth = DBDataBoundary.correctBirthLong(birthDate.getValue());
-            float correctHeight = DBDataBoundary.correctHeightFloat(heightText.getText());
-            float correctWeight = DBDataBoundary.correctWeightFloat(weightText.getText());
-            String correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatPasswordText.getText());
+            float correctHeight = DBDataBoundary.correctHeightFloat(heightTxt.getText());
+            float correctWeight = DBDataBoundary.correctWeightFloat(weightTxt.getText());
+            String correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(), repeatedPasswordText.getText());
 
             User thisUser = DBController.createUser(nick,correctRepPass,correctHeight, correctWeight, email, birth);
             GraphicControllerBW.setThisUser(thisUser);

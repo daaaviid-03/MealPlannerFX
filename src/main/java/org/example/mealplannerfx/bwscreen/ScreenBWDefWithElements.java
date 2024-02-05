@@ -74,16 +74,16 @@ public abstract class ScreenBWDefWithElements extends ScreenBWDef implements Ini
         }
     }
 
-    private void downArrowElementInListMask(int pos, List<ScreenBWDefWithList> elementsInList, VBox elementsInVBox){
-        if (pos < elementsInList.size() - 1) {
+    private void downArrowElementInListMask(int pos, List<ScreenBWDefWithList> elementsInTheList, VBox elementsInVBox){
+        if (pos < elementsInTheList.size() - 1) {
             try {
                 // Change item from list
-                ScreenBWDefWithList elementUp = elementsInList.get(pos);
-                elementsInList.remove(pos);
-                elementsInList.add(pos + 1, elementUp);
+                ScreenBWDefWithList elementUp = elementsInTheList.get(pos);
+                elementsInTheList.remove(pos);
+                elementsInTheList.add(pos + 1, elementUp);
                 // Change the indexes
-                elementsInList.get(pos).setThisPositionMinusOne();
-                elementsInList.get(pos+1).setThisPositionPlusOne();
+                elementsInTheList.get(pos).setThisPositionMinusOne();
+                elementsInTheList.get(pos+1).setThisPositionPlusOne();
                 // Change the item from list in the fxml
                 Node nodeUp = elementsInVBox.getChildren().get(pos);
                 elementsInVBox.getChildren().remove(pos);

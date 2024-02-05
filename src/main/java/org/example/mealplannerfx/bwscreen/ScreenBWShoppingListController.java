@@ -29,10 +29,11 @@ public class ScreenBWShoppingListController extends ScreenBWDefWithStats impleme
             List<String> shoppingList = new ArrayList<>();
             int cont = 1;
             for (Map.Entry<String, Map<String, Float>> ingredientName : portionsOfIngredients.entrySet()){
-                for (String portionName : portionsOfIngredients.get(ingredientName.getKey()).keySet()){
+                for (String portionName1 : portionsOfIngredients.get(ingredientName.getKey()).keySet()){
                     shoppingList.add(cont + ". " + ingredientName.getKey() +
-                            "  ->  (" + portionsOfIngredients.get(ingredientName.getKey()).get(portionName) +
-                            ") units of (" + portionName + ").");
+                            "  ->  (" + portionsOfIngredients.get(ingredientName.getKey()).get(portionName1) +
+                            ") units of (" + portionName1 + ").");
+
                     cont++;
                 }
             }

@@ -33,13 +33,13 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
     @FXML
     private TextField heightText;
     @FXML
-    private PasswordField oldPasswordText;
+    private PasswordField oldPasswordTxt;
     @FXML
     private TextField weightText;
     @FXML
     private PasswordField passwordText;
     @FXML
-    private PasswordField repeatPasswordText;
+    private PasswordField repeatedPasswordText;
     private User thisUser;
 
     @Override
@@ -73,15 +73,15 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
             float correctWeight = DBDataBoundary.correctWeightFloat(weightText.getText());
             float correctHeight = DBDataBoundary.correctHeightFloat(heightText.getText());
             String correctRepPass;
-            if (oldPasswordText.getText().isEmpty()){
-                if (passwordText.getText().isEmpty() && repeatPasswordText.getText().isEmpty()){
+            if (oldPasswordTxt.getText().isEmpty()){
+                if (passwordText.getText().isEmpty() && repeatedPasswordText.getText().isEmpty()){
                     correctRepPass = thisUser.getPassword();
                 } else {
                     throw new WrongArgException("You should write the old password to change it.");
                 }
-            } else if (thisUser.getPassword().equals(oldPasswordText.getText())){
+            } else if (thisUser.getPassword().equals(oldPasswordTxt.getText())){
                 correctRepPass = DBDataBoundary.correctPasswordRegisterString(passwordText.getText(),
-                        repeatPasswordText.getText());
+                        repeatedPasswordText.getText());
             } else {
                 throw new WrongArgException("Old password isn't correct.");
             }
