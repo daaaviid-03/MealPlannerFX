@@ -15,20 +15,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GraphicControllerBW extends Application implements GraphicController {
-    private static final double WINDOW_HEIGHT_DEFAULT = 1080;
-    private static final double WINDOW_WIDTH_DEFAULT = 1920;
+    private static final HashMap<String, String> screensFXML = new HashMap<>();
+    private static final double WINDOW_HEIGHT_DEFAULT_BW = 1080;
+    private static final double WINDOW_WIDTH_DEFAULT_BW = 1920;
     private static final double WINDOW_HEIGHT = 720;
     private static final double WINDOW_WIDTH = 1280;
     private static final String FIRST_SCREEN_TO_SHOW_NAME = "init";
-    private static final HashMap<String, String> screensFXML = new HashMap<>();
     // Objects of window
     /**
      * The anchorPane that surrounds the scene to be able to resize the screen
      */
-    private static final AnchorPane anchorPaneResize = new AnchorPane();
+    private static final AnchorPane anchorPaneResizeBW = new AnchorPane();
     private static Map<String, Object> namespace;
     private static FXMLLoader thisFxmlLoader;
     // Objects of saved messages
+    /**
+     * Whether is breakfast, launch or dinner.
+     */
+    private static String mealNameOfLastSelected;
     /**
      * Active user in the system
      */
@@ -45,10 +49,6 @@ public class GraphicControllerBW extends Application implements GraphicControlle
      * The recipe to show, if there is any
      */
     private static Recipe recipeToShow;
-    /**
-     * Whether is breakfast, launch or dinner.
-     */
-    private static String mealNameOfLastSelected;
 
     @Override
     public void init(){
@@ -72,19 +72,19 @@ public class GraphicControllerBW extends Application implements GraphicControlle
     public void start(Stage stage) throws Exception {
         stage.setTitle("MealPlanner");
         // Set listener to the change of the size of the window
-        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
-            anchorPaneResize.setScaleX(newWidth.doubleValue()/WINDOW_WIDTH_DEFAULT);
-            anchorPaneResize.setTranslateX(-(WINDOW_WIDTH_DEFAULT - newWidth.doubleValue())/2);
-        });
         stage.heightProperty().addListener((obs, oldHeight, newHeight) -> {
-            anchorPaneResize.setScaleY(newHeight.doubleValue()/WINDOW_HEIGHT_DEFAULT);
-            anchorPaneResize.setTranslateY(-(WINDOW_HEIGHT_DEFAULT - newHeight.doubleValue())/2);
+            anchorPaneResizeBW.setScaleY(newHeight.doubleValue()/ WINDOW_HEIGHT_DEFAULT_BW);
+            anchorPaneResizeBW.setTranslateY(-(WINDOW_HEIGHT_DEFAULT_BW - newHeight.doubleValue())/2);
+        });
+        stage.widthProperty().addListener((obs, oldWidth, newWidth) -> {
+            anchorPaneResizeBW.setScaleX(newWidth.doubleValue()/ WINDOW_WIDTH_DEFAULT_BW);
+            anchorPaneResizeBW.setTranslateX(-(WINDOW_WIDTH_DEFAULT_BW - newWidth.doubleValue())/2);
         });
         // Start first screen
         startScreenBW(FIRST_SCREEN_TO_SHOW_NAME);
         // Surround the anchor plane that resize with the other one
         AnchorPane anchorPaneSup = new AnchorPane();
-        anchorPaneSup.getChildren().setAll(anchorPaneResize);
+        anchorPaneSup.getChildren().setAll(anchorPaneResizeBW);
         Scene scene = new Scene(anchorPaneSup, WINDOW_WIDTH, WINDOW_HEIGHT);
         // Set the scene
         stage.setScene(scene);
@@ -106,7 +106,7 @@ public class GraphicControllerBW extends Application implements GraphicControlle
         try {
             Parent parent = thisFxmlLoader.load();
             // Surround the scene with the anchor plane that resize
-            anchorPaneResize.getChildren().setAll(parent);
+            anchorPaneResizeBW.getChildren().setAll(parent);
         } catch (Exception e){
             // No action
         }
@@ -116,6 +116,9 @@ public class GraphicControllerBW extends Application implements GraphicControlle
         if (previousScreen != null){
             ((ScreenBWDef)thisFxmlLoader.getController()).setPreviousScreen(previousScreen);
         }
+    }
+    public static void setMealNameOfLastSelected(String mealNameOfLastSelected1) {
+        mealNameOfLastSelected = mealNameOfLastSelected1;
     }
     public static User getThisUser() {
         return thisUser;
@@ -146,8 +149,5 @@ public class GraphicControllerBW extends Application implements GraphicControlle
     }
     public static String getMealNameOfLastSelected() {
         return mealNameOfLastSelected;
-    }
-    public static void setMealNameOfLastSelected(String mealNameOfLastSelected1) {
-        mealNameOfLastSelected = mealNameOfLastSelected1;
     }
 }

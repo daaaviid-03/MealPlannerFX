@@ -18,7 +18,7 @@ public abstract class ScreenBWDef implements Initializable {
     private Boolean alertResponse = null;
     private static final String RECIPE_VIEW_SCENE_FXML_FILE_NAME = "screen-bw-zz-viewRecipe-mask.fxml";
     private String nameThisScreen;
-    public void initializeDefaultModel(String nameThisScreen, boolean confirmExit) {
+    public void initializeDefaultModelBW(String nameThisScreen, boolean confirmExit) {
         this.nameThisScreen = nameThisScreen;
         this.confirmExit = confirmExit;
         String nickname = GraphicControllerBW.getThisUser().getNickname();

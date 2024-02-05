@@ -1,6 +1,5 @@
 package org.example.mealplannerfx.bwscreen;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -12,6 +11,8 @@ import org.example.mealplannerfx.dao.DBDataBoundary;
 import org.example.mealplannerfx.entity.User;
 
 public class ScreenBWRegisterController {
+    @FXML
+    private TextField nicknameText;
     @FXML
     private Label errorText;
     @FXML
@@ -26,8 +27,6 @@ public class ScreenBWRegisterController {
     private DatePicker birthDate;
     @FXML
     private TextField emailText;
-    @FXML
-    private TextField nicknameText;
 
     public void onRegisterButtonClicked() {
         try {

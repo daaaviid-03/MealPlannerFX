@@ -1,6 +1,5 @@
 package org.example.mealplannerfx.bwscreen;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,13 +10,12 @@ import org.example.mealplannerfx.entity.User;
 
 public class ScreenBWLoginController {
     @FXML
+    private PasswordField passwordText;
+    @FXML
     private Label errorText;
     @FXML
     private TextField nicknameText;
-    @FXML
-    private PasswordField passwordText;
-    @FXML
-    private void onLoginButtonClicked(){
+    public void onLoginButtonClicked(){
         String nick = nicknameText.getText();
         String pass = passwordText.getText();
         try {

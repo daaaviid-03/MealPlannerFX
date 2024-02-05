@@ -19,18 +19,18 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
     private DatePicker toDate;
 
     @Override
-    public void initializeDefaultModel(String nameThisScreen, boolean confirmExit){
-        super.initializeDefaultModel(nameThisScreen, confirmExit);
+    public void initializeDefaultModelBW(String nameThisScreen, boolean confirmExit){
+        super.initializeDefaultModelBW(nameThisScreen, confirmExit);
+        toDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChangedBW());
         fromDate.setValue(LocalDate.now());
         toDate.setValue(LocalDate.now().plusDays(7));
-        onDatesChanged();
-        fromDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChanged());
-        toDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChanged());
+        onDatesChangedBW();
+        fromDate.valueProperty().addListener((observable, oldValue, newValue) -> onDatesChangedBW());
     }
 
     public Map<String, Map<String, Float>> getAllPortionsOfIngredientDates() throws Exception {
-        long fromDateLong = fromDate.getValue().toEpochDay();
         long toDateLong = toDate.getValue().toEpochDay();
+        long fromDateLong = fromDate.getValue().toEpochDay();
         if (fromDateLong > toDateLong){
             throw new WrongArgException("The first date can't be after the second date.");
         }
@@ -38,14 +38,14 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
         // of each ingredient.
         Map<String, Map<String, Float>> portionsOfIngredients = new HashMap<>();
         for (DayData dayData : DBController.getDaysData(GraphicControllerBW.getThisUser().getNickname(), fromDateLong, toDateLong)){
-            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
-            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getLunchId()), portionsOfIngredients);
-            getIngredientsPortionsFromRecipe(DBController.getRecipe(dayData.getDinnerId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipes(DBController.getRecipe(dayData.getDinnerId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipes(DBController.getRecipe(dayData.getBreakfastId()), portionsOfIngredients);
+            getIngredientsPortionsFromRecipes(DBController.getRecipe(dayData.getLunchId()), portionsOfIngredients);
         }
         return portionsOfIngredients;
     }
 
-    private static void getIngredientsPortionsFromRecipe(Recipe recipe, Map<String, Map<String, Float>> portionsOfIngredients) {
+    private static void getIngredientsPortionsFromRecipes(Recipe recipe, Map<String, Map<String, Float>> portionsOfIngredients) {
         if (recipe != null){
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 String ingredientName = recipe.getIngredientInPos(i).getName();
@@ -74,6 +74,6 @@ public abstract class ScreenBWDefWithStats extends ScreenBWDef implements Initia
         return toDate.getValue().toEpochDay();
     }
 
-    public abstract void onDatesChanged();
+    public abstract void onDatesChangedBW();
 
 }

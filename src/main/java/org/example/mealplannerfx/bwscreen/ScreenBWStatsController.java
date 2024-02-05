@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class ScreenBWStatsController extends ScreenBWDefWithStats implements Initializable {
     @FXML
+    private Label errorText;
+    @FXML
     private TextField numOfMeals;
     @FXML
     private TextField calTot;
@@ -24,36 +26,35 @@ public class ScreenBWStatsController extends ScreenBWDefWithStats implements Ini
     private TextField proteinTot;
     @FXML
     private TextField fatTot;
-    @FXML
-    private Label errorText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel("stats", false);
+        initializeDefaultModelBW("stats", false);
     }
     @Override
-    public void onDatesChanged() {
+    public void onDatesChangedBW() {
         try {
             Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             numOfMeals.setText(String.valueOf(getNumberOfMealsInDates()));
+            float fatTotVal = 0;
             float calTotVal = 0;
             float carbTotVal = 0;
             float proteinTotVal = 0;
-            float fatTotVal = 0;
+
             for (Map.Entry<String, Map<String, Float>> ingredientName : portionsOfIngredients.entrySet()){
                 Ingredient ingredient = DBController.getIngredientByName(ingredientName.getKey());
                 for (String portionName : portionsOfIngredients.get(ingredientName.getKey()).keySet()){
                     float hundredGramsOfIngredient = ingredient.getFoodPortionInGrams(portionName) *
                             portionsOfIngredients.get(ingredientName.getKey()).get(portionName) / 100;
+                    fatTotVal += hundredGramsOfIngredient * ingredient.getFats();
                     calTotVal += hundredGramsOfIngredient * ingredient.getCalories();
                     carbTotVal += hundredGramsOfIngredient * ingredient.getCarbohydrates();
                     proteinTotVal += hundredGramsOfIngredient * ingredient.getProteins();
-                    fatTotVal += hundredGramsOfIngredient * ingredient.getFats();
                 }
             }
+            fatTot.setText(String.valueOf(fatTotVal));
             calTot.setText(String.valueOf(calTotVal));
             carbTot.setText(String.valueOf(carbTotVal));
             proteinTot.setText(String.valueOf(proteinTotVal));
-            fatTot.setText(String.valueOf(fatTotVal));
             errorText.setText("");
         } catch (WrongArgException e){
             errorText.setText(e.getWrongArgumentDescription());
@@ -64,13 +65,13 @@ public class ScreenBWStatsController extends ScreenBWDefWithStats implements Ini
     private int getNumberOfMealsInDates() {
         int count = 0;
         for (DayData dayData : DBController.getDaysData(GraphicControllerBW.getThisUser().getNickname(), getFromDateLong(), getToDateLong())){
+            if (dayData.getDinnerId() != null){
+                count++;
+            }
             if (dayData.getBreakfastId() != null){
                 count++;
             }
             if (dayData.getLunchId() != null){
-                count++;
-            }
-            if (dayData.getDinnerId() != null){
                 count++;
             }
         }

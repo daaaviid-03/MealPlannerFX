@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
 
 public class ScreenBWUserInfoController extends ScreenBWDef implements Initializable {
     @FXML
+    private Label errorText;
+    @FXML
     private Button avatarButton;
     @FXML
     private ComboBox<String> dBMSComboBox;
@@ -38,37 +40,38 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
     private PasswordField passwordText;
     @FXML
     private PasswordField repeatPasswordText;
-    @FXML
-    private Label errorText;
     private User thisUser;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel("userInfo", false);
+        initializeDefaultModelBW("userInfo", false);
         thisUser = GraphicControllerBW.getThisUser();
         emailText.setText(thisUser.getEmail());
         birthDate.setValue(LocalDate.ofEpochDay(thisUser.getBirth()));
         heightText.setText(String.valueOf(thisUser.getHeight()));
         weightText.setText(String.valueOf(thisUser.getWeight()));
         // Global settings
-        dBMSComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.getDbmsTypes()));
-        dBMSComboBox.setValue(AppController.getActualDBMS());
-        dBMSComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
-                AppController.setNextDBMS(newValue)));
-
         gUIComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.getViewMsTypes()));
         gUIComboBox.setValue(AppController.getActualViewMS());
         gUIComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
                 AppController.setNextViewMS(newValue)));
+        dBMSComboBox.getItems().setAll(FXCollections.observableArrayList(GetGlobalSettings.getDbmsTypes()));
+        dBMSComboBox.setValue(AppController.getActualDBMS());
+        dBMSComboBox.valueProperty().addListener(((observableValue, oldValue, newValue) ->
+                AppController.setNextDBMS(newValue)));
         avatarButton.setText(String.valueOf(thisUser.getNickname().toUpperCase().charAt(0)));
+    }
+
+    public void appODBUsers() {
+        DAOUser.getDaoUserInstance().loadUsersFromOriginalDB();
     }
 
     public void applyChangesButtonClicked() {
         try {
             String email = DBDataBoundary.correctEmailString(emailText.getText());
             long birth = DBDataBoundary.correctBirthLong(birthDate.getValue());
-            float correctHeight = DBDataBoundary.correctHeightFloat(heightText.getText());
             float correctWeight = DBDataBoundary.correctWeightFloat(weightText.getText());
+            float correctHeight = DBDataBoundary.correctHeightFloat(heightText.getText());
             String correctRepPass;
             if (oldPasswordText.getText().isEmpty()){
                 if (passwordText.getText().isEmpty() && repeatPasswordText.getText().isEmpty()){
@@ -115,7 +118,4 @@ public class ScreenBWUserInfoController extends ScreenBWDef implements Initializ
         DAOIngredient.getDaoIngredientInstance().loadIngredientsFromOriginalDB();
     }
 
-    public void appODBUsers() {
-        DAOUser.getDaoUserInstance().loadUsersFromOriginalDB();
-    }
 }

@@ -47,11 +47,10 @@ public class ScreenBWSearchController extends ScreenBWDefWithElements implements
     @FXML
     private Label errorText;
     private Recipe lastRecipeSelected;
-    private static final String NO_ELEMENTS_FOUND_TEXT = "-- No elements found --";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel("searchRecipe", false);
+        initializeDefaultModelBW("searchRecipe", false);
         setIngredientsWithUnits(false);
         addIngredient(0, ingredientsVBox);
         listOfFoundedRecipes.getSelectionModel().selectedItemProperty().addListener(

@@ -16,6 +16,8 @@ import java.util.ResourceBundle;
 
 public class ScreenBWViewRecipeController implements Initializable {
     @FXML
+    private TextField durationText;
+    @FXML
     private TextField ownerName;
     @FXML
     private Label recipeName;
@@ -25,18 +27,17 @@ public class ScreenBWViewRecipeController implements Initializable {
     private ListView<String> ingredientsList;
     @FXML
     private ListView<String> stepsList;
-    @FXML
-    private TextField durationText;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        establishRecipeToShow(GraphicControllerBW.getRecipeToShow());
+        establishTheRecipeToShow(GraphicControllerBW.getRecipeToShow());
     }
 
-    public void establishRecipeToShow(Recipe recipe) {
+    public void establishTheRecipeToShow(Recipe recipe) {
         if (recipe != null){
-            recipeName.setText(recipe.getName());
             descriptionTextArea.setText(recipe.getDescription());
+            recipeName.setText(recipe.getName());
+            ownerName.setText(recipe.getOwner());
             List<String> ingredientListStr = new ArrayList<>();
             for (int i = 0; i < recipe.getIngredients().size(); i++) {
                 String ingTxt = i + ". " + recipe.getIngredientInPos(i).toString() + "  ->  (" +
@@ -51,7 +52,6 @@ public class ScreenBWViewRecipeController implements Initializable {
             }
             stepsList.getItems().setAll(FXCollections.observableArrayList(stepsListStr));
             durationText.setText(String.valueOf(recipe.getDuration()));
-            ownerName.setText(recipe.getOwner());
         }
     }
 }

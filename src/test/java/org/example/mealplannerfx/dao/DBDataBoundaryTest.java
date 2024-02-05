@@ -83,8 +83,8 @@ class DBDataBoundaryTest {
             fail();
         }
         try {
-            assertEquals("@.",
-                    DBDataBoundary.correctEmailString("@."));
+            assertEquals("as@as.as",
+                    DBDataBoundary.correctEmailString("as@as.as"));
         } catch (WrongArgException wrongArgException){
             fail();
         }

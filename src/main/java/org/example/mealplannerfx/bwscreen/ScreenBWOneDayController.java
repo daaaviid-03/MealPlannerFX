@@ -17,7 +17,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ScreenBWOneDayController extends ScreenBWDef implements Initializable {
-
+    @FXML
+    private Label dayText;
     @FXML
     private AnchorPane recipeViewerPlane;
     @FXML
@@ -26,36 +27,21 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
     private Button breakfast;
     @FXML
     private Button dinner;
-    @FXML
-    private Label dayText;
     private long dayNumber;
     private DayData thisDayData;
 
-    private static final String NO_RECIPE_STYLE = "-fx-background-color: #dbdcdb; -fx-background-radius: 40px;" +
-            " -fx-border-radius: 40px; -fx-border-color: #a9a9a9; -fx-border-width: 6px; -fx-border-style: dashed;" +
-            " -fx-text-fill: #a9a9a9; -fx-font-size: 65;";
-    private static final String YES_RECIPE_STYLE = "-fx-background-color: #98c0f6; -fx-background-radius: 40px;" +
-            " -fx-border-radius: 40px; -fx-border-color: #74a7e4; -fx-border-width: 6px; -fx-border-style: solid;" +
-            " -fx-text-fill: #336ca5; -fx-font-size: 30;";
+    private static final String NO_RECIPE_STYLE = "-fx-background-color: #ffffff; -fx-background-radius: 40px;" +
+            " -fx-border-radius: 40px; -fx-border-color: #000000; -fx-border-width: 8px; -fx-border-style: dashed;" +
+            " -fx-font-size: 65; -fx-font-weight: bold; -fx-text-fill: #000000; -fx-underline: true;";
+    private static final String YES_RECIPE_STYLE = "-fx-background-radius: 40px; -fx-border-radius: 40px;" +
+            " -fx-border-color: #000000; -fx-border-width: 8px; -fx-text-fill: #000000; -fx-font-size: 45;" +
+            " -fx-font-weight: bold; -fx-underline: true;";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel("oneDay", false);
+        initializeDefaultModelBW("oneDay", false);
         dayNumber = GraphicControllerBW.getDayToExplore();
         setRecipeSelected();
     }
-
-    private void setRecipeSelected(){
-        Recipe recipe = GraphicControllerBW.getLastRecipeSelected();
-        setDayDataFromDayNumber();
-        if (recipe != null){
-            thisDayData.setMealByName(GraphicControllerBW.getMealNameOfLastSelected(), recipe);
-            GraphicControllerBW.setLastRecipeSelected(null);
-            GraphicControllerBW.setMealNameOfLastSelected(null);
-            DBController.saveDayData(thisDayData);
-        }
-        setDayDataFromCalendar();
-    }
-
 
     private void setDayDataFromCalendar() {
         // Set date info
@@ -82,17 +68,6 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
             button.setText("+  Recipe");
         }
     }
-    public void previousDayButtonClicked() {
-        dayNumber--;
-        setDayDataFromDayNumber();
-        setDayDataFromCalendar();
-    }
-
-    public void nextDayButtonClicked() {
-        dayNumber++;
-        setDayDataFromDayNumber();
-        setDayDataFromCalendar();
-    }
 
     public void recipeEditButton(ActionEvent actionEvent) {
         GraphicControllerBW.setMealNameOfLastSelected(getNameOfMealFromActionEvent(actionEvent));
@@ -115,5 +90,16 @@ public class ScreenBWOneDayController extends ScreenBWDef implements Initializab
             return;
         }
         visualizeRecipeInPlane(recipeViewerPlane, thisRecipe);
+    }
+    private void setRecipeSelected(){
+        Recipe recipe = GraphicControllerBW.getLastRecipeSelected();
+        setDayDataFromDayNumber();
+        if (recipe != null){
+            thisDayData.setMealByName(GraphicControllerBW.getMealNameOfLastSelected(), recipe);
+            GraphicControllerBW.setLastRecipeSelected(null);
+            GraphicControllerBW.setMealNameOfLastSelected(null);
+            DBController.saveDayData(thisDayData);
+        }
+        setDayDataFromCalendar();
     }
 }

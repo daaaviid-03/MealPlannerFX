@@ -15,15 +15,15 @@ import java.util.ResourceBundle;
 
 public class ScreenBWShoppingListController extends ScreenBWDefWithStats implements Initializable {
     @FXML
-    private ListView<String> listOfIngredients;
-    @FXML
     private Label errorText;
+    @FXML
+    private ListView<String> listOfIngredients;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel("shoppingList", false);
+        initializeDefaultModelBW("shoppingList", false);
     }
     @Override
-    public void onDatesChanged() {
+    public void onDatesChangedBW() {
         try {
             Map<String, Map<String, Float>> portionsOfIngredients = getAllPortionsOfIngredientDates();
             List<String> shoppingList = new ArrayList<>();

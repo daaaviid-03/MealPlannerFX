@@ -13,6 +13,9 @@ public class ScreenBWInListNewStepController extends ScreenBWDefWithList {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // No need to initialize nothing
     }
+    public String getStepString(){
+        return stepText.getText();
+    }
 
     public void upArrowStepClicked() {
         getControllerSup().upArrowStepClicked(getThisPosition(), getThisVBox());
@@ -30,8 +33,6 @@ public class ScreenBWInListNewStepController extends ScreenBWDefWithList {
         getControllerSup().addStep(getThisPosition() + 1, getThisVBox());
     }
 
-    public String getStepString(){
-        return stepText.getText();
-    }
+
 
 }

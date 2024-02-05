@@ -1,23 +1,15 @@
 package org.example.mealplannerfx.bwscreen;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import org.example.mealplannerfx.control.DBController;
-import org.example.mealplannerfx.entity.DayData;
 
 import java.net.URL;
-import java.util.Calendar;
-import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class ScreenBWMainMenuController extends ScreenBWDef implements Initializable {
     private static final String THIS_SCREEN_NAME = "mainMenu";
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initializeDefaultModel(THIS_SCREEN_NAME, true);
+        initializeDefaultModelBW(THIS_SCREEN_NAME, true);
     }
 
     public void makeShoppingListButtonClicked() {
