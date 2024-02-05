@@ -1,6 +1,8 @@
 package org.example.mealplannerfx.dao.db;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class to manage the connection to the JDBC and ensure that there is only one connection at a time
@@ -10,6 +12,7 @@ public class ConnectionManager {
     private static final String USER_NAME = "root";
     private static final String PASSWORD = System.getenv("PASSWORD");
     private static Connection connection;
+    private static final List<Statement> statementList = new ArrayList<>();
 
     private ConnectionManager(){}
 
@@ -30,10 +33,8 @@ public class ConnectionManager {
      * @param query the query to execute
      */
     public static void newQueryNoResult(String query){
-        try {
-            Statement statement = connection.createStatement();
+        try (Statement statement = connection.createStatement()){
             statement.execute(query);
-            statement.close();
         } catch (SQLException e) {
             // No action
         }
@@ -45,8 +46,8 @@ public class ConnectionManager {
      */
     public static ResultSet newQuery(String query) throws SQLException{
         try {
-            Statement statement = connection.createStatement();
-            return statement.executeQuery(query);
+            statementList.add(connection.createStatement());
+            return statementList.getLast().executeQuery(query);
         } catch (SQLException e) {
             throw new SQLException(e);
         }
@@ -58,9 +59,8 @@ public class ConnectionManager {
      */
     public static void endQuery(ResultSet resultSet) {
         try {
-            Statement statement = resultSet.getStatement();
             resultSet.close();
-            statement.close();
+            statementList.removeLast().close();
         } catch (SQLException e) {
             // No action
         }
