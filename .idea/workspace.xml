@@ -3,12 +3,23 @@
   <component name="AnalysisUIOptions">
     <option name="ANALYZE_INJECTED_CODE" value="false" />
   </component>
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="MealPlannerFX:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="389bd598-d6d6-426d-bc22-b04ad284c65d" name="Changes" comment="fixing bugs">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/MealPlannerFX_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/MealPlannerFX_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ConnectionMySQL/mysql-connector-j-8.3.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/lib/mysql-connector-j-8.3.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" beforeDir="false" afterPath="$PROJECT_DIR$/fileData/globalSettings/globalSettings.globalSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/MealPlannerFX_jar/MealPlannerFX.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/MealPlannerFX_jar/MealPlannerFX.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mealplannerfx/dao/db/ConnectionManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,13 +81,15 @@
     "JUnit.DAOUserTest.executor": "Run",
     "JUnit.DBControllerTest.executor": "Run",
     "JUnit.DBDataBoundaryTest.executor": "Run",
+    "Maven. [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/src/main/resources/org/example/mealplannerfx/bwscreen",
+    "last_opened_file_path": "D:/Universidad/ERASMUS/Web/Pruebas_Project/MealPlannerFX/lib/mysql-connector-j-8.3.0.jar",
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.42413792",
@@ -93,6 +106,7 @@
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\settingsScreen" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\lib" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredscreen" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\ConnectionMySQL" />
       <recent name="D:\Universidad\ERASMUS\Web\Pruebas_Project\MealPlannerFX\src\main\resources\org\example\mealplannerfx\coloredScreen" />

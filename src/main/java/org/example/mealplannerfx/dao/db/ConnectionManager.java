@@ -10,7 +10,7 @@ import java.util.List;
 public class ConnectionManager {
     private static final String URL_RUTE = "jdbc:mysql://localhost:3306/mealplannerschema";
     private static final String USER_NAME = "root";
-    private static final String PASSWORD = System.getenv("PASSWORD");
+    private static final String PASSWORD =  "Password1234"; //System.getenv("PASSWORD");
     private static Connection connection;
     private static final List<Statement> statementList = new ArrayList<>();
 
